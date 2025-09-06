@@ -10,16 +10,24 @@
 
 <style>
   :root{
-    --nav-h: 68px;      /* bottom nav height */
-    --cards-h: 150px;   /* cards rail height */
-    --globe-lift: -8vh; /* ⇦ ajuste pour monter/descendre la planète */
+    --nav-h: 78px;      /* hauteur nav bas */
+    --cards-h: 150px;   /* rail des guides */
+    --globe-lift: -8vh; /* monte le globe visuellement */
+    --bg:#111419;
+    --panel:#171a21;
+    --text:#eaeaf0;
+    --muted:#bfc3cf;
+    --icon:#d0d1d6;
+    --icon-active:#ffffff;
+    --chip:#2b2f39;
+    --accent:#7c6cff;   /* violet doux façon iOS */
   }
 
   *{box-sizing:border-box}
   html,body{height:100%}
   body{
     margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
-    color:#fff; background:#111; overflow:hidden;
+    color:var(--text); background:var(--bg); overflow:hidden;
   }
 
   header{
@@ -42,7 +50,6 @@
     position:absolute; inset:0;
     padding-bottom: calc(var(--cards-h) + var(--nav-h) + env(safe-area-inset-bottom, 0px));
   }
-
   #map .mapboxgl-canvas{
     transform: translateY(var(--globe-lift));
     transform-origin: center;
@@ -55,11 +62,9 @@
     height: var(--cards-h);
     padding: 10px 12px;
     display:flex; gap:12px; overflow-x:auto;
-    z-index:20;
-    scrollbar-width:none;
+    z-index:20; scrollbar-width:none;
   }
   .guides::-webkit-scrollbar{display:none}
-
   .guide-card{
     flex:0 0 220px; background:#1c1c1e; border-radius:14px; overflow:hidden;
     box-shadow:0 8px 24px rgba(0,0,0,.35);
@@ -67,42 +72,58 @@
   .guide-card img{width:100%; height:110px; object-fit:cover}
   .guide-card p{margin:8px 10px 10px; font-size:14px; color:#ddd}
 
-  /* Bottom navigation */
+  /* --- Nav bas style iOS --- */
   .nav{
     position:absolute; left:0; right:0; bottom:0;
     height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
-    padding: 8px 18px calc(10px + env(safe-area-inset-bottom, 0px));
-    background: rgba(20,20,22,.92);
-    backdrop-filter: blur(6px);
+    padding:8px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+    background:rgba(18,19,23,.96);
     border-top:1px solid rgba(255,255,255,.08);
-    display:flex; align-items:flex-end; justify-content:space-between;
+    display:flex; align-items:flex-start; justify-content:space-around;
     z-index:25;
   }
 
   .tab{
-    appearance:none; background:none; border:0; padding:0;
+    --size: 52px; /* diamètre de la bulle icône */
     display:flex; flex-direction:column; align-items:center; gap:6px;
-    color:#cfcfd3; font-size:12px; min-width:88px; cursor:pointer;
+    text-decoration:none; user-select:none;
+    min-width:84px;
   }
-
-  .tab .chip{
-    width:44px; height:44px; border-radius:50%;
+  .tab .icon-wrap{
+    width:var(--size); height:var(--size);
+    border-radius:999px;
+    background:#2a2d35;  /* bulle grise */
     display:grid; place-items:center;
-    background:#1d1e21; color:#cfcfd3;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
-    transition: transform .12s ease, background .2s ease, color .2s ease;
+    transition:transform .18s ease, background .18s ease;
+  }
+  .tab svg{ width:26px; height:26px; stroke:var(--icon); stroke-width:1.8; fill:none; }
+  .tab .label{
+    font-size:13px; letter-spacing:.2px; color:var(--muted);
+  }
+  .tab .underline{
+    height:4px; width:34px; border-radius:3px; background:transparent;
+    margin-top:2px;
   }
 
-  .tab.active .chip{
-    background:#6f63ff;   /* violet actif */
-    color:white;
-    box-shadow:0 6px 16px rgba(111,99,255,.35);
+  .tab.active .icon-wrap{
+    background:var(--accent);
+    transform:translateY(-2px);
+  }
+  .tab.active svg{ stroke:var(--icon-active); }
+  .tab.active .label{ color:#fff; }
+  .tab.active .underline{ background:var(--accent); }
+
+  /* petit tweak pour cœur: arrondir un peu plus */
+  .tab svg.heart{ stroke-linecap:round; stroke-linejoin:round; }
+
+  /* lien Mapbox watermark lisible */
+  .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right{
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,.45));
   }
 
-  .tab .label{opacity:.9}
-  .tab.active .label{color:#fff; opacity:1}
-
-  .tab:active .chip{ transform: scale(.96); }
+  @media (min-width:900px){
+    .tab{min-width:110px}
+  }
 </style>
 </head>
 <body>
@@ -132,38 +153,49 @@
   </div>
 
   <!-- Bottom navigation -->
-  <nav class="nav">
-    <button class="tab active" data-tab="explore">
-      <span class="chip">
-        <svg viewBox="0 0 24 24" width="20" height="20">
-          <path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.7 6.3-2 5.4a1 1 0 0 1-.6.6l-5.4 2 2-5.4a1 1 0 0 1 .6-.6l5.4-2zM11 11l-1 3 3-1 1-3-3 1z"/>
+  <nav class="nav" role="tablist" aria-label="Primary">
+    <!-- Explore -->
+    <a class="tab active" href="#" role="tab" aria-selected="true">
+      <span class="icon-wrap" aria-hidden="true">
+        <!-- Compass minimal -->
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="8.5"></circle>
+          <path d="M15.8 8.2l-3.9 1.7L10.2 14 14 12.3 15.8 8.2z"></path>
         </svg>
       </span>
       <span class="label">Explore</span>
-    </button>
+      <span class="underline" aria-hidden="true"></span>
+    </a>
 
-    <button class="tab" data-tab="guides">
-      <span class="chip">
-        <svg viewBox="0 0 24 24" width="20" height="20">
-          <path fill="currentColor" d="M4 5a3 3 0 0 1 3-3h11v18H7a3 3 0 0 0-3 3V5zm3-1a1 1 0 0 0-1 1v12a4 4 0 0 1 3-1h9V4H7z"/>
+    <!-- My Guides -->
+    <a class="tab" href="#" role="tab" aria-selected="false">
+      <span class="icon-wrap" aria-hidden="true">
+        <!-- Open book -->
+        <svg viewBox="0 0 24 24">
+          <path d="M3.5 6.5v11.5c2.8-1.8 6-1.8 9 0V6.5c-3-1.8-6.2-1.8-9 0z"></path>
+          <path d="M12.5 6.5v11.5c2.8-1.8 6-1.8 9 0V6.5c-3-1.8-6.2-1.8-9 0z"></path>
         </svg>
       </span>
       <span class="label">My Guides</span>
-    </button>
+      <span class="underline" aria-hidden="true"></span>
+    </a>
 
-    <button class="tab" data-tab="favorites">
-      <span class="chip">
-        <svg viewBox="0 0 24 24" width="20" height="20">
-          <path fill="currentColor" d="M12 21s-7-4.35-9.33-8.1C.55 9.73 2.07 6 5.6 6c2.02 0 3.1 1.08 4.4 2.5C11.9 7.08 12.98 6 15 6c3.53 0 5.05 3.73 2.93 6.9C19 16.65 12 21 12 21z"/>
+    <!-- Favorites -->
+    <a class="tab" href="#" role="tab" aria-selected="false">
+      <span class="icon-wrap" aria-hidden="true">
+        <!-- Heart rounded -->
+        <svg class="heart" viewBox="0 0 24 24">
+          <path d="M12 20s-6.8-4.4-8.5-7.8C2.3 9.8 3.6 7 6.4 6.6c1.6-.2 3.1.6 3.9 2 0 0 .8-1.8 3.3-2 2.9-.2 4.8 2 4.9 4.6.1 3.8-6.5 8.8-6.5 8.8z"></path>
         </svg>
       </span>
       <span class="label">Favorites</span>
-    </button>
+      <span class="underline" aria-hidden="true"></span>
+    </a>
   </nav>
 
 <script>
+  // Mapbox
   mapboxgl.accessToken = "pk.eyJ1IjoiZXJpa2FyYW1lbGwiLCJhIjoiY21jbmlteXJuMDBjaDJrc2swbnA0a29wZSJ9.F8aX2alF-PpnqInkyqba8g";
-
   const map = new mapboxgl.Map({
     container: "map",
     style: "mapbox://styles/erikaramell/cmcnjverq008y01qw6rir46gy",
@@ -171,15 +203,18 @@
     center: [10, 20],
     zoom: 0.3
   });
+  map.on("style.load", () => map.setFog({}));
 
-  map.on("style.load", () => {
-    map.setFog({});
-  });
-
-  document.querySelectorAll('.nav .tab').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      document.querySelectorAll('.nav .tab').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
+  // Demo: bascule l’état actif visuellement
+  document.querySelectorAll('.nav .tab').forEach(tab=>{
+    tab.addEventListener('click', (e)=>{
+      e.preventDefault();
+      document.querySelectorAll('.nav .tab').forEach(t=>{
+        t.classList.remove('active');
+        t.setAttribute('aria-selected','false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
     });
   });
 </script>
