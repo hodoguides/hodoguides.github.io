@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HodoGuides · My Guides</title>
+
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+  body{
+    margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;
+    background:#0e1420; color:#fff;
+  }
+
+  .topbar{
+    position:sticky; top:0; background:#0e1420;
+    padding:16px; font-weight:800; font-size:20px; z-index:20;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+
+  .guides-section{
+    padding:20px;
+  }
+  .guides-section h2{
+    font-size:18px; font-weight:700; margin:0 0 12px;
+  }
+
+  .guides-list{
+    display:flex; gap:16px; overflow-x:auto; padding-bottom:10px;
+    scrollbar-width:none;
+  }
+  .guides-list::-webkit-scrollbar{display:none}
+
+  .guide-card{
+    flex:0 0 220px; background:#151923; border-radius:14px; overflow:hidden;
+    box-shadow:0 6px 18px rgba(0,0,0,.35); text-decoration:none; color:#fff;
+    position:relative;
+  }
+  .guide-card img{width:100%; height:120px; object-fit:cover}
+  .guide-card .txt{padding:10px; font-weight:600; font-size:15px;}
+
+  /* Section Planner */
+  .planner-cta{
+    margin:30px 20px; padding:20px; border-radius:16px;
+    background:linear-gradient(135deg,#6c63ff,#5146d9);
+    text-align:center; box-shadow:0 8px 24px rgba(0,0,0,.35);
+  }
+  .planner-cta h3{
+    margin:0 0 12px; font-size:18px; font-weight:700;
+  }
+  .planner-cta p{
+    margin:0 0 16px; font-size:14px; opacity:.9;
+  }
+  .planner-cta .btn{
+    display:inline-block; padding:10px 18px; border-radius:12px;
+    background:#fff; color:#5146d9; font-weight:700; text-decoration:none;
+  }
+
+  /* Bottom nav */
+  .nav{position:fixed; left:0; right:0; bottom:0; height:70px;
+    background:rgba(15,15,20,.92); border-top:1px solid rgba(255,255,255,.08);
+    display:flex; align-items:center; justify-content:space-around; z-index:25;}
+  .tab{display:flex; flex-direction:column; align-items:center; gap:4px;
+    font-size:12px; color:#cfcfd3; text-decoration:none;}
+  .tab i{font-size:20px;}
+  .tab.active{color:#fff}
+  .tab.active i{color:#8f88ff}
+</style>
+</head>
+<body>
+
+  <div class="topbar">My Guides</div>
+
+  <div class="guides-section">
+    <h2>Itinéraires populaires</h2>
+    <div class="guides-list">
+      <a class="guide-card" href="#">
+        <img src="../images/japan.jpg" alt="Japan">
+        <div class="txt">15 jours au Japon</div>
+      </a>
+      <a class="guide-card" href="#">
+        <img src="../images/japan.jpg" alt="Japan">
+        <div class="txt">30 jours au Japon</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="planner-cta">
+    <h3>Besoin d’un itinéraire personnalisé ?</h3>
+    <p>Organisez votre voyage sur mesure avec HodoPlanner.</p>
+    <a class="btn" href="https://hodoplanner.github.io"><i class="fa-solid fa-pen-to-square"></i> Commencer</a>
+  </div>
+
+  <!-- Bottom navigation -->
+  <nav class="nav">
+    <a class="tab" href="../index.html"><i class="fa-solid fa-compass"></i><span>Explore</span></a>
+    <a class="tab active" href="#"><i class="fa-solid fa-book-open"></i><span>My Guides</span></a>
+    <a class="tab" href="../advice/index.html"><i class="fa-solid fa-lightbulb"></i><span>Conseils</span></a>
+  </nav>
+
+</body>
+</html>
