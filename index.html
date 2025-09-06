@@ -8,6 +8,7 @@
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="images/favicon.png" />
 <link rel="apple-touch-icon" href="images/favicon.png" />
+<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 <meta name="theme-color" content="#0e1420" />
 
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
@@ -15,7 +16,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
-  :root{ --nav-h:72px; --cards-h:160px; --accent:#8f88ff; }
+  :root{ --nav-h:72px; --accent:#8f88ff; }
   *{box-sizing:border-box} html,body{height:100%}
   body{
     margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;
@@ -27,21 +28,26 @@
       radial-gradient(1.5px 1.5px at 40% 80%, rgba(255,255,255,.10) 0, rgba(255,255,255,0) 100%);
     background-repeat:no-repeat;
   }
+
   header{position:absolute; left:20px; top:20px; z-index:10; font-weight:800; font-size:28px; letter-spacing:.3px; text-shadow:0 2px 10px rgba(0,0,0,.35);}
   .search-bar{position:absolute; left:50%; top:74px; transform:translateX(-50%); width:min(820px,86%); z-index:10;}
   .search-bar input{width:100%; padding:14px 18px; font-size:16px; color:#fff; background:rgba(255,255,255,.14); border:0; border-radius:28px; outline:none; backdrop-filter: blur(6px);}
-  #map{position:absolute; top:0; left:0; right:0; bottom:0; width:100%; min-height:100vh; padding-bottom: calc(var(--cards-h) + var(--nav-h) + env(safe-area-inset-bottom, 0px)); z-index:0;}
 
-  .guides{position:absolute; left:0; right:0; bottom: calc(var(--nav-h) + 10px + env(safe-area-inset-bottom, 0px)); height: var(--cards-h); padding: 10px 12px; display:flex; gap:12px; overflow-x:auto; z-index:20; scrollbar-width:none;}
-  .guides::-webkit-scrollbar{display:none}
-  .guide-card{position:relative; flex:0 0 260px; height:100%; background:#151923; border-radius:16px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,.35); text-decoration:none;}
-  .guide-card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
-  .guide-card .shade{position:absolute; inset:auto 0 0 0; height:52%; background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.78) 60%, rgba(0,0,0,.92) 100%);}
-  .guide-card .txt{position:absolute; left:12px; right:12px; bottom:12px; z-index:2; font-size:18px; font-weight:800; line-height:1.25;}
-  .guide-card .sub{ margin-top:6px; font-size:13px; font-weight:600; color:#e9edf6; opacity:.9 }
-  .guide-card .txt, .guide-card .txt *{ color:#fff !important; text-decoration:none !important }
+  /* Map : laisse seulement l'espace pour la nav */
+  #map{
+    position:absolute; inset:0;
+    padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
+  }
 
-  .nav{position:absolute; left:0; right:0; bottom:0; height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px)); padding:10px 8px calc(10px + env(safe-area-inset-bottom, 0px)); background:rgba(15,15,20,.92); backdrop-filter: blur(6px); border-top:1px solid rgba(255,255,255,.06); display:flex; align-items:flex-end; justify-content:space-around; z-index:25;}
+  /* Bottom nav */
+  .nav{
+    position:absolute; left:0; right:0; bottom:0;
+    height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
+    padding:10px 8px calc(10px + env(safe-area-inset-bottom, 0px));
+    background:rgba(15,15,20,.92); backdrop-filter: blur(6px);
+    border-top:1px solid rgba(255,255,255,.06);
+    display:flex; align-items:flex-end; justify-content:space-around; z-index:25;
+  }
   .tab{position:relative; display:flex; flex-direction:column; align-items:center; gap:6px; font-size:12px; color:#cfcfd3; text-decoration:none; min-width:86px;}
   .tab i{font-size:22px; opacity:.9}
   .tab.active{color:#fff}
@@ -53,30 +59,16 @@
   .photo-marker{ width:38px; height:38px; border-radius:50%; overflow:hidden; border:3px solid #fff; box-shadow:0 0 8px rgba(0,0,0,.45); background:#999; cursor:pointer; }
   .photo-marker img{width:100%; height:100%; object-fit:cover; display:block}
 
-  /* SEARCH OVERLAY */
-  .search-overlay{
-    position:fixed; inset:0; z-index:50; display:none;
-    background:#fff; color:#0d1220;
-  }
+  /* Search overlay */
+  .search-overlay{position:fixed; inset:0; z-index:50; display:none; background:#fff; color:#0d1220;}
   .search-overlay.open{display:block;}
-  .so-top{
-    position:sticky; top:0; background:#fff; padding:10px 12px; border-bottom:1px solid #eceff5; z-index:2;
-    display:flex; gap:10px; align-items:center;
-  }
+  .so-top{position:sticky; top:0; background:#fff; padding:10px 12px; border-bottom:1px solid #eceff5; z-index:2; display:flex; gap:10px; align-items:center;}
   .so-back{width:44px; height:44px; border-radius:12px; background:#f2f4f8; display:grid; place-items:center; cursor:pointer;}
   .so-input{flex:1}
-  .so-input input{
-    width:100%; height:44px; border-radius:22px; border:0; background:#f2f4f8; padding:0 16px;
-    font-size:16px; color:#0d1220; outline:none;
-  }
-  .so-section-title{
-    font-weight:800; letter-spacing:.04em; color:#4a5568; font-size:12px;
-    padding:14px 16px; background:#f6f9fd; border-top:1px solid #edf2f7; border-bottom:1px solid #edf2f7;
-  }
+  .so-input input{width:100%; height:44px; border-radius:22px; border:0; background:#f2f4f8; padding:0 16px; font-size:16px; color:#0d1220; outline:none;}
+  .so-section-title{font-weight:800; letter-spacing:.04em; color:#4a5568; font-size:12px; padding:14px 16px; background:#f6f9fd; border-top:1px solid #edf2f7; border-bottom:1px solid #edf2f7;}
   .so-list{list-style:none; margin:0; padding:0}
-  .so-item{
-    display:flex; align-items:center; gap:12px; padding:14px 16px; cursor:pointer; border-bottom:1px solid #f2f4f8;
-  }
+  .so-item{display:flex; align-items:center; gap:12px; padding:14px 16px; cursor:pointer; border-bottom:1px solid #f2f4f8;}
   .so-pin{width:36px; height:36px; border-radius:10px; background:#fff; border:1px solid #e6eaf2; display:grid; place-items:center; color:#111;}
   .so-name{font-size:16px; font-weight:600; color:#111;}
   .so-muted{font-size:13px; color:#6b7280;}
@@ -92,24 +84,6 @@
 
   <div id="map"></div>
 
-  <div class="guides">
-    <a class="guide-card" href="#">
-      <img src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?q=80&w=1400&auto=format&fit=crop" alt="Okinawa" />
-      <div class="shade"></div>
-      <div class="txt">Okinawa – Islands & Hidden Spots<div class="sub">7 days</div></div>
-    </a>
-    <a class="guide-card" href="#">
-      <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1400&auto=format&fit=crop" alt="Tokyo" />
-      <div class="shade"></div>
-      <div class="txt">Tokyo – City Highlights<div class="sub">10 stops</div></div>
-    </a>
-    <a class="guide-card" href="#">
-      <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1400&auto=format&fit=crop" alt="Kyoto" />
-      <div class="shade"></div>
-      <div class="txt">Kyoto – Temples & Gardens<div class="sub">3 days</div></div>
-    </a>
-  </div>
-
   <!-- Bottom nav -->
   <nav class="nav" id="bottomNav">
     <a class="tab active" data-tab="0" href="#"><i class="fa-solid fa-compass"></i><span>Explore</span></a>
@@ -124,13 +98,12 @@
       <div class="so-back" id="soBack" title="Close"><i class="fa-solid fa-chevron-left"></i></div>
       <div class="so-input"><input id="soInput" type="text" placeholder="Rechercher un guide" autocomplete="off"></div>
     </div>
-
     <div class="so-section-title">DESTINATIONS</div>
-    <ul class="so-list" id="destList"><!-- injected --></ul>
+    <ul class="so-list" id="destList"></ul>
   </div>
 
 <script>
-  // --- Map ---
+  // Map
   mapboxgl.accessToken = "pk.eyJ1IjoiZXJpa2FyYW1lbGwiLCJhIjoiY21jbmlteXJuMDBjaDJrc2swbnA0a29wZSJ9.F8aX2alF-PpnqInkyqba8g";
   const map = new mapboxgl.Map({
     container: "map",
@@ -142,10 +115,8 @@
   map.on("style.load", () => map.setFog({}));
 
   function applyCameraPadding(){
-    const styles = getComputedStyle(document.documentElement);
-    const cards = parseInt(styles.getPropertyValue('--cards-h')) || 160;
-    const nav   = parseInt(styles.getPropertyValue('--nav-h'))   || 72;
-    map.setPadding({ top: 90, right: 0, left: 0, bottom: cards + nav + 16 });
+    const nav = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+    map.setPadding({ top: 90, right: 0, left: 0, bottom: nav + 16 });
     setTimeout(()=>map.resize(), 0);
   }
   map.on("load", applyCameraPadding);
@@ -187,7 +158,7 @@
   map.on('load', refreshMarkers);
   map.on('zoom', refreshMarkers);
 
-  // --- Bottom nav underline
+  // Bottom nav underline
   const navEl=document.getElementById('bottomNav');
   const underline=document.getElementById('navUnderline');
   function positionUnderline(){
@@ -206,42 +177,36 @@
     });
   });
 
-  // --- SEARCH OVERLAY ---
+  // Search overlay
   const overlay = document.getElementById('searchOverlay');
   const mainSearch = document.getElementById('mainSearch');
   const soInput = document.getElementById('soInput');
   const soBack = document.getElementById('soBack');
   const destList = document.getElementById('destList');
 
-  // Destinations (pays → dossier, villes → ancre dans la page pays)
   const destinations = [
-    // Countries
-    { label:'Japan',         type:'country', url:'japan/' },
-    { label:'South Korea',   type:'country', url:'south-korea/' },
-
-    // Japan cities
-    { label:'Tokyo',         type:'city',    url:'japan/#tokyo' },
-    { label:'Kyoto',         type:'city',    url:'japan/#kyoto' },
-    { label:'Osaka',         type:'city',    url:'japan/#osaka' },
-    { label:'Okinawa',       type:'city',    url:'japan/#okinawa' },
-    { label:'Ishigaki',      type:'city',    url:'japan/#ishigaki' },
-    { label:'Yonaguni',      type:'city',    url:'japan/#yonaguni' },
-
-    // South Korea cities
-    { label:'Seoul',         type:'city',    url:'south-korea/#seoul' },
-    { label:'Busan',         type:'city',    url:'south-korea/#busan' },
-    { label:'Jeju',          type:'city',    url:'south-korea/#jeju' },
-    { label:'Daegu',         type:'city',    url:'south-korea/#daegu' },
-    { label:'Gyeongju',      type:'city',    url:'south-korea/#gyeongju' },
-    { label:'Andong',        type:'city',    url:'south-korea/#andong' },
-    { label:'Sokcho',        type:'city',    url:'south-korea/#sokcho' }
+    { label:'Japan',       type:'country', url:'japan/' },
+    { label:'South Korea', type:'country', url:'south-korea/' },
+    { label:'Tokyo',   type:'city', url:'japan/#tokyo' },
+    { label:'Kyoto',   type:'city', url:'japan/#kyoto' },
+    { label:'Osaka',   type:'city', url:'japan/#osaka' },
+    { label:'Okinawa', type:'city', url:'japan/#okinawa' },
+    { label:'Ishigaki',type:'city', url:'japan/#ishigaki' },
+    { label:'Yonaguni',type:'city', url:'japan/#yonaguni' },
+    { label:'Seoul',   type:'city', url:'south-korea/#seoul' },
+    { label:'Busan',   type:'city', url:'south-korea/#busan' },
+    { label:'Jeju',    type:'city', url:'south-korea/#jeju' },
+    { label:'Daegu',   type:'city', url:'south-korea/#daegu' },
+    { label:'Gyeongju',type:'city', url:'south-korea/#gyeongju' },
+    { label:'Andong',  type:'city', url:'south-korea/#andong' },
+    { label:'Sokcho',  type:'city', url:'south-korea/#sokcho' }
   ];
 
-  function renderList(query=''){
-    const q = query.trim().toLowerCase();
+  function renderList(q=''){
+    const query = q.trim().toLowerCase();
     destList.innerHTML = '';
     destinations
-      .filter(d => !q || d.label.toLowerCase().includes(q))
+      .filter(d => !query || d.label.toLowerCase().includes(query))
       .forEach(d=>{
         const li = document.createElement('li');
         li.className = 'so-item';
@@ -262,17 +227,8 @@
     }
   }
 
-  function openOverlay(){
-    overlay.classList.add('open');
-    document.body.style.overflow='hidden';
-    setTimeout(()=>soInput.focus(), 50);
-    renderList();
-  }
-  function closeOverlay(){
-    overlay.classList.remove('open');
-    document.body.style.overflow='';
-    mainSearch.blur();
-  }
+  function openOverlay(){ overlay.classList.add('open'); document.body.style.overflow='hidden'; setTimeout(()=>soInput.focus(), 50); renderList(); }
+  function closeOverlay(){ overlay.classList.remove('open'); document.body.style.overflow=''; mainSearch.blur(); }
 
   mainSearch.addEventListener('focus', openOverlay);
   soBack.addEventListener('click', closeOverlay);
