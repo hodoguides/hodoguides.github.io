@@ -62,9 +62,7 @@
   .photo-marker{ width:38px; height:38px; border-radius:50%; overflow:hidden; border:3px solid #fff; box-shadow:0 0 8px rgba(0,0,0,.45); background:#999; cursor:pointer; }
   .photo-marker img{width:100%; height:100%; object-fit:cover; display:block}
 
-  .popup{
-    color:#0d1220; font-family:inherit;
-  }
+  .popup{ color:#0d1220; font-family:inherit; }
   .popup .name{font-weight:800; margin-bottom:6px;}
   .popup a{display:inline-block; margin-top:6px; padding:8px 12px; border-radius:10px; background:#0e1420; color:#fff; text-decoration:none}
 </style>
@@ -72,7 +70,7 @@
 <body>
 
   <div class="topbar">
-    <a class="back" href="index.html"><i class="fa-solid fa-chevron-left"></i><span>Explore</span></a>
+    <a class="back" href="../index.html"><i class="fa-solid fa-chevron-left"></i><span>Explore</span></a>
     <div class="title">Japan</div>
   </div>
 
@@ -99,35 +97,35 @@
       id:'okinawa',
       name:'Okinawa (Naha)',
       coords:[127.68, 26.21],
-      img:'images/okinawa.jpg',
+      img:'../images/okinawa.jpg',
       fallback:'https://images.unsplash.com/photo-1549692520-acc6669e2f0c?q=80&w=1400&auto=format&fit=crop'
     },
     {
       id:'ishigaki',
       name:'Ishigaki',
       coords:[124.157, 24.344],
-      img:'images/ishigaki.jpg',
+      img:'../images/ishigaki.jpg',
       fallback:'https://images.unsplash.com/photo-1575882336970-65e2f03f06af?q=80&w=1400&auto=format&fit=crop'
     },
     {
       id:'yonaguni',
       name:'Yonaguni',
       coords:[122.986, 24.468],
-      img:'images/yonaguni.jpg',
+      img:'../images/yonaguni.jpg',
       fallback:'https://images.unsplash.com/photo-1561291386-5d3e5c4d8f0a?q=80&w=1400&auto=format&fit=crop'
     },
     {
       id:'kyoto',
       name:'Kyoto',
       coords:[135.768, 35.011],
-      img:'images/kyoto.jpg',
+      img:'../images/kyoto.jpg',
       fallback:'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1400&auto=format&fit=crop'
     },
     {
       id:'osaka',
       name:'Osaka',
       coords:[135.502, 34.693],
-      img:'images/osaka.jpg',
+      img:'../images/osaka.jpg',
       fallback:'https://images.unsplash.com/photo-1503891450247-ee5f8ec46dc3?q=80&w=1400&auto=format&fit=crop'
     }
   ];
@@ -136,26 +134,31 @@
   map.on('load', () => {
     const bounds = new mapboxgl.LngLatBounds();
     places.forEach(p => bounds.extend(p.coords));
-    map.fitBounds(bounds, { padding:{top:80, right:40, bottom:parseInt(getComputedStyle(document.documentElement).getPropertyValue('--cards-h'))+30, left:40}, duration:0 });
+    map.fitBounds(bounds, {
+      padding:{top:80, right:40, bottom:parseInt(getComputedStyle(document.documentElement).getPropertyValue('--cards-h'))+30, left:40},
+      duration:0
+    });
   });
 
   // Création des marqueurs (dot + photo au zoom)
   const bundles = [];
   places.forEach(p => {
     const d=document.createElement('div'); d.className='dot-marker';
-    const mDot = new mapboxgl.Marker(d,{anchor:'center'}).setLngLat(p.coords).addTo(map);
+    new mapboxgl.Marker(d,{anchor:'center'}).setLngLat(p.coords).addTo(map);
 
     const el=document.createElement('div'); el.className='photo-marker';
     const im=document.createElement('img'); im.src=p.img; im.onerror=()=>{im.src=p.fallback}; el.appendChild(im);
     el.title = p.name;
+
     // popup
     const popup = new mapboxgl.Popup({offset:18, closeButton:true})
-      .setHTML(`<div class="popup"><div class="name">${p.name}</div><div>Tap to focus or use the card below.</div><a href="#${p.id}">Open guide</a></div>`);
+      .setHTML(`<div class="popup"><div class="name">${p.name}</div><div>Tap to open the city page.</div><a href="${p.id}.html">Open guide</a></div>`);
+
     const mPhoto = new mapboxgl.Marker(el,{anchor:'center'}).setLngLat(p.coords).setPopup(popup).addTo(map);
 
+    // 👉 clic sur le rond = ouvrir japan/<ville>.html
     el.addEventListener('click', () => {
-      map.flyTo({ center:p.coords, zoom:6.2, speed:0.8, curve:1.4, essential:true });
-      mPhoto.togglePopup();
+      location.href = `${p.id}.html`;
     });
 
     bundles.push({d: d, p: el});
@@ -180,34 +183,21 @@
   map.on('zoom', refreshMarkers);
   map.on('load', refreshMarkers);
 
-  // Rail de cartes — clic => flyTo
+  // Rail de cartes — clic => ouvrir la page ville
   const rail = document.getElementById('cardsRail');
   places.forEach(p=>{
     const card=document.createElement('a');
     card.className='guide-card';
-    card.href = `#${p.id}`;
+    card.href = `${p.id}.html`; // 👉 ouvre japan/<ville>.html
     card.innerHTML = `
       <img src="${p.img}" onerror="this.src='${p.fallback}'" alt="${p.name}">
       <div class="shade"></div>
       <div class="txt">${p.name}</div>`;
-    card.addEventListener('click', (e)=>{
-      e.preventDefault();
-      location.hash = p.id;
-      map.flyTo({ center:p.coords, zoom:6.4, speed:0.8, curve:1.4, essential:true });
-    });
     rail.appendChild(card);
   });
 
-  // Navigation via #hash
-  window.addEventListener('hashchange', ()=>{
-    const id = location.hash.replace('#','');
-    const target = places.find(x=>x.id===id);
-    if(target){
-      map.flyTo({ center: target.coords, zoom:6.4, speed:0.9, curve:1.4, essential:true });
-    }
-  });
-  // Si on arrive avec un hash
-  if(location.hash){ const id=location.hash.replace('#',''); const t=places.find(x=>x.id===id); if(t) map.once('load',()=>map.flyTo({center:t.coords, zoom:6.4})); }
+  // (Optionnel) Naviguer via #hash pour focus carte, mais ici on ouvre directement des pages
 </script>
+
 </body>
 </html>
