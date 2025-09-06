@@ -16,8 +16,7 @@
   body{
     margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;
     color:#fff; background:#0e1420;
-    background-image:
-      radial-gradient(ellipse at 50% 40%, #1d2845 0%, #0e1420 60%, #0b0f18 100%);
+    background-image: radial-gradient(ellipse at 50% 40%, #1d2845 0%, #0e1420 60%, #0b0f18 100%);
   }
 
   /* Header */
@@ -25,7 +24,7 @@
     position:fixed; inset:0 0 auto 0; height:64px; padding:0 12px;
     display:flex; align-items:center; gap:12px; z-index:10;
     background:linear-gradient(180deg, rgba(14,20,32,.95), rgba(14,20,32,.55) 60%, rgba(14,20,32,0));
-    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
   }
   .btn-back{
     display:inline-flex; align-items:center; gap:8px;
@@ -33,42 +32,42 @@
     background:rgba(255,255,255,.12); color:#fff; text-decoration:none; font-weight:600;
     border:1px solid rgba(255,255,255,.08);
   }
-  .title{
-    font-size:20px; font-weight:800; letter-spacing:.02em;
-  }
+  .title{ font-size:20px; font-weight:800; letter-spacing:.02em; }
 
   /* Map */
   #map{ position:absolute; inset:0; }
 
-  /* Custom marker (small dot) */
+  /* Small clean dot markers */
   .dot{
     width:12px; height:12px; border-radius:50%;
     background:#fff; border:2px solid rgba(0,0,0,.35);
     box-shadow:0 0 6px rgba(0,0,0,.4);
   }
 
-  /* Popup */
-  .popup{
-    color:#0e1420; font-family:inherit;
-    min-width: 180px;
+  /* Popup content */
+  .pop{
+    color:#0e1420; font-family:inherit; min-width: 230px;
   }
-  .popup .h{
-    font-weight:800; font-size:16px; margin:0 0 6px;
+  .pop-img{
+    width:100%; height:130px; border-radius:10px; overflow:hidden; margin-bottom:10px;
   }
-  .popup .sub{
-    font-size:13px; color:#4a5568; margin-bottom:10px;
+  .pop-img img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .pop-title{ font-weight:800; font-size:16px; margin:0 0 6px; }
+  .pop-badge{
+    display:inline-block; font-size:12px; font-weight:700; letter-spacing:.02em;
+    padding:4px 8px; border-radius:999px; background:#eef; color:#333; margin-bottom:8px;
   }
-  .popup .row{
-    display:flex; gap:8px;
-  }
-  .popup .btn{
+  .pop-note{ font-size:13px; color:#4a5568; margin-bottom:10px; }
+  .pop-actions{ display:flex; gap:8px; flex-wrap:wrap; }
+  .btn{
     display:inline-flex; align-items:center; gap:6px;
-    border-radius:10px; padding:8px 10px; font-size:13px; font-weight:600;
+    border-radius:10px; padding:8px 10px; font-size:13px; font-weight:700;
     text-decoration:none; color:#fff; background:var(--accent);
   }
+  .btn.secondary{ background:#111; color:#fff; border:1px solid #ddd; }
 
   /* Mapbox popup theming */
-  .mapboxgl-popup-content{ padding:12px 12px 12px; border-radius:12px; }
+  .mapboxgl-popup-content{ padding:12px; border-radius:12px; }
   .mapboxgl-popup-tip{ border-top-color:#fff !important; }
 </style>
 </head>
@@ -82,54 +81,59 @@
   <div id="map"></div>
 
 <script>
-  // === Mapbox setup ===
+  // Mapbox
   mapboxgl.accessToken = "pk.eyJ1IjoiZXJpa2FyYW1lbGwiLCJhIjoiY21jbmlteXJuMDBjaDJrc2swbnA0a29wZSJ9.F8aX2alF-PpnqInkyqba8g";
 
   const map = new mapboxgl.Map({
     container: "map",
     style: "mapbox://styles/erikaramell/cmcnjverq008y01qw6rir46gy",
-    center: [135.5, 34.7], // Osaka area
+    center: [135.5, 34.7],
     zoom: 10.2,
     projection: "globe"
   });
-
   map.on("style.load", () => map.setFog({}));
 
-  // === POIs ===
-  // Coords approximatives précises pour Osaka :
+  // Lieux d’Osaka
   const pois = [
     {
       id: "usj",
       name: "Universal Studios Japan",
+      type: "Theme Park",
       coords: [135.4323, 34.6654],
-      note: "Theme park"
+      img: "https://images.unsplash.com/photo-1578637387939-43c525550085?q=80&w=1200&auto=format&fit=crop",
+      note: "Parc à thème populaire avec attractions et spectacles."
     },
     {
       id: "katsuoji",
       name: "Katsuō-ji Temple",
+      type: "Temple",
       coords: [135.5129, 34.8854],
-      note: "Daruma temple"
+      img: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1200&auto=format&fit=crop",
+      note: "Célèbre pour ses daruma porte-bonheur."
     },
     {
       id: "minoh",
       name: "Minoh Park (Waterfall)",
+      type: "Nature",
       coords: [135.4706, 34.8387],
-      note: "Nature trail"
+      img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop",
+      note: "Randonnée facile jusqu’à une belle cascade."
     },
     {
       id: "harukas",
       name: "Harukas 300 (Abeno Harukas)",
+      type: "Observation Deck",
       coords: [135.5132, 34.6459],
-      note: "Observation deck"
+      img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1200&auto=format&fit=crop",
+      note: "Vue panoramique sur Osaka depuis le 60ᵉ étage."
     }
   ];
 
-  // Add markers + popups
+  // Ajout des markers + popups
   const bounds = new mapboxgl.LngLatBounds();
   pois.forEach(p => {
     bounds.extend(p.coords);
 
-    // small dot marker
     const el = document.createElement("div");
     el.className = "dot";
 
@@ -137,14 +141,19 @@
       .setLngLat(p.coords)
       .addTo(map);
 
-    // popup html
     const html = `
-      <div class="popup">
-        <div class="h">${p.name}</div>
-        ${p.note ? `<div class="sub">${p.note}</div>` : ""}
-        <div class="row">
-          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name + " Osaka")}" target="_blank" rel="noopener">
+      <div class="pop">
+        <div class="pop-img"><img src="${p.img}" alt="${p.name}"></div>
+        <div class="pop-title">${p.name}</div>
+        <div class="pop-badge">${p.type}</div>
+        <div class="pop-note">${p.note || ""}</div>
+        <div class="pop-actions">
+          <a class="btn" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name + ' Osaka')}">
             <i class="fa-solid fa-location-arrow"></i> Open in Maps
+          </a>
+          <a class="btn secondary" href="#${p.id}">
+            <i class="fa-solid fa-book-open"></i> More details
           </a>
         </div>
       </div>`;
@@ -153,14 +162,11 @@
     marker.setPopup(popup);
   });
 
-  // Fit to all POIs with a bit of top padding (for the header)
+  // Cadre auto + padding top pour le header
   map.on("load", () => {
-    map.setPadding({ top: 70, right: 20, bottom: 20, left: 20 });
-    map.fitBounds(bounds, { padding: { top: 90, right: 30, bottom: 30, left: 30 }, maxZoom: 14 });
+    map.setPadding({ top: 80, right: 20, bottom: 20, left: 20 });
+    map.fitBounds(bounds, { padding: { top: 100, right: 30, bottom: 40, left: 30 }, maxZoom: 14 });
   });
-
-  // Cosmetic: cursor pointer on hover
-  map.on("mouseenter", () => map.getCanvas().style.cursor = "default");
 </script>
 </body>
 </html>
