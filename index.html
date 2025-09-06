@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
-    :root{ --nav-h:72px; --cards-h:160px; --accent:#8f88ff; }
+    :root{ --nav-h:72px; --accent:#8f88ff; }
     *{box-sizing:border-box} html,body{height:100%}
     body{
       margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;
@@ -37,28 +37,19 @@
       font-weight:800; font-size:28px; letter-spacing:.3px;
     }
     .by-erika{
-      height:20px; opacity:.95; pointer-events:none;
+      height:28px; opacity:.95; pointer-events:none;
       filter: drop-shadow(0 1px 1px rgba(0,0,0,.35));
       transform: translateY(2px);
     }
     @media (max-width:480px){
       .brand-title{ font-size:26px; }
-      .by-erika{ height:16px; }
+      .by-erika{ height:22px; }
     }
 
     .search-bar{position:absolute; left:50%; top:74px; transform:translateX(-50%); width:min(820px,86%); z-index:10;}
     .search-bar input{width:100%; padding:14px 18px; font-size:16px; color:#fff; background:rgba(255,255,255,.14); border:0; border-radius:28px; outline:none; backdrop-filter: blur(6px);}
 
-    #map{position:absolute; top:0; left:0; right:0; bottom:0; width:100%; min-height:100vh; padding-bottom: calc(var(--cards-h) + var(--nav-h) + env(safe-area-inset-bottom, 0px)); z-index:0;}
-
-    .guides{position:absolute; left:0; right:0; bottom: calc(var(--nav-h) + 10px + env(safe-area-inset-bottom, 0px)); height: var(--cards-h); padding: 10px 12px; display:flex; gap:12px; overflow-x:auto; z-index:20; scrollbar-width:none;}
-    .guides::-webkit-scrollbar{display:none}
-    .guide-card{position:relative; flex:0 0 260px; height:100%; background:#151923; border-radius:16px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,.35); text-decoration:none;}
-    .guide-card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
-    .guide-card .shade{position:absolute; inset:auto 0 0 0; height:52%; background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.78) 60%, rgba(0,0,0,.92) 100%);}
-    .guide-card .txt{position:absolute; left:12px; right:12px; bottom:12px; z-index:2; font-size:18px; font-weight:800; line-height:1.25;}
-    .guide-card .sub{ margin-top:6px; font-size:13px; font-weight:600; color:#e9edf6; opacity:.9 }
-    .guide-card .txt, .guide-card .txt *{ color:#fff !important; text-decoration:none !important }
+    #map{position:absolute; top:0; left:0; right:0; bottom:0; width:100%; min-height:100vh; padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px)); z-index:0;}
 
     /* Bottom nav */
     .nav{position:absolute; left:0; right:0; bottom:0; height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px)); padding:10px 8px calc(10px + env(safe-area-inset-bottom, 0px)); background:rgba(15,15,20,.92); backdrop-filter: blur(6px); border-top:1px solid rgba(255,255,255,.06); display:flex; align-items:flex-end; justify-content:space-around; z-index:25;}
@@ -116,26 +107,7 @@
 
   <div id="map"></div>
 
-  <!-- Guides rail (comme avant) -->
-  <div class="guides">
-    <a class="guide-card" href="#">
-      <img src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?q=80&w=1400&auto=format&fit=crop" alt="Okinawa" />
-      <div class="shade"></div>
-      <div class="txt">Okinawa – Islands & Hidden Spots<div class="sub">7 days</div></div>
-    </a>
-    <a class="guide-card" href="#">
-      <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1400&auto=format&fit=crop" alt="Tokyo" />
-      <div class="shade"></div>
-      <div class="txt">Tokyo – City Highlights<div class="sub">10 stops</div></div>
-    </a>
-    <a class="guide-card" href="#">
-      <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1400&auto=format&fit=crop" alt="Kyoto" />
-      <div class="shade"></div>
-      <div class="txt">Kyoto – Temples & Gardens<div class="sub">3 days</div></div>
-    </a>
-  </div>
-
-  <!-- Bottom nav (restaurée) -->
+  <!-- Bottom nav -->
   <nav class="nav" id="bottomNav">
     <a class="tab active" data-tab="0" href="#"><i class="fa-solid fa-compass"></i><span>Explore</span></a>
     <a class="tab" data-tab="1" href="#"><i class="fa-solid fa-book-open"></i><span>My Guides</span></a>
@@ -166,17 +138,7 @@
   });
   map.on("style.load", () => map.setFog({}));
 
-  function applyCameraPadding(){
-    const styles = getComputedStyle(document.documentElement);
-    const cards = parseInt(styles.getPropertyValue('--cards-h')) || 160;
-    const nav   = parseInt(styles.getPropertyValue('--nav-h'))   || 72;
-    map.setPadding({ top: 90, right: 0, left: 0, bottom: cards + nav + 16 });
-    setTimeout(()=>map.resize(), 0);
-  }
-  map.on("load", applyCameraPadding);
-  window.addEventListener('resize', applyCameraPadding);
-
-  // Markers → dossiers /japan/ et /south-korea/
+  // Marqueurs pays
   const spots = [
     { name:"Japan",       coords:[138.0, 36.0], img:"images/japan.jpg", url:"japan/" },
     { name:"South Korea", coords:[127.8, 36.3], img:"images/korea.jpg", url:"south-korea/" }
@@ -195,7 +157,6 @@
   });
 
   const SHOW_PHOTO_AT=3.2;
-  const DOT_MIN=6, DOT_MAX=10, PHOTO_MIN=34, PHOTO_MAX=48;
   const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
   function refreshMarkers(){
     const z=map.getZoom();
@@ -203,10 +164,6 @@
       const show=z>=SHOW_PHOTO_AT;
       b.d.style.display=show?'none':'block';
       b.p.style.display=show?'block':'none';
-      const dotSize=clamp(6+(z-0.3)*1.0, DOT_MIN, DOT_MAX);
-      const photoSize=clamp(34+(z-SHOW_PHOTO_AT)*3.0, PHOTO_MIN, PHOTO_MAX);
-      b.d.style.width=b.d.style.height=dotSize+'px';
-      b.p.style.width=b.p.style.height=photoSize+'px';
     });
   }
   map.on('load', refreshMarkers);
@@ -238,28 +195,22 @@
   const soBack = document.getElementById('soBack');
   const destList = document.getElementById('destList');
 
-  // Destinations (pays → dossier, villes → ancre dans la page pays)
   const destinations = [
-    // Countries
-    { label:'Japan',         type:'country', url:'japan/' },
-    { label:'South Korea',   type:'country', url:'south-korea/' },
-
-    // Japan cities
-    { label:'Tokyo',         type:'city',    url:'japan/#tokyo' },
-    { label:'Kyoto',         type:'city',    url:'japan/#kyoto' },
-    { label:'Osaka',         type:'city',    url:'japan/#osaka' },
-    { label:'Okinawa',       type:'city',    url:'japan/#okinawa' },
-    { label:'Ishigaki',      type:'city',    url:'japan/#ishigaki' },
-    { label:'Yonaguni',      type:'city',    url:'japan/#yonaguni' },
-
-    // South Korea cities
-    { label:'Seoul',         type:'city',    url:'south-korea/#seoul' },
-    { label:'Busan',         type:'city',    url:'south-korea/#busan' },
-    { label:'Jeju',          type:'city',    url:'south-korea/#jeju' },
-    { label:'Daegu',         type:'city',    url:'south-korea/#daegu' },
-    { label:'Gyeongju',      type:'city',    url:'south-korea/#gyeongju' },
-    { label:'Andong',        type:'city',    url:'south-korea/#andong' },
-    { label:'Sokcho',        type:'city',    url:'south-korea/#sokcho' }
+    { label:'Japan', type:'country', url:'japan/' },
+    { label:'South Korea', type:'country', url:'south-korea/' },
+    { label:'Tokyo', type:'city', url:'japan/#tokyo' },
+    { label:'Kyoto', type:'city', url:'japan/#kyoto' },
+    { label:'Osaka', type:'city', url:'japan/#osaka' },
+    { label:'Okinawa', type:'city', url:'japan/#okinawa' },
+    { label:'Ishigaki', type:'city', url:'japan/#ishigaki' },
+    { label:'Yonaguni', type:'city', url:'japan/#yonaguni' },
+    { label:'Seoul', type:'city', url:'south-korea/#seoul' },
+    { label:'Busan', type:'city', url:'south-korea/#busan' },
+    { label:'Jeju', type:'city', url:'south-korea/#jeju' },
+    { label:'Daegu', type:'city', url:'south-korea/#daegu' },
+    { label:'Gyeongju', type:'city', url:'south-korea/#gyeongju' },
+    { label:'Andong', type:'city', url:'south-korea/#andong' },
+    { label:'Sokcho', type:'city', url:'south-korea/#sokcho' }
   ];
 
   function renderList(query=''){
