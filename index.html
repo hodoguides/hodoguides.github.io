@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HodoGuides</title>
+
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+
+<style>
+  :root{
+    --nav-h: 68px;      /* bottom nav height */
+    --cards-h: 150px;   /* cards rail height */
+    --globe-lift: -8vh; /* ⇦ ajuste (p.ex. -6vh / -10vh) pour monter/descendre la planète */
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
+    color:#fff; background:#111; overflow:hidden;
+  }
+
+  header{
+    position:absolute; inset:20px auto auto 20px; z-index:10;
+    font-weight:800; font-size:28px; letter-spacing:.3px;
+    text-shadow:0 2px 10px rgba(0,0,0,.35);
+  }
+
+  .search-bar{
+    position:absolute; left:50%; top:74px; transform:translateX(-50%);
+    width:min(820px,86%); z-index:10;
+  }
+  .search-bar input{
+    width:100%; padding:14px 18px; font-size:16px; color:#fff;
+    background:rgba(255,255,255,.14); border:0; border-radius:28px;
+    outline:none; backdrop-filter: blur(6px);
+  }
+
+  #map{
+    position:absolute; inset:0;
+    /* leave visual space for guides + nav so they don’t overlap content */
+    padding-bottom: calc(var(--cards-h) + var(--nav-h) + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* 🔼 Monte visuellement le globe sans rien changer d'autre */
+  #map .mapboxgl-canvas{
+    transform: translateY(var(--globe-lift));
+    transform-origin: center;
+  }
+
+  /* Guides rail */
+  .guides{
+    position:absolute; left:0; right:0;
+    bottom: calc(var(--nav-h) + 8px + env(safe-area-inset-bottom, 0px)); /* ⬆️ lifted */
+    height: var(--cards-h);
+    padding: 10px 12px;
+    display:flex; gap:12px; overflow-x:auto;
+    z-index:20;
+    scrollbar-width:none;
+  }
+  .guides::-webkit-scrollbar{display:none}
+
+  .guide-card{
+    flex:0 0 220px; background:#1c1c1e; border-radius:14px; overflow:hidden;
+    box-shadow:0 8px 24px rgba(0,0,0,.35);
+  }
+  .guide-card img{width:100%; height:110px; object-fit:cover}
+  .guide-card p{margin:8px 10px 10px; font-size:14px; color:#ddd}
+
+  /* Bottom navigation */
+  .nav{
+    position:absolute; left:0; right:0; bottom:0;
+    height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background:rgba(20,20,22,.9); backdrop-filter: blur(6px);
+    border-top:1px solid rgba(255,255,255,.08);
+    display:flex; align-items:center; justify-content:space-around;
+    z-index:25;
+  }
+  .tab{
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    font-size:11px; color:#cfcfd3; text-decoration:none;
+  }
+  .tab .ico{font-size:20px; line-height:20px}
+  .tab.active{color:#fff}
+</style>
+</head>
+<body>
+
+  <header>HodoGuides</header>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Search a guide..." />
+  </div>
+
+  <div id="map"></div>
+
+  <!-- Guides rail (raised) -->
+  <div class="guides">
+    <div class="guide-card">
+      <img src="https://source.unsplash.com/400x200/?okinawa,beach" alt="Okinawa" />
+      <p>Okinawa – Islands & Hidden Spots</p>
+    </div>
+    <div class="guide-card">
+      <img src="https://source.unsplash.com/400x200/?tokyo,city" alt="Tokyo" />
+      <p>Tokyo – City Highlights</p>
+    </div>
+    <div class="guide-card">
+      <img src="https://source.unsplash.com/400x200/?kyoto,temple" alt="Kyoto" />
+      <p>Kyoto – Temples & Gardens</p>
+    </div>
+  </div>
+
+  <!-- Bottom navigation -->
+  <nav class="nav">
+    <a class="tab active" href="#"><span class="ico">🧭</span>Explore</a>
+    <a class="tab" href="#"><span class="ico">📖</span>My Guides</a>
+    <a class="tab" href="#"><span class="ico">❤️</span>Favorites</a>
+  </nav>
+
+<script>
+  mapboxgl.accessToken = "pk.eyJ1IjoiZXJpa2FyYW1lbGwiLCJhIjoiY21jbmlteXJuMDBjaDJrc2swbnA0a29wZSJ9.F8aX2alF-PpnqInkyqba8g";
+
+  const map = new mapboxgl.Map({
+    container: "map",
+    style: "mapbox://styles/erikaramell/cmcnjverq008y01qw6rir46gy",
+    projection: "globe",
+    center: [10, 20],
+    zoom: 0.3
+  });
+
+  map.on("style.load", () => {
+    map.setFog({}); // subtle atmosphere
+  });
+</script>
+</body>
+</html>
