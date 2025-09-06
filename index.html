@@ -146,10 +146,10 @@
   map.on("load", applyCameraPadding);
   window.addEventListener('resize', applyCameraPadding);
 
-  // Spots (ensure japan.html / south-korea.html exist in the same folder)
+  // Markers → dossiers /japan/ et /south-korea/
   const spots = [
-    { name:"Japan",       coords:[138.0, 36.0], img:"images/japan.jpg", url:"japan/index.html" },
-    { name:"South Korea", coords:[127.8, 36.3], img:"images/korea.jpg", url:"south-korea/index.html" }
+    { name:"Japan",       coords:[138.0, 36.0], img:"images/japan.jpg", url:"japan/" },
+    { name:"South Korea", coords:[127.8, 36.3], img:"images/korea.jpg", url:"south-korea/" }
   ];
   const bundles=[];
   spots.forEach(s=>{
@@ -208,15 +208,28 @@
   const soBack = document.getElementById('soBack');
   const destList = document.getElementById('destList');
 
-  // Sample destinations: countries + cities
+  // Destinations (pays → dossier, villes → ancre dans la page pays)
   const destinations = [
-    { label:'Corée du Sud',  slug:'south-korea', type:'country', url:'south-korea.html' },
-    { label:'Japon',         slug:'japan',       type:'country', url:'japan.html' },
-    { label:'Tokyo',         slug:'tokyo',       type:'city',    url:'japan.html#tokyo' },
-    { label:'Kyoto',         slug:'kyoto',       type:'city',    url:'japan.html#kyoto' },
-    { label:'Osaka',         slug:'osaka',       type:'city',    url:'japan.html#osaka' },
-    { label:'Séoul',         slug:'seoul',       type:'city',    url:'south-korea.html#seoul' },
-    { label:'Busan',         slug:'busan',       type:'city',    url:'south-korea.html#busan' }
+    // Countries
+    { label:'Japan',         type:'country', url:'japan/' },
+    { label:'South Korea',   type:'country', url:'south-korea/' },
+
+    // Japan cities
+    { label:'Tokyo',         type:'city',    url:'japan/#tokyo' },
+    { label:'Kyoto',         type:'city',    url:'japan/#kyoto' },
+    { label:'Osaka',         type:'city',    url:'japan/#osaka' },
+    { label:'Okinawa',       type:'city',    url:'japan/#okinawa' },
+    { label:'Ishigaki',      type:'city',    url:'japan/#ishigaki' },
+    { label:'Yonaguni',      type:'city',    url:'japan/#yonaguni' },
+
+    // South Korea cities
+    { label:'Seoul',         type:'city',    url:'south-korea/#seoul' },
+    { label:'Busan',         type:'city',    url:'south-korea/#busan' },
+    { label:'Jeju',          type:'city',    url:'south-korea/#jeju' },
+    { label:'Daegu',         type:'city',    url:'south-korea/#daegu' },
+    { label:'Gyeongju',      type:'city',    url:'south-korea/#gyeongju' },
+    { label:'Andong',        type:'city',    url:'south-korea/#andong' },
+    { label:'Sokcho',        type:'city',    url:'south-korea/#sokcho' }
   ];
 
   function renderList(query=''){
@@ -231,7 +244,7 @@
           <div class="so-pin"><i class="fa-solid fa-location-dot"></i></div>
           <div>
             <div class="so-name">${d.label}</div>
-            <div class="so-muted">${d.type === 'country' ? 'Pays' : 'Ville'}</div>
+            <div class="so-muted">${d.type === 'country' ? 'Country' : 'City'}</div>
           </div>`;
         li.addEventListener('click', ()=>{ location.href = d.url; });
         destList.appendChild(li);
@@ -239,7 +252,7 @@
     if(!destList.children.length){
       const empty=document.createElement('li');
       empty.className='so-item';
-      empty.innerHTML='<div class="so-muted">Aucun résultat</div>';
+      empty.innerHTML='<div class="so-muted">No results</div>';
       destList.appendChild(empty);
     }
   }
