@@ -8,27 +8,22 @@
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
 
-<!-- Font Awesome (icônes nav) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
 <style>
   :root{
-    --nav-h: 72px;
+    --nav-h: 68px;
     --cards-h: 150px;
-    --globe-lift: -8vh; /* ajuste pour monter/descendre la planète */
-    --accent: #8f88ff;
+    --globe-lift: -8vh;
+    --active-color: #8b5cf6; /* violet clair pour l’onglet actif */
   }
+
   *{box-sizing:border-box}
   html,body{height:100%}
   body{
     margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
-    color:#fff; background:#0e1420; overflow:hidden;
-    background-image:
-      radial-gradient(ellipse at 50% 40%, #1d2845 0%, #0e1420 60%, #0b0f18 100%),
-      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.18) 0, rgba(255,255,255,0) 100%),
-      radial-gradient(2px 2px at 70% 60%, rgba(255,255,255,.14) 0, rgba(255,255,255,0) 100%),
-      radial-gradient(1.5px 1.5px at 40% 80%, rgba(255,255,255,.10) 0, rgba(255,255,255,0) 100%);
-    background-repeat:no-repeat;
+    color:#fff; background:#111; overflow:hidden;
   }
 
   header{
@@ -36,6 +31,7 @@
     font-weight:800; font-size:28px; letter-spacing:.3px;
     text-shadow:0 2px 10px rgba(0,0,0,.35);
   }
+
   .search-bar{
     position:absolute; left:50%; top:74px; transform:translateX(-50%);
     width:min(820px,86%); z-index:10;
@@ -46,59 +42,50 @@
     outline:none; backdrop-filter: blur(6px);
   }
 
-  #map{ position:absolute; inset:0;
+  #map{
+    position:absolute; inset:0;
     padding-bottom: calc(var(--cards-h) + var(--nav-h) + env(safe-area-inset-bottom, 0px));
   }
-  /* Monte visuellement le globe */
-  #map .mapboxgl-canvas{ transform: translateY(var(--globe-lift)); transform-origin:center; }
 
-  /* Cartes guides */
+  #map .mapboxgl-canvas{
+    transform: translateY(var(--globe-lift));
+    transform-origin: center;
+  }
+
   .guides{
     position:absolute; left:0; right:0;
     bottom: calc(var(--nav-h) + 8px + env(safe-area-inset-bottom, 0px));
     height: var(--cards-h);
     padding: 10px 12px;
     display:flex; gap:12px; overflow-x:auto;
-    z-index:20; scrollbar-width:none;
+    z-index:20;
+    scrollbar-width:none;
   }
   .guides::-webkit-scrollbar{display:none}
+
   .guide-card{
-    flex:0 0 220px; background:#151923; border-radius:14px; overflow:hidden;
+    flex:0 0 220px; background:#1c1c1e; border-radius:14px; overflow:hidden;
     box-shadow:0 8px 24px rgba(0,0,0,.35);
   }
   .guide-card img{width:100%; height:110px; object-fit:cover}
   .guide-card p{margin:8px 10px 10px; font-size:14px; color:#ddd}
 
-  /* Nav bas type app */
+  /* Bottom navigation */
   .nav{
     position:absolute; left:0; right:0; bottom:0;
     height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
-    padding:10px 10px calc(10px + env(safe-area-inset-bottom, 0px));
-    background:rgba(15,15,20,.92); backdrop-filter: blur(6px);
-    border-top:1px solid rgba(255,255,255,.06);
-    display:flex; align-items:flex-end; justify-content:space-around;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background:rgba(20,20,22,.9); backdrop-filter: blur(6px);
+    border-top:1px solid rgba(255,255,255,.08);
+    display:flex; align-items:center; justify-content:space-around;
     z-index:25;
   }
   .tab{
     display:flex; flex-direction:column; align-items:center; gap:6px;
-    font-size:12px; color:#cfcfd3; text-decoration:none; min-width:80px;
+    font-size:12px; color:#aaa; text-decoration:none;
   }
-  .tab i{font-size:22px; opacity:.85}
-  .tab.active{color:#fff}
-  .tab.active i{color:var(--accent)}
-  .underline{ height:4px; width:96px; border-radius:2px;
-    background:linear-gradient(90deg, transparent 0 10%, var(--accent) 10% 90%, transparent 90% 100%);
-    position:absolute; left:50%; transform:translateX(-50%); bottom:6px; opacity:.75;
-  }
-
-  /* Marker photo rond */
-  .photo-marker{
-    width:46px; height:46px; border-radius:50%; overflow:hidden;
-    border:3px solid #fff; box-shadow:0 0 6px rgba(0,0,0,.4);
-    cursor:pointer; background:#999;
-  }
-  .photo-marker img{width:100%; height:100%; object-fit:cover; display:block}
-  .photo-marker:hover{transform:scale(1.04)}
+  .tab i{font-size:20px;}
+  .tab.active{color:var(--active-color);}
 </style>
 </head>
 <body>
@@ -111,28 +98,25 @@
 
   <div id="map"></div>
 
-  <!-- Guides rail -->
   <div class="guides">
     <div class="guide-card">
-      <img src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?q=80&w=1200&auto=format&fit=crop" alt="Okinawa" />
+      <img src="https://source.unsplash.com/400x200/?okinawa,beach" alt="Okinawa" />
       <p>Okinawa – Islands & Hidden Spots</p>
     </div>
     <div class="guide-card">
-      <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1200&auto=format&fit=crop" alt="Tokyo" />
+      <img src="https://source.unsplash.com/400x200/?tokyo,city" alt="Tokyo" />
       <p>Tokyo – City Highlights</p>
     </div>
     <div class="guide-card">
-      <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1200&auto=format&fit=crop" alt="Kyoto" />
+      <img src="https://source.unsplash.com/400x200/?kyoto,temple" alt="Kyoto" />
       <p>Kyoto – Temples & Gardens</p>
     </div>
   </div>
 
-  <!-- Bottom navigation -->
   <nav class="nav">
     <a class="tab active" href="#"><i class="fa-solid fa-compass"></i><span>Explore</span></a>
     <a class="tab" href="#"><i class="fa-solid fa-book-open"></i><span>My Guides</span></a>
     <a class="tab" href="#"><i class="fa-solid fa-heart"></i><span>Favorites</span></a>
-    <div class="underline"></div>
   </nav>
 
 <script>
@@ -146,39 +130,8 @@
     zoom: 0.3
   });
 
-  map.on("style.load", () => { map.setFog({}); });
-
-  /* ---- Markers photo cliquables ---- */
-  const guides = [
-    {
-      name: "Japan",
-      coords: [139.6917, 35.6895],               // Tokyo
-      img: "https://images.unsplash.com/photo-1526481280698-8fcc13fd91c0?q=80&w=200&auto=format&fit=crop",
-      url: "https://erikaramell.github.io/japan-guide"
-    },
-    {
-      name: "South Korea",
-      coords: [126.9780, 37.5665],               // Seoul
-      img: "https://images.unsplash.com/photo-1603808033115-67b3a2bfa4fd?q=80&w=200&auto=format&fit=crop",
-      url: "https://erikaramell.github.io/korea-guide"
-    }
-  ];
-
-  guides.forEach(g => {
-    const el = document.createElement("div");
-    el.className = "photo-marker";
-    el.title = g.name;
-
-    const img = document.createElement("img");
-    img.src = g.img;
-    img.alt = g.name;
-    el.appendChild(img);
-
-    el.addEventListener("click", () => {
-      window.location.href = g.url; // remplace par tes pages
-    });
-
-    new mapboxgl.Marker(el).setLngLat(g.coords).addTo(map);
+  map.on("style.load", () => {
+    map.setFog({});
   });
 </script>
 </body>
