@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
-    :root{ --nav-h:72px; --accent:#8f88ff; }
+    :root{ --nav-h:72px; --accent:#7e8db0; }
     *{box-sizing:border-box} html,body{height:100%}
     body{
       margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;
@@ -52,7 +52,14 @@
     #map{position:absolute; top:0; left:0; right:0; bottom:0; width:100%; min-height:100vh; padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px)); z-index:0;}
 
     /* Bottom nav */
-    .nav{position:absolute; left:0; right:0; bottom:0; height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px)); padding:10px 8px calc(10px + env(safe-area-inset-bottom, 0px)); background:rgba(15,15,20,.92); backdrop-filter: blur(6px); border-top:1px solid rgba(255,255,255,.06); display:flex; align-items:flex-end; justify-content:space-around; z-index:25;}
+    .nav{
+      position:absolute; left:0; right:0; bottom:0;
+      height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
+      padding:10px 8px calc(10px + env(safe-area-inset-bottom, 0px));
+      background:rgba(15,15,20,.92); backdrop-filter: blur(6px);
+      border-top:1px solid rgba(255,255,255,.06);
+      display:flex; align-items:flex-end; justify-content:space-around; z-index:25;
+    }
     .tab{position:relative; display:flex; flex-direction:column; align-items:center; gap:6px; font-size:12px; color:#cfcfd3; text-decoration:none; min-width:86px;}
     .tab i{font-size:22px; opacity:.9}
     .tab.active{color:#fff}
@@ -108,11 +115,11 @@
   <div id="map"></div>
 
   <nav class="nav" id="bottomNav">
-  <a class="tab active" href="/"><i class="fa-solid fa-compass"></i><span>Explore</span></a>
-  <a class="tab" href="/my-guides/"><i class="fa-solid fa-book-open"></i><span>My Guides</span></a>
-  <a class="tab" href="/tips/"><i class="fa-solid fa-lightbulb"></i><span>Conseils</span></a>
-  <div class="underline" id="navUnderline"></div>
-</nav>
+    <a class="tab active" href="./"><i class="fa-solid fa-compass"></i><span>Explore</span></a>
+    <a class="tab" href="my-guides/"><i class="fa-solid fa-book-open"></i><span>My Guides</span></a>
+    <a class="tab" href="tips/"><i class="fa-solid fa-lightbulb"></i><span>Conseils</span></a>
+    <div class="underline" id="navUnderline"></div>
+  </nav>
 
   <!-- SEARCH OVERLAY -->
   <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true">
@@ -156,7 +163,6 @@
   });
 
   const SHOW_PHOTO_AT=3.2;
-  const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
   function refreshMarkers(){
     const z=map.getZoom();
     bundles.forEach(b=>{
