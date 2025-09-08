@@ -1,76 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>HodoGuides · Japan</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HodoGuides · Japan</title>
 
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="images/favicon.png" />
-<link rel="apple-touch-icon" href="images/favicon.png" />
-<meta name="theme-color" content="#0e1420" />
+  <!-- Favicon (paths are relative to /asia/japan/) -->
+  <link rel="icon" type="image/png" href="../images/favicon.png" />
+  <link rel="apple-touch-icon" href="../images/favicon.png" />
+  <meta name="theme-color" content="#0e1420" />
 
-<link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
-<script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- Mapbox + Icons -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-<style>
-  :root{ --nav-h:72px; --cards-h:150px; --accent:#8f88ff; }
-  *{box-sizing:border-box} html,body{height:100%}
-  body{
-    margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;
-    color:#fff; background:#0e1420; overflow:hidden;
-    background-image:
-      radial-gradient(ellipse at 50% 40%, #1d2845 0%, #0e1420 60%, #0b0f18 100%),
-      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.18) 0, rgba(255,255,255,0) 100%),
-      radial-gradient(2px 2px at 70% 60%, rgba(255,255,255,.14) 0, rgba(255,255,255,0) 100%),
-      radial-gradient(1.5px 1.5px at 40% 80%, rgba(255,255,255,.10) 0, rgba(255,255,255,0) 100%);
-    background-repeat:no-repeat;
-  }
+  <style>
+    :root{ --nav-h:72px; --cards-h:160px; --accent:#8f88ff; }
+    *{box-sizing:border-box} html,body{height:100%}
 
-  /* Top bar */
-  .topbar{
-    position:absolute; left:12px; right:12px; top:12px; z-index:20;
-    display:flex; align-items:center; gap:10px;
-  }
-  .back{
-    display:flex; align-items:center; gap:10px;
-    background:rgba(255,255,255,.14); padding:10px 14px; border-radius:14px;
-    text-decoration:none; color:#fff; backdrop-filter: blur(6px);
-  }
-  .title{ font-weight:800; font-size:18px; opacity:.95 }
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;
+      color:#fff; background:#0e1420; overflow:hidden;
+      background-image:
+        radial-gradient(ellipse at 50% 40%, #1d2845 0%, #0e1420 60%, #0b0f18 100%),
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.18) 0, rgba(255,255,255,0) 100%),
+        radial-gradient(2px 2px at 70% 60%, rgba(255,255,255,.14) 0, rgba(255,255,255,0) 100%),
+        radial-gradient(1.5px 1.5px at 40% 80%, rgba(255,255,255,.10) 0, rgba(255,255,255,0) 100%);
+      background-repeat:no-repeat;
+    }
 
-  #map{
-    position:absolute; inset:0;
-    padding-bottom: calc(var(--cards-h) + 12px);
-  }
+    /* Top bar */
+    .topbar{
+      position:absolute; left:12px; right:12px; top:12px; z-index:20;
+      display:flex; align-items:center; gap:10px;
+    }
+    .back{
+      display:flex; align-items:center; gap:10px;
+      background:rgba(255,255,255,.14); padding:10px 14px; border-radius:14px;
+      text-decoration:none; color:#fff; backdrop-filter: blur(6px);
+    }
+    .title{ font-weight:800; font-size:18px; opacity:.95 }
 
-  /* Cards rail */
-  .guides{
-    position:absolute; left:0; right:0; bottom:12px; height: var(--cards-h);
-    padding: 10px 12px; display:flex; gap:12px; overflow-x:auto; z-index:20; scrollbar-width:none;
-  }
-  .guides::-webkit-scrollbar{display:none}
-  .guide-card{
-    position:relative; flex:0 0 240px; height:100%;
-    background:#151923; border-radius:16px; overflow:hidden;
-    box-shadow:0 8px 24px rgba(0,0,0,.35); text-decoration:none;
-    cursor:pointer;
-  }
-  .guide-card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
-  .guide-card .shade{position:absolute; inset:auto 0 0 0; height:54%;
-    background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.78) 60%, rgba(0,0,0,.92) 100%);}
-  .guide-card .txt{position:absolute; left:12px; right:12px; bottom:12px; z-index:2; font-size:18px; font-weight:800; line-height:1.25; color:#fff;}
+    #map{
+      position:absolute; inset:0;
+      /* leave room for the bottom rail + iOS safe area */
+      padding-bottom: calc(var(--cards-h) + 12px + env(safe-area-inset-bottom, 0px));
+    }
 
-  /* Markers */
-  .dot-marker{ width:8px; height:8px; border-radius:50%; background:#fff; border:2px solid rgba(0,0,0,.35); box-shadow:0 0 6px rgba(0,0,0,.35); }
-  .photo-marker{ width:38px; height:38px; border-radius:50%; overflow:hidden; border:3px solid #fff; box-shadow:0 0 8px rgba(0,0,0,.45); background:#999; cursor:pointer; }
-  .photo-marker img{width:100%; height:100%; object-fit:cover; display:block}
+    /* Cards rail */
+    .guides{
+      position:absolute; left:0; right:0; bottom:12px;
+      height: calc(var(--cards-h) + env(safe-area-inset-bottom, 0px));
+      padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+      display:flex; gap:12px; overflow-x:auto; z-index:20; scrollbar-width:none;
+    }
+    .guides::-webkit-scrollbar{display:none}
+    .guide-card{
+      position:relative; flex:0 0 240px; height:100%;
+      background:#151923; border-radius:16px; overflow:hidden;
+      box-shadow:0 8px 24px rgba(0,0,0,.35); text-decoration:none;
+      cursor:pointer;
+    }
+    .guide-card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+    .guide-card .shade{
+      position:absolute; inset:auto 0 0 0; height:54%;
+      background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.78) 60%, rgba(0,0,0,.92) 100%);
+    }
+    .guide-card .txt{
+      position:absolute; left:12px; right:12px; bottom:12px; z-index:2;
+      font-size:18px; font-weight:800; line-height:1.25; color:#fff;
+      text-shadow:0 2px 8px rgba(0,0,0,.5);
+    }
 
-  .popup{ color:#0d1220; font-family:inherit; }
-  .popup .name{font-weight:800; margin-bottom:6px;}
-  .popup a{display:inline-block; margin-top:6px; padding:8px 12px; border-radius:10px; background:#0e1420; color:#fff; text-decoration:none}
-</style>
+    /* Markers */
+    .dot-marker{
+      width:8px; height:8px; border-radius:50%;
+      background:#fff; border:2px solid rgba(0,0,0,.35); box-shadow:0 0 6px rgba(0,0,0,.35);
+    }
+    .photo-marker{
+      width:38px; height:38px; border-radius:50%; overflow:hidden;
+      border:3px solid #fff; box-shadow:0 0 8px rgba(0,0,0,.45);
+      background:#999; cursor:pointer;
+    }
+    .photo-marker img{width:100%; height:100%; object-fit:cover; display:block}
+
+    .popup{ color:#0d1220; font-family:inherit; }
+    .popup .name{font-weight:800; margin-bottom:6px;}
+    .popup a{display:inline-block; margin-top:6px; padding:8px 12px; border-radius:10px; background:#0e1420; color:#fff; text-decoration:none}
+  </style>
 </head>
 <body>
 
@@ -81,7 +99,7 @@
 
   <div id="map"></div>
 
-  <!-- Rail des villes -->
+  <!-- Cities rail -->
   <div class="guides" id="cardsRail"></div>
 
 <script>
@@ -96,7 +114,7 @@
   });
   map.on("style.load", () => map.setFog({}));
 
-  // --- Données villes (coords approx. centre) ---
+  // --- Cities (approx centers) ---
   const places = [
     {
       id:'okinawa',
@@ -135,17 +153,21 @@
     }
   ];
 
-  // Fit tout le Japon visible
+  // Fit Japan
   map.on('load', () => {
     const bounds = new mapboxgl.LngLatBounds();
     places.forEach(p => bounds.extend(p.coords));
     map.fitBounds(bounds, {
-      padding:{top:80, right:40, bottom:parseInt(getComputedStyle(document.documentElement).getPropertyValue('--cards-h'))+30, left:40},
+      padding:{
+        top:80, right:40,
+        bottom: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--cards-h')) + 40,
+        left:40
+      },
       duration:0
     });
   });
 
-  // Création des marqueurs (dot + photo au zoom)
+  // Markers (dot + photo on zoom)
   const bundles = [];
   places.forEach(p => {
     const d=document.createElement('div'); d.className='dot-marker';
@@ -155,24 +177,22 @@
     const im=document.createElement('img'); im.src=p.img; im.onerror=()=>{im.src=p.fallback}; el.appendChild(im);
     el.title = p.name;
 
-    // popup
     const popup = new mapboxgl.Popup({offset:18, closeButton:true})
       .setHTML(`<div class="popup"><div class="name">${p.name}</div><div>Tap to open the city page.</div><a href="${p.id}.html">Open guide</a></div>`);
 
-    const mPhoto = new mapboxgl.Marker(el,{anchor:'center'}).setLngLat(p.coords).setPopup(popup).addTo(map);
+    new mapboxgl.Marker(el,{anchor:'center'}).setLngLat(p.coords).setPopup(popup).addTo(map);
 
-    // 👉 clic sur le rond = ouvrir japan/<ville>.html
-    el.addEventListener('click', () => {
-      location.href = `${p.id}.html`;
-    });
+    // click bubble => open /asia/japan/<city>.html
+    el.addEventListener('click', () => { location.href = `${p.id}.html`; });
 
-    bundles.push({d: d, p: el});
+    bundles.push({d, p:el});
   });
 
-  // Affichage progressif photo
-  const SHOW_PHOTO_AT = 4.5;
+  // Show photo bubbles a bit earlier (consistent with home)
+  const SHOW_PHOTO_AT = 4.0; // was 4.5
   const DOT_MIN=6, DOT_MAX=10, PHOTO_MIN=34, PHOTO_MAX=52;
   const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
+
   function refreshMarkers(){
     const z=map.getZoom();
     bundles.forEach(b=>{
@@ -188,21 +208,18 @@
   map.on('zoom', refreshMarkers);
   map.on('load', refreshMarkers);
 
-  // Rail de cartes — clic => ouvrir la page ville
+  // Cards rail — click => open city page
   const rail = document.getElementById('cardsRail');
   places.forEach(p=>{
     const card=document.createElement('a');
     card.className='guide-card';
-    card.href = `${p.id}.html`; // 👉 ouvre japan/<ville>.html
+    card.href = `${p.id}.html`;
     card.innerHTML = `
       <img src="${p.img}" onerror="this.src='${p.fallback}'" alt="${p.name}">
       <div class="shade"></div>
       <div class="txt">${p.name}</div>`;
     rail.appendChild(card);
   });
-
-  // (Optionnel) Naviguer via #hash pour focus carte, mais ici on ouvre directement des pages
 </script>
-
 </body>
 </html>
