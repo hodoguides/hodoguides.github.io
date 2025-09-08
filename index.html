@@ -117,7 +117,7 @@
   <nav class="nav" id="bottomNav">
     <a class="tab active" href="./"><i class="fa-solid fa-compass"></i><span>Explore</span></a>
     <a class="tab" href="my-guides/"><i class="fa-solid fa-book-open"></i><span>My Guides</span></a>
-    <a class="tab" href="tips/"><i class="fa-solid fa-lightbulb"></i><span>Conseils</span></a>
+    <a class="tab" href="tips/"><i class="fa-solid fa-lightbulb"></i><span>Tips</span></a>
     <div class="underline" id="navUnderline"></div>
   </nav>
 
@@ -125,7 +125,7 @@
   <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true">
     <div class="so-top">
       <div class="so-back" id="soBack" title="Close"><i class="fa-solid fa-chevron-left"></i></div>
-      <div class="so-input"><input id="soInput" type="text" placeholder="Rechercher un guide" autocomplete="off"></div>
+      <div class="so-input"><input id="soInput" type="text" placeholder="Search a guide" autocomplete="off"></div>
     </div>
 
     <div class="so-section-title">DESTINATIONS</div>
@@ -144,11 +144,25 @@
   });
   map.on("style.load", () => map.setFog({}));
 
-  // Marqueurs pays
+  // Country markers (approx centers)
   const spots = [
-    { name:"Japan",       coords:[138.0, 36.0], img:"images/japan.jpg", url:"japan/" },
-    { name:"South Korea", coords:[127.8, 36.3], img:"images/korea.jpg", url:"south-korea/" }
+    { name:"Japan",        coords:[138.0, 36.0],  img:"images/japan.jpg",        url:"japan/" },
+    { name:"South Korea",  coords:[127.8, 36.3],  img:"images/korea.jpg",        url:"south-korea/" },
+
+    { name:"Belgium",      coords:[4.5, 50.5],     img:"images/belgium.jpg",     url:"belgium/" },
+    { name:"Luxembourg",   coords:[6.13, 49.75],   img:"images/luxembourg.jpg",  url:"luxembourg/" },
+    { name:"France",       coords:[2.21, 46.23],   img:"images/france.jpg",      url:"france/" },
+    { name:"Italy",        coords:[12.5, 42.8],    img:"images/italy.jpg",       url:"italy/" },
+    { name:"Lesotho",      coords:[28.23, -29.5],  img:"images/lesotho.jpg",     url:"lesotho/" },
+    { name:"Namibia",      coords:[18.49, -22.56], img:"images/namibia.jpg",     url:"namibia/" },
+    { name:"South Africa", coords:[24.0, -29.0],   img:"images/south-africa.jpg",url:"south-africa/" },
+    { name:"Botswana",     coords:[24.0, -22.0],   img:"images/botswana.jpg",    url:"botswana/" },
+    { name:"Vietnam",      coords:[106.0, 16.0],   img:"images/vietnam.jpg",     url:"vietnam/" },
+    { name:"Indonesia",    coords:[113.0, -0.8],   img:"images/indonesia.jpg",   url:"indonesia/" },
+    { name:"Romania",      coords:[25.0, 46.0],    img:"images/romania.jpg",     url:"romania/" },
+    { name:"Singapore",    coords:[103.8198, 1.3521], img:"images/singapore.jpg", url:"singapore/" }
   ];
+
   const bundles=[];
   spots.forEach(s=>{
     const d=document.createElement('div'); d.className='dot-marker';
@@ -162,7 +176,8 @@
     bundles.push({d,p});
   });
 
-  const SHOW_PHOTO_AT=3.2;
+  // Show photo markers slightly earlier
+  const SHOW_PHOTO_AT=3.0;
   function refreshMarkers(){
     const z=map.getZoom();
     bundles.forEach(b=>{
@@ -186,10 +201,18 @@
   }
   positionUnderline();
   window.addEventListener('resize', positionUnderline);
+
+  // Allow navigation for real links; only prevent default for hash links
   navEl.querySelectorAll('.tab').forEach(t=>{
-    t.addEventListener('click',e=>{
-      navEl.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-      t.classList.add('active'); positionUnderline(); e.preventDefault();
+    t.addEventListener('click', e=>{
+      const href = t.getAttribute('href') || '';
+      // Only block if it's an in-page anchor
+      if(href.startsWith('#')){
+        e.preventDefault();
+        navEl.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+        t.classList.add('active'); positionUnderline();
+      }
+      // otherwise, let the browser navigate
     });
   });
 
@@ -203,6 +226,20 @@
   const destinations = [
     { label:'Japan', type:'country', url:'japan/' },
     { label:'South Korea', type:'country', url:'south-korea/' },
+
+    { label:'Belgium', type:'country', url:'belgium/' },
+    { label:'Luxembourg', type:'country', url:'luxembourg/' },
+    { label:'France', type:'country', url:'france/' },
+    { label:'Italy', type:'country', url:'italy/' },
+    { label:'Lesotho', type:'country', url:'lesotho/' },
+    { label:'Namibia', type:'country', url:'namibia/' },
+    { label:'South Africa', type:'country', url:'south-africa/' },
+    { label:'Botswana', type:'country', url:'botswana/' },
+    { label:'Vietnam', type:'country', url:'vietnam/' },
+    { label:'Indonesia', type:'country', url:'indonesia/' },
+    { label:'Romania', type:'country', url:'romania/' },
+    { label:'Singapore', type:'country', url:'singapore/' },
+
     { label:'Tokyo', type:'city', url:'japan/#tokyo' },
     { label:'Kyoto', type:'city', url:'japan/#kyoto' },
     { label:'Osaka', type:'city', url:'japan/#osaka' },
