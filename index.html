@@ -86,7 +86,7 @@
       position:fixed; inset:0; z-index:50; display:none;
       background:#fff; color:#0d1220;
     }
-    /* Make overlay a column layout with a scrollable list area */
+    /* Column layout + scrollable list */
     .search-overlay.open{
       display:flex; flex-direction:column;
     }
@@ -171,41 +171,45 @@
   });
   map.on("style.load", () => map.setFog({}));
 
-  // Country markers (approx centers)
+  // Country markers (use cover.jpg from continent folders)
   const spots = [
-    { name:"Japan",        coords:[138.0, 36.0],  img:"images/japan.jpg",        url:"japan/" },
-    { name:"South Korea",  coords:[127.8, 36.3],  img:"images/korea.jpg",        url:"south-korea/" },
+    { name:"Japan",        coords:[138.0, 36.0],      img:"asia/japan/cover.jpg",            url:"asia/japan/" },
+    { name:"South Korea",  coords:[127.8, 36.3],      img:"asia/south-korea/cover.jpg",      url:"asia/south-korea/" },
 
-    { name:"Belgium",      coords:[4.5, 50.5],     img:"images/belgium.jpg",     url:"belgium/" },
-    { name:"Luxembourg",   coords:[6.13, 49.75],   img:"images/luxembourg.jpg",  url:"luxembourg/" },
-    { name:"France",       coords:[2.21, 46.23],   img:"images/france.jpg",      url:"france/" },
-    { name:"Italy",        coords:[12.5, 42.8],    img:"images/italy.jpg",       url:"italy/" },
-    { name:"Iceland",      coords:[-19.0, 64.9],   img:"images/iceland.jpg",     url:"iceland/" },
-    { name:"Egypt",        coords:[29.9, 26.8],    img:"images/egypt.jpg",       url:"egypt/" },
-    { name:"Jordan",       coords:[36.0, 31.2],    img:"images/jordan.jpg",      url:"jordan/" },
-    { name:"Morocco",      coords:[-6.0, 31.8],    img:"images/morocco.jpg",     url:"morocco/" },
-    { name:"Cyprus",       coords:[33.2, 35.1],    img:"images/cyprus.jpg",      url:"cyprus/" },
-    { name:"Poland",       coords:[19.1, 52.1],    img:"images/poland.jpg",      url:"poland/" },
-    { name:"Turkey",       coords:[35.0, 39.0],    img:"images/turkey.jpg",      url:"turkey/" },
+    { name:"Belgium",      coords:[4.5, 50.5],        img:"europe/belgium/cover.jpg",        url:"europe/belgium/" },
+    { name:"Luxembourg",   coords:[6.13, 49.75],      img:"europe/luxembourg/cover.jpg",     url:"europe/luxembourg/" },
+    { name:"France",       coords:[2.21, 46.23],      img:"europe/france/cover.jpg",         url:"europe/france/" },
+    { name:"Italy",        coords:[12.5, 42.8],       img:"europe/italy/cover.jpg",          url:"europe/italy/" },
+    { name:"Iceland",      coords:[-19.0, 64.9],      img:"europe/iceland/cover.jpg",        url:"europe/iceland/" },
+    { name:"Romania",      coords:[25.0, 46.0],       img:"europe/romania/cover.jpg",        url:"europe/romania/" },
+    { name:"Poland",       coords:[19.1, 52.1],       img:"europe/poland/cover.jpg",         url:"europe/poland/" },
+    { name:"Cyprus",       coords:[33.2, 35.1],       img:"europe/cyprus/cover.jpg",         url:"europe/cyprus/" },
+    { name:"Turkey",       coords:[35.0, 39.0],       img:"europe/turkey/cover.jpg",         url:"europe/turkey/" },
 
-    { name:"Lesotho",      coords:[28.23, -29.5],  img:"images/lesotho.jpg",     url:"lesotho/" },
-    { name:"Namibia",      coords:[18.49, -22.56], img:"images/namibia.jpg",     url:"namibia/" },
-    { name:"South Africa", coords:[24.0, -29.0],   img:"images/south-africa.jpg",url:"south-africa/" },
-    { name:"Botswana",     coords:[24.0, -22.0],   img:"images/botswana.jpg",    url:"botswana/" },
+    { name:"Egypt",        coords:[29.9, 26.8],       img:"africa/egypt/cover.jpg",          url:"africa/egypt/" },
+    { name:"Morocco",      coords:[-6.0, 31.8],       img:"africa/morocco/cover.jpg",        url:"africa/morocco/" },
+    { name:"Lesotho",      coords:[28.23, -29.5],     img:"africa/lesotho/cover.jpg",        url:"africa/lesotho/" },
+    { name:"Namibia",      coords:[18.49, -22.56],    img:"africa/namibia/cover.jpg",        url:"africa/namibia/" },
+    { name:"South Africa", coords:[24.0, -29.0],      img:"africa/south-africa/cover.jpg",   url:"africa/south-africa/" },
+    { name:"Botswana",     coords:[24.0, -22.0],      img:"africa/botswana/cover.jpg",       url:"africa/botswana/" },
 
-    { name:"Vietnam",      coords:[106.0, 16.0],   img:"images/vietnam.jpg",     url:"vietnam/" },
-    { name:"Indonesia",    coords:[113.0, -0.8],   img:"images/indonesia.jpg",   url:"indonesia/" },
-    { name:"Romania",      coords:[25.0, 46.0],    img:"images/romania.jpg",     url:"romania/" },
-    { name:"Singapore",    coords:[103.8198, 1.3521], img:"images/singapore.jpg", url:"singapore/" }
+    { name:"Vietnam",      coords:[106.0, 16.0],      img:"asia/vietnam/cover.jpg",          url:"asia/vietnam/" },
+    { name:"Indonesia",    coords:[113.0, -0.8],      img:"asia/indonesia/cover.jpg",        url:"asia/indonesia/" },
+    { name:"Singapore",    coords:[103.8198, 1.3521], img:"asia/singapore/cover.jpg",        url:"asia/singapore/" }
   ];
 
   const bundles=[];
   spots.forEach(s=>{
+    // small dot marker
     const d=document.createElement('div'); d.className='dot-marker';
     new mapboxgl.Marker(d,{anchor:'center'}).setLngLat(s.coords).addTo(map);
 
+    // photo marker with fallback
     const p=document.createElement('div'); p.className='photo-marker'; p.title=s.name;
-    const im=document.createElement('img'); im.src=s.img; im.alt=s.name; p.appendChild(im);
+    const im=document.createElement('img');
+    im.src=s.img; im.alt=s.name;
+    im.onerror=()=>{ im.onerror=null; im.src=`https://source.unsplash.com/600x600/?${encodeURIComponent(s.name)}`; };
+    p.appendChild(im);
     p.addEventListener('click',()=>location.href=s.url);
     new mapboxgl.Marker(p,{anchor:'center'}).setLngLat(s.coords).addTo(map);
 
@@ -258,44 +262,42 @@
   const destList = document.getElementById('destList');
 
   const destinations = [
-    { label:'Japan', type:'country', url:'japan/' },
-    { label:'South Korea', type:'country', url:'south-korea/' },
+    // Countries
+    { label:'Japan', type:'country', url:'asia/japan/' },
+    { label:'South Korea', type:'country', url:'asia/south-korea/' },
+    { label:'Belgium', type:'country', url:'europe/belgium/' },
+    { label:'Luxembourg', type:'country', url:'europe/luxembourg/' },
+    { label:'France', type:'country', url:'europe/france/' },
+    { label:'Italy', type:'country', url:'europe/italy/' },
+    { label:'Iceland', type:'country', url:'europe/iceland/' },
+    { label:'Romania', type:'country', url:'europe/romania/' },
+    { label:'Poland', type:'country', url:'europe/poland/' },
+    { label:'Cyprus', type:'country', url:'europe/cyprus/' },
+    { label:'Turkey', type:'country', url:'europe/turkey/' },
+    { label:'Egypt', type:'country', url:'africa/egypt/' },
+    { label:'Morocco', type:'country', url:'africa/morocco/' },
+    { label:'Lesotho', type:'country', url:'africa/lesotho/' },
+    { label:'Namibia', type:'country', url:'africa/namibia/' },
+    { label:'South Africa', type:'country', url:'africa/south-africa/' },
+    { label:'Botswana', type:'country', url:'africa/botswana/' },
+    { label:'Vietnam', type:'country', url:'asia/vietnam/' },
+    { label:'Indonesia', type:'country', url:'asia/indonesia/' },
+    { label:'Singapore', type:'country', url:'asia/singapore/' },
 
-    { label:'Belgium', type:'country', url:'belgium/' },
-    { label:'Luxembourg', type:'country', url:'luxembourg/' },
-    { label:'France', type:'country', url:'france/' },
-    { label:'Italy', type:'country', url:'italy/' },
-    { label:'Iceland', type:'country', url:'iceland/' },
-    { label:'Egypt', type:'country', url:'egypt/' },
-    { label:'Jordan', type:'country', url:'jordan/' },
-    { label:'Morocco', type:'country', url:'morocco/' },
-    { label:'Cyprus', type:'country', url:'cyprus/' },
-    { label:'Poland', type:'country', url:'poland/' },
-    { label:'Turkey', type:'country', url:'turkey/' },
-
-    { label:'Lesotho', type:'country', url:'lesotho/' },
-    { label:'Namibia', type:'country', url:'namibia/' },
-    { label:'South Africa', type:'country', url:'south-africa/' },
-    { label:'Botswana', type:'country', url:'botswana/' },
-
-    { label:'Vietnam', type:'country', url:'vietnam/' },
-    { label:'Indonesia', type:'country', url:'indonesia/' },
-    { label:'Romania', type:'country', url:'romania/' },
-    { label:'Singapore', type:'country', url:'singapore/' },
-
-    { label:'Tokyo', type:'city', url:'japan/#tokyo' },
-    { label:'Kyoto', type:'city', url:'japan/#kyoto' },
-    { label:'Osaka', type:'city', url:'japan/#osaka' },
-    { label:'Okinawa', type:'city', url:'japan/#okinawa' },
-    { label:'Ishigaki', type:'city', url:'japan/#ishigaki' },
-    { label:'Yonaguni', type:'city', url:'japan/#yonaguni' },
-    { label:'Seoul', type:'city', url:'south-korea/#seoul' },
-    { label:'Busan', type:'city', url:'south-korea/#busan' },
-    { label:'Jeju', type:'city', url:'south-korea/#jeju' },
-    { label:'Daegu', type:'city', url:'south-korea/#daegu' },
-    { label:'Gyeongju', type:'city', url:'south-korea/#gyeongju' },
-    { label:'Andong', type:'city', url:'south-korea/#andong' },
-    { label:'Sokcho', type:'city', url:'south-korea/#sokcho' }
+    // Example cities (Japan / South Korea)
+    { label:'Tokyo', type:'city', url:'asia/japan/#tokyo' },
+    { label:'Kyoto', type:'city', url:'asia/japan/#kyoto' },
+    { label:'Osaka', type:'city', url:'asia/japan/#osaka' },
+    { label:'Okinawa', type:'city', url:'asia/japan/#okinawa' },
+    { label:'Ishigaki', type:'city', url:'asia/japan/#ishigaki' },
+    { label:'Yonaguni', type:'city', url:'asia/japan/#yonaguni' },
+    { label:'Seoul', type:'city', url:'asia/south-korea/#seoul' },
+    { label:'Busan', type:'city', url:'asia/south-korea/#busan' },
+    { label:'Jeju', type:'city', url:'asia/south-korea/#jeju' },
+    { label:'Daegu', type:'city', url:'asia/south-korea/#daegu' },
+    { label:'Gyeongju', type:'city', url:'asia/south-korea/#gyeongju' },
+    { label:'Andong', type:'city', url:'asia/south-korea/#andong' },
+    { label:'Sokcho', type:'city', url:'asia/south-korea/#sokcho' }
   ];
 
   function renderList(query=''){
