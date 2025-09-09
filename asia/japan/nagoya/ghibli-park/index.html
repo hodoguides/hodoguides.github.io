@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HodoGuides · Ghibli Park (Nagoya)</title>
+
+  <link rel="icon" href="../../../images/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --bg:#0e1420;         /* Hodo dark */
+      --panel:#151a25;      /* cards */
+      --ink:#f7f9ff;
+      --muted:#c7cbe0;
+      --accent:#7e8db0;
+      --accent-2:#ffd166;
+      --ok:#16a34a; --warn:#d97706;
+      --radius:16px;
+      --nav-h:72px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
+      color:var(--ink); background:var(--bg);
+      background-image:
+        radial-gradient(ellipse at 50% 40%, #1d2845 0%, #0e1420 60%, #0b0f18 100%);
+      background-repeat:no-repeat;
+    }
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:30;
+      display:flex; align-items:center; gap:10px;
+      padding:12px; background:rgba(14,20,32,.88); backdrop-filter: blur(6px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .back{display:inline-flex; align-items:center; gap:8px; padding:8px 12px;
+      background:rgba(255,255,255,.12); border-radius:12px; color:#fff; text-decoration:none;}
+    .title{font-weight:800; font-size:18px; opacity:.95}
+
+    /* Hero */
+    .hero{
+      max-width:1000px; margin:18px auto 0; padding:0 14px 12px;
+      display:grid; gap:14px;
+    }
+    .cover{
+      border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 16px 36px rgba(0,0,0,.35);
+      aspect-ratio: 16/9; background:#0b0f18;
+    }
+    .cover img{width:100%; height:100%; object-fit:cover; display:block}
+
+    /* Sections */
+    .section{max-width:1000px; margin:0 auto; padding:14px; display:grid; gap:14px}
+    h1{margin:8px 0 0; font-size:28px}
+    h2{margin:0; font-size:20px}
+    p{margin:0; line-height:1.55}
+    .muted{color:var(--muted)}
+    .panel{
+      background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius);
+      padding:14px; box-shadow:0 10px 24px rgba(0,0,0,.3);
+    }
+    .grid-2{display:grid; gap:12px}
+    @media(min-width:860px){ .grid-2{grid-template-columns:1fr 1fr} }
+
+    ul.check{padding-left:1.2rem; margin:6px 0 0}
+    ul.check li{margin:6px 0}
+    .chip{
+      display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px;
+      background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); font-weight:700; font-size:12px;
+    }
+
+    /* Pass table */
+    .pass-grid{display:grid; gap:12px}
+    @media(min-width:760px){ .pass-grid{grid-template-columns:1fr 1fr} }
+    .pass-card{background:#0f1422; border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:14px}
+    .pass-name{font-weight:900; font-size:16px}
+    .pass-note{font-size:13px; color:var(--muted)}
+
+    /* Booking tools */
+    .tool{display:grid; gap:10px}
+    .tool-row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .input{
+      background:#0f1422; border:1px solid rgba(255,255,255,.12); color:#fff; border-radius:12px;
+      padding:10px 12px; height:44px; outline:none; min-width:220px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px; height:44px; padding:0 16px;
+      border-radius:12px; border:1px solid transparent; cursor:pointer; text-decoration:none;
+      font-weight:800;
+    }
+    .btn.primary{background:var(--accent); color:#fff}
+    .btn.ghost{background:#0f1422; border-color:rgba(255,255,255,.12); color:#e5e9ff}
+    .ok{color:var(--ok); font-weight:800}
+    .warn{color:var(--warn); font-weight:800}
+    .calc{font-size:14px}
+    .tip{font-size:13px; color:var(--muted)}
+
+    /* Steps */
+    .steps{display:grid; gap:12px}
+    .step{background:#0f1422; border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:12px}
+    .step img{width:100%; height:auto; display:block; border-radius:10px; margin-top:10px}
+
+    /* Bottom mini-nav (within country) */
+    .local-nav{
+      position:sticky; bottom:0; z-index:15;
+      display:flex; gap:8px; justify-content:center; flex-wrap:wrap;
+      background:linear-gradient(180deg, rgba(14,20,32,0) 0, rgba(14,20,32,.85) 40%, rgba(14,20,32,.95) 100%);
+      padding:16px 12px calc(16px + env(safe-area-inset-bottom,0px));
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px;
+      background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.16); color:#fff; text-decoration:none; font-weight:800; font-size:14px;
+    }
+    .pill i{opacity:.9}
+  </style>
+</head>
+<body>
+
+  <!-- Top -->
+  <div class="topbar">
+    <a class="back" href="../"><i class="fa-solid fa-chevron-left"></i> Nagoya</a>
+    <!-- If you don't have /nagoya/ yet, point to Japan cities: <a class="back" href="../../">Japan</a> -->
+    <div class="title">Ghibli Park (Aichi Expo Park)</div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="cover">
+      <img src="cover.jpg" alt="Ghibli Park cover" onerror="this.src='https://source.unsplash.com/1600x900/?ghibli,studio,park'">
+    </div>
+    <div class="panel">
+      <h1>Ghibli Park · Practical Guide</h1>
+      <p class="muted">Overview of areas, pass types, booking rules, and a step-by-step on how to secure tickets.</p>
+      <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap">
+        <span class="chip"><i class="fa-solid fa-location-dot"></i> Nagakute (Aichi)</span>
+        <span class="chip"><i class="fa-solid fa-train-subway"></i> Linimo Line · Ai-Chikyū-Haku-Kinen-Kōen</span>
+        <span class="chip"><i class="fa-solid fa-clock"></i> Timed entry for Grand Warehouse</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas -->
+  <section class="section grid-2">
+    <div class="panel">
+      <h2>Park Areas</h2>
+      <p class="muted" style="margin-top:6px">A quick overview of each zone so you can plan your route efficiently.</p>
+      <ul class="check">
+        <li><strong>Ghibli’s Grand Warehouse</strong> — Indoor exhibits, shorts, shops & cafés. Timed entry.</li>
+        <li><strong>Hill of Youth</strong> — Elevator Tower, World Emporium vibes.</li>
+        <li><strong>Dondoko Forest</strong> — Satsuki & Mei’s House area and forest play space.</li>
+        <li><strong>Mononoke Village</strong> — Rustic workshops and themed structures.</li>
+        <li><strong>Valley of Witches</strong> — Iconic buildings and gentle rides inspired by witchy worlds.</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h2>Pass Types</h2>
+      <div class="pass-grid" style="margin-top:8px">
+        <div class="pass-card">
+          <div class="pass-name">Standard Pass</div>
+          <ul class="check">
+            <li>Access to outdoor zones.</li>
+            <li>Some indoor locations may be excluded or limited.</li>
+            <li class="pass-note">Check the exact inclusions on your ticket vendor.</li>
+          </ul>
+        </div>
+        <div class="pass-card">
+          <div class="pass-name">Premium Pass</div>
+          <ul class="check">
+            <li>Includes indoor venues like the Grand Warehouse.</li>
+            <li>Timed entry slot for Grand Warehouse.</li>
+            <li class="pass-note">Best for first-timers who want the full experience.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section class="section">
+    <div class="panel">
+      <h2>Booking Rules & Reminder</h2>
+      <p class="muted" style="margin-top:6px">
+        International tickets typically open <strong>two months before</strong> your visit,
+        on the <strong>10th</strong> at <strong>14:00 JST</strong>.
+      </p>
+
+      <div class="tool" style="margin-top:10px">
+        <div class="tool-row">
+          <label for="visitDate" class="muted">Your planned visit date:</label>
+          <input id="visitDate" class="input" type="date" />
+          <button id="btnCalc" class="btn ghost"><i class="fa-solid fa-calculator"></i> Calculate opening</button>
+          <button id="btnICS" class="btn primary" disabled><i class="fa-regular fa-calendar-plus"></i> Add reminder (.ics)</button>
+        </div>
+        <div id="calcOut" class="calc"></div>
+        <div class="tip"><i class="fa-solid fa-circle-info"></i> Times shown below convert 14:00 JST to your local timezone.</div>
+      </div>
+
+      <div class="tool" style="margin-top:12px">
+        <div class="tool-row">
+          <a class="btn ghost" href="https://reminder.erikaramel.com" target="_blank" rel="noopener">
+            <i class="fa-regular fa-bell"></i> Set with HodoReminder
+          </a>
+          <a class="btn ghost" href="https://ghibli-park.jp/en/" target="_blank" rel="noopener">
+            <i class="fa-solid fa-ticket"></i> Official info
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to book -->
+  <section class="section grid-2">
+    <div class="panel">
+      <h2>How to Book (Quick)</h2>
+      <ol class="check" style="margin-top:6px">
+        <li>Be online a few minutes before 14:00 JST on the 10th.</li>
+        <li>Use a reliable vendor (Lawson, official site, or your trusted reseller).</li>
+        <li>Prepare payment method + ID; move fast when slots open.</li>
+        <li>Choose your <em>Grand Warehouse</em> time slot carefully—timed entry is required.</li>
+      </ol>
+    </div>
+    <div class="panel">
+      <h2>Walkthrough (Screenshots)</h2>
+      <p class="muted">Replace images below with your step-by-step tutorial.</p>
+      <div class="steps" style="margin-top:8px">
+        <div class="step">
+          <strong>1) Queue / Countdown</strong>
+          <img src="booking-flow-1.jpg" alt="Booking step 1" onerror="this.src='https://source.unsplash.com/800x480/?queue,website'">
+        </div>
+        <div class="step">
+          <strong>2) Pick date & slot</strong>
+          <img src="booking-flow-2.jpg" alt="Booking step 2" onerror="this.src='https://source.unsplash.com/800x480/?calendar,booking'">
+        </div>
+        <div class="step">
+          <strong>3) Payment</strong>
+          <img src="booking-flow-3.jpg" alt="Booking step 3" onerror="this.src='https://source.unsplash.com/800x480/?payment,online'">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- On the day -->
+  <section class="section">
+    <div class="panel">
+      <h2>On the Day</h2>
+      <ul class="check" style="margin-top:6px">
+        <li>Arrive on time for your Grand Warehouse slot (not too early, not late).</li>
+        <li>Outdoor areas are more flexible; still expect short waits at busy times.</li>
+        <li>Some buildings have capacity limits—follow staff guidance.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Local bottom nav (within Japan) -->
+  <div class="local-nav">
+    <a class="pill" href="../../"><i class="fa-solid fa-compass"></i> Japan · Explore</a>
+    <a class="pill" href="../"><i class="fa-solid fa-city"></i> Nagoya</a>
+    <a class="pill" href="../../../tips/#japan"><i class="fa-solid fa-lightbulb"></i> Tips for Japan</a>
+  </div>
+
+  <script>
+    // ---- Booking opening calculator (2 months before, on the 10th at 14:00 JST) ----
+    const visitDateEl = document.getElementById('visitDate');
+    const btnCalc = document.getElementById('btnCalc');
+    const btnICS = document.getElementById('btnICS');
+    const out = document.getElementById('calcOut');
+
+    function toLocal(ts){ return new Date(ts).toLocaleString(undefined, {hour:'2-digit', minute:'2-digit', year:'numeric', month:'short', day:'2-digit'}); }
+
+    function computeOpening(visitDateStr){
+      if(!visitDateStr) return null;
+      const v = new Date(visitDateStr+"T12:00:00"); // noon local to avoid TZ edge cases
+      if(Number.isNaN(v.getTime())) return null;
+
+      // JST is UTC+9, no DST
+      // booking opens 2 months before visit, on the 10th at 14:00 JST
+      const year = v.getUTCFullYear();
+      const month = v.getUTCMonth(); // 0..11
+      const day = v.getUTCDate();
+
+      // subtract 2 months
+      const openDate = new Date(Date.UTC(year, month - 2, 10, 5, 0, 0)); 
+      // Explanation: 14:00 JST = 05:00 UTC. We set 05:00 UTC on the 10th.
+
+      // If visit day is before 10 in that earlier month window, fallback to previous month 10th
+      const twoMonthsBefore = new Date(Date.UTC(year, month - 2, day, 0,0,0));
+      const tenthUTC = new Date(Date.UTC(year, month - 2, 10, 0,0,0));
+      if(twoMonthsBefore < tenthUTC){
+        openDate.setUTCMonth(openDate.getUTCMonth()-1); // previous month
+      }
+
+      // Ensure it's 05:00 UTC (14:00 JST)
+      openDate.setUTCHours(5,0,0,0);
+
+      return openDate;
+    }
+
+    function human(utcDate){
+      const jst = new Date(utcDate.getTime() + 9*3600*1000);
+      return {
+        local: toLocal(utcDate),
+        jst: jst.toLocaleString('en-JP', {timeZone:'UTC', hour:'2-digit', minute:'2-digit', year:'numeric', month:'short', day:'2-digit'}) + ' JST'
+      };
+    }
+
+    function pad(n){return (n<10?'0':'')+n}
+
+    function makeICS({title, description, utcStart, durationMin=30}){
+      const dt = new Date(utcStart);
+      const dtEnd = new Date(dt.getTime() + durationMin*60000);
+      const fmt = d => d.getUTCFullYear() + pad(d.getUTCMonth()+1) + pad(d.getUTCDate()) + 'T' + pad(d.getUTCHours()) + pad(d.getUTCMinutes()) + '00Z';
+      const body = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//HodoGuides//GhibliParkReminder//EN',
+        'BEGIN:VEVENT',
+        'UID:'+ crypto.randomUUID(),
+        'DTSTAMP:' + fmt(new Date()),
+        'DTSTART:' + fmt(dt),
+        'DTEND:' + fmt(dtEnd),
+        'SUMMARY:' + title,
+        'DESCRIPTION:' + description.replace(/\n/g,'\\n'),
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+      return 'data:text/calendar;charset=utf-8,' + encodeURIComponent(body);
+    }
+
+    btnCalc.addEventListener('click', ()=>{
+      const when = computeOpening(visitDateEl.value);
+      if(!when){
+        out.innerHTML = '<span class="warn"><i class="fa-solid fa-triangle-exclamation"></i> Please set a valid visit date.</span>';
+        btnICS.disabled = true;
+        return;
+      }
+      const h = human(when);
+      out.innerHTML = `
+        <div><span class="ok"><i class="fa-solid fa-bell"></i> Booking opening:</span>
+        <b>${h.local}</b> (your local time) — <span class="muted">${h.jst}</span></div>
+        <div class="tip">Rule: two months before your visit, on the <b>10th</b> at <b>14:00 JST</b>.</div>
+      `;
+      // prepare ICS link
+      const href = makeICS({
+        title: 'Ghibli Park ticket release (14:00 JST)',
+        description: 'Tickets typically open two months prior on the 10th at 14:00 JST. Be online a few minutes early.',
+        utcStart: when
+      });
+      btnICS.href = href;
+      btnICS.download = 'ghibli-park-reminder.ics';
+      btnICS.disabled = false;
+    });
+  </script>
+</body>
+</html>
