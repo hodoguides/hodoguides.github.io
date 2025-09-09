@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HodoGuides · France</title>
+
+  <link rel="icon" href="../../images/favicon.png" type="image/png" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root{ --nav-h:72px; --accent:#7e8db0; }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;
+      color:#fff; background:#0e1420; overflow:hidden;
+      background-image: radial-gradient(ellipse at 50% 40%, #1d2845 0%, #0e1420 60%, #0b0f18 100%);
+    }
+
+    /* Top bar */
+    .topbar{
+      position:absolute; left:12px; right:12px; top:12px; z-index:20;
+      display:flex; align-items:center; gap:10px;
+    }
+    .back{
+      display:flex; align-items:center; gap:8px;
+      background:rgba(255,255,255,.14); padding:8px 12px; border-radius:12px;
+      text-decoration:none; color:#fff; backdrop-filter: blur(6px);
+    }
+    .title{ font-weight:800; font-size:18px; opacity:.95 }
+
+    #map{position:absolute; inset:0; padding-bottom: calc(var(--nav-h) + 12px);}
+
+    /* Photo markers (bubbles) */
+    .photo-marker{
+      width:46px; height:46px; border-radius:50%; overflow:hidden;
+      border:3px solid #fff; box-shadow:0 0 10px rgba(0,0,0,.45);
+      background:#999; cursor:pointer;
+    }
+    .photo-marker img{width:100%; height:100%; object-fit:cover; display:block}
+
+    /* Bottom nav */
+    .nav{
+      position:absolute; left:0; right:0; bottom:0;
+      height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
+      padding:10px 8px calc(10px + env(safe-area-inset-bottom, 0px));
+      background:rgba(15,15,20,.92); backdrop-filter: blur(6px);
+      border-top:1px solid rgba(255,255,255,.06);
+      display:flex; align-items:flex-end; justify-content:space-around; z-index:25;
+    }
+    .tab{position:relative; display:flex; flex-direction:column; align-items:center; gap:6px;
+      font-size:12px; color:#cfcfd3; text-decoration:none; min-width:86px;}
+    .tab i{font-size:22px; opacity:.9}
+    .tab.active{color:#fff}
+    .tab.active i{color:var(--accent)}
+    .underline{position:absolute; bottom:6px; height:4px; border-radius:2px;
+      background:var(--accent); transition: left .25s ease, width .25s ease;}
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a class="back" href="../../index.html"><i class="fa-solid fa-chevron-left"></i> Explore</a>
+    <div class="title">France</div>
+  </div>
+
+  <div id="map"></div>
+
+  <!-- Bottom nav -->
+  <nav class="nav" id="bottomNav">
+    <a class="tab" href="../../index.html"><i class="fa-solid fa-compass"></i><span>Explore</span></a>
+    <a class="tab active" href="./"><i class="fa-solid fa-city"></i><span>Cities</span></a>
+    <a class="tab" href="../../tips/#france"><i class="fa-solid fa-lightbulb"></i><span>Tips for France</span></a>
+    <div class="underline" id="navUnderline"></div>
+  </nav>
+
+<script>
+  // --- Map ---
+  mapboxgl.accessToken = "pk.eyJ1IjoiZXJpa2FyYW1lbGwiLCJhIjoiY21jbmlteXJuMDBjaDJrc2swbnA0a29wZSJ9.F8aX2alF-PpnqInkyqba8g";
+  const map = new mapboxgl.Map({
+    container: "map",
+    style: "mapbox://styles/erikaramell/cmcnjverq008y01qw6rir46gy",
+    projection: "globe",
+    center: [2.5, 46.5],
+    zoom: 5.6
+  });
+  map.on("style.load", () => map.setFog({}));
+
+  // Cities
+  const cities = [
+    { id:'lille',    name:'Lille',    coords:[3.0573, 50.6292] },
+    { id:'paris',    name:'Paris',    coords:[2.3522, 48.8566] },
+    { id:'marseille',name:'Marseille',coords:[5.3698, 43.2965] }
+  ];
+
+  cities.forEach(c=>{
+    const el=document.createElement('div'); el.className='photo-marker'; el.title=c.name;
+    const im=document.createElement('img');
+    im.src = `./${c.id}/cover.jpg`;
+    im.alt = c.name;
+    im.onerror = ()=>{ im.onerror=null; im.src=`https://source.unsplash.com/600x600/?${encodeURIComponent(c.name)}%20France`; };
+    el.appendChild(im);
+
+    el.addEventListener('click', ()=>{ location.href = `./${c.id}/`; });
+
+    new mapboxgl.Marker(el, {anchor:'center'})
+      .setLngLat(c.coords)
+      .setPopup(new mapboxgl.Popup({offset:12}).setText(c.name))
+      .addTo(map);
+  });
+
+  // Bottom nav underline
+  const navEl=document.getElementById('bottomNav');
+  const underline=document.getElementById('navUnderline');
+  function positionUnderline(){
+    const active=navEl.querySelector('.tab.active'); if(!active) return;
+    const navR=navEl.getBoundingClientRect(), r=active.getBoundingClientRect();
+    const w=Math.max(60, r.width*0.68);
+    underline.style.width=w+'px';
+    underline.style.left=(r.left-navR.left+(r.width-w)/2)+'px';
+  }
+  positionUnderline();
+  window.addEventListener('resize', positionUnderline);
+</script>
+
+</body>
+</html>
