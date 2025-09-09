@@ -1,88 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>HodoGuides · South Korea</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HodoGuides · South Korea</title>
 
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="images/favicon.png" />
-<link rel="apple-touch-icon" href="images/favicon.png" />
-<meta name="theme-color" content="#0e1420" />
+  <link rel="icon" href="../../images/favicon.png" type="image/png" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-<link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
-<script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root{ --nav-h:72px; --accent:#7e8db0; }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;
+      color:#fff; background:#0e1420; overflow:hidden;
+      background-image: radial-gradient(ellipse at 50% 40%, #1d2845 0%, #0e1420 60%, #0b0f18 100%);
+    }
 
-<style>
-  :root{ --nav-h:72px; --cards-h:150px; --accent:#8f88ff; }
-  *{box-sizing:border-box} html,body{height:100%}
-  body{
-    margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;
-    color:#fff; background:#0e1420; overflow:hidden;
-    background-image:
-      radial-gradient(ellipse at 50% 40%, #1d2845 0%, #0e1420 60%, #0b0f18 100%),
-      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.18) 0, rgba(255,255,255,0) 100%),
-      radial-gradient(2px 2px at 70% 60%, rgba(255,255,255,.14) 0, rgba(255,255,255,0) 100%),
-      radial-gradient(1.5px 1.5px at 40% 80%, rgba(255,255,255,.10) 0, rgba(255,255,255,0) 100%);
-    background-repeat:no-repeat;
-  }
+    /* Top bar */
+    .topbar{
+      position:absolute; left:12px; right:12px; top:12px; z-index:20;
+      display:flex; align-items:center; gap:10px;
+    }
+    .back{
+      display:flex; align-items:center; gap:8px;
+      background:rgba(255,255,255,.14); padding:8px 12px; border-radius:12px;
+      text-decoration:none; color:#fff; backdrop-filter: blur(6px);
+    }
+    .title{ font-weight:800; font-size:18px; opacity:.95 }
 
-  /* Top bar */
-  .topbar{
-    position:absolute; left:12px; right:12px; top:12px; z-index:20;
-    display:flex; align-items:center; gap:10px;
-  }
-  .back{
-    display:flex; align-items:center; gap:10px;
-    background:rgba(255,255,255,.14); padding:10px 14px; border-radius:14px;
-    text-decoration:none; color:#fff; backdrop-filter: blur(6px);
-  }
-  .title{ font-weight:800; font-size:18px; opacity:.95 }
+    #map{position:absolute; inset:0; padding-bottom: calc(var(--nav-h) + 12px);}
 
-  #map{
-    position:absolute; inset:0;
-    padding-bottom: calc(var(--cards-h) + 12px);
-  }
+    /* Photo markers (bubbles) */
+    .photo-marker{
+      width:46px; height:46px; border-radius:50%; overflow:hidden;
+      border:3px solid #fff; box-shadow:0 0 10px rgba(0,0,0,.45);
+      background:#999; cursor:pointer;
+    }
+    .photo-marker img{width:100%; height:100%; object-fit:cover; display:block}
 
-  /* Cards rail */
-  .guides{
-    position:absolute; left:0; right:0; bottom:12px; height: var(--cards-h);
-    padding: 10px 12px; display:flex; gap:12px; overflow-x:auto; z-index:20; scrollbar-width:none;
-  }
-  .guides::-webkit-scrollbar{display:none}
-  .guide-card{
-    position:relative; flex:0 0 240px; height:100%;
-    background:#151923; border-radius:16px; overflow:hidden;
-    box-shadow:0 8px 24px rgba(0,0,0,.35); text-decoration:none;
-    cursor:pointer;
-  }
-  .guide-card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
-  .guide-card .shade{position:absolute; inset:auto 0 0 0; height:54%;
-    background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.78) 60%, rgba(0,0,0,.92) 100%);}
-  .guide-card .txt{position:absolute; left:12px; right:12px; bottom:12px; z-index:2; font-size:18px; font-weight:800; line-height:1.25; color:#fff;}
-
-  /* Markers */
-  .dot-marker{ width:8px; height:8px; border-radius:50%; background:#fff; border:2px solid rgba(0,0,0,.35); box-shadow:0 0 6px rgba(0,0,0,.35); }
-  .photo-marker{ width:38px; height:38px; border-radius:50%; overflow:hidden; border:3px solid #fff; box-shadow:0 0 8px rgba(0,0,0,.45); background:#999; cursor:pointer; }
-  .photo-marker img{width:100%; height:100%; object-fit:cover; display:block}
-
-  .popup{ color:#0d1220; font-family:inherit; }
-  .popup .name{font-weight:800; margin-bottom:6px;}
-  .popup a{display:inline-block; margin-top:6px; padding:8px 12px; border-radius:10px; background:#0e1420; color:#fff; text-decoration:none}
-</style>
+    /* Bottom nav */
+    .nav{
+      position:absolute; left:0; right:0; bottom:0;
+      height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
+      padding:10px 8px calc(10px + env(safe-area-inset-bottom, 0px));
+      background:rgba(15,15,20,.92); backdrop-filter: blur(6px);
+      border-top:1px solid rgba(255,255,255,.06);
+      display:flex; align-items:flex-end; justify-content:space-around; z-index:25;
+    }
+    .tab{position:relative; display:flex; flex-direction:column; align-items:center; gap:6px;
+      font-size:12px; color:#cfcfd3; text-decoration:none; min-width:86px;}
+    .tab i{font-size:22px; opacity:.9}
+    .tab.active{color:#fff}
+    .tab.active i{color:var(--accent)}
+    .underline{position:absolute; bottom:6px; height:4px; border-radius:2px;
+      background:var(--accent); transition: left .25s ease, width .25s ease;}
+  </style>
 </head>
 <body>
 
   <div class="topbar">
-    <a class="back" href="index.html"><i class="fa-solid fa-chevron-left"></i><span>Explore</span></a>
+    <a class="back" href="../../index.html"><i class="fa-solid fa-chevron-left"></i> Explore</a>
     <div class="title">South Korea</div>
   </div>
 
   <div id="map"></div>
 
-  <!-- Rail des villes -->
-  <div class="guides" id="cardsRail"></div>
+  <!-- Bottom nav (Explore / Cities / Tips for South Korea) -->
+  <nav class="nav" id="bottomNav">
+    <a class="tab" href="../../index.html"><i class="fa-solid fa-compass"></i><span>Explore</span></a>
+    <a class="tab active" href="./"><i class="fa-solid fa-city"></i><span>Cities</span></a>
+    <a class="tab" href="../../tips/#south-korea"><i class="fa-solid fa-lightbulb"></i><span>Tips for South Korea</span></a>
+    <div class="underline" id="navUnderline"></div>
+  </nav>
 
 <script>
   // --- Map ---
@@ -91,109 +83,53 @@
     container: "map",
     style: "mapbox://styles/erikaramell/cmcnjverq008y01qw6rir46gy",
     projection: "globe",
-    center: [127.9, 36.0],
-    zoom: 4.1
+    center: [127.9, 36.3],
+    zoom: 5
   });
   map.on("style.load", () => map.setFog({}));
 
-  // --- Données villes (coords centre approx.) ---
+  // Places -> bubble photos from ./<slug>/cover.jpg
   const places = [
-    { id:'seoul',   name:'Seoul',   coords:[126.978, 37.566], img:'images/seoul.jpg',
-      fallback:'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1400&auto=format&fit=crop' },
-    { id:'busan',   name:'Busan',   coords:[129.0756, 35.1796], img:'images/busan.jpg',
-      fallback:'https://images.unsplash.com/photo-1549697242-3a4b7a3d8d86?q=80&w=1400&auto=format&fit=crop' },
-    { id:'daegu',   name:'Daegu',   coords:[128.601, 35.871], img:'images/daegu.jpg',
-      fallback:'https://images.unsplash.com/photo-1604908812444-7c9f6480b121?q=80&w=1400&auto=format&fit=crop' },
-    { id:'gyeongju',name:'Gyeongju',coords:[129.210, 35.856], img:'images/gyeongju.jpg',
-      fallback:'https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1400&auto=format&fit=crop' },
-    { id:'andong',  name:'Andong',  coords:[128.731, 36.568], img:'images/andong.jpg',
-      fallback:'https://images.unsplash.com/photo-1578926374373-6a28f1a93fd8?q=80&w=1400&auto=format&fit=crop' },
-    { id:'sokcho',  name:'Sokcho',  coords:[128.591, 38.207], img:'images/sokcho.jpg',
-      fallback:'https://images.unsplash.com/photo-1598263822392-3a6b4b5f0a2f?q=80&w=1400&auto=format&fit=crop' },
-    { id:'jeju',    name:'Jeju',    coords:[126.531, 33.499], img:'images/jeju.jpg',
-      fallback:'https://images.unsplash.com/photo-1551761540-76b9a80d874e?q=80&w=1400&auto=format&fit=crop' },
+    { id:'jeju',        name:'Jeju',        coords:[126.531, 33.499] },
+    { id:'busan',       name:'Busan',       coords:[129.075, 35.1796] },
+    { id:'daegu',       name:'Daegu',       coords:[128.601, 35.871] },
+    { id:'andong',      name:'Andong',      coords:[128.725, 36.568] },
+    { id:'gyeongju',    name:'Gyeongju',    coords:[129.224, 35.856] },
+    { id:'seoraksan',   name:'Seoraksan',   coords:[128.465, 38.119] },
+    { id:'sokcho',      name:'Sokcho',      coords:[128.594, 38.207] },
+    { id:'seoul',       name:'Seoul',       coords:[126.978, 37.566] },
+    { id:'danyang',     name:'Danyang',     coords:[128.365, 36.985] }
   ];
 
-  // Adapter la vue pour tout couvrir
-  map.on('load', () => {
-    const bounds = new mapboxgl.LngLatBounds();
-    places.forEach(p => bounds.extend(p.coords));
-    map.fitBounds(bounds, {
-      padding:{ top:80, right:40, bottom: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--cards-h'))+30, left:40 },
-      duration: 0
-    });
-  });
-
-  // Créer marqueurs (dot + photo au zoom)
-  const bundles = [];
-  places.forEach(p => {
-    const d=document.createElement('div'); d.className='dot-marker';
-    const mDot = new mapboxgl.Marker(d,{anchor:'center'}).setLngLat(p.coords).addTo(map);
-
-    const el=document.createElement('div'); el.className='photo-marker';
-    const im=document.createElement('img'); im.src=p.img; im.onerror=()=>{im.src=p.fallback}; el.appendChild(im);
-    el.title = p.name;
-    const popup = new mapboxgl.Popup({offset:18, closeButton:true})
-      .setHTML(`<div class="popup"><div class="name">${p.name}</div><a href="#${p.id}">Open guide</a></div>`);
-    const mPhoto = new mapboxgl.Marker(el,{anchor:'center'}).setLngLat(p.coords).setPopup(popup).addTo(map);
-
-    el.addEventListener('click', () => {
-      map.flyTo({ center:p.coords, zoom:6.2, speed:0.8, curve:1.4, essential:true });
-      mPhoto.togglePopup();
-    });
-
-    bundles.push({d: d, p: el});
-  });
-
-  // Affichage progressif des photos
-  const SHOW_PHOTO_AT = 4.5;
-  const DOT_MIN=6, DOT_MAX=10, PHOTO_MIN=34, PHOTO_MAX=52;
-  const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
-  function refreshMarkers(){
-    const z=map.getZoom();
-    bundles.forEach(b=>{
-      const show=z>=SHOW_PHOTO_AT;
-      b.d.style.display=show?'none':'block';
-      b.p.style.display=show?'block':'none';
-      const dotSize=clamp(6+(z-0.3)*1.0, DOT_MIN, DOT_MAX);
-      const photoSize=clamp(34+(z-SHOW_PHOTO_AT)*3.0, PHOTO_MIN, PHOTO_MAX);
-      b.d.style.width=b.d.style.height=dotSize+'px';
-      b.p.style.width=b.p.style.height=photoSize+'px';
-    });
-  }
-  map.on('zoom', refreshMarkers);
-  map.on('load', refreshMarkers);
-
-  // Rail de cartes — clic => flyTo
-  const rail = document.getElementById('cardsRail');
   places.forEach(p=>{
-    const card=document.createElement('a');
-    card.className='guide-card';
-    card.href = `#${p.id}`;
-    card.innerHTML = `
-      <img src="${p.img}" onerror="this.src='${p.fallback}'" alt="${p.name}">
-      <div class="shade"></div>
-      <div class="txt">${p.name}</div>`;
-    card.addEventListener('click', (e)=>{
-      e.preventDefault();
-      location.hash = p.id;
-      map.flyTo({ center:p.coords, zoom:6.4, speed:0.8, curve:1.4, essential:true });
-    });
-    rail.appendChild(card);
+    const el=document.createElement('div'); el.className='photo-marker'; el.title=p.name;
+    const im=document.createElement('img');
+    im.src = `./${p.id}/cover.jpg`;
+    im.alt = p.name;
+    im.onerror = ()=>{ im.onerror=null; im.src=`https://source.unsplash.com/600x600/?${encodeURIComponent(p.name)}%20South%20Korea`; };
+    el.appendChild(im);
+
+    el.addEventListener('click', ()=>{ location.href = `./${p.id}/`; });
+
+    new mapboxgl.Marker(el, {anchor:'center'})
+      .setLngLat(p.coords)
+      .setPopup(new mapboxgl.Popup({offset:12}).setText(p.name))
+      .addTo(map);
   });
 
-  // Navigation via #hash
-  window.addEventListener('hashchange', ()=>{
-    const id = location.hash.replace('#','');
-    const target = places.find(x=>x.id===id);
-    if(target){
-      map.flyTo({ center: target.coords, zoom:6.4, speed:0.9, curve:1.4, essential:true });
-    }
-  });
-  if(location.hash){
-    const id=location.hash.replace('#',''); const t=places.find(x=>x.id===id);
-    if(t) map.once('load',()=>map.flyTo({center:t.coords, zoom:6.4}));
+  // Bottom nav underline (active = Cities)
+  const navEl=document.getElementById('bottomNav');
+  const underline=document.getElementById('navUnderline');
+  function positionUnderline(){
+    const active=navEl.querySelector('.tab.active'); if(!active) return;
+    const navR=navEl.getBoundingClientRect(), r=active.getBoundingClientRect();
+    const w=Math.max(60, r.width*0.68);
+    underline.style.width=w+'px';
+    underline.style.left=(r.left-navR.left+(r.width-w)/2)+'px';
   }
+  positionUnderline();
+  window.addEventListener('resize', positionUnderline);
 </script>
+
 </body>
 </html>
