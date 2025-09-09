@@ -3,136 +3,122 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HodoGuides · Japan · Cities</title>
+  <title>HodoGuides · Japan</title>
 
-  <link rel="icon" href="../../../images/favicon.png" type="image/png" />
+  <link rel="icon" href="../../images/favicon.png" type="image/png" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
     :root{ --nav-h:72px; --accent:#7e8db0; }
-    *{box-sizing:border-box}
+    *{box-sizing:border-box} html,body{height:100%}
     body{
       margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;
-      color:#fff; background:#0e1420;
+      color:#fff; background:#0e1420; overflow:hidden;
       background-image:
         radial-gradient(ellipse at 50% 40%, #1d2845 0%, #0e1420 60%, #0b0f18 100%);
-      min-height:100vh; padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
     }
 
     /* Top bar */
     .topbar{
-      position:sticky; top:0; z-index:10;
+      position:absolute; left:12px; right:12px; top:12px; z-index:20;
       display:flex; align-items:center; gap:10px;
-      padding:12px; background:rgba(14,20,32,.85); backdrop-filter: blur(6px);
-      border-bottom:1px solid rgba(255,255,255,.06);
     }
-    .back{ color:#fff; text-decoration:none; display:flex; gap:10px; align-items:center;
-      background:rgba(255,255,255,.12); padding:8px 12px; border-radius:12px; }
-    .title{ font-weight:800; font-size:18px }
+    .back{
+      display:flex; align-items:center; gap:8px;
+      background:rgba(255,255,255,.14); padding:8px 12px; border-radius:12px;
+      text-decoration:none; color:#fff; backdrop-filter: blur(6px);
+    }
+    .title{ font-weight:800; font-size:18px; opacity:.95 }
 
-    /* Search */
-    .search{max-width:900px; margin:12px auto 0; padding:0 12px;}
-    .search-wrap{ position:relative; }
-    .search-wrap i{ position:absolute; left:14px; top:50%; transform:translateY(-50%); opacity:.85; }
-    .search input{
-      width:100%; height:44px; border-radius:22px; border:0; outline:none;
-      padding:0 16px 0 40px; color:#0d1220; background:#f2f4f8;
-      font-size:16px;
-    }
+    #map{position:absolute; inset:0; padding-bottom: calc(var(--nav-h) + 12px);}
 
-    /* List */
-    .list{max-width:900px; margin:14px auto; padding:0 12px;}
-    .item{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      background:#151923; border:1px solid rgba(255,255,255,.08); border-radius:14px;
-      padding:12px 14px; margin:10px 0; text-decoration:none; color:#fff;
+    /* Photo markers (bubbles) */
+    .photo-marker{
+      width:46px; height:46px; border-radius:50%; overflow:hidden;
+      border:3px solid #fff; box-shadow:0 0 10px rgba(0,0,0,.45);
+      background:#999; cursor:pointer;
     }
-    .left{display:flex; gap:12px; align-items:center;}
-    .pin{width:36px; height:36px; border-radius:10px; background:#fff; display:grid; place-items:center; color:#111;}
-    .name{font-weight:700;}
-    .tag{font-size:12px; opacity:.7}
+    .photo-marker img{width:100%; height:100%; object-fit:cover; display:block}
 
     /* Bottom nav */
     .nav{
-      position:fixed; left:0; right:0; bottom:0;
+      position:absolute; left:0; right:0; bottom:0;
       height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
       padding:10px 8px calc(10px + env(safe-area-inset-bottom, 0px));
       background:rgba(15,15,20,.92); backdrop-filter: blur(6px);
       border-top:1px solid rgba(255,255,255,.06);
       display:flex; align-items:flex-end; justify-content:space-around; z-index:25;
     }
-    .tab{position:relative; display:flex; flex-direction:column; align-items:center; gap:6px; font-size:12px; color:#cfcfd3; text-decoration:none; min-width:86px;}
+    .tab{position:relative; display:flex; flex-direction:column; align-items:center; gap:6px;
+      font-size:12px; color:#cfcfd3; text-decoration:none; min-width:86px;}
     .tab i{font-size:22px; opacity:.9}
     .tab.active{color:#fff}
     .tab.active i{color:var(--accent)}
-    .underline{position:absolute; bottom:6px; height:4px; border-radius:2px; background:var(--accent);}
+    .underline{position:absolute; bottom:6px; height:4px; border-radius:2px;
+      background:var(--accent); transition: left .25s ease, width .25s ease;}
   </style>
 </head>
 <body>
 
   <div class="topbar">
-    <a class="back" href="../"><i class="fa-solid fa-chevron-left"></i> Map</a>
-    <div class="title">Japan · Cities</div>
+    <a class="back" href="../../index.html"><i class="fa-solid fa-chevron-left"></i> Explore</a>
+    <div class="title">Japan</div>
   </div>
 
-  <div class="search">
-    <div class="search-wrap">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <input id="q" type="text" placeholder="Search cities & places in Japan…">
-    </div>
-  </div>
-
-  <div class="list" id="list"><!-- injected --></div>
+  <div id="map"></div>
 
   <nav class="nav" id="bottomNav">
-    <a class="tab" href="../../../index.html"><i class="fa-solid fa-compass"></i><span>Explore</span></a>
-    <a class="tab" href="../"><i class="fa-solid fa-city"></i><span>Map</span></a>
-    <a class="tab active" href="./"><i class="fa-solid fa-list"></i><span>Cities</span></a>
-    <a class="tab" href="../../../tips/#japan"><i class="fa-solid fa-lightbulb"></i><span>Tips for Japan</span></a>
+    <a class="tab" href="../../index.html"><i class="fa-solid fa-compass"></i><span>Explore</span></a>
+    <a class="tab" href="../../tips/#japan"><i class="fa-solid fa-lightbulb"></i><span>Tips for Japan</span></a>
+    <a class="tab active" href="./"><i class="fa-solid fa-city"></i><span>Cities</span></a>
     <div class="underline" style="left: 50%; transform: translateX(-50%); width: 70px;"></div>
   </nav>
 
 <script>
-  // Same list as on the map
-  const PLACES = [
-    { id:'okinawa',  name:'Okinawa (Naha)', url:'../okinawa/' },
-    { id:'ishigaki', name:'Ishigaki',       url:'../ishigaki/' },
-    { id:'yonaguni', name:'Yonaguni',       url:'../yonaguni/' },
-    { id:'kyoto',    name:'Kyoto',          url:'../kyoto/' },
-    { id:'osaka',    name:'Osaka',          url:'../osaka/' }
+  // --- Map ---
+  mapboxgl.accessToken = "pk.eyJ1IjoiZXJpa2FyYW1lbGwiLCJhIjoiY21jbmlteXJuMDBjaDJrc2swbnA0a29wZSJ9.F8aX2alF-PpnqInkyqba8g";
+  const map = new mapboxgl.Map({
+    container: "map",
+    style: "mapbox://styles/erikaramell/cmcnjverq008y01qw6rir46gy",
+    projection: "globe",
+    center: [135, 35],
+    zoom: 4.6
+  });
+  map.on("style.load", () => map.setFog({}));
+
+  // Cities -> bubble photo from ./<slug>/cover.jpg
+  const cities = [
+    { id:'kyoto',     name:'Kyoto',     coords:[135.768, 35.011] },
+    { id:'osaka',     name:'Osaka',     coords:[135.502, 34.693] },
+    { id:'nara',      name:'Nara',      coords:[135.804, 34.685] },
+    { id:'ine',       name:'Ine',       coords:[135.271, 35.676] },
+    { id:'miyazu',    name:'Miyazu',    coords:[135.183, 35.533] },
+    { id:'toyooka',   name:'Toyooka',   coords:[134.822, 35.544] },
+    { id:'koya',      name:'Koya',      coords:[135.586, 34.216] },
+    { id:'kudoyama',  name:'Kudoyama',  coords:[135.566, 34.283] },
+    { id:'okinawa',   name:'Okinawa',   coords:[127.680, 26.210] },   // main island center (Naha area)
+    { id:'ishigaki',  name:'Ishigaki',  coords:[124.157, 24.344] },
+    { id:'yonaguni',  name:'Yonaguni',  coords:[122.986, 24.468] }
   ];
 
-  const listEl=document.getElementById('list');
-  const q=document.getElementById('q');
+  cities.forEach(c=>{
+    const el=document.createElement('div'); el.className='photo-marker'; el.title=c.name;
+    const im=document.createElement('img');
+    im.src = `./${c.id}/cover.jpg`;
+    im.alt = c.name;
+    // fallback if cover is missing
+    im.onerror = ()=>{ im.onerror=null; im.src=`https://source.unsplash.com/600x600/?${encodeURIComponent(c.name)}%20Japan`; };
+    el.appendChild(im);
 
-  function render(filter=''){
-    const f=filter.trim().toLowerCase();
-    listEl.innerHTML='';
-    PLACES
-      .filter(p=>!f || p.name.toLowerCase().includes(f))
-      .forEach(p=>{
-        const a=document.createElement('a');
-        a.className='item';
-        a.href=p.url;
-        a.innerHTML=`
-          <div class="left">
-            <div class="pin"><i class="fa-solid fa-location-dot"></i></div>
-            <div>
-              <div class="name">${p.name}</div>
-              <div class="tag">City</div>
-            </div>
-          </div>
-          <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>`;
-        listEl.appendChild(a);
-      });
-    if(!listEl.children.length){
-      const d=document.createElement('div');
-      d.className='item'; d.style.opacity='.7'; d.innerHTML='No results';
-      listEl.appendChild(d);
-    }
-  }
-  render();
-  q.addEventListener('input', e=>render(e.target.value));
+    // click -> ./<city>/
+    el.addEventListener('click', ()=>{ location.href = `./${c.id}/`; });
+
+    new mapboxgl.Marker(el, {anchor:'center'}).setLngLat(c.coords).setPopup(
+      new mapboxgl.Popup({offset:12}).setText(c.name)
+    ).addTo(map);
+  });
 </script>
 </body>
 </html>
