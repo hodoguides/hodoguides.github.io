@@ -69,11 +69,12 @@
 
   <div id="map"></div>
 
+  <!-- Bottom nav (Explore / Cities / Tips for Japan) -->
   <nav class="nav" id="bottomNav">
     <a class="tab" href="../../index.html"><i class="fa-solid fa-compass"></i><span>Explore</span></a>
-    <a class="tab" href="../../tips/#japan"><i class="fa-solid fa-lightbulb"></i><span>Tips for Japan</span></a>
     <a class="tab active" href="./"><i class="fa-solid fa-city"></i><span>Cities</span></a>
-    <div class="underline" style="left: 50%; transform: translateX(-50%); width: 70px;"></div>
+    <a class="tab" href="../../tips/#japan"><i class="fa-solid fa-lightbulb"></i><span>Tips for Japan</span></a>
+    <div class="underline" id="navUnderline"></div>
   </nav>
 
 <script>
@@ -90,17 +91,17 @@
 
   // Cities -> bubble photo from ./<slug>/cover.jpg
   const cities = [
-    { id:'kyoto',     name:'Kyoto',     coords:[135.768, 35.011] },
-    { id:'osaka',     name:'Osaka',     coords:[135.502, 34.693] },
-    { id:'nara',      name:'Nara',      coords:[135.804, 34.685] },
-    { id:'ine',       name:'Ine',       coords:[135.271, 35.676] },
-    { id:'miyazu',    name:'Miyazu',    coords:[135.183, 35.533] },
-    { id:'toyooka',   name:'Toyooka',   coords:[134.822, 35.544] },
-    { id:'koya',      name:'Koya',      coords:[135.586, 34.216] },
-    { id:'kudoyama',  name:'Kudoyama',  coords:[135.566, 34.283] },
-    { id:'okinawa',   name:'Okinawa',   coords:[127.680, 26.210] },   // main island center (Naha area)
-    { id:'ishigaki',  name:'Ishigaki',  coords:[124.157, 24.344] },
-    { id:'yonaguni',  name:'Yonaguni',  coords:[122.986, 24.468] }
+    { id:'kyoto',    name:'Kyoto',    coords:[135.768, 35.011] },
+    { id:'osaka',    name:'Osaka',    coords:[135.502, 34.693] },
+    { id:'nara',     name:'Nara',     coords:[135.804, 34.685] },
+    { id:'ine',      name:'Ine',      coords:[135.271, 35.676] },
+    { id:'miyazu',   name:'Miyazu',   coords:[135.183, 35.533] },
+    { id:'toyooka',  name:'Toyooka',  coords:[134.822, 35.544] },
+    { id:'koya',     name:'Koya',     coords:[135.586, 34.216] },
+    { id:'kudoyama', name:'Kudoyama', coords:[135.566, 34.283] },
+    { id:'okinawa',  name:'Okinawa',  coords:[127.680, 26.210] }, // Naha area (main island)
+    { id:'ishigaki', name:'Ishigaki', coords:[124.157, 24.344] },
+    { id:'yonaguni', name:'Yonaguni', coords:[122.986, 24.468] }
   ];
 
   cities.forEach(c=>{
@@ -108,17 +109,30 @@
     const im=document.createElement('img');
     im.src = `./${c.id}/cover.jpg`;
     im.alt = c.name;
-    // fallback if cover is missing
     im.onerror = ()=>{ im.onerror=null; im.src=`https://source.unsplash.com/600x600/?${encodeURIComponent(c.name)}%20Japan`; };
     el.appendChild(im);
 
-    // click -> ./<city>/
     el.addEventListener('click', ()=>{ location.href = `./${c.id}/`; });
 
-    new mapboxgl.Marker(el, {anchor:'center'}).setLngLat(c.coords).setPopup(
-      new mapboxgl.Popup({offset:12}).setText(c.name)
-    ).addTo(map);
+    new mapboxgl.Marker(el, {anchor:'center'})
+      .setLngLat(c.coords)
+      .setPopup(new mapboxgl.Popup({offset:12}).setText(c.name))
+      .addTo(map);
   });
+
+  // --- Bottom nav underline like Explore page ---
+  const navEl=document.getElementById('bottomNav');
+  const underline=document.getElementById('navUnderline');
+  function positionUnderline(){
+    const active=navEl.querySelector('.tab.active'); if(!active) return;
+    const navR=navEl.getBoundingClientRect(), r=active.getBoundingClientRect();
+    const w=Math.max(60, r.width*0.68);
+    underline.style.width=w+'px';
+    underline.style.left=(r.left-navR.left+(r.width-w)/2)+'px';
+  }
+  positionUnderline();
+  window.addEventListener('resize', positionUnderline);
 </script>
+
 </body>
 </html>
