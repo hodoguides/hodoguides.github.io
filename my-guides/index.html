@@ -1,105 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>HodoGuides · My Guides</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HodoGuides · My Guides</title>
 
-<link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
-<script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="icon" href="../images/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-<style>
-  body{
-    margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;
-    background:#0e1420; color:#fff;
-  }
+  <style>
+    :root{
+      --accent:#7e8db0;           /* brand accent (same as Explore) */
+      --bg:#0e1420;
+      --card:#151923;
+      --muted:#cfcfd3;
+      --nav-h:72px;
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;
+      color:#fff; background:var(--bg);
+      background-image:
+        radial-gradient(ellipse at 50% 40%, #1d2845 0%, #0e1420 60%, #0b0f18 100%),
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.18) 0, rgba(255,255,255,0) 100%),
+        radial-gradient(2px 2px at 70% 60%, rgba(255,255,255,.14) 0, rgba(255,255,255,0) 100%),
+        radial-gradient(1.5px 1.5px at 40% 80%, rgba(255,255,255,.10) 0, rgba(255,255,255,0) 100%);
+      background-repeat:no-repeat;
+      padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
+      min-height:100vh;
+    }
 
-  .topbar{
-    position:sticky; top:0; background:#0e1420;
-    padding:16px; font-weight:800; font-size:20px; z-index:20;
-    display:flex; align-items:center; justify-content:space-between;
-  }
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      display:flex; align-items:center; gap:10px; padding:16px 16px 10px;
+      background:linear-gradient(180deg, rgba(14,20,32,1) 70%, rgba(14,20,32,0) 100%);
+      text-shadow:0 2px 10px rgba(0,0,0,.35);
+    }
+    .brand-title{ font-weight:800; font-size:28px; letter-spacing:.3px; }
+    .by-erika{ height:28px; opacity:.95; pointer-events:none; filter: drop-shadow(0 1px 1px rgba(0,0,0,.35)); transform: translateY(2px); }
+    @media (max-width:480px){
+      .brand-title{ font-size:26px; }
+      .by-erika{ height:22px; }
+    }
 
-  .guides-section{
-    padding:20px;
-  }
-  .guides-section h2{
-    font-size:18px; font-weight:700; margin:0 0 12px;
-  }
+    .wrap{max-width:1100px; margin:0 auto; padding:6px 16px 24px;}
 
-  .guides-list{
-    display:flex; gap:16px; overflow-x:auto; padding-bottom:10px;
-    scrollbar-width:none;
-  }
-  .guides-list::-webkit-scrollbar{display:none}
+    .section{margin:14px 0 28px;}
+    .section h2{margin:0 0 10px; font-size:18px; font-weight:800; opacity:.95}
+    .muted{color:var(--muted)}
 
-  .guide-card{
-    flex:0 0 220px; background:#151923; border-radius:14px; overflow:hidden;
-    box-shadow:0 6px 18px rgba(0,0,0,.35); text-decoration:none; color:#fff;
-    position:relative;
-  }
-  .guide-card img{width:100%; height:120px; object-fit:cover}
-  .guide-card .txt{padding:10px; font-weight:600; font-size:15px;}
+    /* Horizontal cards rail */
+    .guides-list{
+      display:flex; gap:14px; overflow-x:auto; padding:6px 2px 10px; scrollbar-width:none;
+    }
+    .guides-list::-webkit-scrollbar{display:none}
+    .guide-card{
+      position:relative; flex:0 0 250px; border-radius:16px; overflow:hidden; background:var(--card);
+      box-shadow:0 8px 24px rgba(0,0,0,.35); text-decoration:none; color:#fff;
+    }
+    .guide-card img{width:100%; height:140px; object-fit:cover; display:block}
+    .g-body{padding:12px}
+    .g-title{font-weight:800; font-size:16px; line-height:1.25}
+    .badge{
+      position:absolute; top:10px; left:10px;
+      background:#fffb; backdrop-filter: blur(4px);
+      color:#0d1220; font-weight:800; font-size:12px; padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(0,0,0,.08);
+    }
 
-  /* Section Planner */
-  .planner-cta{
-    margin:30px 20px; padding:20px; border-radius:16px;
-    background:linear-gradient(135deg,#6c63ff,#5146d9);
-    text-align:center; box-shadow:0 8px 24px rgba(0,0,0,.35);
-  }
-  .planner-cta h3{
-    margin:0 0 12px; font-size:18px; font-weight:700;
-  }
-  .planner-cta p{
-    margin:0 0 16px; font-size:14px; opacity:.9;
-  }
-  .planner-cta .btn{
-    display:inline-block; padding:10px 18px; border-radius:12px;
-    background:#fff; color:#5146d9; font-weight:700; text-decoration:none;
-  }
+    /* Planner CTA */
+    .planner-cta{
+      margin:24px 0; padding:18px; border-radius:18px;
+      background:linear-gradient(135deg, var(--accent), #5f6f9a);
+      box-shadow:0 8px 24px rgba(0,0,0,.35); text-align:center;
+    }
+    .planner-cta h3{margin:0 0 10px; font-size:18px; font-weight:800}
+    .planner-cta p{margin:0 0 12px; font-size:14px; opacity:.95}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px; height:44px; padding:0 16px;
+      border-radius:12px; border:1px solid transparent; cursor:pointer; text-decoration:none; font-weight:800;
+    }
+    .btn.primary{ background:#fff; color:#243049; }
+    .btn.primary:hover{ filter:brightness(.97) }
 
-  /* Bottom nav */
-  .nav{position:fixed; left:0; right:0; bottom:0; height:70px;
-    background:rgba(15,15,20,.92); border-top:1px solid rgba(255,255,255,.08);
-    display:flex; align-items:center; justify-content:space-around; z-index:25;}
-  .tab{display:flex; flex-direction:column; align-items:center; gap:4px;
-    font-size:12px; color:#cfcfd3; text-decoration:none;}
-  .tab i{font-size:20px;}
-  .tab.active{color:#fff}
-  .tab.active i{color:#8f88ff}
-</style>
+    /* Notify box */
+    .notify{
+      margin:18px 0 8px; padding:14px; border-radius:14px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08);
+    }
+    .notify form{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .notify input[type="email"]{
+      flex:1; min-width:220px; height:42px; border-radius:12px; border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.1); color:#fff; padding:0 12px; outline:none;
+    }
+    .notify .btn{ height:42px; background:var(--accent); color:#fff; }
+    .notify .btn:hover{ filter:brightness(.97) }
+
+    /* Bottom nav (same as Explore) */
+    .nav{
+      position:fixed; left:0; right:0; bottom:0;
+      height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
+      padding:10px 8px calc(10px + env(safe-area-inset-bottom, 0px));
+      background:rgba(15,15,20,.92); backdrop-filter: blur(6px);
+      border-top:1px solid rgba(255,255,255,.06);
+      display:flex; align-items:flex-end; justify-content:space-around; z-index:25;
+    }
+    .tab{position:relative; display:flex; flex-direction:column; align-items:center; gap:6px; font-size:12px; color:var(--muted); text-decoration:none; min-width:86px;}
+    .tab i{font-size:22px; opacity:.9}
+    .tab.active{color:#fff}
+    .tab.active i{color:var(--accent)}
+    .underline{position:absolute; bottom:6px; height:4px; border-radius:2px; background:var(--accent); transition: left .25s ease, width .25s ease;}
+  </style>
 </head>
 <body>
 
-  <div class="topbar">My Guides</div>
-
-  <div class="guides-section">
-    <h2>Itinéraires populaires</h2>
-    <div class="guides-list">
-      <a class="guide-card" href="#">
-        <img src="../images/japan.jpg" alt="Japan">
-        <div class="txt">15 jours au Japon</div>
-      </a>
-      <a class="guide-card" href="#">
-        <img src="../images/japan.jpg" alt="Japan">
-        <div class="txt">30 jours au Japon</div>
-      </a>
-    </div>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="brand-title">HodoGuides</div>
+    <img class="by-erika" src="../images/erika-logo.png" alt="by Erika" />
   </div>
 
-  <div class="planner-cta">
-    <h3>Besoin d’un itinéraire personnalisé ?</h3>
-    <p>Organisez votre voyage sur mesure avec HodoPlanner.</p>
-    <a class="btn" href="https://hodoplanner.github.io"><i class="fa-solid fa-pen-to-square"></i> Commencer</a>
+  <div class="wrap">
+
+    <!-- Popular itineraries -->
+    <section class="section">
+      <h2>Popular itineraries</h2>
+      <div class="guides-list">
+        <!-- 30 days Japan — Coming soon -->
+        <a class="guide-card" href="../coming-soon.html" aria-label="30 days in Japan (coming soon)">
+          <span class="badge"><i class="fa-solid fa-hourglass-half"></i> Coming soon</span>
+          <img src="../asia/japan/cover.jpg" alt="Japan cover">
+          <div class="g-body">
+            <div class="g-title">30 days in Japan</div>
+          </div>
+        </a>
+
+        <!-- 30 days South Korea — Coming soon -->
+        <a class="guide-card" href="../coming-soon.html" aria-label="30 days in South Korea (coming soon)">
+          <span class="badge"><i class="fa-solid fa-hourglass-half"></i> Coming soon</span>
+          <img src="../asia/south-korea/cover.jpg" alt="South Korea cover">
+          <div class="g-body">
+            <div class="g-title">30 days in South Korea</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="notify">
+        <div class="muted"><i class="fa-regular fa-bell"></i> More guides are in the works. Get notified when new ones drop:</div>
+        <form action="https://formspree.io/f/your-id" method="POST">
+          <input type="email" name="email" placeholder="Your email" required />
+          <button class="btn" type="submit"><i class="fa-solid fa-bell"></i> Notify me</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Planner CTA -->
+    <section class="planner-cta" aria-labelledby="planner-title">
+      <h3 id="planner-title">Want a tailor-made itinerary?</h3>
+      <p>Plan your exact trip with HodoPlanner — fast, stress-free, and adapted to you.</p>
+      <a class="btn primary" href="https://planner.erikaramel.com" target="_blank" rel="noopener">
+        <i class="fa-solid fa-pen-to-square"></i> Start your custom plan
+      </a>
+    </section>
+
   </div>
 
   <!-- Bottom navigation -->
-  <nav class="nav">
+  <nav class="nav" id="bottomNav">
     <a class="tab" href="../index.html"><i class="fa-solid fa-compass"></i><span>Explore</span></a>
-    <a class="tab active" href="#"><i class="fa-solid fa-book-open"></i><span>My Guides</span></a>
-    <a class="tab" href="../advice/index.html"><i class="fa-solid fa-lightbulb"></i><span>Conseils</span></a>
+    <a class="tab active" href="./"><i class="fa-solid fa-book-open"></i><span>My Guides</span></a>
+    <a class="tab" href="../tips/"><i class="fa-solid fa-lightbulb"></i><span>Tips</span></a>
+    <div class="underline" id="navUnderline"></div>
   </nav>
 
+  <script>
+    // Bottom nav underline (same behavior as Explore)
+    const navEl=document.getElementById('bottomNav');
+    const underline=document.getElementById('navUnderline');
+    function positionUnderline(){
+      const active=navEl.querySelector('.tab.active'); if(!active) return;
+      const navR=navEl.getBoundingClientRect(), r=active.getBoundingClientRect();
+      const w=Math.max(60, r.width*0.68);
+      underline.style.width=w+'px';
+      underline.style.left=(r.left-navR.left+(r.width-w)/2)+'px';
+    }
+    positionUnderline();
+    window.addEventListener('resize', positionUnderline);
+
+    // Let real links navigate; only prevent for hash (none here)
+    navEl.querySelectorAll('.tab').forEach(t=>{
+      t.addEventListener('click', e=>{
+        const href = t.getAttribute('href') || '';
+        if(href.startsWith('#')){
+          e.preventDefault();
+          navEl.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+          t.classList.add('active'); positionUnderline();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
