@@ -77,7 +77,7 @@
     .underline{position:absolute; bottom:6px; height:4px; border-radius:2px; background:var(--accent); transition: left .25s ease, width .25s ease;}
 
     /* Markers */
-    .dot-marker{ width:8px; height:8px; border-radius:50%; background:#fff; border:2px solid rgba(0,0,0,.35); box-shadow:0 0 6px rgba(0,0,0,.35); }
+    .dot-marker{ width:8px; height:8px; border-radius:50%; background:#fff; border:2px solid rgba(0,0,0,.35); box-shadow:0 0 6px rgba(0,0,0,.35); cursor:pointer; }
     .photo-marker{ width:38px; height:38px; border-radius:50%; overflow:hidden; border:3px solid #fff; box-shadow:0 0 8px rgba(0,0,0,.45); background:#999; cursor:pointer; }
     .photo-marker img{width:100%; height:100%; object-fit:cover; display:block}
 
@@ -171,70 +171,107 @@
   });
   map.on("style.load", () => map.setFog({}));
 
-  // Helper: coming soon page for all not-yet-built destinations
-  const SOON = "coming-soon.html";
-
-  // Country markers (use cover.jpg from continent folders; fallback if missing)
+  // Spots
+  // photo:true => bulle photo qui apparaît au zoom
+  // photo:false => point simple (toujours visible)
+  // Tous les liens non configurés -> coming-soon.html
   const spots = [
-    // Ready
-    { name:"Japan",        coords:[138.0, 36.0],      img:"asia/japan/cover.jpg",            url:"asia/japan/" },
-    { name:"South Korea",  coords:[127.8, 36.3],      img:"asia/south-korea/cover.jpg",      url:"asia/south-korea/" },
+    // === Asia ===
+    { name:"Japan", coords:[138.0, 36.0], img:"asia/japan/cover.jpg", url:"asia/japan/", photo:true },
+    { name:"South Korea", coords:[127.8, 36.3], img:"asia/south-korea/cover.jpg", url:"asia/south-korea/", photo:true },
+    { name:"Vietnam", coords:[106.0, 16.0], img:"asia/vietnam/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"Indonesia", coords:[113.0, -0.8], img:"asia/indonesia/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"Singapore", coords:[103.8198, 1.3521], img:"asia/singapore/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"Jordan", coords:[36.0, 31.2], img:"asia/jordan/cover.jpg", url:"coming-soon.html", photo:true },
 
-    // Europe
-    { name:"Belgium",      coords:[4.5, 50.5],        img:"europe/belgium/cover.jpg",        url:SOON },
-    { name:"Luxembourg",   coords:[6.13, 49.75],      img:"europe/luxembourg/cover.jpg",     url:SOON },
-    { name:"France",       coords:[2.21, 46.23],      img:"europe/france/cover.jpg",         url:SOON },
-    { name:"Italy",        coords:[12.5, 42.8],       img:"europe/italy/cover.jpg",          url:SOON },
-    { name:"Iceland",      coords:[-19.0, 64.9],      img:"europe/iceland/cover.jpg",        url:SOON },
-    { name:"Romania",      coords:[25.0, 46.0],       img:"europe/romania/cover.jpg",        url:SOON },
-    { name:"Poland",       coords:[19.1, 52.1],       img:"europe/poland/cover.jpg",         url:SOON },
-    { name:"Cyprus",       coords:[33.2, 35.1],       img:"europe/cyprus/cover.jpg",         url:SOON },
-    { name:"Turkey",       coords:[35.0, 39.0],       img:"europe/turkey/cover.jpg",         url:SOON },
-    { name:"Germany",      coords:[10.45, 51.17],     img:"europe/germany/cover.jpg",        url:SOON },  /* NEW */
-    { name:"Hungary",      coords:[19.5, 47.16],      img:"europe/hungary/cover.jpg",        url:SOON },  /* NEW */
-    { name:"Norway",       coords:[8.47, 60.47],      img:"europe/norway/cover.jpg",         url:SOON },  /* NEW */
+    // === Europe (photo bubbles) ===
+    { name:"Belgium", coords:[4.5, 50.5], img:"europe/belgium/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"Luxembourg", coords:[6.13, 49.75], img:"europe/luxembourg/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"France", coords:[2.21, 46.23], img:"europe/france/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"Italy", coords:[12.5, 42.8], img:"europe/italy/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"Iceland", coords:[-19.0, 64.9], img:"europe/iceland/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"Romania", coords:[25.0, 46.0], img:"europe/romania/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"Poland", coords:[19.1, 52.1], img:"europe/poland/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"Cyprus", coords:[33.2, 35.1], img:"europe/cyprus/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"Turkey", coords:[35.0, 39.0], img:"europe/turkey/cover.jpg", url:"coming-soon.html", photo:true },
 
-    // Africa
-    { name:"Egypt",        coords:[29.9, 26.8],       img:"africa/egypt/cover.jpg",          url:SOON },
-    { name:"Morocco",      coords:[-6.0, 31.8],       img:"africa/morocco/cover.jpg",        url:SOON },
-    { name:"Lesotho",      coords:[28.23, -29.5],     img:"africa/lesotho/cover.jpg",        url:SOON },
-    { name:"Namibia",      coords:[18.49, -22.56],    img:"africa/namibia/cover.jpg",        url:SOON },
-    { name:"South Africa", coords:[24.0, -29.0],      img:"africa/south-africa/cover.jpg",   url:SOON },
-    { name:"Botswana",     coords:[24.0, -22.0],      img:"africa/botswana/cover.jpg",       url:SOON },
+    // Ajouts demandés en BULLE
+    { name:"Germany", coords:[10.5, 51.0], img:"europe/germany/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"Hungary", coords:[19.0, 47.2], img:"europe/hungary/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"Norway", coords:[10.5, 64.5], img:"europe/norway/cover.jpg", url:"coming-soon.html", photo:true },
 
-    // Asia
-    { name:"Vietnam",      coords:[106.0, 16.0],      img:"asia/vietnam/cover.jpg",          url:SOON },
-    { name:"Indonesia",    coords:[113.0, -0.8],      img:"asia/indonesia/cover.jpg",        url:SOON },
-    { name:"Singapore",    coords:[103.8198, 1.3521], img:"asia/singapore/cover.jpg",        url:SOON },
-    { name:"Jordan",       coords:[36.0, 31.2],       img:"asia/jordan/cover.jpg",           url:SOON }   /* NEW */
+    // === Africa (photo bubbles) ===
+    { name:"Egypt", coords:[29.9, 26.8], img:"africa/egypt/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"Morocco", coords:[-6.0, 31.8], img:"africa/morocco/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"Lesotho", coords:[28.23, -29.5], img:"africa/lesotho/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"Namibia", coords:[18.49, -22.56], img:"africa/namibia/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"South Africa", coords:[24.0, -29.0], img:"africa/south-africa/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"Botswana", coords:[24.0, -22.0], img:"africa/botswana/cover.jpg", url:"coming-soon.html", photo:true },
+
+    // === Simple dots (no photo bubble) ===
+    { name:"Ireland", coords:[-8.0, 53.4], url:"coming-soon.html", photo:false },
+    { name:"Northern Ireland", coords:[-6.5, 54.6], url:"coming-soon.html", photo:false },
+    { name:"Isle of Man", coords:[-4.5, 54.2], url:"coming-soon.html", photo:false },
+    { name:"United Kingdom", coords:[-1.5, 54.0], url:"coming-soon.html", photo:false },
+    { name:"Denmark", coords:[10.0, 56.0], url:"coming-soon.html", photo:false },
+    { name:"Sweden", coords:[15.0, 62.0], url:"coming-soon.html", photo:false },
+    { name:"Russia", coords:[100.0, 61.0], url:"coming-soon.html", photo:false },
+    { name:"Portugal", coords:[-8.0, 39.5], url:"coming-soon.html", photo:false },
+    { name:"Spain", coords:[-3.7, 40.0], url:"coming-soon.html", photo:false },
+    { name:"Gibraltar", coords:[-5.3, 36.1], url:"coming-soon.html", photo:false },
+    { name:"Vatican", coords:[12.45, 41.9], url:"coming-soon.html", photo:false },
+    { name:"Rome", coords:[12.5, 41.9], url:"coming-soon.html", photo:false },
+    { name:"Switzerland", coords:[8.2, 46.8], url:"coming-soon.html", photo:false },
+    { name:"Austria", coords:[13.3, 47.5], url:"coming-soon.html", photo:false },
+    { name:"Netherlands", coords:[5.3, 52.1], url:"coming-soon.html", photo:false },
+    { name:"Czechia", coords:[15.5, 49.8], url:"coming-soon.html", photo:false },
+    { name:"Slovakia", coords:[19.7, 48.7], url:"coming-soon.html", photo:false },
+    { name:"Bulgaria", coords:[25.5, 42.7], url:"coming-soon.html", photo:false },
+    { name:"Greece", coords:[23.7, 38.0], url:"coming-soon.html", photo:false },
+    { name:"Zambia", coords:[27.8, -13.1], url:"coming-soon.html", photo:false },
+    { name:"Zimbabwe", coords:[29.9, -19.0], url:"coming-soon.html", photo:false },
+    { name:"Ukraine", coords:[31.0, 49.0], url:"coming-soon.html", photo:false },
+    { name:"Belarus", coords:[28.0, 53.0], url:"coming-soon.html", photo:false },
+    { name:"Malta", coords:[14.4, 35.9], url:"coming-soon.html", photo:false },
+    { name:"Albania", coords:[20.0, 41.0], url:"coming-soon.html", photo:false },
+    { name:"San Marino", coords:[12.45, 43.9], url:"coming-soon.html", photo:false }
   ];
 
+  // Build markers
   const bundles=[];
   spots.forEach(s=>{
-    // small dot marker
-    const d=document.createElement('div'); d.className='dot-marker';
+    // small dot (always added)
+    const d=document.createElement('div'); d.className='dot-marker'; d.title = s.name;
+    d.addEventListener('click', ()=>location.href=s.url);
     new mapboxgl.Marker(d,{anchor:'center'}).setLngLat(s.coords).addTo(map);
 
-    // photo marker with fallback
-    const p=document.createElement('div'); p.className='photo-marker'; p.title=s.name;
-    const im=document.createElement('img');
-    im.src=s.img; im.alt=s.name;
-    im.onerror=()=>{ im.onerror=null; im.src=`https://source.unsplash.com/600x600/?${encodeURIComponent(s.name)}`; };
-    p.appendChild(im);
-    p.addEventListener('click',()=>location.href=s.url);
-    new mapboxgl.Marker(p,{anchor:'center'}).setLngLat(s.coords).addTo(map);
-
-    bundles.push({d,p});
+    // optional photo bubble
+    let p=null;
+    if(s.photo){
+      p=document.createElement('div');
+      p.className='photo-marker';
+      p.title=s.name;
+      const im=document.createElement('img'); im.alt=s.name; im.src=s.img || '';
+      // fallback image if missing
+      im.onerror=()=>{ im.onerror=null; im.src=`https://source.unsplash.com/600x600/?${encodeURIComponent(s.name)}`; };
+      p.appendChild(im);
+      p.addEventListener('click', ()=>location.href=s.url);
+      new mapboxgl.Marker(p,{anchor:'center'}).setLngLat(s.coords).addTo(map);
+    }
+    bundles.push({d,p,hasPhoto:!!p});
   });
 
-  // Show photo markers slightly earlier
   const SHOW_PHOTO_AT=3.0;
   function refreshMarkers(){
     const z=map.getZoom();
     bundles.forEach(b=>{
-      const show=z>=SHOW_PHOTO_AT;
-      b.d.style.display=show?'none':'block';
-      b.p.style.display=show?'block':'none';
+      if(b.hasPhoto){
+        const show=z>=SHOW_PHOTO_AT;
+        b.d.style.display=show?'none':'block';
+        b.p.style.display=show?'block':'none';
+      }else{
+        b.d.style.display='block';
+      }
     });
   }
   map.on('load', refreshMarkers);
@@ -253,7 +290,7 @@
   positionUnderline();
   window.addEventListener('resize', positionUnderline);
 
-  // Allow navigation for real links; only prevent default for hash links
+  // Let real links navigate; only prevent for hash
   navEl.querySelectorAll('.tab').forEach(t=>{
     t.addEventListener('click', e=>{
       const href = t.getAttribute('href') || '';
@@ -272,52 +309,12 @@
   const soBack = document.getElementById('soBack');
   const destList = document.getElementById('destList');
 
-  const destinations = [
-    // Countries
-    { label:'Japan', type:'country', url:'asia/japan/' },
-    { label:'South Korea', type:'country', url:'asia/south-korea/' },
-
-    { label:'Belgium', type:'country', url:SOON },
-    { label:'Luxembourg', type:'country', url:SOON },
-    { label:'France', type:'country', url:SOON },
-    { label:'Italy', type:'country', url:SOON },
-    { label:'Iceland', type:'country', url:SOON },
-    { label:'Romania', type:'country', url:SOON },
-    { label:'Poland', type:'country', url:SOON },
-    { label:'Cyprus', type:'country', url:SOON },
-    { label:'Turkey', type:'country', url:SOON },
-    { label:'Germany', type:'country', url:SOON },  // NEW
-    { label:'Hungary', type:'country', url:SOON },  // NEW
-    { label:'Norway', type:'country', url:SOON },   // NEW
-    { label:'Jordan', type:'country', url:SOON },   // NEW
-
-    { label:'Egypt', type:'country', url:SOON },
-    { label:'Morocco', type:'country', url:SOON },
-    { label:'Lesotho', type:'country', url:SOON },
-    { label:'Namibia', type:'country', url:SOON },
-    { label:'South Africa', type:'country', url:SOON },
-    { label:'Botswana', type:'country', url:SOON },
-
-    { label:'Vietnam', type:'country', url:SOON },
-    { label:'Indonesia', type:'country', url:SOON },
-    { label:'Singapore', type:'country', url:SOON },
-
-    // Cities (only for the ones that exist already)
-    { label:'Tokyo', type:'city', url:'asia/japan/#tokyo' },
-    { label:'Kyoto', type:'city', url:'asia/japan/#kyoto' },
-    { label:'Osaka', type:'city', url:'asia/japan/#osaka' },
-    { label:'Okinawa', type:'city', url:'asia/japan/#okinawa' },
-    { label:'Ishigaki', type:'city', url:'asia/japan/#ishigaki' },
-    { label:'Yonaguni', type:'city', url:'asia/japan/#yonaguni' },
-
-    { label:'Seoul', type:'city', url:'asia/south-korea/#seoul' },
-    { label:'Busan', type:'city', url:'asia/south-korea/#busan' },
-    { label:'Jeju', type:'city', url:'asia/south-korea/#jeju' },
-    { label:'Daegu', type:'city', url:'asia/south-korea/#daegu' },
-    { label:'Gyeongju', type:'city', url:'asia/south-korea/#gyeongju' },
-    { label:'Andong', type:'city', url:'asia/south-korea/#andong' },
-    { label:'Sokcho', type:'city', url:'asia/south-korea/#sokcho' }
-  ];
+  // Build destinations from spots (country-level + all entries)
+  const destinations = spots.map(s=>({
+    label: s.name,
+    type: 'country',
+    url: s.url
+  }));
 
   function renderList(query=''){
     const q = query.trim().toLowerCase();
