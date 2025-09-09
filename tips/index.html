@@ -1,76 +1,274 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Conseils · HodoGuides</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HodoGuides · Tips</title>
 
-<link rel="icon" href="/images/favicon.png" type="image/png" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="icon" href="../images/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-<style>
-  :root{ --nav-h:72px; --accent:#8f88ff; }
-  *{box-sizing:border-box} html,body{height:100%}
-  body{
-    margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;
-    color:#fff; background:#0e1420;
-    background-image:
-      radial-gradient(ellipse at 50% 40%, #1d2845 0%, #0e1420 60%, #0b0f18 100%),
-      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.18) 0, rgba(255,255,255,0) 100%),
-      radial-gradient(2px 2px at 70% 60%, rgba(255,255,255,.14) 0, rgba(255,255,255,0) 100%);
-  }
-  header{padding:18px; font-weight:800; font-size:22px}
-  .section{padding:0 14px 90px; max-width:900px}
-  details{background:#151923; border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:12px 14px; margin:10px 0}
-  summary{cursor:pointer; font-weight:800; font-size:16px; display:flex; align-items:center; gap:10px}
-  .tip{margin:8px 0; padding-left:8px}
-  .tip i{opacity:.8; margin-right:6px}
-  a.inline{color:#cfe0ff}
-  /* bottom nav (active: Conseils) */
-  .nav{position:fixed; left:0; right:0; bottom:0; height: calc(var(--nav-h)); padding:10px 8px; background:rgba(15,15,20,.92); backdrop-filter: blur(6px); border-top:1px solid rgba(255,255,255,.06); display:flex; align-items:flex-end; justify-content:space-around; z-index:25;}
-  .tab{position:relative; display:flex; flex-direction:column; align-items:center; gap:6px; font-size:12px; color:#cfcfd3; text-decoration:none; min-width:86px;}
-  .tab i{font-size:22px; opacity:.9}
-  .tab.active{color:#fff}
-  .tab.active i{color:var(--accent)}
-  .underline{position:absolute; bottom:6px; height:4px; border-radius:2px; background:var(--accent);}
-</style>
+  <style>
+    :root{
+      --accent:#7e8db0;           /* brand accent */
+      --bg:#0e1420;
+      --card:#151923;
+      --muted:#cfcfd3;
+      --nav-h:72px;
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;
+      color:#fff; background:var(--bg);
+      background-image:
+        radial-gradient(ellipse at 50% 40%, #1d2845 0%, #0e1420 60%, #0b0f18 100%),
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.18) 0, rgba(255,255,255,0) 100%),
+        radial-gradient(2px 2px at 70% 60%, rgba(255,255,255,.14) 0, rgba(255,255,255,0) 100%),
+        radial-gradient(1.5px 1.5px at 40% 80%, rgba(255,255,255,.10) 0, rgba(255,255,255,0) 100%);
+      background-repeat:no-repeat;
+      padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
+      min-height:100vh;
+    }
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      display:flex; align-items:center; gap:10px; padding:16px 16px 10px;
+      background:linear-gradient(180deg, rgba(14,20,32,1) 70%, rgba(14,20,32,0) 100%);
+      text-shadow:0 2px 10px rgba(0,0,0,.35);
+    }
+    .brand-title{ font-weight:800; font-size:28px; letter-spacing:.3px; }
+    .by-erika{ height:28px; opacity:.95; pointer-events:none; filter: drop-shadow(0 1px 1px rgba(0,0,0,.35)); transform: translateY(2px); }
+    @media (max-width:480px){
+      .brand-title{ font-size:26px; }
+      .by-erika{ height:22px; }
+    }
+
+    .wrap{max-width:1100px; margin:0 auto; padding:6px 16px 24px;}
+
+    /* Featured cards */
+    .featured{margin:8px 0 20px;}
+    .featured h2{margin:0 0 10px; font-size:18px; font-weight:800; opacity:.95}
+    .cards{display:flex; gap:14px; overflow-x:auto; padding:6px 2px 10px; scrollbar-width:none;}
+    .cards::-webkit-scrollbar{display:none}
+    .card{
+      position:relative; flex:0 0 260px; border-radius:16px; overflow:hidden;
+      background:var(--card); text-decoration:none; color:#fff; box-shadow:0 8px 24px rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.06);
+    }
+    .card .thumb{height:120px; background:linear-gradient(135deg,#2a3450,#182033);}
+    .card .thumb i{font-size:34px; opacity:.9; margin:22px 0 0 22px; display:inline-block}
+    .card .body{padding:12px;}
+    .card .title{font-weight:800; font-size:16px; line-height:1.25; margin:0 0 6px;}
+    .card .desc{color:var(--muted); font-size:14px; margin:0;}
+    .chip{position:absolute; top:10px; right:10px; background:#fffb; color:#0d1220; font-weight:800; font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid rgba(0,0,0,.08);}
+
+    /* Articles */
+    .articles{display:grid; gap:16px;}
+    article{
+      background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08);
+      border-radius:16px; overflow:hidden;
+    }
+    .art-head{display:flex; align-items:center; gap:10px; padding:14px;}
+    .art-head .ico{width:40px; height:40px; border-radius:10px; background:rgba(255,255,255,.1); display:grid; place-items:center;}
+    .art-head h3{margin:0; font-size:18px;}
+    .art-meta{margin-left:auto; color:var(--muted); font-size:12px;}
+    .art-body{padding:0 14px 14px; color:#e6e7ea; line-height:1.6;}
+    .art-body p{margin:10px 0;}
+    .art-body ul{margin:8px 0 0 18px}
+    .art-body a{color:#cfe0ff; text-decoration:none}
+    .art-body a:hover{text-decoration:underline}
+
+    /* Notify box */
+    .notify{
+      margin:22px 0 8px; padding:14px; border-radius:14px;
+      background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08);
+    }
+    .notify form{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .notify input[type="email"]{
+      flex:1; min-width:220px; height:42px; border-radius:12px; border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.1); color:#fff; padding:0 12px; outline:none;
+    }
+    .notify .btn{ height:42px; background:var(--accent); color:#fff; border:0; border-radius:12px; padding:0 16px; font-weight:800; cursor:pointer; }
+    .notify .btn:hover{ filter:brightness(.97) }
+
+    /* Bottom nav (same as Explore/My Guides) */
+    .nav{
+      position:fixed; left:0; right:0; bottom:0;
+      height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
+      padding:10px 8px calc(10px + env(safe-area-inset-bottom, 0px));
+      background:rgba(15,15,20,.92); backdrop-filter: blur(6px);
+      border-top:1px solid rgba(255,255,255,.06);
+      display:flex; align-items:flex-end; justify-content:space-around; z-index:25;
+    }
+    .tab{position:relative; display:flex; flex-direction:column; align-items:center; gap:6px; font-size:12px; color:var(--muted); text-decoration:none; min-width:86px;}
+    .tab i{font-size:22px; opacity:.9}
+    .tab.active{color:#fff}
+    .tab.active i{color:var(--accent)}
+    .underline{position:absolute; bottom:6px; height:4px; border-radius:2px; background:var(--accent); transition: left .25s ease, width .25s ease;}
+  </style>
 </head>
 <body>
 
-  <header>Conseils</header>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="brand-title">HodoGuides</div>
+    <img class="by-erika" src="../images/erika-logo.png" alt="by Erika" />
+  </div>
 
-  <section class="section">
-    <details open>
-      <summary><i class="fa-solid fa-flag"></i>Japon</summary>
-      <div class="tip"><i class="fa-solid fa-sim-card"></i>eSIM ou pocket Wi-Fi recommandés (couverture excellente). </div>
-      <div class="tip"><i class="fa-solid fa-train-subway"></i>JR Pass utile seulement si vous faites plusieurs longs trajets (Tokyo↔Kyoto/Osaka, etc.).</div>
-      <div class="tip"><i class="fa-solid fa-battery-half"></i>Nombreux lieux refusent les batteries >100Wh dans certains musées/salles ; privilégier 10–20 000 mAh.</div>
-      <div class="tip"><i class="fa-solid fa-money-bill-wave"></i>Beaucoup d’endroits restent cash-friendly ; avoir quelques yens même si le sans-contact progresse.</div>
-      <div class="tip"><i class="fa-solid fa-map-location-dot"></i>Consulte la carte: <a class="inline" href="/japan/">/japan/</a></div>
-    </details>
+  <div class="wrap">
+    <!-- Featured -->
+    <section class="featured" aria-labelledby="featured-title">
+      <h2 id="featured-title">Featured tips</h2>
+      <div class="cards">
+        <a class="card" href="#tip-visa" aria-label="Do I need a visa?">
+          <span class="chip">Start here</span>
+          <div class="thumb"><i class="fa-solid fa-passport"></i></div>
+          <div class="body">
+            <div class="title">Do I need a visa?</div>
+            <p class="desc">Quick ways to check visa rules + what to prepare.</p>
+          </div>
+        </a>
+        <a class="card" href="#tip-vaccines" aria-label="Vaccines & travel health">
+          <div class="thumb"><i class="fa-solid fa-syringe"></i></div>
+          <div class="body">
+            <div class="title">Vaccines & travel health</div>
+            <p class="desc">When to check, where to check, what to bring.</p>
+          </div>
+        </a>
+        <a class="card" href="#tip-connectivity" aria-label="eSIM vs SIM vs Pocket Wi-Fi">
+          <div class="thumb"><i class="fa-solid fa-sim-card"></i></div>
+          <div class="body">
+            <div class="title">eSIM vs SIM vs Pocket Wi-Fi</div>
+            <p class="desc">Best pick by country and trip length.</p>
+          </div>
+        </a>
+        <a class="card" href="#tip-money" aria-label="Money, cards & safety">
+          <div class="thumb"><i class="fa-solid fa-wallet"></i></div>
+          <div class="body">
+            <div class="title">Money, cards & safety</div>
+            <p class="desc">Cash vs contactless, fees, and simple safety habits.</p>
+          </div>
+        </a>
+      </div>
+    </section>
 
-    <details>
-      <summary><i class="fa-solid fa-flag"></i>Chine</summary>
-      <div class="tip"><i class="fa-solid fa-passport"></i>Visa requis pour la plupart des nationalités (vérifie exemptions/visa transit 72/144 h).</div>
-      <div class="tip"><i class="fa-solid fa-wifi"></i>Accès limité (Great Firewall) : pense à une solution d’accès approuvée avant le départ.</div>
-      <div class="tip"><i class="fa-solid fa-battery-full"></i>Avion : batteries externes en cabine uniquement, ≤100 Wh sans autorisation.</div>
-      <div class="tip"><i class="fa-solid fa-mobile-screen"></i>Paiement mobile omniprésent (WeChat/Alipay) ; cartes int’l parfois refusées.</div>
-    </details>
+    <!-- Articles -->
+    <section class="articles">
+      <article id="tip-visa">
+        <div class="art-head">
+          <div class="ico"><i class="fa-solid fa-passport"></i></div>
+          <h3>Do I need a visa?</h3>
+          <div class="art-meta">Updated: 2025-01</div>
+        </div>
+        <div class="art-body">
+          <p>Visa rules depend on <b>your passport</b>, <b>destination</b>, and <b>trip purpose/length</b>. Here’s a fast checklist:</p>
+          <ul>
+            <li><b>Check official sources first.</b> Search “<i>Country name</i> immigration visa citizens of <i>Your nationality</i>”. Prefer government (.gov) or embassy pages.</li>
+            <li><b>Transit rules matter.</b> Even if you don’t leave the airport, some hubs require a transit visa.</li>
+            <li><b>Passport validity.</b> Many countries require <b>≥6 months</b> validity and free pages.</li>
+            <li><b>Onward ticket & funds.</b> Be ready to show return/onward travel and proof of funds or accommodation.</li>
+            <li><b>e-Visa windows.</b> Some visas open only 30–90 days before arrival—set a reminder.</li>
+          </ul>
+          <p>Need help for visa/passport specifics? Head to HodoPlanner’s detailed form and select <i>“Visa & passport help”</i>. I’ll check requirements for you.</p>
+          <p><a href="https://planner.erikaramel.com" target="_blank" rel="noopener">Open HodoPlanner</a></p>
+        </div>
+      </article>
 
-    <details>
-      <summary><i class="fa-solid fa-flag"></i>Corée du Sud</summary>
-      <div class="tip"><i class="fa-solid fa-bus"></i>Recharge T-money pour métro/bus partout, aussi valable dans certaines boutiques.</div>
-      <div class="tip"><i class="fa-solid fa-snowflake"></i>Clim forte l’été : apporte une couche légère pour intérieurs/métros.</div>
-      <div class="tip"><i class="fa-solid fa-briefcase-medical"></i>Pharmacies très aidantes mais fermées tard ; pense aux basiques (pansements, médocs courants).</div>
-    </details>
-  </section>
+      <article id="tip-vaccines">
+        <div class="art-head">
+          <div class="ico"><i class="fa-solid fa-syringe"></i></div>
+          <h3>Vaccines & travel health</h3>
+          <div class="art-meta">Updated: 2025-01</div>
+        </div>
+        <div class="art-body">
+          <p>Check health advice from your country’s official travel health service or WHO. Typical timing:</p>
+          <ul>
+            <li><b>6–8 weeks before</b>: consult a travel clinic (boosters, region-specific vaccines, malaria risk).</li>
+            <li>Pack a <b>basic kit</b>: pain/fever meds, band-aids, rehydration salts, motion sickness tabs.</li>
+            <li>Bring <b>prescriptions</b> in original packaging + a doctor note if needed.</li>
+          </ul>
+          <p>Some destinations (e.g., Yellow Fever areas) require <b>proof of vaccination</b>—keep a digital + paper copy.</p>
+        </div>
+      </article>
 
-  <nav class="nav">
-    <a class="tab" href="/"><i class="fa-solid fa-compass"></i><span>Explore</span></a>
-    <a class="tab" href="/my-guides/"><i class="fa-solid fa-book-open"></i><span>My Guides</span></a>
-    <a class="tab active" href="/tips/"><i class="fa-solid fa-lightbulb"></i><span>Conseils</span></a>
-    <div class="underline" style="left: calc(50% + 33%); transform: translateX(-50%); width: 90px;"></div>
+      <article id="tip-connectivity">
+        <div class="art-head">
+          <div class="ico"><i class="fa-solid fa-sim-card"></i></div>
+          <h3>eSIM vs SIM vs Pocket Wi-Fi</h3>
+          <div class="art-meta">Updated: 2025-01</div>
+        </div>
+        <div class="art-body">
+          <p><b>eSIM</b> = easiest if your phone supports it; buy online, activate before landing. <b>Physical SIM</b> is cheap locally but needs a counter/KYC. <b>Pocket Wi-Fi</b> good for groups, but you’ll carry/charge an extra device.</p>
+          <ul>
+            <li><b>Short trips (≤2 weeks)</b>: eSIM with enough data (5–15 GB).</li>
+            <li><b>Long trips</b>: monthly eSIM/SIM often cheaper.</li>
+            <li><b>Rural coverage</b>: check carrier maps; consider dual-eSIM (primary + backup).</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="tip-money">
+        <div class="art-head">
+          <div class="ico"><i class="fa-solid fa-wallet"></i></div>
+          <h3>Money, cards & simple safety</h3>
+          <div class="art-meta">Updated: 2025-01</div>
+        </div>
+        <div class="art-body">
+          <p>Use a <b>no-FX-fee card</b> where possible; keep a little local cash for small shops/markets. Withdraw from <b>bank ATMs</b> to avoid dynamic currency conversion.</p>
+          <ul>
+            <li><b>Backup card</b> in a separate place; enable location-based security notifications.</li>
+            <li>Photocopy key docs (passport) and store in secure cloud.</li>
+            <li>At night or in crowds: cross-body bag, phone leash, simple awareness beats gadgets.</li>
+          </ul>
+        </div>
+      </article>
+
+      <div class="notify">
+        <div class="muted"><i class="fa-regular fa-bell"></i> More tip articles are coming (packing lists, rail passes, travel apps…). Get notified:</div>
+        <form action="https://formspree.io/f/your-id" method="POST">
+          <input type="email" name="email" placeholder="Your email" required />
+          <button class="btn" type="submit"><i class="fa-solid fa-bell"></i> Notify me</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- Bottom navigation -->
+  <nav class="nav" id="bottomNav">
+    <a class="tab" href="../index.html"><i class="fa-solid fa-compass"></i><span>Explore</span></a>
+    <a class="tab" href="../my-guides/"><i class="fa-solid fa-book-open"></i><span>My Guides</span></a>
+    <a class="tab active" href="./"><i class="fa-solid fa-lightbulb"></i><span>Tips</span></a>
+    <div class="underline" id="navUnderline"></div>
   </nav>
 
+  <script>
+    // Bottom nav underline (same behavior as other pages)
+    const navEl=document.getElementById('bottomNav');
+    const underline=document.getElementById('navUnderline');
+    function positionUnderline(){
+      const active=navEl.querySelector('.tab.active'); if(!active) return;
+      const navR=navEl.getBoundingClientRect(), r=active.getBoundingClientRect();
+      const w=Math.max(60, r.width*0.68);
+      underline.style.width=w+'px';
+      underline.style.left=(r.left-navR.left+(r.width-w)/2)+'px';
+    }
+    positionUnderline();
+    window.addEventListener('resize', positionUnderline);
+
+    // Let real links navigate; only prevent for hash (none here)
+    navEl.querySelectorAll('.tab').forEach(t=>{
+      t.addEventListener('click', e=>{
+        const href = t.getAttribute('href') || '';
+        if(href.startsWith('#')){
+          e.preventDefault();
+          navEl.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+          t.classList.add('active'); positionUnderline();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
