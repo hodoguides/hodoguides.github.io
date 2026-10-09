@@ -8,6 +8,8 @@ Pour en ajouter un, copie un bloc existant, colle-le à la fin et modifie-le.
 ```yaml
   - id: nom-du-lieu-sans-espaces        # unique, minuscules, tirets (sert au lien de partage)
     name: { fr: Nom en français, en: Name in English }   # ou juste : name: Nom identique
+    name_ja: 伏見稲荷大社          # facultatif · nom en japonais (ou dans la langue du pays)
+    icon: torii                   # facultatif · dessin sur la carte (liste ci-dessous)
     city: Kyoto
     category: food        # food · cafe · see · photo · activity · sleep · hidden
     visited: true         # true = j'y suis allée · false = sur ma liste (pas encore testé)
@@ -77,3 +79,22 @@ Mets tes photos dans `images/places/japan/` en **JPG de moins de 300 Ko**
 
 Les pays sans `places:` affichent « J'y suis allée · guide bientôt » quand on clique dessus.
 Pour changer la photo ronde d'un pays, modifie `cover:` dans `data/countries.yaml`.
+
+## Les dessins (`icon:`)
+
+Chaque lieu peut avoir son petit dessin sur la carte et dans la liste :
+
+| Code | Dessin | Code | Dessin |
+|---|---|---|---|
+| `torii` | portail de sanctuaire | `deer` | daim |
+| `funaya` | maison-bateau | `bamboo` | bambous |
+| `dango` | brochette de dango | `cup` | tasse de café |
+| `lantern` | lanterne de pierre | `pagoda` | pagode / temple |
+| `acorn` | gland (forêt, Ghibli) | `wheel` | grande roue (parc d'attractions) |
+| `takoyaki` | takoyaki | `boat` | bateau sur l'eau |
+| `ramen` | bol de ramen | `camera` | appareil photo |
+| `ticket` | billet | `gem` | pierre précieuse (pépite) |
+
+Sans `icon:`, le lieu prend le dessin de sa catégorie (Manger → ramen, À voir → torii…).
+Seuls les plats, les boissons et le lapin ont un petit visage : c'est voulu.
+Besoin d'un nouveau dessin (Mont Fuji, onsen…) ? Demande-le, je l'ajoute à la collection.

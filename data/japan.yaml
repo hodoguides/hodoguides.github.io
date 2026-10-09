@@ -10,6 +10,12 @@
 country:
   id: japan
   name: { fr: Japon, en: Japan }
+  name_ja: 日本
+  photo: asia/japan/okinawa/cover.jpg   # photo de la carte « Japon » sur l'accueil
+  region: { fr: Asie, en: Asia }
+  intro:
+    fr: "Mes adresses testées et repérées, de Kyoto aux îles d'Okinawa."
+    en: "The places I've tried and spotted, from Kyoto to the Okinawa islands."
   center: { lat: 35.0, lng: 135.9 }   # vue de départ de la carte
   zoom: 6.3
 
@@ -19,6 +25,8 @@ places:
 
   - id: fushimi-inari
     name: Fushimi Inari Taisha
+    name_ja: 伏見稲荷大社
+    icon: torii            # dessin sur la carte (voir la liste dans le mode d'emploi)
     city: Kyoto
     category: see          # food | cafe | see | photo | activity | sleep | hidden
     visited: true          # true = j'y suis allée · false = sur ma liste
@@ -42,6 +50,8 @@ places:
 
   - id: arashiyama-bamboo
     name: { fr: Forêt de bambous d'Arashiyama, en: Arashiyama Bamboo Grove }
+    name_ja: 竹林の小径
+    icon: bamboo            # dessin sur la carte (voir la liste dans le mode d'emploi)
     city: Kyoto
     category: photo
     visited: true
@@ -62,6 +72,8 @@ places:
 
   - id: nishiki-market
     name: { fr: Marché Nishiki, en: Nishiki Market }
+    name_ja: 錦市場
+    icon: dango            # dessin sur la carte (voir la liste dans le mode d'emploi)
     city: Kyoto
     category: food
     visited: true
@@ -81,6 +93,8 @@ places:
 
   - id: arabica-higashiyama
     name: "% Arabica Higashiyama"
+    name_ja: アラビカ 東山
+    icon: cup            # dessin sur la carte (voir la liste dans le mode d'emploi)
     city: Kyoto
     category: cafe
     visited: false
@@ -96,6 +110,8 @@ places:
 
   - id: nara-park
     name: { fr: Parc de Nara, en: Nara Park }
+    name_ja: 奈良公園
+    icon: deer            # dessin sur la carte (voir la liste dans le mode d'emploi)
     city: Nara
     category: activity
     visited: true
@@ -117,6 +133,8 @@ places:
 
   - id: dotonbori
     name: Dōtonbori
+    name_ja: 道頓堀
+    icon: takoyaki            # dessin sur la carte (voir la liste dans le mode d'emploi)
     city: Osaka
     category: food
     visited: true
@@ -132,6 +150,8 @@ places:
 
   - id: universal-studios-japan
     name: Universal Studios Japan
+    name_ja: ユニバーサル・スタジオ・ジャパン
+    icon: wheel            # dessin sur la carte (voir la liste dans le mode d'emploi)
     city: Osaka
     category: activity
     visited: true
@@ -151,6 +171,8 @@ places:
 
   - id: ghibli-park
     name: { fr: Parc Ghibli, en: Ghibli Park }
+    name_ja: ジブリパーク
+    icon: acorn            # dessin sur la carte (voir la liste dans le mode d'emploi)
     city: Nagakute (Aichi)
     category: activity
     visited: true
@@ -169,6 +191,8 @@ places:
 
   - id: ine-funaya
     name: { fr: Maisons-bateaux d'Ine (Funaya), en: Ine Boathouses (Funaya) }
+    name_ja: 伊根の舟屋
+    icon: funaya            # dessin sur la carte (voir la liste dans le mode d'emploi)
     city: Ine
     category: hidden
     visited: true
@@ -189,6 +213,8 @@ places:
 
   - id: okunoin
     name: { fr: Cimetière d'Okunoin, en: Okunoin Cemetery }
+    name_ja: 奥之院
+    icon: lantern            # dessin sur la carte (voir la liste dans le mode d'emploi)
     city: Kōyasan
     category: hidden
     visited: true
@@ -208,6 +234,8 @@ places:
 
   - id: koyasan-shukubo
     name: { fr: Nuit au temple (shukubō), en: Temple stay (shukubō) }
+    name_ja: 宿坊
+    icon: pagoda            # dessin sur la carte (voir la liste dans le mode d'emploi)
     city: Kōyasan
     category: sleep
     visited: false
@@ -223,6 +251,8 @@ places:
 
   - id: kabira-bay
     name: { fr: Baie de Kabira, en: Kabira Bay }
+    name_ja: 川平湾
+    icon: boat            # dessin sur la carte (voir la liste dans le mode d'emploi)
     city: Ishigaki
     category: photo
     visited: false
