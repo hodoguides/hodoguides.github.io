@@ -1,0 +1,92 @@
+/* HodoGuides bêta · map-first app (loaded after kawaii.css) */
+html, body.app{height:100%; overflow:hidden}
+body.app{overscroll-behavior:none}
+#map{position:fixed; inset:0}
+.mapboxgl-ctrl-bottom-left{bottom:calc(var(--safe-b) + 58px)}
+body[data-view="country"] .mapboxgl-ctrl-bottom-left{bottom:auto; left:auto; right:12px; top:calc(env(safe-area-inset-top,0px) + 64px)}
+
+/* Show an element only in one view */
+body[data-view="world"] [data-only="country"],
+body[data-view="country"] [data-only="world"]{display:none !important}
+
+/* ---------- Top bar ---------- */
+.bar{position:fixed; z-index:40; top:calc(env(safe-area-inset-top,0px) + 12px); left:12px; right:12px; display:flex; justify-content:space-between; align-items:center; gap:8px; pointer-events:none}
+.bar > *{pointer-events:auto}
+.chip-brand{background:#fff; border:2px solid var(--ink); border-radius:14px; padding:3px 11px 3px 4px; box-shadow:2px 2px 0 var(--pink)}
+.chip-brand b{font-size:16px}
+.bar-actions{display:flex; gap:6px; align-items:center}
+.square{width:40px; height:40px; border-radius:12px; border:2px solid var(--ink); background:#fff; box-shadow:2px 2px 0 var(--ink); font-size:15px; display:grid; place-items:center}
+.btn.small{min-height:38px; padding:0 13px; font-size:13px; border-width:2px; box-shadow:2px 2px 0 var(--ink)}
+
+/* ---------- World view ---------- */
+.intro{position:fixed; z-index:30; top:calc(env(safe-area-inset-top,0px) + 66px); left:16px; right:16px; max-width:420px;
+  background:#fff; border:var(--line); border-radius:18px; padding:12px 16px; box-shadow:3px 3px 0 var(--pink); transition:opacity .3s, transform .3s}
+.intro .kicker{font-size:10.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--red)}
+.intro h1{margin-top:3px; font-size:clamp(18px, 4.6vw, 24px); line-height:1.2}
+.intro.faded, body.panel-open .intro{opacity:0; transform:translateY(-8px); pointer-events:none}
+.world-foot{position:fixed; z-index:30; left:12px; right:12px; bottom:calc(var(--safe-b) + 14px); display:flex; gap:6px; align-items:center; flex-wrap:wrap; pointer-events:none}
+.world-foot > *{pointer-events:auto}
+.world-foot .btn{margin-left:auto}
+.world-foot .pill{box-shadow:2px 2px 0 var(--ink)}
+.wm-pop{position:fixed; z-index:35; left:12px; right:12px; bottom:calc(var(--safe-b) + 66px); max-width:360px}
+@media (min-width:960px){ .wm-pop{left:auto; right:16px} }
+
+.beta-tag{position:fixed; z-index:20; right:12px; bottom:calc(var(--safe-b) + 62px); margin:0; font-size:10.5px; font-weight:700; color:#8a6a1f; background:var(--yellow-soft); border:1.5px dashed var(--yellow); border-radius:99px; padding:2px 9px}
+body[data-view="country"] .beta-tag, body.panel-open .beta-tag{display:none}
+
+/* ---------- Country view ---------- */
+.country-bar{position:fixed; z-index:30; top:calc(env(safe-area-inset-top,0px) + 64px); left:12px; display:flex; gap:6px}
+
+/* ---------- Panel: bottom sheet on mobile, side panel on desktop ---------- */
+.panel{position:fixed; z-index:50; left:0; right:0; bottom:0; height:var(--panel-h, 42vh);
+  background:var(--paper); border-top:var(--line); border-radius:24px 24px 0 0; box-shadow:0 -5px 0 var(--pink);
+  display:flex; flex-direction:column; transition:height .28s cubic-bezier(.2,.8,.2,1), transform .28s cubic-bezier(.2,.8,.2,1)}
+.panel[data-size="closed"]{transform:translateY(calc(100% + 12px)); visibility:hidden; transition:transform .28s, visibility 0s .28s}
+.panel[data-size="peek"]{--panel-h:44vh; --panel-h:44dvh}
+.panel[data-size="full"]{--panel-h:88vh; --panel-h:88dvh}
+.grip{flex:0 0 auto; display:grid; place-items:center; height:26px; border:0; background:none; touch-action:none; cursor:grab}
+.grip span{width:44px; height:5px; border-radius:3px; background:#c9c6da}
+.panel-body{flex:1 1 auto; overflow-y:auto; overscroll-behavior:contain; padding:0 16px calc(var(--safe-b) + 18px)}
+@media (min-width:960px){
+  .panel, .panel[data-size="peek"], .panel[data-size="full"]{top:72px; bottom:16px; left:16px; right:auto; width:400px; height:auto; border:var(--line); border-radius:24px; box-shadow:5px 5px 0 var(--pink)}
+  .panel[data-size="closed"]{transform:translateX(calc(-100% - 40px))}
+  .grip{display:none}
+  .panel-body{padding-top:16px}
+  body[data-view="country"] .country-bar{left:432px; top:84px}
+}
+
+/* panel content */
+.p-head{display:flex; align-items:baseline; gap:8px; flex-wrap:wrap}
+.p-head h2{font-size:28px}
+.p-head .jp{font-size:15px}
+.p-head .pill{margin-left:auto}
+.p-intro{margin:4px 0 0; color:var(--ink-2); font-size:13.5px}
+.p-back{border:0; background:none; padding:4px 0; font-weight:700; font-size:13.5px; color:var(--ink-2)}
+.panel .chips{margin:12px -16px 2px; padding:2px 16px 6px}
+.panel .place{margin-top:10px}
+.panel .group-title{margin-top:16px}
+.p-section{margin:22px 0 0; font-size:19px; display:flex; align-items:baseline; gap:8px}
+.p-section .jp{font-size:13px}
+.panel .dest-grid, .panel .guides{grid-template-columns:1fr; margin-top:12px}
+.panel .rail{margin:0 -16px; padding:12px 16px 8px}
+.panel .about, .panel .planner{margin-top:18px}
+.search-box{display:flex; gap:8px; align-items:center; border:2px solid var(--ink); border-radius:14px; background:#fff; padding:0 12px; margin-top:4px}
+.search-box input{flex:1; min-width:0; height:44px; border:0; outline:none; background:none; font:inherit; font-size:16px; color:var(--ink)}
+.result{display:flex; gap:12px; align-items:center; width:100%; text-align:left; padding:10px; margin-top:10px}
+.result .icon-tile{flex:0 0 46px; height:46px; overflow:hidden}
+.result .icon-tile img{width:100%; height:100%; object-fit:cover}
+.result b{display:block; font-size:14.5px}
+.result small{font-size:12px; color:var(--ink-2); font-weight:600}
+
+/* the place sheet inside the panel */
+.panel .sheet-hero{margin:0 -16px; height:190px; border-top:var(--line)}
+.panel .sheet-body{padding:16px 0 0}
+
+/* ---------- Map markers per zoom level ---------- */
+body[data-level="region"] .wm.has-cover .wm-dot{display:none}
+body[data-level="region"] .wm.has-cover .wm-bubble{display:grid}
+body[data-view="country"] .wm{display:none}
+.mini, .result{font:inherit; color:inherit; cursor:pointer}
+.mini{padding:0; text-align:left}
+.mini-body{display:block}
+.panel .foot{padding:22px 0 6px}
