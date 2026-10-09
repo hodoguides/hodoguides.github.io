@@ -1,0 +1,233 @@
+# ============================================================
+#  HodoGuides · Japon / Japan
+#  Un bloc « - id: » = un lieu sur la carte.
+#  Mode d'emploi complet : data/COMMENT-AJOUTER-UN-LIEU.md
+#
+#  ⚠️ PROTOTYPE : les textes « review » et « experience » ci-dessous
+#  sont des EXEMPLES. Remplace-les par ton vrai avis avant de publier.
+# ============================================================
+
+country:
+  id: japan
+  name: { fr: Japon, en: Japan }
+  center: { lat: 35.0, lng: 135.9 }   # vue de départ de la carte
+  zoom: 6.3
+
+places:
+
+  # ---------------- KYOTO ----------------
+
+  - id: fushimi-inari
+    name: Fushimi Inari Taisha
+    city: Kyoto
+    category: see          # food | cafe | see | photo | activity | sleep | hidden
+    visited: true          # true = j'y suis allée · false = sur ma liste
+    verdict: love          # love = coup de cœur · recommend = recommandé · optional = si tu as le temps
+    lat: 34.9671
+    lng: 135.7727
+    review:
+      fr: "Les milliers de torii, c'est encore plus beau en vrai. Arrive tôt le matin et monte au-delà de la moitié : la foule disparaît."
+      en: "Thousands of torii gates, even more stunning in person. Arrive early and keep climbing past the halfway point: the crowds vanish."
+    experience:            # partie qui pourra devenir « premium » plus tard
+      fr: "Je suis arrivée vers 7h et j'avais presque les allées pour moi. La plupart des gens font demi-tour au carrefour de Yotsutsuji, mais la montée jusqu'au sommet vaut vraiment le coup pour l'ambiance, entre forêt et petits sanctuaires."
+      en: "I got there around 7am and had the paths almost to myself. Most people turn back at the Yotsutsuji crossing, but the hike to the summit is really worth it for the atmosphere, between forest and tiny shrines."
+    info:
+      when:     { fr: "Avant 8h ou en fin de journée", en: "Before 8am or late afternoon" }
+      price:    { fr: "Gratuit · ouvert 24h/24", en: "Free · open 24/7" }
+      duration: { fr: "2 à 3h jusqu'au sommet", en: "2–3h to the summit" }
+      access:   { fr: "Gare JR Inari, juste devant", en: "JR Inari Station, right in front" }
+    tips:
+      - fr: "Prends de l'eau : la montée est plus longue qu'on ne le pense."
+        en: "Bring water: the climb is longer than you'd think."
+
+  - id: arashiyama-bamboo
+    name: { fr: Forêt de bambous d'Arashiyama, en: Arashiyama Bamboo Grove }
+    city: Kyoto
+    category: photo
+    visited: true
+    verdict: recommend
+    lat: 35.0170
+    lng: 135.6713
+    review:
+      fr: "Magique tôt le matin, beaucoup moins en milieu de journée. Combine avec le temple Tenryū-ji juste à côté."
+      en: "Magical early in the morning, much less so at midday. Combine it with Tenryū-ji temple right next door."
+    experience:
+      fr: "Le sentier est plus court qu'on l'imagine. Pour de belles photos sans monde, il faut vraiment y être au lever du soleil."
+      en: "The path is shorter than you'd imagine. For good photos without crowds you really need to be there at sunrise."
+    info:
+      when:     { fr: "Lever du soleil", en: "Sunrise" }
+      price:    { fr: "Gratuit", en: "Free" }
+      duration: { fr: "30 min à 1h", en: "30 min – 1h" }
+      access:   { fr: "Gare JR Saga-Arashiyama, 10 min à pied", en: "JR Saga-Arashiyama Station, 10 min walk" }
+
+  - id: nishiki-market
+    name: { fr: Marché Nishiki, en: Nishiki Market }
+    city: Kyoto
+    category: food
+    visited: true
+    verdict: recommend
+    lat: 35.0050
+    lng: 135.7649
+    review:
+      fr: "Parfait pour grignoter des spécialités de Kyoto. Vas-y avec un petit budget « dégustation » et goûte un peu de tout."
+      en: "Perfect for snacking on Kyoto specialties. Go with a small tasting budget and try a bit of everything."
+    experience:
+      fr: "Mon conseil : ne mange pas en marchant, c'est mal vu ici. On mange devant le stand où on a acheté."
+      en: "My advice: don't eat while walking, it's frowned upon here. You eat in front of the stall where you bought it."
+    info:
+      when:     { fr: "Fin de matinée, avant le rush du midi", en: "Late morning, before the lunch rush" }
+      duration: { fr: "1 à 2h", en: "1–2h" }
+      access:   { fr: "Stations Shijō ou Karasuma", en: "Shijō or Karasuma stations" }
+
+  - id: arabica-higashiyama
+    name: "% Arabica Higashiyama"
+    city: Kyoto
+    category: cafe
+    visited: false
+    lat: 34.9983
+    lng: 135.7795
+    review:
+      fr: "Sur ma liste : tout le monde en parle, j'ai hâte de voir si ça vaut la file d'attente."
+      en: "On my list: everyone talks about it, I can't wait to see if it's worth the queue."
+    info:
+      access: { fr: "Près de la pagode Yasaka", en: "Near Yasaka Pagoda" }
+
+  # ---------------- NARA ----------------
+
+  - id: nara-park
+    name: { fr: Parc de Nara, en: Nara Park }
+    city: Nara
+    category: activity
+    visited: true
+    verdict: love
+    lat: 34.6851
+    lng: 135.8430
+    review:
+      fr: "Les daims en liberté qui saluent quand tu les salues : un moment hors du temps. Facile en excursion à la journée depuis Kyoto ou Osaka."
+      en: "Free-roaming deer that bow when you bow to them: a timeless moment. An easy day trip from Kyoto or Osaka."
+    experience:
+      fr: "Achète les biscuits pour daims (shika senbei) mais cache-les bien : ils sont très insistants ! Ne rate pas le Tōdai-ji et son grand Bouddha."
+      en: "Buy the deer crackers (shika senbei) but hide them well: the deer are very insistent! Don't miss Tōdai-ji and its Great Buddha."
+    info:
+      price:    { fr: "Parc gratuit · biscuits ~200 ¥", en: "Park free · crackers ~¥200" }
+      duration: { fr: "Une demi-journée", en: "Half a day" }
+      access:   { fr: "Gare Kintetsu-Nara, 5 min à pied", en: "Kintetsu-Nara Station, 5 min walk" }
+
+  # ---------------- OSAKA ----------------
+
+  - id: dotonbori
+    name: Dōtonbori
+    city: Osaka
+    category: food
+    visited: true
+    verdict: recommend
+    lat: 34.6687
+    lng: 135.5013
+    review:
+      fr: "Le quartier des néons et de la street food. Takoyaki et okonomiyaki obligatoires !"
+      en: "The neon and street-food district. Takoyaki and okonomiyaki are a must!"
+    info:
+      when:   { fr: "Le soir, pour les néons", en: "Evening, for the neon lights" }
+      access: { fr: "Station Namba", en: "Namba Station" }
+
+  - id: universal-studios-japan
+    name: Universal Studios Japan
+    city: Osaka
+    category: activity
+    visited: true
+    verdict: recommend
+    lat: 34.6654
+    lng: 135.4323
+    guide: ../asia/japan/osaka/universal-studios.html
+    review:
+      fr: "Super Nintendo World vaut à lui seul la journée. Prépare-toi bien : billets et Express Pass se réservent à l'avance."
+      en: "Super Nintendo World alone is worth the day. Plan ahead: tickets and Express Pass should be booked in advance."
+    info:
+      duration: { fr: "Une journée complète", en: "A full day" }
+      booking:  { fr: "Billets en ligne à l'avance", en: "Book tickets online in advance" }
+      access:   { fr: "Gare JR Universal City", en: "JR Universal City Station" }
+
+  # ---------------- NAGOYA / AICHI ----------------
+
+  - id: ghibli-park
+    name: { fr: Parc Ghibli, en: Ghibli Park }
+    city: Nagakute (Aichi)
+    category: activity
+    visited: true
+    verdict: love
+    lat: 35.1753
+    lng: 137.0904
+    guide: ../asia/japan/nagoya/ghibli-park/
+    review:
+      fr: "Un rêve pour les fans de Ghibli. Le Grand Entrepôt est incontournable. Les billets partent très vite : j'explique tout dans mon guide."
+      en: "A dream for Ghibli fans. The Grand Warehouse is unmissable. Tickets sell out fast: I explain everything in my guide."
+    info:
+      booking: { fr: "Réservation obligatoire, longtemps à l'avance", en: "Booking required, well in advance" }
+      access:  { fr: "Ligne Linimo, station Ai-Chikyūhaku-Kinen-Kōen", en: "Linimo Line, Ai-Chikyūhaku-Kinen-Kōen Station" }
+
+  # ---------------- KYOTO NORD (mer du Japon) ----------------
+
+  - id: ine-funaya
+    name: { fr: Maisons-bateaux d'Ine (Funaya), en: Ine Boathouses (Funaya) }
+    city: Ine
+    category: hidden
+    visited: true
+    verdict: love
+    lat: 35.6760
+    lng: 135.2890
+    review:
+      fr: "Un village de pêcheurs avec ses maisons posées sur l'eau, loin des foules. Un de mes plus beaux souvenirs du Japon."
+      en: "A fishing village with houses sitting right on the water, far from the crowds. One of my best memories of Japan."
+    experience:
+      fr: "Fais la petite croisière dans la baie pour voir les funaya depuis l'eau. Dormir sur place permet de profiter du calme une fois les excursionnistes partis."
+      en: "Take the little boat cruise around the bay to see the funaya from the water. Staying overnight lets you enjoy the calm once day-trippers have left."
+    info:
+      duration: { fr: "Une journée, idéalement une nuit", en: "A day, ideally one night" }
+      access:   { fr: "Bus depuis Amanohashidate (~1h)", en: "Bus from Amanohashidate (~1h)" }
+
+  # ---------------- KŌYASAN ----------------
+
+  - id: okunoin
+    name: { fr: Cimetière d'Okunoin, en: Okunoin Cemetery }
+    city: Kōyasan
+    category: hidden
+    visited: true
+    verdict: love
+    lat: 34.2186
+    lng: 135.6005
+    review:
+      fr: "Une forêt de cèdres géants et des milliers de tombes moussues. Atmosphère incroyable, surtout à la tombée de la nuit."
+      en: "A forest of giant cedars and thousands of mossy graves. An incredible atmosphere, especially at dusk."
+    info:
+      price:    { fr: "Gratuit", en: "Free" }
+      duration: { fr: "2h", en: "2h" }
+      access:   { fr: "Bus depuis la gare de Kōyasan", en: "Bus from Kōyasan Station" }
+    tips:
+      - fr: "Des visites guidées de nuit avec des moines sont proposées."
+        en: "Night tours guided by monks are available."
+
+  - id: koyasan-shukubo
+    name: { fr: Nuit au temple (shukubō), en: Temple stay (shukubō) }
+    city: Kōyasan
+    category: sleep
+    visited: false
+    lat: 34.2130
+    lng: 135.5856
+    review:
+      fr: "Sur ma liste : dormir dans un temple, dîner végétarien des moines (shōjin ryōri) et prière du matin."
+      en: "On my list: sleeping in a temple, the monks' vegetarian dinner (shōjin ryōri) and morning prayer."
+    info:
+      booking: { fr: "À réserver à l'avance", en: "Book in advance" }
+
+  # ---------------- OKINAWA ----------------
+
+  - id: kabira-bay
+    name: { fr: Baie de Kabira, en: Kabira Bay }
+    city: Ishigaki
+    category: photo
+    visited: false
+    lat: 24.4560
+    lng: 124.1440
+    review:
+      fr: "Sur ma liste : une eau turquoise parmi les plus belles du Japon. La baignade y est interdite, mais on peut faire un tour en bateau à fond de verre."
+      en: "On my list: some of the most beautiful turquoise water in Japan. Swimming is not allowed, but you can take a glass-bottom boat tour."
