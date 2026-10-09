@@ -116,6 +116,21 @@ const ICONS = {
     <path d="M18 12 H46 L57 26 L32 56 L7 26 Z" fill="${C.teal}" ${S}/>
     <path d="M7 26 H57 M18 12 L25 26 L32 56 L39 26 L46 12 M25 26 L32 12 L39 26" fill="none" stroke="${INK}" stroke-width="1.8" stroke-linejoin="round"/>
     ${f ? face(32, 32, .8) : ""}`,
+  wall: (f) => `
+    <path d="M2 57 Q14 46 28 52 Q44 42 62 48 V61 H2 Z" fill="${C.mint}" ${S}/>
+    <path d="M4 50 L34 41 L60 36 V44 L34 49 L4 58 Z" fill="${C.tan}" ${S}/>
+    <path d="M8 47 v-4 h4 v3 M17 44 v-4 h4 v3 M26 42 v-4 h4 v3" fill="none" ${S}/>
+    <rect x="38" y="20" width="16" height="21" fill="${C.tan}" ${S}/>
+    <path d="M38 20 v-5 h4 v5 M44 20 v-5 h4 v5 M50 20 v-5 h4 v5" fill="none" ${S}/>
+    <path d="M43 41 V34 a3 3 0 0 1 6 0 V41" fill="${C.dark}" ${S}/>
+    ${f ? face(46, 27, .55) : `<rect x="43.5" y="24" width="5" height="4" rx="1" fill="${C.dark}" stroke="none"/>`}`,
+  panda: (f) => `
+    <circle cx="16" cy="17" r="8" fill="${C.dark}" ${S}/><circle cx="48" cy="17" r="8" fill="${C.dark}" ${S}/>
+    <ellipse cx="32" cy="35" rx="24" ry="21" fill="#fff" ${S}/>
+    <ellipse cx="22" cy="33" rx="6" ry="8" transform="rotate(25 22 33)" fill="${C.dark}"/><ellipse cx="42" cy="33" rx="6" ry="8" transform="rotate(-25 42 33)" fill="${C.dark}"/>
+    <circle cx="23" cy="32" r="2.2" fill="#fff"/><circle cx="41" cy="32" r="2.2" fill="#fff"/>
+    <ellipse cx="32" cy="42" rx="3.4" ry="2.4" fill="${INK}"/>
+    ${f ? `<path d="M28 46 Q32 49 36 46" fill="none" stroke="${INK}" stroke-width="1.8" stroke-linecap="round"/>` : ""}`,
   bunny: () => `
     <ellipse cx="24" cy="18" rx="5.5" ry="13" transform="rotate(-8 24 18)" fill="#fff" ${S}/><ellipse cx="24" cy="19" rx="2.2" ry="8" transform="rotate(-8 24 19)" fill="${C.pink}"/>
     <ellipse cx="40" cy="18" rx="5.5" ry="13" transform="rotate(8 40 18)" fill="#fff" ${S}/><ellipse cx="40" cy="19" rx="2.2" ry="8" transform="rotate(8 40 19)" fill="${C.pink}"/>

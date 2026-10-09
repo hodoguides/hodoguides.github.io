@@ -1,0 +1,1519 @@
+# ============================================================
+#  HodoGuides · Chine / China
+#  Importé depuis ta liste Google Maps « Chine » (156 lieux).
+#  Tous les lieux sont « à tester » (visited: false) en attendant ton tri.
+#  ⚠️ Positions approximatives (à quelques km) : le lien google_maps est exact.
+#  Mode d'emploi : data/COMMENT-AJOUTER-UN-LIEU.md
+# ============================================================
+
+country:
+  id: china
+  name:
+    fr: Chine
+    en: China
+  name_ja: 中国
+  region:
+    fr: Asie
+    en: Asia
+  intro:
+    fr: Les lieux que j'ai repérés en Chine, de Pékin au Yunnan. Mon tri arrive bientôt.
+    en: The places I've spotted in China, from Beijing to Yunnan. My picks are coming soon.
+  center:
+    lat: 31.5
+    lng: 108.5
+  zoom: 3.6
+  icons:            # dessins par défaut des catégories pour ce pays
+    see: pagoda
+places:
+- id: canton-tower
+  name: Canton Tower
+  icon: camera
+  city: Canton
+  category: photo
+  visited: false
+  lat: 23.1072
+  lng: 113.3223
+  google_maps: https://www.google.com/maps/place/Canton+Tower/data=!4m2!3m1!1s0x3402ff6e0776082b:0xd244b1210b5ef0e8
+- id: panda-post-office
+  name: Panda Post Office
+  icon: panda
+  city: Chengdu
+  category: activity
+  visited: false
+  lat: 30.6517
+  lng: 104.0793
+  google_maps: https://www.google.com/maps/place/Panda+Post+Office/data=!4m2!3m1!1s0x36efc54030e07f73:0xed6e9a95f4adcaf3
+- id: xuankehui
+  name: Xuankehui
+  icon: ramen
+  city: Chengdu
+  category: food
+  visited: false
+  lat: 30.661
+  lng: 104.0741
+  google_maps: https://www.google.com/maps/place/Xuankehui/data=!4m2!3m1!1s0x36efc5384b3ec63d:0x874507ce1c80d435
+- id: jinli-street
+  name:
+    fr: Rue Jinli
+    en: Jinli Street
+  name_ja: 锦里
+  icon: ramen
+  city: Chengdu
+  category: food
+  visited: false
+  lat: 30.6455
+  lng: 104.05
+  google_maps: https://www.google.com/maps/place/%E9%94%A6%E9%87%8C/data=!4m2!3m1!1s0x36efc4e308193d21:0x1697f99de46c46df
+- id: jiuyanqiao-bar-street
+  name: Jiuyanqiao Bar Street
+  icon: pagoda
+  city: Chengdu
+  category: see
+  visited: false
+  lat: 30.6395
+  lng: 104.0885
+  google_maps: https://www.google.com/maps/place/Jiuyanqiao+Bar+Street/data=!4m2!3m1!1s0x36efc56ff610d2ad:0x6d5c6887f4b9c535
+- id: wenshu-yuan-monastery
+  name: Wenshu Yuan Monastery
+  icon: pagoda
+  city: Chengdu
+  category: see
+  visited: false
+  lat: 30.6748
+  lng: 104.072
+  google_maps: https://www.google.com/maps/place/Wenshu+Yuan+Monastery/data=!4m2!3m1!1s0x36efdacb458035bd:0x511bb9fc18644f3e
+- id: repere
+  name: 29°33'48.1"N 106°35'08.6"E
+  icon: camera
+  city: Chongqing
+  category: photo
+  visited: false
+  lat: 29.5634
+  lng: 106.5857
+  google_maps: https://www.google.com/maps/search/29.563358,106.585727
+- id: panda-fishing-village
+  name: Panda Fishing Village
+  icon: panda
+  city: Dujiangyan
+  category: hidden
+  visited: false
+  lat: 30.8591
+  lng: 103.5788
+  google_maps: https://www.google.com/maps/place/Panda+Fishing+Village/data=!4m2!3m1!1s0x36efff0625f45307:0xb32e0a90e51ab842
+- id: mount-qingcheng
+  name: Mount Qingcheng
+  icon: camera
+  city: Dujiangyan
+  category: photo
+  visited: false
+  lat: 30.9077
+  lng: 103.5567
+  google_maps: https://www.google.com/maps/place/Mount+Qingcheng/data=!4m2!3m1!1s0x36efffe2dd848547:0x6e26968e217e9983
+- id: qingcheng-shan
+  name: Qingcheng Shan
+  icon: camera
+  city: Dujiangyan
+  category: photo
+  visited: false
+  lat: 30.9667
+  lng: 103.5167
+  google_maps: https://www.google.com/maps/place/Qingcheng+Shan/data=!4m2!3m1!1s0x36faaa5c46bd96ad:0xe2a219079eb7e176
+- id: emei-mountain
+  name: Emei Mountain
+  icon: camera
+  city: Emei
+  category: photo
+  visited: false
+  lat: 29.516
+  lng: 103.3347
+  google_maps: https://www.google.com/maps/place/Emei+Mountain/data=!4m2!3m1!1s0x36e5e2e83d74345b:0x12fe58043a25ce4c
+- id: suobuya-stone-forest-scenic-area
+  name: Suobuya Stone Forest Scenic Area
+  icon: bamboo
+  city: Enshi
+  category: photo
+  visited: false
+  lat: 30.5678
+  lng: 109.5652
+  google_maps: https://www.google.com/maps/place/Suobuya+Stone+Forest+Scenic+Area/data=!4m2!3m1!1s0x368f8a0107775993:0x5899c52cb165fc16
+- id: hongqiao-bridge
+  name: Hongqiao Bridge
+  icon: camera
+  city: Fenghuang
+  category: photo
+  visited: false
+  lat: 27.9484
+  lng: 109.6064
+  google_maps: https://www.google.com/maps/place/Hongqiao+Bridge/data=!4m2!3m1!1s0x36982ae5d9167d15:0x1165c1f2d3835e7a
+- id: phoenix-ancient-city
+  name: Phoenix Ancient City
+  icon: pagoda
+  city: Fenghuang
+  category: see
+  visited: false
+  lat: 27.9528
+  lng: 109.6009
+  google_maps: https://www.google.com/maps/place/Phoenix+Ancient+City/data=!4m2!3m1!1s0x36982ae9aee3a30b:0x371a2838d7fc61d6
+- id: daxu-ancient-town-maozhou-island
+  name: Daxu Ancient Town Maozhou Island
+  icon: pagoda
+  city: Guilin
+  category: see
+  visited: false
+  lat: 25.18
+  lng: 110.4216
+  google_maps: https://www.google.com/maps/place/Daxu+Ancient+Town+Maozhou+Island/data=!4m2!3m1!1s0x36a45988c2e55fa1:0x6f39e14a3c4681ca
+- id: quyuan-fenghe
+  name: Quyuan Fenghe
+  icon: camera
+  city: Hangzhou
+  category: photo
+  visited: false
+  lat: 30.2489
+  lng: 120.1312
+  google_maps: https://www.google.com/maps/place/Quyuan+Fenghe/data=!4m2!3m1!1s0x344b62c6be3f8d3d:0xe8bb40fa3276be88
+- id: three-pools-mirroring-the-moon
+  name: Three Pools Mirroring the Moon
+  icon: boat
+  city: Hangzhou
+  category: photo
+  visited: false
+  lat: 30.2388
+  lng: 120.1453
+  google_maps: https://www.google.com/maps/place/Three+Pools+Mirroring+the+Moon/data=!4m2!3m1!1s0x344b62b04d12e70b:0xc7c7677e1751fde
+- id: lingyin-temple
+  name: Lingyin Temple
+  icon: pagoda
+  city: Hangzhou
+  category: see
+  visited: false
+  lat: 30.2409
+  lng: 120.1065
+  google_maps: https://www.google.com/maps/place/Lingyin+Temple/data=!4m2!3m1!1s0x344b632cac3ea129:0xbeacbec946d6166c
+- id: harbin-ice-snow-world
+  name: Harbin Ice & Snow World
+  icon: wheel
+  city: Harbin
+  category: activity
+  visited: false
+  lat: 45.7777
+  lng: 126.6228
+  google_maps: https://www.google.com/maps/place/Harbin+Ice+%26+Snow+World/data=!4m2!3m1!1s0x5e4380165cdaaaab:0x278445150fe7d57d
+- id: huangshan-yellow-mountain
+  name:
+    fr: Monts Huang (Huangshan)
+    en: Huangshan (Yellow Mountain)
+  icon: camera
+  city: Huangshan
+  category: photo
+  visited: false
+  lat: 30.1378
+  lng: 118.1652
+  google_maps: https://www.google.com/maps/place/Monts+Huang/data=!4m2!3m1!1s0x3435c68c09678d3d:0x706d912f1c61517e
+- id: mount-hua
+  name:
+    fr: Mont Hua (Huashan)
+    en: Mount Hua
+  icon: camera
+  city: Huashan
+  category: photo
+  visited: false
+  lat: 34.4779
+  lng: 110.0848
+  google_maps: https://www.google.com/maps/place/Mont+Hua/data=!4m2!3m1!1s0x367b6e83b35f95af:0xad3de29e144c21d6
+- id: hukou-waterfall
+  name:
+    fr: Chutes de Hukou
+    en: Hukou Waterfall
+  name_ja: 壶口瀑布
+  icon: boat
+  city: Hukou
+  category: photo
+  visited: false
+  lat: 36.1479
+  lng: 110.4522
+  google_maps: https://www.google.com/maps/place/%E5%A3%B6%E5%8F%A3%E7%80%91%E5%B8%83/data=!4m2!3m1!1s0x3670fdb5d86dc9d5:0x754f4f9358e0e18b
+- id: repere-2
+  name: 33°16'04.5"N 103°54'39.8"E
+  icon: camera
+  city: Jiuzhaigou
+  category: photo
+  visited: false
+  lat: 33.2679
+  lng: 103.9111
+  google_maps: https://www.google.com/maps/search/33.267922,103.911048
+- id: jiuzhaigou-valley
+  name: Jiuzhaigou Valley
+  name_ja: 九寨沟
+  icon: bamboo
+  city: Jiuzhaigou
+  category: photo
+  visited: false
+  lat: 33.2035
+  lng: 103.9037
+  google_maps: https://www.google.com/maps/place/Jiuzhaigou+Valley/data=!4m2!3m1!1s0x36f797e57700fa45:0x55d3192b98a7512c
+- id: leshan-giant-buddha
+  name: Leshan Giant Buddha
+  name_ja: 乐山大佛
+  icon: pagoda
+  city: Leshan
+  category: see
+  visited: false
+  lat: 29.5471
+  lng: 103.7729
+  google_maps: https://www.google.com/maps/place/Leshan+Giant+Buddha/data=!4m2!3m1!1s0x36ef4e619bac7a53:0x129642f46b1c443e
+- id: potala-palace
+  name: Potala Palace
+  name_ja: 布达拉宫
+  icon: pagoda
+  city: Lhassa
+  category: see
+  visited: false
+  lat: 29.655
+  lng: 91.1192
+  google_maps: https://www.google.com/maps/place/Potala+Palace/data=!4m2!3m1!1s0x3761317244846eab:0x4ae80d857ec10c19
+- id: the-square-market
+  name: The Square Market
+  icon: ramen
+  city: Lijiang
+  category: food
+  visited: false
+  lat: 26.8721
+  lng: 100.234
+  google_maps: https://www.google.com/maps/place/The+Square+Market/data=!4m2!3m1!1s0x3720ca3f6316d675:0x98fdb12a5825bdce
+- id: black-dragon-pool-northwest-gate
+  name: Black Dragon Pool （Northwest Gate）
+  icon: boat
+  city: Lijiang
+  category: photo
+  visited: false
+  lat: 26.8872
+  lng: 100.2334
+  google_maps: https://www.google.com/maps/place/Black+Dragon+Pool+%EF%BC%88Northwest+Gate%EF%BC%89/data=!4m2!3m1!1s0x3720ca23a2b2c5d5:0x47c1f2f4238f18a0
+- id: blue-moon-valley
+  name: Blue Moon Valley
+  icon: bamboo
+  city: Lijiang
+  category: photo
+  visited: false
+  lat: 27.1258
+  lng: 100.2447
+  google_maps: https://www.google.com/maps/place/Blue+Moon+Valley/data=!4m2!3m1!1s0x3720c089c0403b13:0x84bf7d7910d0c702
+- id: tiger-leaping-gorge
+  name:
+    fr: Gorges du Saut du Tigre
+    en: Tiger Leaping Gorge
+  icon: camera
+  city: Lijiang
+  category: photo
+  visited: false
+  lat: 27.1894
+  lng: 100.1139
+  google_maps: https://www.google.com/maps/place/Gorges+du+Saut+du+tigre/data=!4m2!3m1!1s0x3720e825fc6ccfa9:0xb8609916f2ea8cca
+- id: tiger-leaping-gorge-scenic-spot
+  name: Tiger Leaping Gorge Scenic Spot
+  icon: camera
+  city: Lijiang
+  category: photo
+  visited: false
+  lat: 27.2265
+  lng: 100.1437
+  google_maps: https://www.google.com/maps/place/Tiger+Leaping+Gorge+Scenic+Spot/data=!4m2!3m1!1s0x3720e9a0be07dea9:0x98b2d6920eeee9bd
+- id: donghe-ancient-town
+  name: Donghe Ancient Town
+  icon: pagoda
+  city: Lijiang
+  category: see
+  visited: false
+  lat: 26.9102
+  lng: 100.2161
+  google_maps: https://www.google.com/maps/place/Donghe+Ancient+Town/data=!4m2!3m1!1s0x3720c99d6e68071f:0xabcc9e941823435f
+- id: lijiang-old-town
+  name: Lijiang Old Town
+  icon: pagoda
+  city: Lijiang
+  category: see
+  visited: false
+  lat: 26.8668
+  lng: 100.232
+  google_maps: https://www.google.com/maps/place/Lijiang+Old+Town/data=!4m2!3m1!1s0x3720ca4152c9b79d:0xf4795f2d261f1138
+- id: old-town-of-lijiang
+  name: Old Town of Lijiang
+  icon: pagoda
+  city: Lijiang
+  category: see
+  visited: false
+  lat: 26.8522
+  lng: 100.2662
+  google_maps: https://www.google.com/maps/place/Old+Town+of+Lijiang/data=!4m2!3m1!1s0x3720b584064c0c01:0x2ca3f44972f75fb5
+- id: shuhe-ancient-town
+  name: Shuhe Ancient Town
+  icon: pagoda
+  city: Lijiang
+  category: see
+  visited: false
+  lat: 26.9148
+  lng: 100.2074
+  google_maps: https://www.google.com/maps/place/Shuhe+Ancient+Town/data=!4m2!3m1!1s0x3720c973d75e12cd:0x67113b207008f815
+- id: baisha-old-town
+  name:
+    fr: Village ancien de Baisha
+    en: Baisha Old Town
+  name_ja: 白沙古镇
+  icon: pagoda
+  city: Lijiang
+  category: see
+  visited: false
+  lat: 26.9538
+  lng: 100.2163
+  google_maps: https://www.google.com/maps/place/%E7%99%BD%E6%B2%99%E5%8F%A4%E9%95%87/data=!4m2!3m1!1s0x3720c857edb240f7:0xf339548279b06bb4
+- id: jiulong-waterfalls
+  name: Jiulong Waterfalls
+  icon: boat
+  city: Luoping
+  category: photo
+  visited: false
+  lat: 25.0127
+  lng: 104.4068
+  google_maps: https://www.google.com/maps/place/Jiulong+Waterfalls/data=!4m2!3m1!1s0x36c586e622b3ad85:0x182fbe0a61be3031
+- id: longmen-grottoes
+  name: Longmen Grottoes
+  icon: pagoda
+  city: Luoyang
+  category: see
+  visited: false
+  lat: 34.5586
+  lng: 112.4769
+  google_maps: https://www.google.com/maps/place/Longmen+Grottoes/data=!4m2!3m1!1s0x36787b8200945e11:0xa7a3038bb26eb9e9
+- id: luoyi-ancient-city-scenic-spot
+  name: Luoyi Ancient City Scenic Spot
+  icon: pagoda
+  city: Luoyang
+  category: see
+  visited: false
+  lat: 34.6807
+  lng: 112.4853
+  google_maps: https://www.google.com/maps/place/Luoyi+Ancient+City+Scenic+Spot/data=!4m2!3m1!1s0x36787103af11c4bf:0x6f8e9daa62888ca7
+- id: panjin-red-beach
+  name:
+    fr: Plage rouge de Panjin
+    en: Panjin Red Beach
+  icon: boat
+  city: Panjin
+  category: photo
+  visited: false
+  lat: 40.9162
+  lng: 121.8927
+  google_maps: https://www.google.com/maps/place/Plage+rouge/data=!4m2!3m1!1s0x5e27cca54c155b2f:0xac559df66207dd29
+- id: pingyao
+  name: Pingyao
+  icon: pagoda
+  city: Pingyao
+  category: see
+  visited: false
+  lat: 37.201
+  lng: 112.1734
+  google_maps: https://www.google.com/maps/place/Pingyao/data=!4m2!3m1!1s0x36750a69fc81187f:0xeaf4b4528d55f07e
+- id: 798-art-district
+  name: 798 Art District
+  icon: ticket
+  city: Pékin
+  category: activity
+  visited: false
+  lat: 39.9834
+  lng: 116.495
+  google_maps: https://www.google.com/maps/place/798+Art+District/data=!4m2!3m1!1s0x35f1aa349192d6d9:0xb320fc5e00f76d5a
+- id: china-national-film-museum
+  name: China National Film Museum
+  icon: ticket
+  city: Pékin
+  category: activity
+  visited: false
+  lat: 39.9962
+  lng: 116.5209
+  google_maps: https://www.google.com/maps/place/China+National+Film+Museum/data=!4m2!3m1!1s0x35f1a9f36d901b93:0x450893fccd32e931
+- id: china-science-and-technology-museum
+  name: China Science and Technology Museum
+  icon: ticket
+  city: Pékin
+  category: activity
+  visited: false
+  lat: 40.0061
+  lng: 116.3986
+  google_maps: https://www.google.com/maps/place/China+Science+and+Technology+Museum/data=!4m2!3m1!1s0x35f05520625e1e25:0xcba960ab5811d813
+- id: national-museum-of-china
+  name: National Museum of China
+  icon: ticket
+  city: Pékin
+  category: activity
+  visited: false
+  lat: 39.9051
+  lng: 116.4017
+  google_maps: https://www.google.com/maps/place/National+Museum+of+China/data=!4m2!3m1!1s0x35f052b94ab111e7:0x2476241f0e8c609
+- id: red-brick-art-gallery
+  name: Red-brick Art Gallery
+  icon: ticket
+  city: Pékin
+  category: activity
+  visited: false
+  lat: 40.0425
+  lng: 116.5013
+  google_maps: https://www.google.com/maps/place/Red-brick+Art+Gallery/data=!4m2!3m1!1s0x35f100c5fcb86f83:0x894297a933ca77b4
+- id: sanlitun
+  name: Sanlitun
+  icon: ticket
+  city: Pékin
+  category: activity
+  visited: false
+  lat: 39.9372
+  lng: 116.4481
+  google_maps: https://www.google.com/maps/place/Sanlitun/data=!4m2!3m1!1s0x35f1ac94973630a7:0x509c7077e9841087
+- id: universal-studios-beijing
+  name: Universal Studios Beijing
+  icon: wheel
+  city: Pékin
+  category: activity
+  visited: false
+  lat: 39.8528
+  lng: 116.6605
+  google_maps: https://www.google.com/maps/place/Universal+Studios+Beijing/data=!4m2!3m1!1s0x35f1a4e37a1281cf:0xcc100273efb59aad
+- id: zhongshuge-bookstore
+  name:
+    fr: Librairie Zhongshuge
+    en: Zhongshuge Bookstore
+  icon: ticket
+  city: Pékin
+  category: activity
+  visited: false
+  lat: 39.9839
+  lng: 116.327
+  google_maps: https://www.google.com/maps/place/Zhongshu+Ge/data=!4m2!3m1!1s0x35f053ff8fce1c7f:0x6cb9b2f8d310c3d8
+- id: quanjude-roast-duck-restaurant
+  name: Quanjude Roast Duck Restaurant
+  icon: ramen
+  city: Pékin
+  category: food
+  visited: false
+  lat: 39.9121
+  lng: 116.4117
+  google_maps: https://www.google.com/maps/place/Quanjude+Roast+Duck+Restaurant/data=!4m2!3m1!1s0x35f052cec137fedb:0x6188a5349ebd0b88
+- id: wangfujing-street
+  name:
+    fr: Rue Wangfujing
+    en: Wangfujing Street
+  icon: ramen
+  city: Pékin
+  category: food
+  visited: false
+  lat: 39.9162
+  lng: 116.411
+  google_maps: https://www.google.com/maps/place/Wang+Fu+Jing+Da+Jie/data=!4m2!3m1!1s0x35f052d1d66b73b9:0xd212cf432caac4d6
+- id: repere-3
+  name: 39°56'03.4"N 116°26'40.7"E
+  icon: camera
+  city: Pékin
+  category: photo
+  visited: false
+  lat: 39.9343
+  lng: 116.4446
+  google_maps: https://www.google.com/maps/search/39.934276,116.444636
+- id: china-zun
+  name: China Zun
+  icon: camera
+  city: Pékin
+  category: photo
+  visited: false
+  lat: 39.9127
+  lng: 116.4637
+  google_maps: https://www.google.com/maps/place/China+Zun/data=!4m2!3m1!1s0x35f1ad002adb88ad:0xab23dedc8527eca7
+- id: houhai
+  name: Houhai
+  icon: camera
+  city: Pékin
+  category: photo
+  visited: false
+  lat: 39.9422
+  lng: 116.3874
+  google_maps: https://www.google.com/maps/place/Houhai/data=!4m2!3m1!1s0x35f053108cc73a5b:0x38809e0b9a1f7402
+- id: jingshan-park
+  name: Jingshan Park
+  icon: bamboo
+  city: Pékin
+  category: photo
+  visited: false
+  lat: 39.9256
+  lng: 116.3939
+  google_maps: https://www.google.com/maps/place/Jingshan+Park/data=!4m2!3m1!1s0x35f052e0cf4da489:0x95549f0b9c7f635b
+- id: taoranting-park
+  name:
+    fr: Parc Taoranting
+    en: Taoranting Park
+  icon: camera
+  city: Pékin
+  category: photo
+  visited: false
+  lat: 39.8727
+  lng: 116.379
+  google_maps: https://www.google.com/maps/place/Tao+Ran+Ting+Gong+Yuan/data=!4m2!3m1!1s0x35f04d0c6dd00f8f:0x902d1d9618d54ee0
+- id: beihai-park
+  name: Beihai Park
+  icon: pagoda
+  city: Pékin
+  category: see
+  visited: false
+  lat: 39.9258
+  lng: 116.3908
+  google_maps: https://www.google.com/maps/place/Beihai+Park/data=!4m2!3m1!1s0x35f052e6b32b6159:0xe22c80c89d0ec575
+- id: forbidden-city
+  name:
+    fr: Cité interdite
+    en: Forbidden City
+  name_ja: 故宫
+  icon: pagoda
+  city: Pékin
+  category: see
+  visited: false
+  lat: 39.9169
+  lng: 116.3907
+  google_maps: https://www.google.com/maps/place/Cit%C3%A9+interdite/data=!4m2!3m1!1s0x35f052e94515d43d:0x674e2bd4dd3079f
+- id: dongjiaominxiang
+  name:
+    fr: Rue Dongjiaominxiang
+    en: Dongjiaominxiang
+  icon: pagoda
+  city: Pékin
+  category: see
+  visited: false
+  lat: 39.9023
+  lng: 116.4091
+  google_maps: https://www.google.com/maps/place/Dong+Jiao+Min+Xiang/data=!4m2!3m1!1s0x35f052b7357c24af:0x643b513a0cff5607
+- id: lama-temple
+  name: Lama Temple
+  name_ja: 雍和宫
+  icon: pagoda
+  city: Pékin
+  category: see
+  visited: false
+  lat: 39.941
+  lng: 116.4168
+  google_maps: https://www.google.com/maps/place/Lama+Temple/data=!4m2!3m1!1s0x35f05334fde04cc5:0x5e6cb3b26525cbd0
+- id: nanluoguxiang
+  name:
+    fr: Ruelle Nanluoguxiang
+    en: Nanluoguxiang
+  icon: pagoda
+  city: Pékin
+  category: see
+  visited: false
+  lat: 39.9372
+  lng: 116.4031
+  google_maps: https://www.google.com/maps/place/Nan+Luo+Gu+Xiang/data=!4m2!3m1!1s0x35f0533b4ab295e9:0x8e18a10ae773a65e
+- id: olympic-park
+  name: Olympic park
+  icon: pagoda
+  city: Pékin
+  category: see
+  visited: false
+  lat: 39.905
+  lng: 116.3578
+  google_maps: https://www.google.com/maps/place/Olympic+park/data=!4m2!3m1!1s0x35f052772c9e8cef:0xb15a275e4ab800b0
+- id: summer-palace
+  name:
+    fr: Palais d'Été
+    en: Summer Palace
+  name_ja: 颐和园
+  icon: pagoda
+  city: Pékin
+  category: see
+  visited: false
+  lat: 39.9999
+  lng: 116.2755
+  google_maps: https://www.google.com/maps/place/Palais+d'%C3%89t%C3%A9/data=!4m2!3m1!1s0x3402f8c7b9c38f3f:0x45d9b1774c04a132
+- id: tiananmen-square
+  name:
+    fr: Place Tian'anmen
+    en: Tiananmen Square
+  name_ja: 天安门广场
+  icon: pagoda
+  city: Pékin
+  category: see
+  visited: false
+  lat: 39.9055
+  lng: 116.3976
+  google_maps: https://www.google.com/maps/place/Place+Tian'anmen/data=!4m2!3m1!1s0x36637698dc4374d9:0x2aea2ec9ad545913
+- id: prince-gong-mansion
+  name: Prince Gong Mansion
+  icon: pagoda
+  city: Pékin
+  category: see
+  visited: false
+  lat: 39.9365
+  lng: 116.3793
+  google_maps: https://www.google.com/maps/place/Prince+Gong+Mansion/data=!4m2!3m1!1s0x35f05303c65abf2b:0x6ec74549d7c3a6f5
+- id: confucius-temple
+  name:
+    fr: Temple de Confucius
+    en: Confucius Temple
+  icon: pagoda
+  city: Pékin
+  category: see
+  visited: false
+  lat: 39.9457
+  lng: 116.4133
+  google_maps: https://www.google.com/maps/place/Temple+de+Confucius+de+P%C3%A9kin/data=!4m2!3m1!1s0x35f053498ba515b3:0x2baf57140787ea4a
+- id: temple-of-heaven
+  name:
+    fr: Temple du Ciel
+    en: Temple of Heaven
+  name_ja: 天坛
+  icon: pagoda
+  city: Pékin
+  category: see
+  visited: false
+  lat: 39.8908
+  lng: 116.3947
+  google_maps: https://www.google.com/maps/place/Temple+du+ciel/data=!4m2!3m1!1s0x35f04d6019ff91eb:0x372c15453b110e6a
+- id: old-summer-palace-yuanmingyuan
+  name:
+    fr: Ancien palais d'Été (Yuanmingyuan)
+    en: Old Summer Palace (Yuanmingyuan)
+  icon: pagoda
+  city: Pékin
+  category: see
+  visited: false
+  lat: 40.0074
+  lng: 116.2942
+  google_maps: https://www.google.com/maps/place/Yuan+Ming+Yuan+Yi+Zhi+Gong+Yuan/data=!4m2!3m1!1s0x35f056c3ed8b74dd:0x323f61fcb913719e
+- id: drum-and-bell-towers
+  name:
+    fr: Tours du Tambour et de la Cloche
+    en: Drum and Bell Towers
+  name_ja: 北京鼓楼和钟楼
+  icon: pagoda
+  city: Pékin
+  category: see
+  visited: false
+  lat: 39.9284
+  lng: 116.4162
+  google_maps: https://www.google.com/maps/place/%E5%8C%97%E4%BA%AC%E9%BC%93%E6%A5%BC%E5%92%8C%E9%92%9F%E6%A5%BC/data=!4m2!3m1!1s0x35f0532b9c44da59:0x51da92cdc92d39ff
+- id: mount-lao
+  name:
+    fr: Mont Lao (Laoshan)
+    en: Mount Lao
+  icon: camera
+  city: Qingdao
+  category: photo
+  visited: false
+  lat: 36.1829
+  lng: 120.6317
+  google_maps: https://www.google.com/maps/place/Mont+Lao/data=!4m2!3m1!1s0x359646c61eeefcfb:0xe834b82cb95fcf3a
+- id: shanghai-second-hand-goods-transaction-market-limited-company
+  name: Shanghai Second-Hand Goods Transaction Market Limited Company
+  icon: ticket
+  city: Shanghai
+  category: activity
+  visited: false
+  lat: 31.2564
+  lng: 121.5039
+  google_maps: https://www.google.com/maps/place/Shanghai+Second-Hand+Goods+Transaction+Market+Limited+Company/data=!4m2!3m1!1s0x35b271103eb128fd:0xae41313dcf9a145f
+- id: weixiangzhai
+  name: Weixiangzhai
+  icon: ramen
+  city: Shanghai
+  category: food
+  visited: false
+  lat: 31.2208
+  lng: 121.4699
+  google_maps: https://www.google.com/maps/place/Weixiangzhai/data=!4m2!3m1!1s0x35b27072dd7edb95:0x2bb524a13781fe9e
+- id: huangpu-park
+  name: Huangpu Park
+  icon: bamboo
+  city: Shanghai
+  category: photo
+  visited: false
+  lat: 31.2407
+  lng: 121.4906
+  google_maps: https://www.google.com/maps/place/Huangpu+Park/data=!4m2!3m1!1s0x35b270562de4d54f:0x8965202802aafc5c
+- id: lujiazui
+  name: Lujiazui
+  icon: camera
+  city: Shanghai
+  category: photo
+  visited: false
+  lat: 31.2342
+  lng: 121.5075
+  google_maps: https://www.google.com/maps/place/Lujiazui/data=!4m2!3m1!1s0x35b270e5eeb60b11:0x9390f7d4e16ac67d
+- id: oriental-pearl-tv-tower
+  name: Oriental Pearl TV Tower
+  icon: camera
+  city: Shanghai
+  category: photo
+  visited: false
+  lat: 31.2378
+  lng: 121.5019
+  google_maps: https://www.google.com/maps/place/Oriental+Pearl+TV+Tower/data=!4m2!3m1!1s0x35b270fb25b0d4db:0x163e9f3be2e08565
+- id: qiantan-youcheng-park
+  name: Qiantan Youcheng Park
+  icon: bamboo
+  city: Shanghai
+  category: photo
+  visited: false
+  lat: 31.1582
+  lng: 121.4718
+  google_maps: https://www.google.com/maps/place/Qiantan+Youcheng+Park/data=!4m2!3m1!1s0x35b27b1703cbb695:0x893d9cd0a5c4f430
+- id: shanghai-botanical-garden-pinetum
+  name: Shanghai Botanical Garden Pinetum
+  icon: bamboo
+  city: Shanghai
+  category: photo
+  visited: false
+  lat: 31.1475
+  lng: 121.442
+  google_maps: https://www.google.com/maps/place/Shanghai+Botanical+Garden+Pinetum/data=!4m2!3m1!1s0x35b264ad8fedcd33:0x9b0d8a219377300c
+- id: the-bund
+  name: The Bund
+  icon: camera
+  city: Shanghai
+  category: photo
+  visited: false
+  lat: 31.2384
+  lng: 121.4897
+  google_maps: https://www.google.com/maps/place/The+Bund/data=!4m2!3m1!1s0x35b270578b874861:0x4d56fbed10d1af64
+- id: world-expo-cultural-park
+  name: World Expo Cultural Park
+  icon: bamboo
+  city: Shanghai
+  category: photo
+  visited: false
+  lat: 31.1817
+  lng: 121.4798
+  google_maps: https://www.google.com/maps/place/World+Expo+Cultural+Park/data=!4m2!3m1!1s0x35b27aee2a8f6289:0x4be2cd3528dd5c9e
+- id: tianzifang
+  name: Tianzifang
+  icon: pagoda
+  city: Shanghai
+  category: see
+  visited: false
+  lat: 31.2084
+  lng: 121.4682
+  google_maps: https://www.google.com/maps/place/Tianzifang/data=!4m2!3m1!1s0x35b27aa1fc8b4817:0xa35d8befcc540a8d
+- id: wangxian-valley-town
+  name: Wangxian Valley Town
+  icon: bamboo
+  city: Shangrao
+  category: photo
+  visited: false
+  lat: 28.6792
+  lng: 117.8189
+  google_maps: https://www.google.com/maps/place/Wangxian+Valley+Town/data=!4m2!3m1!1s0x34377bef52e24bd3:0xc853d963d94cc587
+- id: repere-4
+  name: 32°38'56.5"N 103°36'14.3"E
+  icon: camera
+  city: Songpan
+  category: photo
+  visited: false
+  lat: 32.649
+  lng: 103.604
+  google_maps: https://www.google.com/maps/search/32.649021,103.603963
+- id: munigou
+  name: Munigou
+  icon: camera
+  city: Songpan
+  category: photo
+  visited: false
+  lat: 32.5086
+  lng: 103.6393
+  google_maps: https://www.google.com/maps/place/Munigou/data=!4m2!3m1!1s0x36f750abaae21e19:0x187918e1f9686779
+- id: songzhou-ancient-city
+  name: Songzhou Ancient City
+  icon: pagoda
+  city: Songpan
+  category: see
+  visited: false
+  lat: 32.6472
+  lng: 103.6008
+  google_maps: https://www.google.com/maps/place/Songzhou+Ancient+City/data=!4m2!3m1!1s0x36f75ef83b55ce8d:0x6dec734afb548521
+- id: shan-tang-jie
+  name: Shan Tang Jie
+  icon: pagoda
+  city: Suzhou
+  category: see
+  visited: false
+  lat: 31.3262
+  lng: 120.5893
+  google_maps: https://www.google.com/maps/place/Shan+Tang+Jie/data=!4m2!3m1!1s0x35b3a11db3103cb5:0x91087ed0ef67cbbe
+- id: haidilao-hot-pot
+  name: Haidilao Hot Pot
+  icon: ramen
+  city: Tianjin
+  category: food
+  visited: false
+  lat: 39.1386
+  lng: 117.2197
+  google_maps: https://www.google.com/maps/place/Haidilao+Hot+Pot/data=!4m2!3m1!1s0x35edfdd2a6609ba7:0x5dcffc58edbcb23d
+- id: yuantouzhu-taihu-lake
+  name:
+    fr: Yuantouzhu (lac Tai)
+    en: Yuantouzhu (Taihu Lake)
+  name_ja: 鼋头渚
+  icon: camera
+  city: Wuxi
+  category: photo
+  visited: false
+  lat: 31.5197
+  lng: 120.2623
+  google_maps: https://www.google.com/maps/place/%E9%BC%8B%E5%A4%B4%E6%B8%9A/data=!4m2!3m1!1s0x35b385e58f1dec7d:0x57f8ed0c1aea09bd
+- id: lingshan-grand-buddha
+  name:
+    fr: Grand Bouddha de Lingshan
+    en: Lingshan Grand Buddha
+  icon: pagoda
+  city: Wuxi
+  category: see
+  visited: false
+  lat: 31.4311
+  lng: 120.0984
+  google_maps: https://www.google.com/maps/place/Grand+Bouddha+de+Ling+Shan/data=!4m2!3m1!1s0x35b47e4781eef6bb:0xe462a496dadcb2b
+- id: laochenggen-g-park-commercial-street
+  name: Laochenggen G-PARK Commercial Street
+  icon: ticket
+  city: Xi'an
+  category: activity
+  visited: false
+  lat: 34.2846
+  lng: 108.9217
+  google_maps: https://www.google.com/maps/place/Laochenggen+G-PARK+Commercial+Street/data=!4m2!3m1!1s0x36637a346b8d6ac7:0x6e30a7af2b5405ee
+- id: shanxi-grand-opera-house
+  name: Shanxi Grand Opera House
+  icon: ticket
+  city: Xi'an
+  category: activity
+  visited: false
+  lat: 34.2485
+  lng: 108.9538
+  google_maps: https://www.google.com/maps/place/Shanxi+Grand+Opera+House/data=!4m2!3m1!1s0x36637a8657da8415:0x5af08c72b2c34461
+- id: tang-dynasty
+  name: Tang Dynasty
+  icon: ticket
+  city: Xi'an
+  category: activity
+  visited: false
+  lat: 34.2362
+  lng: 108.9472
+  google_maps: https://www.google.com/maps/place/Tang+Dynasty/data=!4m2!3m1!1s0x366370812a93f697:0xf24ddceed95d1617
+- id: tang-paradise
+  name: Tang Paradise
+  icon: wheel
+  city: Xi'an
+  category: activity
+  visited: false
+  lat: 34.2119
+  lng: 108.9699
+  google_maps: https://www.google.com/maps/place/Tang+Paradise/data=!4m2!3m1!1s0x36637041399c821b:0x123c1bc0ad2fa8c4
+- id: repere-5
+  name: 34°15'10.0"N 108°56'57.9"E
+  icon: camera
+  city: Xi'an
+  category: photo
+  visited: false
+  lat: 34.2528
+  lng: 108.9494
+  google_maps: https://www.google.com/maps/search/34.252763,108.949424
+- id: terracotta-army
+  name:
+    fr: Armée de terre cuite
+    en: Terracotta Army
+  name_ja: 兵马俑
+  icon: pagoda
+  city: Xi'an
+  category: see
+  visited: false
+  lat: 34.3904
+  lng: 109.2862
+  google_maps: https://www.google.com/maps/place/Arm%C3%A9e+de+terre+cuite/data=!4m2!3m1!1s0x3664a72d821403a3:0xc3e33e74e9e33fc7
+- id: bell-tower-of-xi-an
+  name: Bell Tower of Xi'an
+  icon: pagoda
+  city: Xi'an
+  category: see
+  visited: false
+  lat: 34.2595
+  lng: 108.947
+  google_maps: https://www.google.com/maps/place/Bell+Tower+of+Xi'an/data=!4m2!3m1!1s0x36637a6108f00001:0x527adec5a3f239e1
+- id: daci-en-temple
+  name: Daci'en Temple
+  icon: pagoda
+  city: Xi'an
+  category: see
+  visited: false
+  lat: 34.2173
+  lng: 108.9645
+  google_maps: https://www.google.com/maps/place/Daci'en+Temple/data=!4m2!3m1!1s0x366370682824c6ad:0xf06a6e0f3a192061
+- id: giant-wild-goose-pagoda
+  name:
+    fr: Grande pagode de l'Oie sauvage
+    en: Giant Wild Goose Pagoda
+  icon: pagoda
+  city: Xi'an
+  category: see
+  visited: false
+  lat: 34.2196
+  lng: 108.9644
+  google_maps: https://www.google.com/maps/place/Grande+pagode+de+l'oie+sauvage/data=!4m2!3m1!1s0x14e036e7df479dd9:0x4804bba140ba776a
+- id: huaqing-palace
+  name: Huaqing Palace
+  icon: pagoda
+  city: Xi'an
+  category: see
+  visited: false
+  lat: 34.3647
+  lng: 109.2112
+  google_maps: https://www.google.com/maps/place/Huaqing+Palace/data=!4m2!3m1!1s0x36635ff357b4fa61:0xc6ebc6e9fc2833aa
+- id: great-mosque-of-xi-an
+  name:
+    fr: Grande mosquée de Xi'an
+    en: Great Mosque of Xi'an
+  icon: pagoda
+  city: Xi'an
+  category: see
+  visited: false
+  lat: 34.2616
+  lng: 108.9403
+  google_maps: https://www.google.com/maps/place/Mosqu%C3%A9e+de+Xi'an/data=!4m2!3m1!1s0x36637a67b3c8f925:0xd33b948d6d3f1839
+- id: shaanxi-history-museum
+  name:
+    fr: Musée d'histoire du Shaanxi
+    en: Shaanxi History Museum
+  icon: pagoda
+  city: Xi'an
+  category: see
+  visited: false
+  lat: 34.2231
+  lng: 108.9555
+  google_maps: https://www.google.com/maps/place/Mus%C3%A9e+de+l'histoire+du+Shaanxi/data=!4m2!3m1!1s0x366370614f505a77:0xd1e6ac9c71d17f8
+- id: xi-an-city-wall
+  name:
+    fr: Remparts de Xi'an
+    en: Xi'an City Wall
+  icon: wall
+  city: Xi'an
+  category: see
+  visited: false
+  lat: 34.2768
+  lng: 108.9472
+  google_maps: https://www.google.com/maps/place/Remparts+de+Xi'an/data=!4m2!3m1!1s0x36637a56f87fd3a1:0xb9ab5267439cda86
+- id: small-wild-goose-pagoda
+  name: Small Wild Goose Pagoda
+  icon: pagoda
+  city: Xi'an
+  category: see
+  visited: false
+  lat: 34.2408
+  lng: 108.944
+  google_maps: https://www.google.com/maps/place/Small+Wild+Goose+Pagoda/data=!4m2!3m1!1s0x366370821f2548a7:0x3f45c1918951e5bc
+- id: south-gate
+  name: South Gate
+  icon: pagoda
+  city: Xi'an
+  category: see
+  visited: false
+  lat: 34.2507
+  lng: 108.947
+  google_maps: https://www.google.com/maps/place/South+Gate/data=!4m2!3m1!1s0x36637a7ce13fd521:0xa8c0855a07303b9a
+- id: chaoyang-marina
+  name: Chaoyang Marina
+  icon: ticket
+  city: Yangshuo
+  category: activity
+  visited: false
+  lat: 24.7577
+  lng: 110.4492
+  google_maps: https://www.google.com/maps/place/Chaoyang+Marina/data=!4m2!3m1!1s0x36a5a5c011f1edd7:0x2911dbb6e2cd7a63
+- id: guilin-qianguqing-scenic-spot
+  name: Guilin Qianguqing Scenic Spot
+  icon: ticket
+  city: Yangshuo
+  category: activity
+  visited: false
+  lat: 24.7708
+  lng: 110.4688
+  google_maps: https://www.google.com/maps/place/Guilin+Qianguqing+Scenic+Spot/data=!4m2!3m1!1s0x36a5a5839077d53b:0x66d26007469ab7a3
+- id: jinlong-bridge-wharf
+  name: Jinlong Bridge Wharf
+  icon: ticket
+  city: Yangshuo
+  category: activity
+  visited: false
+  lat: 24.8169
+  lng: 110.3944
+  google_maps: https://www.google.com/maps/place/Jinlong+Bridge+Wharf/data=!4m2!3m1!1s0x36a5a8ec24dc3aad:0xce993346359e1041
+- id: yangshuo-tianlai-butterfly-spring
+  name: Yangshuo Tianlai Butterfly Spring
+  icon: ticket
+  city: Yangshuo
+  category: activity
+  visited: false
+  lat: 24.7401
+  lng: 110.4969
+  google_maps: https://www.google.com/maps/place/Yangshuo+Tianlai+Butterfly+Spring/data=!4m2!3m1!1s0x36a5a5181ae80a73:0x4d0ef4b72de05979
+- id: liusan-jiegewei
+  name: Liusan Jiegewei
+  icon: ramen
+  city: Yangshuo
+  category: food
+  visited: false
+  lat: 24.7666
+  lng: 110.5056
+  google_maps: https://www.google.com/maps/place/Liusan+Jiegewei/data=!4m2!3m1!1s0x36a5a55bc6c8fd09:0x3316be86e9970b2e
+- id: jiuxiancun
+  name: Jiuxiancun
+  icon: gem
+  city: Yangshuo
+  category: hidden
+  visited: false
+  lat: 24.7826
+  lng: 110.4272
+  google_maps: https://www.google.com/maps/place/Jiuxiancun/data=!4m2!3m1!1s0x36a5a5ffc437b4a3:0xa85242feca22ebfa
+- id: 20-yuan-pattern-viewing-platform
+  name: 20 Yuan Pattern Viewing Platform
+  icon: camera
+  city: Yangshuo
+  category: photo
+  visited: false
+  lat: 24.9212
+  lng: 110.5236
+  google_maps: https://www.google.com/maps/place/20+Yuan+Pattern+Viewing+Platform/data=!4m2!3m1!1s0x36a5b29da7b2d073:0xc4c29cd515c9e78c
+- id: darongshu-scenic-area
+  name: Darongshu Scenic Area
+  icon: camera
+  city: Yangshuo
+  category: photo
+  visited: false
+  lat: 24.7316
+  lng: 110.4871
+  google_maps: https://www.google.com/maps/place/Darongshu+Scenic+Area/data=!4m2!3m1!1s0x36a5a51d43b6ac0f:0xd0709befb11a2811
+- id: shi-li-hua-lang
+  name: Shi Li Hua Lang
+  icon: camera
+  city: Yangshuo
+  category: photo
+  visited: false
+  lat: 24.7365
+  lng: 110.4836
+  google_maps: https://www.google.com/maps/place/Shi+Li+Hua+Lang/data=!4m2!3m1!1s0x36a5a50364ae7ad5:0x9ed2aeea177491e8
+- id: sightseeing-platform
+  name: Sightseeing Platform
+  icon: camera
+  city: Yangshuo
+  category: photo
+  visited: false
+  lat: 24.9208
+  lng: 110.5238
+  google_maps: https://www.google.com/maps/place/Sightseeing+Platform/data=!4m2!3m1!1s0x36a5b29d07d13b67:0x2a2b33cac963bb5e
+- id: xianggongshan-scenic-spot
+  name: Xianggongshan Scenic Spot
+  icon: camera
+  city: Yangshuo
+  category: photo
+  visited: false
+  lat: 24.9225
+  lng: 110.4824
+  google_maps: https://www.google.com/maps/place/Xianggongshan+Scenic+Spot/data=!4m2!3m1!1s0x36a5ad04e734c9e3:0x26656f01060b7125
+- id: yulong-bridge
+  name: Yulong Bridge
+  icon: camera
+  city: Yangshuo
+  category: photo
+  visited: false
+  lat: 24.8057
+  lng: 110.3095
+  google_maps: https://www.google.com/maps/place/Yulong+Bridge/data=!4m2!3m1!1s0x36a507e0dc87eb61:0xef4c2b77bd34537a
+- id: yulong-river
+  name: Yulong River
+  icon: boat
+  city: Yangshuo
+  category: photo
+  visited: false
+  lat: 24.7513
+  lng: 110.4514
+  google_maps: https://www.google.com/maps/place/Yulong+River/data=!4m2!3m1!1s0x36a5a5b8957e011b:0x9dfb8f076f0394b6
+- id: yulong-shuiyun
+  name: Yulong Shuiyun
+  icon: camera
+  city: Yangshuo
+  category: photo
+  visited: false
+  lat: 24.7483
+  lng: 110.4619
+  google_maps: https://www.google.com/maps/place/Yulong+Shuiyun/data=!4m2!3m1!1s0x36a5a5bad52a3bf9:0xd786142cb1fea09
+- id: yulonghe-scenic-area
+  name: Yulonghe Scenic Area
+  icon: camera
+  city: Yangshuo
+  category: photo
+  visited: false
+  lat: 24.7759
+  lng: 110.4366
+  google_maps: https://www.google.com/maps/place/Yulonghe+Scenic+Area/data=!4m2!3m1!1s0x36a5a5fa41cda2c7:0xd4857fef03e016e4
+- id: west-street
+  name: West Street
+  icon: pagoda
+  city: Yangshuo
+  category: see
+  visited: false
+  lat: 24.7762
+  lng: 110.479
+  google_maps: https://www.google.com/maps/place/West+Street/data=!4m2!3m1!1s0x36a5a57e11eababb:0x491c03553cac5104
+- id: xingping-ancient-town
+  name: Xingping Ancient Town
+  icon: pagoda
+  city: Yangshuo
+  category: see
+  visited: false
+  lat: 24.9165
+  lng: 110.5265
+  google_maps: https://www.google.com/maps/place/Xingping+Ancient+Town/data=!4m2!3m1!1s0x36a5b28343b67857:0x2e82e16181f66b46
+- id: xitang
+  name: Xitang
+  icon: pagoda
+  city: Yangshuo
+  category: see
+  visited: false
+  lat: 25.0385
+  lng: 110.5035
+  google_maps: https://www.google.com/maps/place/Xitang/data=!4m2!3m1!1s0x36a4521960669083:0xf2b00ea355a2addb
+- id: luyang-lake
+  name: Luyang Lake
+  icon: boat
+  city: Yangzhou
+  category: photo
+  visited: false
+  lat: 32.6484
+  lng: 119.5905
+  google_maps: https://www.google.com/maps/place/Luyang+Lake/data=!4m2!3m1!1s0x35b6f1cf9356e75f:0xaaee453b8187be5
+- id: sayram-lake
+  name: Sayram Lake
+  icon: boat
+  city: Yili (Sayram)
+  category: photo
+  visited: false
+  lat: 44.6029
+  lng: 80.9895
+  google_maps: https://www.google.com/maps/place/Sayram+Lake/data=!4m2!3m1!1s0x3878a62a31ef06d1:0x71ef9239144d124
+- id: qingkou-terrace-scenic-area-north-gate
+  name: Qingkou Terrace Scenic Area （North Gate）
+  icon: bamboo
+  city: Yuanyang
+  category: photo
+  visited: false
+  lat: 23.1162
+  lng: 102.7455
+  google_maps: https://www.google.com/maps/place/Qingkou+Terrace+Scenic+Area+%EF%BC%88North+Gate%EF%BC%89/data=!4m2!3m1!1s0x36d3b3bb0cb17615:0xce80bf1564b03a68
+- id: honghe-hani-rice-terraces
+  name:
+    fr: Rizières en terrasses des Hani
+    en: Honghe Hani Rice Terraces
+  icon: bamboo
+  city: Yuanyang
+  category: photo
+  visited: false
+  lat: 23.0835
+  lng: 102.873
+  google_maps: https://www.google.com/maps/place/%E7%B4%85%E6%B2%B3%E3%83%8F%E3%83%8B%E6%A3%9A%E7%94%B0/data=!4m2!3m1!1s0x36d24db674986cc1:0x3fe665b79e90a3c2
+- id: bailong-elevator
+  name: Bailong Elevator
+  icon: ticket
+  city: Zhangjiajie
+  category: activity
+  visited: false
+  lat: 29.3457
+  lng: 110.5504
+  google_maps: https://www.google.com/maps/place/Bailong+Elevator/data=!4m2!3m1!1s0x369b08cbe2f3f6a3:0xfe2732f0ae98b08c
+- id: repere-6
+  name: 29°06'24.7"N 110°29'18.8"E
+  icon: camera
+  city: Zhangjiajie
+  category: photo
+  visited: false
+  lat: 29.1069
+  lng: 110.4886
+  google_maps: https://www.google.com/maps/search/29.106865,110.488555
+- id: baofeng-lake
+  name: Baofeng Lake
+  icon: boat
+  city: Zhangjiajie
+  category: photo
+  visited: false
+  lat: 29.3226
+  lng: 110.5528
+  google_maps: https://www.google.com/maps/place/Baofeng+Lake/data=!4m2!3m1!1s0x369b08eeb625650d:0xdcb610a26be0b7d3
+- id: tianmen-fairy-mountain-north-gate
+  name: Tianmen Fairy Mountain （North Gate）
+  icon: camera
+  city: Zhangjiajie
+  category: photo
+  visited: false
+  lat: 29.0673
+  lng: 110.4757
+  google_maps: https://www.google.com/maps/place/Tianmen+Fairy+Mountain+%EF%BC%88North+Gate%EF%BC%89/data=!4m2!3m1!1s0x369bb04c9464d8ff:0x458fc84b0a3efba
+- id: wulingyuan-scenic-area
+  name: Wulingyuan Scenic Area
+  icon: camera
+  city: Zhangjiajie
+  category: photo
+  visited: false
+  lat: 29.3357
+  lng: 110.4813
+  google_maps: https://www.google.com/maps/place/Wulingyuan+Scenic+Area/data=!4m2!3m1!1s0x369b065c15342353:0x8f90e37fced29705
+- id: xiangyin-tianmen-yihao
+  name: Xiangyin Tianmen Yihao
+  icon: camera
+  city: Zhangjiajie
+  category: photo
+  visited: false
+  lat: 29.1442
+  lng: 110.4567
+  google_maps: https://www.google.com/maps/place/Xiangyin+Tianmen+Yihao/data=!4m2!3m1!1s0x369baef6035639af:0xf1aa848db202900a
+- id: zhangjiajie-glass-bridge
+  name: Zhangjiajie Glass Bridge
+  icon: camera
+  city: Zhangjiajie
+  category: photo
+  visited: false
+  lat: 29.3982
+  lng: 110.6962
+  google_maps: https://www.google.com/maps/place/Zhangjiajie+Glass+Bridge/data=!4m2!3m1!1s0x369b0d46ebf4e5c7:0x2e5c8645cccd39dc
+- id: zhangjiajie-national-forest-park
+  name: Zhangjiajie National Forest Park
+  icon: bamboo
+  city: Zhangjiajie
+  category: photo
+  visited: false
+  lat: 29.1171
+  lng: 110.4792
+  google_maps: https://www.google.com/maps/place/Zhangjiajie+National+Forest+Park/data=!4m2!3m1!1s0x369bafca1a43aca1:0xa18079ec65a40b6f
+- id: zhangye-national-wetland-park
+  name: Zhangye National Wetland Park
+  icon: bamboo
+  city: Zhangye
+  category: photo
+  visited: false
+  lat: 38.9719
+  lng: 100.4409
+  google_maps: https://www.google.com/maps/place/Zhangye+National+Wetland+Park/data=!4m2!3m1!1s0x37b52f7e129d0a71:0x51ce6a8e60eab963
+- id: mengxi-park
+  name: Mengxi Park
+  icon: bamboo
+  city: Zhenjiang
+  category: photo
+  visited: false
+  lat: 32.2039
+  lng: 119.4624
+  google_maps: https://www.google.com/maps/place/Mengxi+Park/data=!4m2!3m1!1s0x35b42af84712dc63:0xbfdf2dd6f2fb484d
+- id: siguniang-mountain
+  name: Siguniang Mountain
+  icon: camera
+  city: près de Dujiangyan
+  category: photo
+  visited: false
+  lat: 31.1104
+  lng: 102.902
+  google_maps: https://www.google.com/maps/place/Siguniang+Mountain/data=!4m2!3m1!1s0x36fad12a3519afe3:0x2a8d3c2592c937f2
+- id: bajiao-village
+  name: Bajiao Village
+  icon: gem
+  city: près de Enshi
+  category: hidden
+  visited: false
+  lat: 30.1406
+  lng: 108.4882
+  google_maps: https://www.google.com/maps/place/Bajiao+Village/data=!4m2!3m1!1s0x3691dcef6c7b1f73:0x73c4b005a0cb52e6
+- id: katok-monastery
+  name: Katok Monastery
+  icon: gem
+  city: près de Ganzi
+  category: hidden
+  visited: false
+  lat: 31.2099
+  lng: 98.8242
+  google_maps: https://www.google.com/maps/place/Katok+Monastery/data=!4m2!3m1!1s0x371b363d4157cf0d:0xbbee20e7006b1935
+- id: cotton-sinkhole
+  name: Cotton Sinkhole
+  icon: camera
+  city: près de Guilin
+  category: photo
+  visited: false
+  lat: 24.7868
+  lng: 108.7922
+  google_maps: https://www.google.com/maps/place/Cotton+Sinkhole/data=!4m2!3m1!1s0x36ba60310480e2d3:0xce2d11a925dec32b
+- id: fanjinshan
+  name: Fanjinshan
+  icon: camera
+  city: près de Huangshan
+  category: photo
+  visited: false
+  lat: 30.384
+  lng: 119.0041
+  google_maps: https://www.google.com/maps/place/Fanjinshan/data=!4m2!3m1!1s0x344a8afe8c16042b:0x67b36f3147b703f2
+- id: stone-forest-scenic
+  name: Stone Forest Scenic
+  icon: bamboo
+  city: près de Kunming
+  category: photo
+  visited: false
+  lat: 24.8168
+  lng: 103.3262
+  google_maps: https://www.google.com/maps/place/Stone+Forest+Scenic/data=!4m2!3m1!1s0x36d010f0f01e5fe7:0x1da1e31461d31794
+- id: spring-temple-buddha
+  name:
+    fr: Bouddha du Temple de la Source
+    en: Spring Temple Buddha
+  icon: pagoda
+  city: près de Lushan (Henan)
+  category: see
+  visited: false
+  lat: 33.7254
+  lng: 112.2672
+  google_maps: https://www.google.com/maps/place/Bouddha+du+Temple+de+la+Source/data=!4m2!3m1!1s0x367f49be1323f81d:0x5963edd831198e07
+- id: badaling-great-wall
+  name:
+    fr: Grande Muraille de Badaling
+    en: Badaling Great Wall
+  name_ja: 八达岭长城
+  icon: wall
+  city: près de Pékin
+  category: see
+  visited: false
+  lat: 40.3498
+  lng: 116.0081
+  google_maps: https://www.google.com/maps/place/Badaling/data=!4m2!3m1!1s0x35f0936d174eb715:0xb3ec1a87d21e409c
+- id: huanghuacheng-great-wall
+  name:
+    fr: Grande Muraille de Huanghuacheng
+    en: Huanghuacheng Great Wall
+  icon: wall
+  city: près de Pékin
+  category: see
+  visited: false
+  lat: 40.4166
+  lng: 116.3468
+  google_maps: https://www.google.com/maps/place/Huanghuacheng+Great+Wall/data=!4m2!3m1!1s0x35f0de9519a1cd55:0xd7861a22419600dd
+- id: jinshanling-great-wall
+  name:
+    fr: Grande Muraille de Jinshanling
+    en: Jinshanling Great Wall
+  icon: wall
+  city: près de Pékin
+  category: see
+  visited: false
+  lat: 40.6801
+  lng: 117.2429
+  google_maps: https://www.google.com/maps/place/Jin+Shan+Ling+Chang+Cheng+Lv+You+Qu/data=!4m2!3m1!1s0x35f41e96341ba965:0x9d27f2c961861af8
+- id: ming-dynasty-tombs
+  name: Ming Dynasty Tombs
+  icon: pagoda
+  city: près de Pékin
+  category: see
+  visited: false
+  lat: 40.25
+  lng: 116.2209
+  google_maps: https://www.google.com/maps/place/Ming+Dynasty+Tombs/data=!4m2!3m1!1s0x35f0eff0657f970d:0x2169f3326d8086a7
+- id: mutianyu-great-wall
+  name:
+    fr: Grande Muraille de Mutianyu
+    en: Mutianyu Great Wall
+  name_ja: 慕田峪长城
+  icon: wall
+  city: près de Pékin
+  category: see
+  visited: false
+  lat: 40.4294
+  lng: 116.5591
+  google_maps: https://www.google.com/maps/place/Mu+Tian+Yu+Chang+Cheng+Lv+You+Qu/data=!4m2!3m1!1s0x35f125a9bdd5313f:0x9e552ab30e770e18
+- id: shanghai-zhujiajiao-ancient-town-tourist-zone
+  name: Shanghai Zhujiajiao Ancient Town Tourist Zone
+  icon: pagoda
+  city: près de Shanghai
+  category: see
+  visited: false
+  lat: 31.1142
+  lng: 121.054
+  google_maps: https://www.google.com/maps/place/Shanghai+Zhujiajiao+Ancient+Town+Tourist+Zone/data=!4m2!3m1!1s0x35b2f9b5c9e560ad:0xa3de3978c954dd20
+- id: white-water-terrace-scenic-area-parking-lot
+  name: White Water Terrace Scenic Area Parking Lot
+  icon: bamboo
+  city: près de Shangri-La
+  category: photo
+  visited: false
+  lat: 27.4985
+  lng: 100.0411
+  google_maps: https://www.google.com/maps/place/White+Water+Terrace+Scenic+Area+Parking+Lot/data=!4m2!3m1!1s0x3720f9a69be045d9:0xcc096f26f2a20198
+- id: mianshan-mountain
+  name: Mianshan Mountain
+  icon: camera
+  city: près de Taiyuan
+  category: photo
+  visited: false
+  lat: 37.9497
+  lng: 113.89
+  google_maps: https://www.google.com/maps/place/Mianshan+Mountain/data=!4m2!3m1!1s0x35e0c4cf68c04c37:0x91a9132bc1b76bd8
+- id: tianzi-mountain
+  name: Tianzi Mountain
+  icon: camera
+  city: près de Tianshui
+  category: photo
+  visited: false
+  lat: 33.994
+  lng: 104.9475
+  google_maps: https://www.google.com/maps/place/Tianzi+Mountain/data=!4m2!3m1!1s0x3658cbd10858ed59:0x32cc3934be241139
+- id: fengdu-ghost-city
+  name: Fengdu Ghost City
+  icon: ticket
+  city: près de Wulong
+  category: activity
+  visited: false
+  lat: 29.8769
+  lng: 107.7166
+  google_maps: https://www.google.com/maps/place/Fengdu+Ghost+City/data=!4m2!3m1!1s0x369239ccd5d97743:0x4eebc32e9d40a092
+- id: furong-ancient-town
+  name:
+    fr: Village ancien de Furong
+    en: Furong Ancient Town
+  name_ja: 芙蓉古镇
+  icon: pagoda
+  city: près de Xiangxi
+  category: see
+  visited: false
+  lat: 28.7424
+  lng: 109.9464
+  google_maps: https://www.google.com/maps/place/%E8%8A%99%E8%93%89%E5%8F%A4%E9%95%87/data=!4m2!3m1!1s0x369a18a8f4c0bc85:0x9999b10c8e25c22a
+- id: chaka-salt-lake
+  name:
+    fr: Lac salé de Chaka
+    en: Chaka Salt Lake
+  name_ja: 茶卡盐湖
+  icon: boat
+  city: près de Xining
+  category: photo
+  visited: false
+  lat: 36.7622
+  lng: 99.0795
+  google_maps: https://www.google.com/maps/place/%E8%8C%B6%E5%8D%A1%E7%9B%90%E6%B9%96%E6%99%AF%E5%8C%BA/data=!4m2!3m1!1s0x37ae0f41fc997d3b:0x28deedc0e73fb05d
+- id: mati-temple
+  name: Mati Temple
+  icon: pagoda
+  city: près de Zhangye
+  category: see
+  visited: false
+  lat: 38.4861
+  lng: 100.4173
+  google_maps: https://www.google.com/maps/place/Mati+Temple/data=!4m2!3m1!1s0x37b4b835ff27ba53:0x6720480c864d6219
+- id: houtouwan
+  name: Houtouwan
+  icon: gem
+  city: près de Zhoushan
+  category: hidden
+  visited: false
+  lat: 30.7193
+  lng: 122.7741
+  google_maps: https://www.google.com/maps/place/Houtouwan/data=!4m2!3m1!1s0x35ac61af8cf7e35f:0xafe9a93f41617704

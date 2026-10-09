@@ -51,7 +51,9 @@
   const places = () => country()?._places || [];
   const isReady = (c) => !!c._places?.length;
   const verdictOf = (p) => (p.visited ? (p.verdict || "recommend") : "wish");
-  const iconOf = (p) => (HodoIcons.has(p.icon) ? p.icon : HodoIcons.CATEGORY_ICON[p.category] || "torii");
+  // A country can swap the default drawing of a category (China: a pagoda rather than a torii for "Sights")
+  const catIcon = (cat) => country()?._meta?.icons?.[cat] || HodoIcons.CATEGORY_ICON[cat] || "torii";
+  const iconOf = (p) => (HodoIcons.has(p.icon) ? p.icon : catIcon(p.category));
   const plural = (n, fr1, frN, en1, enN) => `${n} ${t(n > 1 ? frN : fr1, n > 1 ? enN : en1)}`;
 
   function norm(s) { return String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
@@ -106,7 +108,11 @@
 
   // ----- countries -----
   function bubble(c, size) {
-    const img = c.cover ? `<img src="/${esc(c.cover)}" alt="" loading="lazy" onerror="this.remove()">` : HodoIcons.icon("bunny", size - 12);
+    // No cover photo (or a missing file): show the country's drawing instead
+    const drawing = HodoIcons.has(c.icon) ? c.icon : "bunny";
+    const img = c.cover
+      ? `<img src="/${esc(c.cover)}" alt="" loading="lazy" onerror="this.outerHTML=window.HodoIcons.icon('${drawing}', ${size - 14})">`
+      : HodoIcons.icon(drawing, size - 14);
     return `<span class="wm-bubble">${img}</span>`;
   }
 
@@ -257,7 +263,7 @@
       `<button type="button" class="chip text${state.filter === "love" ? " on" : ""}" data-f="love">♥ ${esc(t("Coups de cœur", "Favourites"))}</button>`,
     ];
     for (const [id, c] of Object.entries(CATEGORIES)) {
-      if (present.has(id)) out.push(`<button type="button" class="chip${state.filter === id ? " on" : ""}" data-f="${id}">${HodoIcons.icon(HodoIcons.CATEGORY_ICON[id], 24)}${esc(label(c))}</button>`);
+      if (present.has(id)) out.push(`<button type="button" class="chip${state.filter === id ? " on" : ""}" data-f="${id}">${HodoIcons.icon(catIcon(id), 24)}${esc(label(c))}</button>`);
     }
     if (places().some((p) => !p.visited)) out.push(`<button type="button" class="chip text${state.filter === "wish" ? " on" : ""}" data-f="wish">🔖 ${esc(t("À tester", "Not tried yet"))}</button>`);
     return `<div class="chips">${out.join("")}</div>`;
