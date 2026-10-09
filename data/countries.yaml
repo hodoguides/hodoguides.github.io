@@ -12,6 +12,7 @@ countries:
     lat: 36.0
     lng: 138.0
     cover: asia/japan/cover.jpg
+    icon: torii
     places: japan.yaml
     zoom: 5.2
 
@@ -62,7 +63,8 @@ countries:
     region: { fr: Asie, en: Asia }
     lat: 35.8617
     lng: 104.1954
-    cover: asia/china/cover.jpg   # photo manquante : à ajouter
+    icon: wall                    # pas encore de photo : ajoute « cover: asia/china/cover.jpg » quand tu en as une
+    places: china.yaml
 
   - id: belgium
     name: { fr: Belgique, en: Belgium }
