@@ -171,7 +171,7 @@
     el.className = "pin" + (p.visited ? "" : " wish") + (p.visited && p.verdict === "love" ? " love" : "");
     el.style.setProperty("--cat", `var(--c-${p.category})`);
     el.setAttribute("aria-label", tr(p.name));
-    el.innerHTML = `<i class="fa-solid ${cat.icon}"></i>`;
+    el.innerHTML = `<span class="pin-in"><svg viewBox="0 0 34 44" aria-hidden="true"><path d="M17 1.5C8.4 1.5 1.5 8.3 1.5 16.8c0 10.9 13.4 24.6 14.6 25.8a1.3 1.3 0 0 0 1.8 0c1.2-1.2 14.6-14.9 14.6-25.8C32.5 8.3 25.6 1.5 17 1.5z"/></svg><i class="fa-solid ${cat.icon}"></i></span>`;
     el.addEventListener("click", (e) => { e.stopPropagation(); openPlace(p.id); });
     return el;
   }

@@ -93,23 +93,24 @@ a{color:inherit}
 }
 
 /* ============ Markers ============ */
-.pin{
-  width:34px; height:34px; border-radius:50% 50% 50% 4px; transform:rotate(-45deg);
-  background:var(--cat); border:2px solid #fff; box-shadow:0 4px 12px rgba(0,0,0,.45);
-  display:grid; place-items:center; cursor:pointer; transition:transform .15s ease;
-}
-.pin i{transform:rotate(45deg); color:#fff; font-size:14px; text-shadow:0 1px 2px rgba(0,0,0,.25)}
-.pin:hover{transform:rotate(-45deg) scale(1.12)}
-.pin.wish{background:rgba(14,20,32,.85); border:2px dashed var(--cat)}
+/* The marker element itself is positioned by Mapbox (inline transform),
+   so every visual effect lives on the inner .pin-in wrapper. */
+.pin{display:block; width:34px; height:44px; padding:0; border:0; background:none; cursor:pointer}
+.pin-in{position:relative; display:block; width:100%; height:100%; transform-origin:50% 100%; transition:transform .15s ease; filter:drop-shadow(0 4px 6px rgba(0,0,0,.45))}
+.pin svg{display:block; width:100%; height:100%}
+.pin path{fill:var(--cat); stroke:#fff; stroke-width:2}
+.pin i{position:absolute; left:0; right:0; top:9px; text-align:center; color:#fff; font-size:14px}
+.pin:hover .pin-in{transform:scale(1.12)}
+.pin.active .pin-in{transform:scale(1.25)}
+.pin.active{z-index:2}
+.pin.wish path{fill:#141b2b; stroke:var(--cat); stroke-dasharray:4 3}
 .pin.wish i{color:var(--cat)}
-.pin.love::after{
+.pin.love .pin-in::after{
   content:"\f004"; font-family:"Font Awesome 6 Free"; font-weight:900;
-  position:absolute; top:-7px; right:-7px; transform:rotate(45deg);
+  position:absolute; top:-6px; right:-7px;
   width:18px; height:18px; border-radius:50%; background:var(--love); color:#fff;
   font-size:9px; display:grid; place-items:center; border:2px solid #fff;
 }
-.pin{position:relative}
-.pin.active{transform:rotate(-45deg) scale(1.25); z-index:2}
 
 .cluster{
   width:42px; height:42px; border-radius:50%;
