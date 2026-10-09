@@ -7,6 +7,16 @@
 
   <!-- Favicon -->
   <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+
+  <!-- Search engines & link previews -->
+  <meta name="description" content="Travel guides and favourite places by Erika: honest reviews, practical tips and maps from my trips around the world." />
+  <meta property="og:title" content="HodoGuides by Erika" />
+  <meta property="og:description" content="Travel guides and favourite places: honest reviews, practical tips and maps from my trips around the world." />
+  <meta property="og:image" content="https://guides.erikaramel.com/asia/japan/cover.jpg" />
+  <meta property="og:url" content="https://guides.erikaramel.com/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Mapbox + Icons -->
   <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
@@ -183,7 +193,7 @@
     { name:"Indonesia", coords:[113.0, -0.8], img:"asia/indonesia/cover.jpg", url:"coming-soon.html", photo:true },
     { name:"Singapore", coords:[103.8198, 1.3521], img:"asia/singapore/cover.jpg", url:"coming-soon.html", photo:true },
     { name:"Jordan", coords:[36.0, 31.2], img:"asia/jordan/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Hong Kong", coords:[114.1694, 22.3193], img:"asia/hong-kong/cover.jpg", url:"asia/hong-kong/", photo:true },
+    { name:"Hong Kong", coords:[114.1694, 22.3193], img:"asia/hong-kong/cover.jpg", url:"coming-soon.html", photo:true },
     { name:"China", coords:[104.1954, 35.8617], img:"asia/china/cover.jpg", url:"asia/china/", photo:true },
 
     // === Europe (photo bubbles) ===
@@ -195,7 +205,7 @@
     { name:"Romania", coords:[25.0, 46.0], img:"europe/romania/cover.jpg", url:"coming-soon.html", photo:true },
     { name:"Poland", coords:[19.1, 52.1], img:"europe/poland/cover.jpg", url:"coming-soon.html", photo:true },
     { name:"Cyprus", coords:[33.2, 35.1], img:"europe/cyprus/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Turkey", coords:[35.0, 39.0], img:"europe/turkey/cover.jpg", url:"coming-soon.html", photo:true },
+    { name:"Turkey", coords:[35.0, 39.0], img:"europe/turkiye/cover.jpg", url:"coming-soon.html", photo:true },
 
     // Ajouts demandés en BULLE
     { name:"Germany", coords:[10.5, 51.0], img:"europe/germany/cover.jpg", url:"coming-soon.html", photo:true },
@@ -255,7 +265,7 @@
       p.title=s.name;
       const im=document.createElement('img'); im.alt=s.name; im.src=s.img || '';
       // fallback image if missing
-      im.onerror=()=>{ im.onerror=null; im.src=`https://source.unsplash.com/600x600/?${encodeURIComponent(s.name)}`; };
+      im.onerror=()=>{ im.onerror=null; im.src=`/images/placeholder.svg`; };
       p.appendChild(im);
       p.addEventListener('click', ()=>location.href=s.url);
       new mapboxgl.Marker(p,{anchor:'center'}).setLngLat(s.coords).addTo(map);

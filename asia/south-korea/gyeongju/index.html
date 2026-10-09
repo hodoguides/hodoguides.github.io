@@ -107,7 +107,7 @@
     const im=document.createElement('img');
     im.src = `./${p.id}/cover.jpg`;
     im.alt = p.name;
-    im.onerror = ()=>{ im.onerror=null; im.src=`https://source.unsplash.com/600x600/?${encodeURIComponent(p.name)}%20Korea`; };
+    im.onerror = ()=>{ im.onerror=null; im.src=`/images/placeholder.svg`; };
     el.appendChild(im);
 
     el.addEventListener('click', ()=>{ location.href = `./${p.id}/`; });

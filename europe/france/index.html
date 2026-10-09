@@ -100,7 +100,7 @@
     const im=document.createElement('img');
     im.src = `./${c.id}/cover.jpg`;
     im.alt = c.name;
-    im.onerror = ()=>{ im.onerror=null; im.src=`https://source.unsplash.com/600x600/?${encodeURIComponent(c.name)}%20France`; };
+    im.onerror = ()=>{ im.onerror=null; im.src=`/images/placeholder.svg`; };
     el.appendChild(im);
 
     el.addEventListener('click', ()=>{ location.href = `./${c.id}/`; });
