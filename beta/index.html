@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
   <link rel="stylesheet" href="/beta/assets/kawaii.css" />
 </head>
 <body>
@@ -45,16 +46,22 @@
   </header>
 
   <main class="wrap">
-    <section class="card hero" style="--sh:var(--pink)">
-      <div class="hero-img">
-        <img src="/asia/japan/cover.jpg" alt="" />
-        <span class="kanji jp">旅の記録</span>
-      </div>
+    <section class="card hero hero-map" style="--sh:var(--pink)">
       <div class="hero-body">
         <div><span class="label"><span data-l="fr">Carnet de voyage · by Erika</span><span data-l="en">Travel journal · by Erika</span></span></div>
         <h1><span data-l="fr">Les adresses que j'ai <em>vraiment</em> testées</span><span data-l="en">The places I've <em>actually</em> been to</span></h1>
-        <p><span data-l="fr">Mes coups de cœur, mon avis honnête et mes conseils pratiques, pays par pays.</span><span data-l="en">My favourites, my honest reviews and practical tips, country by country.</span></p>
+        <p><span data-l="fr">Clique sur un pays de ma carte pour découvrir mes coups de cœur, mon avis honnête et mes conseils pratiques.</span><span data-l="en">Click a country on my map to discover my favourites, honest reviews and practical tips.</span></p>
+        <div class="legend">
+          <span class="pill strong"><span class="lg-ready"></span><span data-l="fr">Guide prêt</span><span data-l="en">Guide ready</span></span>
+          <span class="pill strong"><span class="lg-soon"></span><span data-l="fr">Visité · bientôt</span><span data-l="en">Visited · coming soon</span></span>
+        </div>
         <div id="heroCta"></div>
+      </div>
+      <div class="world" id="worldWrap" data-level="world">
+        <div id="worldMap" aria-label="Map"></div>
+        <span class="world-kanji jp">世界地図</span>
+        <div class="wm-pop" id="worldCard" hidden></div>
+        <button type="button" class="btn expand" id="worldExpand"><span data-l="fr">⤢ Plein écran</span><span data-l="en">⤢ Full screen</span></button>
       </div>
     </section>
 
@@ -79,7 +86,7 @@
     </div>
 
     <section class="card about" style="--sh:var(--lav)">
-      <img src="/asia/south-korea/cover.jpg" alt="Erika" />
+      <img src="/asia/japan/cover.jpg" alt="Erika" />
       <div>
         <span class="label" style="--lb:var(--lav)"><span data-l="fr">Qui suis-je</span><span data-l="en">About me</span></span>
         <p><span data-l="fr">Moi c'est Erika ! Je partage ici uniquement les lieux où je suis vraiment allée, avec mon avis honnête. <i>(texte à écrire)</i></span><span data-l="en">Hi, I'm Erika! I only share places I've actually been to, with my honest opinion. <i>(text to write)</i></span></p>
@@ -98,6 +105,7 @@
   <footer class="foot">HodoGuides by Erika · <a href="https://planner.erikaramel.com/" target="_blank" rel="noopener">HodoPlanner</a></footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
   <script src="/beta/assets/icons.js"></script>
   <script src="/beta/assets/common.js"></script>
   <script src="/beta/assets/home.js"></script>
