@@ -6,8 +6,8 @@
   <title data-fr="HodoGuides · bêta" data-en="HodoGuides · beta">HodoGuides · bêta</title>
   <meta name="description" content="Bêta de la nouvelle version de HodoGuides." />
   <meta name="robots" content="noindex" />
-  <meta property="og:title" content="HodoGuides · bêta" />
-  <meta property="og:description" content="Bêta de la nouvelle version de HodoGuides." />
+  <meta property="og:title" content="HodoGuides by Erika" />
+  <meta property="og:description" content="Les adresses que j'ai vraiment testées, sur une carte. · The places I've actually been to, on a map." />
   <meta property="og:image" content="https://guides.erikaramel.com/asia/japan/cover.jpg" />
   <link rel="icon" href="/images/favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
@@ -16,98 +16,53 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
   <link rel="stylesheet" href="/beta/assets/kawaii.css" />
+  <link rel="stylesheet" href="/beta/assets/app.css" />
 </head>
-<body>
-  <p class="beta-note"><span data-l="fr">Version bêta · textes d'exemple</span><span data-l="en">Beta version · sample texts</span></p>
-  <header class="top">
-    <a class="brand" href="/beta/"><span data-mascot="30"></span><b>HodoGuides</b><img src="/images/erika-logo.png" alt="by Erika" /></a>
-    <div class="top-actions">
-      <nav class="nav-links">
-        <a href="/beta/" data-nav="home"><span data-l="fr">Destinations</span><span data-l="en">Destinations</span></a>
-        <a href="/beta/#guides"><span data-l="fr">Guides</span><span data-l="en">Guides</span></a>
-        <a href="/tips/"><span data-l="fr">Conseils</span><span data-l="en">Tips</span></a>
-        <a href="https://planner.erikaramel.com/" target="_blank" rel="noopener">HodoPlanner</a>
-      </nav>
+<body class="app" data-view="world">
+
+  <div id="map" aria-label="Map"></div>
+
+  <!-- Always visible -->
+  <header class="bar">
+    <a class="brand chip-brand" href="/beta/" data-go="world"><span data-mascot="28"></span><b>HodoGuides</b></a>
+    <div class="bar-actions">
       <div class="lang" role="group" aria-label="Langue / Language">
         <button type="button" data-lang="fr">FR</button>
         <button type="button" data-lang="en">EN</button>
       </div>
-      <details class="menu">
-        <summary aria-label="Menu">≡</summary>
-        <nav class="menu-pop">
-          <a href="/beta/"><span data-l="fr">Destinations</span><span data-l="en">Destinations</span></a>
-          <a href="/asia/japan/nagoya/ghibli-park/"><span data-l="fr">Guide Parc Ghibli</span><span data-l="en">Ghibli Park guide</span></a>
-          <a href="/asia/japan/osaka/universal-studios.html"><span data-l="fr">Guide Universal Studios</span><span data-l="en">Universal Studios guide</span></a>
-          <a href="/tips/"><span data-l="fr">Conseils voyage</span><span data-l="en">Travel tips</span></a>
-          <a href="https://planner.erikaramel.com/" target="_blank" rel="noopener">HodoPlanner</a>
-        </nav>
-      </details>
+      <button type="button" class="square" id="searchBtn" data-fr="Rechercher" data-en="Search">🔍</button>
     </div>
   </header>
 
-  <main class="wrap">
-    <section class="card hero hero-map" style="--sh:var(--pink)">
-      <div class="hero-body">
-        <div><span class="label"><span data-l="fr">Carnet de voyage · by Erika</span><span data-l="en">Travel journal · by Erika</span></span></div>
-        <h1><span data-l="fr">Les adresses que j'ai <em>vraiment</em> testées</span><span data-l="en">The places I've <em>actually</em> been to</span></h1>
-        <p><span data-l="fr">Clique sur un pays de ma carte pour découvrir mes coups de cœur, mon avis honnête et mes conseils pratiques.</span><span data-l="en">Click a country on my map to discover my favourites, honest reviews and practical tips.</span></p>
-        <div class="legend">
-          <span class="pill strong"><span class="lg-ready"></span><span data-l="fr">Guide prêt</span><span data-l="en">Guide ready</span></span>
-          <span class="pill strong"><span class="lg-soon"></span><span data-l="fr">Visité · bientôt</span><span data-l="en">Visited · coming soon</span></span>
-        </div>
-        <div id="heroCta"></div>
-      </div>
-      <div class="world" id="worldWrap" data-level="world">
-        <div id="worldMap" aria-label="Map"></div>
-        <span class="world-kanji jp">世界地図</span>
-        <div class="wm-pop" id="worldCard" hidden></div>
-        <button type="button" class="btn expand" id="worldExpand"><span data-l="fr">⤢ Plein écran</span><span data-l="en">⤢ Full screen</span></button>
-      </div>
-    </section>
+  <!-- World view (proposal C) -->
+  <section class="intro" data-only="world">
+    <span class="kicker"><span data-l="fr">Carnet de voyage · by Erika</span><span data-l="en">Travel journal · by Erika</span></span>
+    <h1><span data-l="fr">Clique sur un pays pour voir mes adresses testées</span><span data-l="en">Tap a country to see the places I've tried</span></h1>
+  </section>
+  <div class="world-foot" data-only="world">
+    <span class="pill strong"><span class="lg-ready"></span><span data-l="fr">Guide prêt</span><span data-l="en">Guide ready</span></span>
+    <span class="pill strong"><span class="lg-soon"></span><span data-l="fr">Bientôt</span><span data-l="en">Coming soon</span></span>
+    <button type="button" class="btn small" id="exploreBtn">☰ <span data-l="fr">Guides & pays</span><span data-l="en">Guides & countries</span></button>
+  </div>
+  <div class="wm-pop" id="worldCard" hidden></div>
 
-    <div class="sec-head"><h2><span data-l="fr">Destinations</span><span data-l="en">Destinations</span> <span class="jp">目的地</span></h2></div>
-    <div class="dest-grid" id="ready"></div>
+  <!-- Country view (proposal A) -->
+  <div class="country-bar" data-only="country">
+    <button type="button" class="btn small" data-go="world">← <span data-l="fr">Monde</span><span data-l="en">World</span></button>
+  </div>
 
-    <div class="sec-head"><h2><span data-l="fr">Bientôt</span><span data-l="en">Coming soon</span> <span class="jp">近日公開</span></h2><span class="pill" id="soonCount"></span></div>
-    <div class="rail" id="soon"></div>
+  <!-- Bottom panel (side panel on desktop): country list, place sheet, explore, search -->
+  <aside class="panel" id="panel" data-size="closed" aria-hidden="true">
+    <button type="button" class="grip" id="grip" data-fr="Agrandir ou réduire" data-en="Expand or collapse"><span></span></button>
+    <div class="panel-body" id="panelBody"></div>
+  </aside>
 
-    <div class="sec-head" id="guides"><h2><span data-l="fr">Guides pratiques</span><span data-l="en">Practical guides</span></h2></div>
-    <div class="guides">
-      <a class="card guide" style="--sh:var(--mint)" href="/asia/japan/nagoya/ghibli-park/">
-        <span class="icon-tile" style="background:var(--mint-soft)" data-icon="acorn"></span>
-        <span><small><span data-l="fr">Japon · Nagoya · en anglais</span><span data-l="en">Japan · Nagoya</span></small>
-        <b><span data-l="fr">Parc Ghibli : billets et réservation</span><span data-l="en">Ghibli Park: passes and booking</span></b></span>
-      </a>
-      <a class="card guide" style="--sh:var(--yellow)" href="/asia/japan/osaka/universal-studios.html">
-        <span class="icon-tile" style="background:var(--yellow-soft)" data-icon="wheel"></span>
-        <span><small><span data-l="fr">Japon · Osaka · en anglais</span><span data-l="en">Japan · Osaka</span></small>
-        <b><span data-l="fr">Universal Studios Japan : bien préparer sa journée</span><span data-l="en">Universal Studios Japan: plan your day</span></b></span>
-      </a>
-    </div>
-
-    <section class="card about" style="--sh:var(--lav)">
-      <img src="/asia/japan/cover.jpg" alt="Erika" />
-      <div>
-        <span class="label" style="--lb:var(--lav)"><span data-l="fr">Qui suis-je</span><span data-l="en">About me</span></span>
-        <p><span data-l="fr">Moi c'est Erika ! Je partage ici uniquement les lieux où je suis vraiment allée, avec mon avis honnête. <i>(texte à écrire)</i></span><span data-l="en">Hi, I'm Erika! I only share places I've actually been to, with my honest opinion. <i>(text to write)</i></span></p>
-      </div>
-    </section>
-
-    <section class="card planner" style="--sh:var(--pink)">
-      <span class="mascot" data-icon="bunny" data-size="58"></span>
-      <div><span class="label" style="--lb:var(--yellow);color:var(--ink)">HodoPlanner</span></div>
-      <h3><span data-l="fr">Un voyage pensé rien que pour toi ?</span><span data-l="en">A trip designed just for you?</span></h3>
-      <p><span data-l="fr">Je construis ton itinéraire selon tes envies, ton rythme et ton budget.</span><span data-l="en">I build your itinerary around your interests, pace and budget.</span></p>
-      <a class="btn" href="https://planner.erikaramel.com/" target="_blank" rel="noopener"><span data-l="fr">Créer mon itinéraire</span><span data-l="en">Plan my trip</span></a>
-    </section>
-  </main>
-
-  <footer class="foot">HodoGuides by Erika · <a href="https://planner.erikaramel.com/" target="_blank" rel="noopener">HodoPlanner</a></footer>
+  <p class="beta-tag"><span data-l="fr">Bêta · textes d'exemple</span><span data-l="en">Beta · sample texts</span></p>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
   <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
   <script src="/beta/assets/icons.js"></script>
   <script src="/beta/assets/common.js"></script>
-  <script src="/beta/assets/home.js"></script>
+  <script src="/beta/assets/app.js"></script>
 </body>
 </html>
