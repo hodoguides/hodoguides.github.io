@@ -138,7 +138,7 @@ places:
     verdict: recommend
     lat: 34.6654
     lng: 135.4323
-    guide: ../asia/japan/osaka/universal-studios.html
+    guide: asia/japan/osaka/universal-studios.html
     review:
       fr: "Super Nintendo World vaut à lui seul la journée. Prépare-toi bien : billets et Express Pass se réservent à l'avance."
       en: "Super Nintendo World alone is worth the day. Plan ahead: tickets and Express Pass should be booked in advance."
@@ -157,7 +157,7 @@ places:
     verdict: love
     lat: 35.1753
     lng: 137.0904
-    guide: ../asia/japan/nagoya/ghibli-park/
+    guide: asia/japan/nagoya/ghibli-park/
     review:
       fr: "Un rêve pour les fans de Ghibli. Le Grand Entrepôt est incontournable. Les billets partent très vite : j'explique tout dans mon guide."
       en: "A dream for Ghibli fans. The Grand Warehouse is unmissable. Tickets sell out fast: I explain everything in my guide."

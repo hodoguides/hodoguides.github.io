@@ -15,7 +15,7 @@ Pour en ajouter un, copie un bloc existant, colle-le à la fin et modifie-le.
     lat: 35.0050
     lng: 135.7649
     photo: nom-du-lieu.jpg        # facultatif · fichier dans images/places/japan/
-    guide: ../asia/japan/...      # facultatif · lien vers un guide complet
+    guide: asia/japan/...         # facultatif · lien vers un guide complet
     google_maps: https://maps.app.goo.gl/...   # facultatif · ton lien Google Maps
     review:                        # ton avis court (1–2 phrases)
       fr: "..."
@@ -68,3 +68,12 @@ par exemple `34.9671, 135.7727`. Le premier nombre est `lat`, le second `lng`.
 
 Mets tes photos dans `images/places/japan/` en **JPG de moins de 300 Ko**
 (largeur ~1200 px ; tu peux compresser sur squoosh.app), puis indique le nom du fichier dans `photo:`.
+
+## Ajouter un pays avec ses lieux
+
+1. Crée un fichier `data/<pays>.yaml` sur le modèle de `data/japan.yaml` (bloc `country:` puis `places:`).
+2. Dans `data/countries.yaml`, ajoute la ligne `places: <pays>.yaml` sous le pays concerné.
+   Le pays affiche alors une grande bulle avec le nombre de lieux, et on peut zoomer dessus.
+
+Les pays sans `places:` affichent « J'y suis allée · guide bientôt » quand on clique dessus.
+Pour changer la photo ronde d'un pays, modifie `cover:` dans `data/countries.yaml`.

@@ -1,375 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HodoGuides</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>HodoGuides by Erika</title>
+  <meta name="description" content="Mes lieux préférés autour du monde, testés et commentés : avis, expérience et conseils pratiques sur une carte. · My favourite places around the world, with honest reviews and practical tips, on a map." />
 
-  <!-- Favicon -->
-  <link rel="icon" href="images/favicon.png" type="image/png" />
-  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-
-  <!-- Search engines & link previews -->
-  <meta name="description" content="Travel guides and favourite places by Erika: honest reviews, practical tips and maps from my trips around the world." />
   <meta property="og:title" content="HodoGuides by Erika" />
-  <meta property="og:description" content="Travel guides and favourite places: honest reviews, practical tips and maps from my trips around the world." />
+  <meta property="og:description" content="Mes lieux préférés autour du monde, testés et commentés. · My favourite places around the world, tried and reviewed." />
   <meta property="og:image" content="https://guides.erikaramel.com/asia/japan/cover.jpg" />
   <meta property="og:url" content="https://guides.erikaramel.com/" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Mapbox + Icons -->
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
   <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
-  <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-  <style>
-    :root{ --nav-h:72px; --accent:#7e8db0; }
-    *{box-sizing:border-box} html,body{height:100%}
-    body{
-      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;
-      color:#fff; background:#0e1420; overflow:hidden;
-      background-image:
-        radial-gradient(ellipse at 50% 40%, #1d2845 0%, #0e1420 60%, #0b0f18 100%),
-        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.18) 0, rgba(255,255,255,0) 100%),
-        radial-gradient(2px 2px at 70% 60%, rgba(255,255,255,.14) 0, rgba(255,255,255,0) 100%),
-        radial-gradient(1.5px 1.5px at 40% 80%, rgba(255,255,255,.10) 0, rgba(255,255,255,0) 100%);
-      background-repeat:no-repeat;
-    }
-
-    /* Header with "by Erika" image */
-    header{
-      position:absolute; left:20px; top:20px; z-index:10;
-      display:flex; align-items:center; gap:10px;
-      text-shadow:0 2px 10px rgba(0,0,0,.35);
-    }
-    .brand-title{
-      font-weight:800; font-size:28px; letter-spacing:.3px;
-    }
-    .by-erika{
-      height:28px; opacity:.95; pointer-events:none;
-      filter: drop-shadow(0 1px 1px rgba(0,0,0,.35));
-      transform: translateY(2px);
-    }
-    @media (max-width:480px){
-      .brand-title{ font-size:26px; }
-      .by-erika{ height:22px; }
-    }
-
-    /* Top search */
-    .search-bar{
-      position:absolute; left:50%; top:74px; transform:translateX(-50%); width:min(820px,86%); z-index:10;
-    }
-    .search-wrap{ position:relative; }
-    .search-wrap i{
-      position:absolute; left:14px; top:50%; transform:translateY(-50%); opacity:.85; font-size:16px; pointer-events:none;
-    }
-    .search-bar input{
-      width:100%; padding:14px 18px 14px 40px; font-size:16px; color:#fff;
-      background:rgba(255,255,255,.14); border:0; border-radius:28px; outline:none; backdrop-filter: blur(6px);
-    }
-
-    #map{position:absolute; top:0; left:0; right:0; bottom:0; width:100%; min-height:100vh; padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px)); z-index:0;}
-
-    /* Bottom nav */
-    .nav{
-      position:absolute; left:0; right:0; bottom:0;
-      height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
-      padding:10px 8px calc(10px + env(safe-area-inset-bottom, 0px));
-      background:rgba(15,15,20,.92); backdrop-filter: blur(6px);
-      border-top:1px solid rgba(255,255,255,.06);
-      display:flex; align-items:flex-end; justify-content:space-around; z-index:25;
-    }
-    .tab{position:relative; display:flex; flex-direction:column; align-items:center; gap:6px; font-size:12px; color:#cfcfd3; text-decoration:none; min-width:86px;}
-    .tab i{font-size:22px; opacity:.9}
-    .tab.active{color:#fff}
-    .tab.active i{color:var(--accent)}
-    .underline{position:absolute; bottom:6px; height:4px; border-radius:2px; background:var(--accent); transition: left .25s ease, width .25s ease;}
-
-    /* Markers */
-    .dot-marker{ width:8px; height:8px; border-radius:50%; background:#fff; border:2px solid rgba(0,0,0,.35); box-shadow:0 0 6px rgba(0,0,0,.35); cursor:pointer; }
-    .photo-marker{ width:38px; height:38px; border-radius:50%; overflow:hidden; border:3px solid #fff; box-shadow:0 0 8px rgba(0,0,0,.45); background:#999; cursor:pointer; }
-    .photo-marker img{width:100%; height:100%; object-fit:cover; display:block}
-
-    /* SEARCH OVERLAY */
-    .search-overlay{
-      position:fixed; inset:0; z-index:50; display:none;
-      background:#fff; color:#0d1220;
-    }
-    /* Column layout + scrollable list */
-    .search-overlay.open{
-      display:flex; flex-direction:column;
-    }
-    .so-top{
-      position:sticky; top:0; background:#fff; padding:10px 12px; border-bottom:1px solid #eceff5; z-index:2;
-      display:flex; gap:10px; align-items:center;
-    }
-    .so-back{width:44px; height:44px; border-radius:12px; background:#f2f4f8; display:grid; place-items:center; cursor:pointer;}
-    .so-input{flex:1; position:relative;}
-    .so-input i{
-      position:absolute; left:14px; top:50%; transform:translateY(-50%); opacity:.7; font-size:16px; pointer-events:none;
-    }
-    .so-input input{
-      width:100%; height:44px; border-radius:22px; border:0; background:#f2f4f8; padding:0 16px 0 40px;
-      font-size:16px; color:#0d1220; outline:none;
-    }
-    .so-section-title{
-      font-weight:800; letter-spacing:.04em; color:#4a5568; font-size:12px;
-      padding:14px 16px; background:#f6f9fd; border-top:1px solid #edf2f7; border-bottom:1px solid #edf2f7;
-    }
-    .so-scroll{
-      flex:1; overflow:auto; -webkit-overflow-scrolling:touch;
-    }
-    .so-list{list-style:none; margin:0; padding:0}
-    .so-item{
-      display:flex; align-items:center; gap:12px; padding:14px 16px; cursor:pointer; border-bottom:1px solid #f2f4f8;
-    }
-    .so-pin{width:36px; height:36px; border-radius:10px; background:#fff; border:1px solid #e6eaf2; display:grid; place-items:center; color:#111;}
-    .so-name{font-size:16px; font-weight:600; color:#111;}
-    .so-muted{font-size:13px; color:#6b7280;}
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="brand-title">HodoGuides</div>
-    <img class="by-erika" src="images/erika-logo.png" alt="by Erika" />
-  </header>
+  <div id="map" aria-label="Map"></div>
 
-  <div class="search-bar">
-    <div class="search-wrap">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <input id="mainSearch" type="text" placeholder="Search a destination…" />
-    </div>
-  </div>
-
-  <div id="map"></div>
-
-  <nav class="nav" id="bottomNav">
-    <a class="tab active" href="./"><i class="fa-solid fa-compass"></i><span>Explore</span></a>
-    <a class="tab" href="my-guides/"><i class="fa-solid fa-book-open"></i><span>My Guides</span></a>
-    <a class="tab" href="tips/"><i class="fa-solid fa-lightbulb"></i><span>Tips</span></a>
-    <div class="underline" id="navUnderline"></div>
-  </nav>
-
-  <!-- SEARCH OVERLAY -->
-  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true">
-    <div class="so-top">
-      <div class="so-back" id="soBack" title="Close"><i class="fa-solid fa-chevron-left"></i></div>
-      <div class="so-input">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input id="soInput" type="text" placeholder="Search a destination" autocomplete="off">
+  <!-- Top: brand, language, search, filters -->
+  <header class="top">
+    <div class="top-row">
+      <a class="brand" href="./">
+        <span class="brand-name">HodoGuides</span>
+        <img class="brand-by" src="images/erika-logo.png" alt="by Erika" />
+      </a>
+      <div class="top-actions">
+        <div class="lang" role="group" aria-label="Langue / Language">
+          <button type="button" data-lang="fr">FR</button>
+          <button type="button" data-lang="en">EN</button>
+        </div>
+        <details class="menu">
+          <summary aria-label="Menu"><i class="fa-solid fa-bars"></i></summary>
+          <nav class="menu-pop">
+            <a href="./"><i class="fa-solid fa-earth-europe"></i><span data-i18n="menuMap"></span></a>
+            <a href="my-guides/"><i class="fa-solid fa-book-open"></i><span data-i18n="menuGuides"></span></a>
+            <a href="tips/"><i class="fa-solid fa-lightbulb"></i><span data-i18n="menuTips"></span></a>
+            <a href="https://planner.erikaramel.com/" target="_blank" rel="noopener"><i class="fa-solid fa-route"></i><span>HodoPlanner</span></a>
+          </nav>
+        </details>
       </div>
     </div>
 
-    <div class="so-section-title">DESTINATIONS</div>
-    <div class="so-scroll">
-      <ul class="so-list" id="destList"><!-- injected --></ul>
+    <div class="search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input id="search" type="search" autocomplete="off" data-i18n-placeholder="searchPlaceholder" />
     </div>
-  </div>
 
-<script>
-  // --- Map ---
-  mapboxgl.accessToken = "pk.eyJ1IjoiZXJpa2FyYW1lbGwiLCJhIjoiY21jbmlteXJuMDBjaDJrc2swbnA0a29wZSJ9.F8aX2alF-PpnqInkyqba8g";
-  const map = new mapboxgl.Map({
-    container: "map",
-    style: "mapbox://styles/erikaramell/cmcnjverq008y01qw6rir46gy",
-    projection: "globe",
-    center: [10, 20],
-    zoom: 0.3
-  });
-  map.on("style.load", () => map.setFog({}));
+    <div class="chips" id="categoryChips" role="toolbar"></div>
 
-  // Spots
-  // photo:true => bulle photo qui apparaît au zoom
-  // photo:false => point simple (toujours visible)
-  // Tous les liens non configurés -> coming-soon.html
-  const spots = [
-    // === Asia ===
-    { name:"Japan", coords:[138.0, 36.0], img:"asia/japan/cover.jpg", url:"asia/japan/", photo:true },
-    { name:"South Korea", coords:[127.8, 36.3], img:"asia/south-korea/cover.jpg", url:"asia/south-korea/", photo:true },
-    { name:"Vietnam", coords:[106.0, 16.0], img:"asia/vietnam/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Indonesia", coords:[113.0, -0.8], img:"asia/indonesia/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Singapore", coords:[103.8198, 1.3521], img:"asia/singapore/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Jordan", coords:[36.0, 31.2], img:"asia/jordan/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Hong Kong", coords:[114.1694, 22.3193], img:"asia/hong-kong/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"China", coords:[104.1954, 35.8617], img:"asia/china/cover.jpg", url:"asia/china/", photo:true },
+    <div class="seg" id="statusSeg" role="radiogroup">
+      <button type="button" data-status="all" data-i18n="statusAll"></button>
+      <button type="button" data-status="visited"><i class="fa-solid fa-circle-check"></i> <span data-i18n="statusVisited"></span></button>
+      <button type="button" data-status="wishlist"><i class="fa-regular fa-heart"></i> <span data-i18n="statusWishlist"></span></button>
+    </div>
+  </header>
 
-    // === Europe (photo bubbles) ===
-    { name:"Belgium", coords:[4.5, 50.5], img:"europe/belgium/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Luxembourg", coords:[6.13, 49.75], img:"europe/luxembourg/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"France", coords:[2.21, 46.23], img:"europe/france/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Italy", coords:[12.5, 42.8], img:"europe/italy/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Iceland", coords:[-19.0, 64.9], img:"europe/iceland/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Romania", coords:[25.0, 46.0], img:"europe/romania/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Poland", coords:[19.1, 52.1], img:"europe/poland/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Cyprus", coords:[33.2, 35.1], img:"europe/cyprus/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Turkey", coords:[35.0, 39.0], img:"europe/turkiye/cover.jpg", url:"coming-soon.html", photo:true },
+  <div class="proto-banner" data-i18n="prototype"></div>
 
-    // Ajouts demandés en BULLE
-    { name:"Germany", coords:[10.5, 51.0], img:"europe/germany/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Hungary", coords:[19.0, 47.2], img:"europe/hungary/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Norway", coords:[10.5, 64.5], img:"europe/norway/cover.jpg", url:"coming-soon.html", photo:true },
+  <!-- List toggle -->
+  <button type="button" class="list-btn" id="listBtn">
+    <i class="fa-solid fa-list"></i> <span id="listBtnLabel"></span>
+  </button>
 
-    // === Africa (photo bubbles) ===
-    { name:"Egypt", coords:[29.9, 26.8], img:"africa/egypt/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Morocco", coords:[-6.0, 31.8], img:"africa/morocco/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Lesotho", coords:[28.23, -29.5], img:"africa/lesotho/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Namibia", coords:[18.49, -22.56], img:"africa/namibia/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"South Africa", coords:[24.0, -29.0], img:"africa/south-africa/cover.jpg", url:"coming-soon.html", photo:true },
-    { name:"Botswana", coords:[24.0, -22.0], img:"africa/botswana/cover.jpg", url:"coming-soon.html", photo:true },
+  <!-- List panel -->
+  <aside class="panel" id="listPanel" aria-hidden="true">
+    <div class="panel-handle"></div>
+    <div class="panel-head">
+      <h2 id="listTitle"></h2>
+      <button type="button" class="icon-btn" data-close="listPanel" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <ul class="place-list" id="placeList"></ul>
+  </aside>
 
-    // === Simple dots (no photo bubble) ===
-    { name:"Ireland", coords:[-8.0, 53.4], url:"coming-soon.html", photo:false },
-    { name:"Northern Ireland", coords:[-6.5, 54.6], url:"coming-soon.html", photo:false },
-    { name:"Isle of Man", coords:[-4.5, 54.2], url:"coming-soon.html", photo:false },
-    { name:"United Kingdom", coords:[-1.5, 54.0], url:"coming-soon.html", photo:false },
-    { name:"Denmark", coords:[10.0, 56.0], url:"coming-soon.html", photo:false },
-    { name:"Sweden", coords:[15.0, 62.0], url:"coming-soon.html", photo:false },
-    { name:"Russia", coords:[100.0, 61.0], url:"coming-soon.html", photo:false },
-    { name:"Portugal", coords:[-8.0, 39.5], url:"coming-soon.html", photo:false },
-    { name:"Spain", coords:[-3.7, 40.0], url:"coming-soon.html", photo:false },
-    { name:"Gibraltar", coords:[-5.3, 36.1], url:"coming-soon.html", photo:false },
-    { name:"Vatican", coords:[12.45, 41.9], url:"coming-soon.html", photo:false },
-    { name:"Rome", coords:[12.5, 41.9], url:"coming-soon.html", photo:false },
-    { name:"Switzerland", coords:[8.2, 46.8], url:"coming-soon.html", photo:false },
-    { name:"Austria", coords:[13.3, 47.5], url:"coming-soon.html", photo:false },
-    { name:"Netherlands", coords:[5.3, 52.1], url:"coming-soon.html", photo:false },
-    { name:"Czechia", coords:[15.5, 49.8], url:"coming-soon.html", photo:false },
-    { name:"Slovakia", coords:[19.7, 48.7], url:"coming-soon.html", photo:false },
-    { name:"Bulgaria", coords:[25.5, 42.7], url:"coming-soon.html", photo:false },
-    { name:"Greece", coords:[23.7, 38.0], url:"coming-soon.html", photo:false },
-    { name:"Zambia", coords:[27.8, -13.1], url:"coming-soon.html", photo:false },
-    { name:"Zimbabwe", coords:[29.9, -19.0], url:"coming-soon.html", photo:false },
-    { name:"Ukraine", coords:[31.0, 49.0], url:"coming-soon.html", photo:false },
-    { name:"Belarus", coords:[28.0, 53.0], url:"coming-soon.html", photo:false },
-    { name:"Malta", coords:[14.4, 35.9], url:"coming-soon.html", photo:false },
-    { name:"Albania", coords:[20.0, 41.0], url:"coming-soon.html", photo:false },
-    { name:"San Marino", coords:[12.45, 43.9], url:"coming-soon.html", photo:false }
-  ];
+  <!-- Place sheet -->
+  <aside class="panel sheet" id="placeSheet" aria-hidden="true">
+    <div class="panel-handle"></div>
+    <div id="sheetBody"></div>
+  </aside>
 
-  // Build markers
-  const bundles=[];
-  spots.forEach(s=>{
-    // small dot (always added)
-    const d=document.createElement('div'); d.className='dot-marker'; d.title = s.name;
-    d.addEventListener('click', ()=>location.href=s.url);
-    new mapboxgl.Marker(d,{anchor:'center'}).setLngLat(s.coords).addTo(map);
-
-    // optional photo bubble
-    let p=null;
-    if(s.photo){
-      p=document.createElement('div');
-      p.className='photo-marker';
-      p.title=s.name;
-      const im=document.createElement('img'); im.alt=s.name; im.src=s.img || '';
-      // fallback image if missing
-      im.onerror=()=>{ im.onerror=null; im.src=`/images/placeholder.svg`; };
-      p.appendChild(im);
-      p.addEventListener('click', ()=>location.href=s.url);
-      new mapboxgl.Marker(p,{anchor:'center'}).setLngLat(s.coords).addTo(map);
-    }
-    bundles.push({d,p,hasPhoto:!!p});
-  });
-
-  const SHOW_PHOTO_AT=3.0;
-  function refreshMarkers(){
-    const z=map.getZoom();
-    bundles.forEach(b=>{
-      if(b.hasPhoto){
-        const show=z>=SHOW_PHOTO_AT;
-        b.d.style.display=show?'none':'block';
-        b.p.style.display=show?'block':'none';
-      }else{
-        b.d.style.display='block';
-      }
-    });
-  }
-  map.on('load', refreshMarkers);
-  map.on('zoom', refreshMarkers);
-
-  // --- Bottom nav underline
-  const navEl=document.getElementById('bottomNav');
-  const underline=document.getElementById('navUnderline');
-  function positionUnderline(){
-    const active=navEl.querySelector('.tab.active'); if(!active) return;
-    const navR=navEl.getBoundingClientRect(), r=active.getBoundingClientRect();
-    const w=Math.max(60, r.width*0.68);
-    underline.style.width=w+'px';
-    underline.style.left=(r.left-navR.left+(r.width-w)/2)+'px';
-  }
-  positionUnderline();
-  window.addEventListener('resize', positionUnderline);
-
-  // Let real links navigate; only prevent for hash
-  navEl.querySelectorAll('.tab').forEach(t=>{
-    t.addEventListener('click', e=>{
-      const href = t.getAttribute('href') || '';
-      if(href.startsWith('#')){
-        e.preventDefault();
-        navEl.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-        t.classList.add('active'); positionUnderline();
-      }
-    });
-  });
-
-  // --- SEARCH OVERLAY ---
-  const overlay = document.getElementById('searchOverlay');
-  const mainSearch = document.getElementById('mainSearch');
-  const soInput = document.getElementById('soInput');
-  const soBack = document.getElementById('soBack');
-  const destList = document.getElementById('destList');
-
-  // Build destinations from spots (country-level + all entries)
-  const destinations = spots.map(s=>({
-    label: s.name,
-    type: 'country',
-    url: s.url
-  }));
-
-  function renderList(query=''){
-    const q = query.trim().toLowerCase();
-    destList.innerHTML = '';
-    destinations
-      .filter(d => !q || d.label.toLowerCase().includes(q))
-      .forEach(d=>{
-        const li = document.createElement('li');
-        li.className = 'so-item';
-        li.innerHTML = `
-          <div class="so-pin"><i class="fa-solid fa-location-dot"></i></div>
-          <div>
-            <div class="so-name">${d.label}</div>
-            <div class="so-muted">${d.type === 'country' ? 'Country' : 'City'}</div>
-          </div>`;
-        li.addEventListener('click', ()=>{ location.href = d.url; });
-        destList.appendChild(li);
-      });
-    if(!destList.children.length){
-      const empty=document.createElement('li');
-      empty.className='so-item';
-      empty.innerHTML='<div class="so-muted">No results</div>';
-      destList.appendChild(empty);
-    }
-  }
-
-  function openOverlay(){
-    overlay.classList.add('open');
-    document.body.style.overflow='hidden';
-    setTimeout(()=>soInput.focus(), 50);
-    renderList();
-  }
-  function closeOverlay(){
-    overlay.classList.remove('open');
-    document.body.style.overflow='';
-    mainSearch.blur();
-  }
-
-  mainSearch.addEventListener('focus', openOverlay);
-  soBack.addEventListener('click', closeOverlay);
-  overlay.addEventListener('click', (e)=>{ if(e.target===overlay) closeOverlay(); });
-  window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && overlay.classList.contains('open')) closeOverlay(); });
-  soInput.addEventListener('input', (e)=>renderList(e.target.value));
-</script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+  <script src="assets/app.js"></script>
 </body>
 </html>

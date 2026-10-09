@@ -1,83 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>HodoGuides · Japon</title>
-  <meta name="description" content="Mes lieux préférés au Japon : avis, expérience et conseils pratiques, sur une carte. · My favourite places in Japan, with reviews and practical tips, on a map." />
-
-  <meta property="og:title" content="HodoGuides · Japon / Japan" />
-  <meta property="og:description" content="Mes lieux préférés au Japon, testés et commentés. · My favourite places in Japan, tried and reviewed." />
-  <meta property="og:image" content="https://guides.erikaramel.com/asia/japan/cover.jpg" />
-  <meta property="og:type" content="website" />
-
-  <link rel="icon" href="../images/favicon.png" type="image/png" />
-  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-  <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <title>HodoGuides</title>
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://guides.erikaramel.com/" />
+  <script>location.replace("../" + location.search + (location.hash || ""));</script>
+  <meta http-equiv="refresh" content="0; url=../" />
 </head>
-<body>
-
-  <div id="map" aria-label="Carte"></div>
-
-  <!-- Top: brand, language, search, filters -->
-  <header class="top">
-    <div class="top-row">
-      <a class="brand" href="../">
-        <span class="brand-name">HodoGuides</span>
-        <img class="brand-by" src="../images/erika-logo.png" alt="by Erika" />
-      </a>
-      <div class="lang" role="group" aria-label="Langue / Language">
-        <button type="button" data-lang="fr">FR</button>
-        <button type="button" data-lang="en">EN</button>
-      </div>
-    </div>
-
-    <div class="search">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <input id="search" type="search" autocomplete="off" data-i18n-placeholder="searchPlaceholder" />
-    </div>
-
-    <div class="chips" id="categoryChips" role="toolbar"></div>
-
-    <div class="seg" id="statusSeg" role="radiogroup">
-      <button type="button" data-status="all" data-i18n="statusAll"></button>
-      <button type="button" data-status="visited"><i class="fa-solid fa-circle-check"></i> <span data-i18n="statusVisited"></span></button>
-      <button type="button" data-status="wishlist"><i class="fa-regular fa-heart"></i> <span data-i18n="statusWishlist"></span></button>
-    </div>
-  </header>
-
-  <div class="proto-banner" data-i18n="prototype"></div>
-
-  <!-- List toggle -->
-  <button type="button" class="list-btn" id="listBtn">
-    <i class="fa-solid fa-list"></i> <span id="listBtnLabel"></span>
-  </button>
-
-  <!-- List panel -->
-  <aside class="panel" id="listPanel" aria-hidden="true">
-    <div class="panel-handle"></div>
-    <div class="panel-head">
-      <h2 id="listTitle"></h2>
-      <button type="button" class="icon-btn" data-close="listPanel" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-    <ul class="place-list" id="placeList"></ul>
-  </aside>
-
-  <!-- Place sheet -->
-  <aside class="panel sheet" id="placeSheet" aria-hidden="true">
-    <div class="panel-handle"></div>
-    <div id="sheetBody"></div>
-  </aside>
-
-  <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
-  <script src="app.js"></script>
-</body>
+<body><a href="../">HodoGuides</a></body>
 </html>
