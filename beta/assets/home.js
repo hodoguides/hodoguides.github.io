@@ -65,6 +65,94 @@
     }, { once: true }));
   }
 
+
+  // ---------- World map ----------
+  // Below REGION_ZOOM, countries without a guide are small dots; above it they
+  // become photo bubbles. Countries with a guide always show their bubble.
+  const REGION_ZOOM = 2.4;
+  let worldMap = null;
+
+  function bubble(c, size) {
+    const img = c.cover ? `<img src="/${esc(c.cover)}" alt="" loading="lazy" onerror="this.remove()">` : HodoIcons.icon("bunny", size - 12);
+    return `<span class="wm-bubble">${img}</span>`;
+  }
+
+  function soonCard(c) {
+    return `<div class="wm-card">
+      ${c.cover ? `<img src="/${esc(c.cover)}" alt="" onerror="this.remove()">` : ""}
+      <div class="wm-card-body">
+        <b>${esc(tr(c.name))}</b>
+        <span class="pill v-wish">🔖 ${esc(t("J'y suis allée · guide bientôt", "I've been there · guide soon"))}</span>
+        <a href="${esc(Hodo.plannerLink({ destination: c.id }))}" target="_blank" rel="noopener">${esc(t("Préparer ce voyage avec HodoPlanner →", "Plan this trip with HodoPlanner →"))}</a>
+      </div></div>`;
+  }
+
+  /** Preview card for a country without a guide yet, pinned to the bottom of the map. */
+  function showCard(c) {
+    const card = document.getElementById("worldCard");
+    card.innerHTML = `<button type="button" class="wm-close" aria-label="${esc(t("Fermer", "Close"))}">✕</button>${soonCard(c)}`;
+    card.hidden = false;
+    card.querySelector(".wm-close").addEventListener("click", hideCard);
+  }
+
+  function hideCard() { document.getElementById("worldCard").hidden = true; }
+
+  function addWorldMarkers() {
+    for (const c of countries) {
+      if (!Number.isFinite(c.lat) || !Number.isFinite(c.lng)) continue;
+      const ready = !!c._places?.length;
+      const el = document.createElement("button");
+      el.type = "button";
+      el.className = "wm" + (ready ? " ready" : "") + (c.cover ? " has-cover" : "");
+      el.innerHTML = ready
+        ? `${bubble(c, 60)}<span class="wm-count">${c._places.length}</span><span class="wm-name">${esc(tr(c.name))}</span>`
+        : `<span class="wm-dot"></span>${bubble(c, 42)}`;
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (ready) { location.href = countryUrl(c); return; }
+        showCard(c);
+      });
+      c._el = el;
+      new mapboxgl.Marker({ element: el, anchor: "center" }).setLngLat([c.lng, c.lat]).addTo(worldMap);
+    }
+    labelMarkers();
+  }
+
+  function labelMarkers() {
+    for (const c of countries) {
+      if (!c._el) continue;
+      c._el.title = tr(c.name);
+      c._el.setAttribute("aria-label", tr(c.name));
+      const name = c._el.querySelector(".wm-name");
+      if (name) name.textContent = tr(c.name);
+    }
+  }
+
+  function initWorldMap() {
+    const wrap = document.getElementById("worldWrap");
+    const ready = countries.find((c) => c._places?.length);
+    const wide = matchMedia("(min-width:860px)").matches;
+    worldMap = Hodo.createMap({
+      container: "worldMap", projection: "globe",
+      // Centre slightly west of the first ready country so Europe stays in view too
+      center: ready ? [ready.lng - (wide ? 35 : 22), ready.lat - 2] : [40, 30],
+      zoom: wide ? 1.55 : 1.05,
+    });
+    worldMap.on("style.load", () => worldMap.setFog({
+      color: "#fdf8f2", "high-color": "#e3f0fc", "space-color": "#fdf8f2", "horizon-blend": 0.06, "star-intensity": 0,
+    }));
+    const level = () => { wrap.dataset.level = worldMap.getZoom() < REGION_ZOOM ? "world" : "region"; };
+    worldMap.on("zoom", level);
+    worldMap.on("load", () => { level(); addWorldMarkers(); });
+    worldMap.on("click", hideCard);
+
+    document.getElementById("worldExpand").addEventListener("click", () => {
+      const full = wrap.classList.toggle("full");
+      document.body.style.overflow = full ? "hidden" : "";
+      setTimeout(() => worldMap.resize(), 50);
+    });
+  }
+
   async function load() {
     const { countries: list = [] } = await Hodo.yaml("/data/countries.yaml");
     countries = list.filter((c) => c && c.id);
@@ -80,6 +168,7 @@
   document.addEventListener("DOMContentLoaded", async () => {
     fillIcons();
     try { await load(); } catch (err) { console.error("Could not load destinations:", err); }
-    Hodo.onLang(render);
+    Hodo.onLang(() => { render(); labelMarkers(); hideCard(); });
+    initWorldMap();
   });
 })();

@@ -3,11 +3,6 @@
   "use strict";
   const { esc, tr, t } = Hodo;
 
-  const MAPBOX_TOKEN = "pk.eyJ1IjoiZXJpa2FyYW1lbGwiLCJhIjoiY21jbmlteXJuMDBjaDJrc2swbnA0a29wZSJ9.F8aX2alF-PpnqInkyqba8g";
-  // Mapbox's light style, recoloured below to look like the travel journal map.
-  const MAPBOX_STYLE = "mapbox://styles/mapbox/light-v11";
-  const MAP_COLORS = { water: "#dcebf9", land: "#fffdf9", coast: "#8fb8e6" };
-
   const CATEGORIES = {
     food:     { fr: "Manger",        en: "Eat" },
     cafe:     { fr: "Café",          en: "Coffee" },
@@ -179,30 +174,13 @@
     map.fitBounds(b, { padding: 50, maxZoom: 11, duration: animate ? 800 : 0 });
   }
 
-  function recolor() {
-    const set = (layer, prop, value) => { if (map.getLayer(layer)) map.setPaintProperty(layer, prop, value); };
-    set("water", "fill-color", MAP_COLORS.water);
-    set("land", "background-color", MAP_COLORS.land);
-    // Draw the coastline right above the water, below roads and labels
-    const water = map.getLayer("water");
-    if (water && water.sourceLayer && !map.getLayer("hodo-coast")) {
-      const layers = map.getStyle().layers;
-      const next = layers[layers.findIndex((l) => l.id === "water") + 1];
-      map.addLayer({ id: "hodo-coast", type: "line", source: water.source, "source-layer": water.sourceLayer,
-        paint: { "line-color": MAP_COLORS.coast, "line-width": 1.4 } }, next?.id);
-    }
-  }
-
   function initMap() {
-    mapboxgl.accessToken = MAPBOX_TOKEN;
     const m = state.meta;
-    map = new mapboxgl.Map({
-      container: "map", style: MAPBOX_STYLE,
+    map = Hodo.createMap({
+      container: "map",
       center: m.center ? [m.center.lng, m.center.lat] : [state.country.lng, state.country.lat],
-      zoom: m.zoom || state.country.zoom || 5, attributionControl: false, cooperativeGestures: matchMedia("(max-width:959px)").matches,
+      zoom: m.zoom || state.country.zoom || 5,
     });
-    map.addControl(new mapboxgl.AttributionControl({ compact: true }), "bottom-left");
-    map.on("style.load", recolor);
     map.on("load", () => {
       map.addSource("places", { type: "geojson", data: toGeoJSON(filtered()), cluster: true, clusterRadius: 46, clusterMaxZoom: 12 });
       map.addLayer({ id: "places-anchor", type: "circle", source: "places", paint: { "circle-radius": 1, "circle-opacity": 0 } });

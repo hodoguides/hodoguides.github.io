@@ -3,6 +3,25 @@
   "use strict";
 
   const PLANNER_URL = "https://planner.erikaramel.com/";
+  const MAPBOX_TOKEN = "pk.eyJ1IjoiZXJpa2FyYW1lbGwiLCJhIjoiY21jbmlteXJuMDBjaDJrc2swbnA0a29wZSJ9.F8aX2alF-PpnqInkyqba8g";
+  // Mapbox's light style, recoloured below to look like the travel journal map.
+  const MAPBOX_STYLE = "mapbox://styles/mapbox/light-v11";
+  const MAP_COLORS = { water: "#dcebf9", land: "#fffdf9", coast: "#8fb8e6" };
+
+  /** Recolour the light style: cream land, pale blue sea, blue coastline. */
+  function journalColors(map) {
+    const set = (layer, prop, value) => { if (map.getLayer(layer)) map.setPaintProperty(layer, prop, value); };
+    set("water", "fill-color", MAP_COLORS.water);
+    set("land", "background-color", MAP_COLORS.land);
+    // Draw the coastline right above the water, below roads and labels
+    const water = map.getLayer("water");
+    if (water && water.sourceLayer && !map.getLayer("hodo-coast")) {
+      const layers = map.getStyle().layers;
+      const next = layers[layers.findIndex((l) => l.id === "water") + 1];
+      map.addLayer({ id: "hodo-coast", type: "line", source: water.source, "source-layer": water.sourceLayer,
+        paint: { "line-color": MAP_COLORS.coast, "line-width": 1.4 } }, next?.id);
+    }
+  }
 
   function pickLang() {
     const fromUrl = new URLSearchParams(location.search).get("lang");
@@ -37,6 +56,18 @@
       const res = await fetch(path, { cache: "no-cache" });
       if (!res.ok) throw new Error(`${path}: HTTP ${res.status}`);
       return jsyaml.load(await res.text());
+    },
+
+    /** A Mapbox map in the journal style. Touch screens need two fingers to move it, so the page still scrolls. */
+    createMap(options) {
+      mapboxgl.accessToken = MAPBOX_TOKEN;
+      const map = new mapboxgl.Map({
+        style: MAPBOX_STYLE, attributionControl: false,
+        cooperativeGestures: matchMedia("(pointer: coarse)").matches, ...options,
+      });
+      map.addControl(new mapboxgl.AttributionControl({ compact: true }), "bottom-left");
+      map.on("style.load", () => journalColors(map));
+      return map;
     },
 
     plannerLink(params = {}) {
