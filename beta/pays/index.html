@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title data-fr="HodoGuides · bêta" data-en="HodoGuides · beta">HodoGuides · bêta</title>
+  <meta name="description" content="Bêta de la nouvelle version de HodoGuides." />
+  <meta name="robots" content="noindex" />
+  <meta property="og:title" content="HodoGuides · bêta" />
+  <meta property="og:description" content="Bêta de la nouvelle version de HodoGuides." />
+  <meta property="og:image" content="https://guides.erikaramel.com/asia/japan/cover.jpg" />
+  <link rel="icon" href="/images/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/beta/assets/kawaii.css" />
+</head>
+<body>
+  <p class="beta-note"><span data-l="fr">Version bêta · textes d'exemple</span><span data-l="en">Beta version · sample texts</span></p>
+  <header class="top">
+    <a class="brand" href="/beta/"><span data-mascot="30"></span><b>HodoGuides</b><img src="/images/erika-logo.png" alt="by Erika" /></a>
+    <div class="top-actions">
+      <nav class="nav-links">
+        <a href="/beta/" data-nav="home"><span data-l="fr">Destinations</span><span data-l="en">Destinations</span></a>
+        <a href="/beta/#guides"><span data-l="fr">Guides</span><span data-l="en">Guides</span></a>
+        <a href="/tips/"><span data-l="fr">Conseils</span><span data-l="en">Tips</span></a>
+        <a href="https://planner.erikaramel.com/" target="_blank" rel="noopener">HodoPlanner</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Langue / Language">
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <details class="menu">
+        <summary aria-label="Menu">≡</summary>
+        <nav class="menu-pop">
+          <a href="/beta/"><span data-l="fr">Destinations</span><span data-l="en">Destinations</span></a>
+          <a href="/asia/japan/nagoya/ghibli-park/"><span data-l="fr">Guide Parc Ghibli</span><span data-l="en">Ghibli Park guide</span></a>
+          <a href="/asia/japan/osaka/universal-studios.html"><span data-l="fr">Guide Universal Studios</span><span data-l="en">Universal Studios guide</span></a>
+          <a href="/tips/"><span data-l="fr">Conseils voyage</span><span data-l="en">Travel tips</span></a>
+          <a href="https://planner.erikaramel.com/" target="_blank" rel="noopener">HodoPlanner</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <a class="back" href="/beta/">← <span data-l="fr">Destinations</span><span data-l="en">Destinations</span></a>
+    <section class="c-head" id="countryHead"></section>
+    <div class="c-layout">
+      <div class="c-map">
+        <div class="card map-card" id="mapCard">
+          <div id="map" aria-label="Map"></div>
+          <button type="button" class="btn expand" id="expandBtn"><span data-l="fr">⤢ Plein écran</span><span data-l="en">⤢ Full screen</span></button>
+        </div>
+      </div>
+      <div class="c-list">
+        <div class="chips" id="chips"></div>
+        <div id="list"></div>
+      </div>
+    </div>
+  </main>
+
+  <div class="backdrop" id="backdrop"></div>
+  <aside class="sheet" id="sheet" aria-hidden="true"></aside>
+
+  <footer class="foot">HodoGuides by Erika · <a href="https://planner.erikaramel.com/" target="_blank" rel="noopener">HodoPlanner</a></footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+  <script src="/beta/assets/icons.js"></script>
+  <script src="/beta/assets/common.js"></script>
+  <script src="/beta/assets/country.js"></script>
+</body>
+</html>

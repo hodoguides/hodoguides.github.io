@@ -1,0 +1,227 @@
+/* HodoGuides bêta · style « carnet de voyage » (fond crème, contour marine, pastels) */
+:root{
+  --ink:#3b3a5e;
+  --ink-2:#6b6a8a;
+  --ink-3:#9a99b4;
+  --paper:#fdf8f2;
+  --card:#ffffff;
+  --tint:#f6f1fb;
+  --pink:#f6a9b9;
+  --pink-soft:#fde3ea;
+  --blue:#a9cdf2;
+  --blue-soft:#e3f0fc;
+  --mint:#8fd6b1;
+  --mint-soft:#dff5ea;
+  --yellow:#ffd98a;
+  --yellow-soft:#fff3d6;
+  --lav:#c9b9f2;
+  --red:#ec5866;
+  --line:2.5px solid var(--ink);
+  --radius:20px;
+  --font:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-jp:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--font); -webkit-font-smoothing:antialiased; line-height:1.5}
+a{color:inherit}
+button{font:inherit; color:inherit; cursor:pointer}
+img{max-width:100%}
+h1,h2,h3{margin:0; font-weight:800; letter-spacing:-.4px; line-height:1.15}
+.jp{font-family:var(--font-jp); font-weight:400; color:var(--ink-3); letter-spacing:0}
+
+/* Bilingual blocks: <span data-l="fr">…</span><span data-l="en">…</span> */
+html[lang="fr"] [data-l="en"], html[lang="en"] [data-l="fr"]{display:none !important}
+
+.wrap{max-width:1120px; margin:0 auto; padding:0 18px}
+
+/* ---------- Header ---------- */
+.top{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 18px; max-width:1120px; margin:0 auto}
+.brand{display:flex; align-items:center; gap:5px; text-decoration:none}
+.brand b{font-weight:800; font-size:21px; letter-spacing:-.3px}
+.brand img{height:17px; transform:translateY(2px);
+  /* the logo file is white: tint it to the ink colour */
+  filter:brightness(0) saturate(100%) invert(22%) sepia(16%) saturate(1300%) hue-rotate(205deg)}
+.top-actions{display:flex; align-items:center; gap:8px}
+.nav-links{display:none; gap:4px; margin-right:6px}
+.nav-links a{padding:7px 12px; border-radius:12px; text-decoration:none; font-weight:600; font-size:14px}
+.nav-links a:hover, .nav-links a.on{background:var(--tint)}
+@media (min-width:860px){ .nav-links{display:flex} .menu{display:none} }
+
+.lang{display:flex; border:2px solid var(--ink); border-radius:99px; padding:2px; background:#fff}
+.lang button{border:0; background:none; padding:4px 9px; border-radius:99px; font-size:11.5px; font-weight:700}
+.lang button.on{background:var(--ink); color:#fff}
+
+.menu{position:relative}
+.menu summary{list-style:none; width:38px; height:38px; border-radius:12px; border:2px solid var(--ink); background:#fff; display:grid; place-items:center; cursor:pointer; font-weight:800}
+.menu summary::-webkit-details-marker{display:none}
+.menu-pop{position:absolute; right:0; top:46px; z-index:60; min-width:210px; padding:6px; display:grid; background:#fff; border:var(--line); border-radius:16px; box-shadow:4px 4px 0 var(--pink)}
+.menu-pop a{padding:10px 12px; border-radius:10px; text-decoration:none; font-weight:600; font-size:14px}
+.menu-pop a:hover{background:var(--tint)}
+
+/* ---------- Building blocks ---------- */
+.card{background:var(--card); border:var(--line); border-radius:var(--radius); box-shadow:4px 4px 0 var(--sh, var(--pink))}
+.label{display:inline-block; background:var(--lb, var(--pink)); font-size:10.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; padding:5px 12px; border-radius:99px}
+.pill{display:inline-flex; align-items:center; gap:5px; border-radius:99px; padding:4px 11px; font-size:12px; font-weight:600; background:var(--bg, #fff); border:1.5px solid var(--b, transparent); white-space:nowrap}
+.pill.strong{border:2px solid var(--ink); font-weight:700}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:46px; padding:0 20px; border-radius:14px; font-weight:700; font-size:14.5px; text-decoration:none; border:var(--line); background:#fff; box-shadow:3px 3px 0 var(--ink); transition:transform .1s ease, box-shadow .1s ease}
+.btn:active{transform:translate(2px,2px); box-shadow:1px 1px 0 var(--ink)}
+.btn.dark{background:var(--ink); color:#fff; box-shadow:3px 3px 0 var(--pink)}
+.icon-tile{display:grid; place-items:center; background:var(--tint); border-radius:14px}
+.beta-note{display:block; text-align:center; font-size:12px; font-weight:600; color:#8a6a1f; background:var(--yellow-soft); border-bottom:2px dashed var(--yellow); padding:6px 12px}
+
+.sec-head{display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin:40px 0 0}
+.sec-head h2{font-size:clamp(23px, 4vw, 30px); display:flex; align-items:baseline; gap:8px; flex-wrap:wrap}
+.sec-head h2 .jp{font-size:14px}
+.sec-head a{font-size:13.5px; font-weight:700; text-underline-offset:3px}
+
+/* ---------- Home ---------- */
+.hero{margin-top:6px; overflow:hidden; position:relative; display:grid}
+.hero-img{position:relative; height:clamp(300px, 48vw, 460px); border-bottom:var(--line)}
+.hero-img img{width:100%; height:100%; object-fit:cover; display:block}
+.hero-img .kanji{position:absolute; top:14px; left:14px; background:#fff; border:2px solid var(--ink); border-radius:12px; padding:3px 10px; font-size:15px; color:var(--ink)}
+.hero-body{padding:18px 20px 22px; display:grid; gap:12px}
+.hero h1{font-size:clamp(28px, 5vw, 46px)}
+.hero h1 em{font-style:normal; background:linear-gradient(transparent 62%, var(--pink) 62%)}
+.hero p{margin:0; color:var(--ink-2); font-size:15px; max-width:560px}
+@media (min-width:860px){
+  .hero{grid-template-columns:1.1fr 1fr}
+  .hero-img{height:auto; min-height:440px; order:2; border-bottom:0; border-left:var(--line)}
+  .hero-body{align-content:center; padding:36px}
+}
+
+.dest-grid{display:grid; gap:18px; margin-top:16px}
+@media (min-width:760px){ .dest-grid{grid-template-columns:repeat(2, 1fr)} }
+.dest{overflow:hidden; text-decoration:none; display:block; transition:transform .12s ease}
+a.dest:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--sh)}
+.dest-img{position:relative; height:210px; border-bottom:var(--line); background:var(--tint)}
+.dest-img img{width:100%; height:100%; object-fit:cover; display:block}
+.dest-img .pill{position:absolute; top:12px; left:12px}
+.dest-body{padding:14px 16px 16px; display:grid; gap:10px}
+.dest-body h3{font-size:24px; display:flex; align-items:baseline; gap:8px}
+.dest-body h3 .jp{font-size:14px}
+.dest-body p{margin:0; color:var(--ink-2); font-size:14px}
+.icons-row{display:flex; gap:6px; flex-wrap:wrap}
+.icons-row .icon-tile{width:42px; height:42px; border-radius:12px}
+.pills{display:flex; gap:6px; flex-wrap:wrap}
+
+.rail{display:flex; gap:14px; overflow-x:auto; padding:16px 18px 10px; margin:0 -18px; scroll-snap-type:x mandatory; scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.mini{flex:0 0 136px; overflow:hidden; scroll-snap-align:start; text-decoration:none}
+.mini img, .mini .noimg{width:100%; height:136px; object-fit:cover; display:block; border-bottom:var(--line); background:var(--tint)}
+.mini .noimg{display:grid; place-items:center}
+.mini-body{padding:8px 10px 10px}
+.mini-body b{display:block; font-size:13.5px; line-height:1.3}
+.mini-body small{font-size:11px; color:var(--ink-3); font-weight:600}
+
+.guides{display:grid; gap:14px; margin-top:16px}
+@media (min-width:760px){ .guides{grid-template-columns:repeat(2, 1fr)} }
+.guide{display:flex; gap:12px; align-items:center; padding:12px; text-decoration:none}
+.guide .icon-tile{flex:0 0 66px; height:66px}
+.guide small{display:block; font-size:11.5px; color:var(--ink-2); font-weight:600}
+.guide b{display:block; font-size:15px; line-height:1.3}
+
+.about{margin-top:34px; padding:18px; display:flex; gap:16px; align-items:center}
+.about img{flex:0 0 76px; width:76px; height:76px; border-radius:50%; object-fit:cover; border:var(--line)}
+.about p{margin:6px 0 0; font-size:14px; color:var(--ink-2)}
+
+.planner{margin-top:26px; padding:22px; background:var(--ink); color:#fff; display:grid; gap:10px; position:relative; overflow:hidden}
+.planner h3{font-size:23px; max-width:420px}
+.planner p{margin:0; opacity:.85; font-size:14px; max-width:440px}
+.planner .mascot{position:absolute; right:14px; top:14px}
+.planner .btn{justify-self:start; color:var(--ink); border-color:#fff}
+
+.foot{padding:34px 18px calc(30px + var(--safe-b)); text-align:center; font-size:12.5px; color:var(--ink-3)}
+
+/* ---------- Country page ---------- */
+.back{display:inline-block; margin:2px 0 0; font-size:13.5px; font-weight:600; color:var(--ink-2); text-decoration:none}
+.c-head{display:grid; gap:8px; padding-top:10px}
+.c-head h1{font-size:clamp(38px, 7vw, 54px); display:flex; align-items:baseline; gap:10px}
+.c-head h1 .jp{font-size:.45em}
+.c-head p{margin:0; color:var(--ink-2); font-size:14.5px}
+.c-layout{display:grid; grid-template-columns:minmax(0,1fr); gap:18px; margin-top:16px}
+.map-card{position:relative; height:330px; overflow:hidden; padding:0; --sh:var(--blue)}
+#map{position:absolute; inset:0}
+.map-card .expand{position:absolute; right:10px; bottom:10px; z-index:2; min-height:34px; padding:0 12px; font-size:12.5px; border-width:2px; box-shadow:2px 2px 0 var(--ink)}
+.map-card.full{position:fixed; inset:0; z-index:70; height:auto; border-radius:0; border:0; box-shadow:none}
+@media (min-width:960px){
+  .c-layout{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); align-items:start}
+  .c-map{order:2; position:sticky; top:16px}
+  .map-card{height:calc(100vh - 40px); max-height:760px}
+}
+
+.chips{display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; padding:2px 18px 6px; margin:0 -18px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto; display:inline-flex; align-items:center; gap:6px; min-height:38px; padding:2px 12px 2px 6px; border-radius:14px; border:2px solid var(--ink); background:#fff; font-size:12.5px; font-weight:700}
+.chip.text{padding:2px 14px}
+.chip.on{background:var(--ink); color:#fff}
+
+.group-title{display:flex; align-items:center; gap:8px; margin:20px 0 2px; font-weight:700; font-size:15px}
+.group-title i{width:12px; height:12px; border-radius:50%; background:var(--dot, var(--pink)); border:2px solid var(--ink)}
+.place{display:flex; gap:12px; margin-top:12px; padding:12px; width:100%; text-align:left; transition:transform .12s ease}
+.place:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--sh)}
+.place.active{outline:3px solid var(--yellow); outline-offset:2px}
+.place .icon-tile{flex:0 0 82px; height:98px; overflow:hidden}
+.place .icon-tile img{width:100%; height:100%; object-fit:cover}
+.place-body{display:grid; gap:3px; align-content:start; min-width:0}
+.place-meta{font-size:11.5px; color:var(--ink-2); font-weight:600}
+.place-body b{font-size:15.5px; line-height:1.25}
+.place-body .jp{font-size:12px}
+.place-body .pill{justify-self:start; margin-top:3px; font-size:11.5px}
+.place-body p{margin:4px 0 0; font-size:13px; line-height:1.45; color:var(--ink-2)}
+.empty{margin-top:16px; padding:18px; text-align:center; color:var(--ink-2)}
+
+/* verdict pills */
+.v-love{--bg:var(--pink-soft); --b:var(--pink)}
+.v-recommend{--bg:var(--mint-soft); --b:var(--mint)}
+.v-optional{--bg:var(--yellow-soft); --b:var(--yellow)}
+.v-wish{--bg:#fff; --b:var(--ink-3); border-style:dashed}
+
+/* map markers (the element itself is positioned by Mapbox, effects go on .mk-in) */
+.mk{display:block; padding:0; border:0; background:none; cursor:pointer}
+.mk-in{position:relative; display:grid; place-items:center; width:44px; height:44px; border-radius:14px; background:#fff; border:2.5px solid var(--ink); box-shadow:2px 3px 0 var(--ink); transform-origin:50% 100%; transition:transform .12s ease}
+.mk-in::after{content:""; position:absolute; bottom:-9px; left:50%; margin-left:-6px; border:6px solid transparent; border-top:7px solid var(--ink)}
+.mk:hover .mk-in{transform:scale(1.1)}
+.mk.active .mk-in{transform:scale(1.22); background:var(--yellow-soft)}
+.mk.active{z-index:3}
+.mk.wish .mk-in{border-style:dashed}
+.mk .heart{position:absolute; top:-9px; right:-9px; width:20px; height:20px; border-radius:50%; background:var(--pink); border:2px solid var(--ink); font-size:10px; display:grid; place-items:center}
+.cluster{width:36px; height:36px; border-radius:50%; background:var(--ink); color:#fff; font-weight:800; font-size:13px; display:grid; place-items:center; border:3px solid #fff; box-shadow:0 0 0 2.5px var(--ink); cursor:pointer}
+
+/* ---------- Place sheet ---------- */
+.sheet{position:fixed; z-index:80; left:0; right:0; bottom:0; max-height:88vh; overflow-y:auto; overscroll-behavior:contain;
+  background:var(--paper); border-top:var(--line); border-radius:24px 24px 0 0; box-shadow:0 -6px 0 var(--pink);
+  transform:translateY(calc(100% + 24px)); visibility:hidden; transition:transform .3s cubic-bezier(.2,.8,.2,1), visibility 0s .3s; padding-bottom:calc(var(--safe-b) + 16px)}
+.sheet.open{transform:none; visibility:visible; transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.backdrop{position:fixed; inset:0; z-index:79; background:rgba(59,58,94,.25); opacity:0; pointer-events:none; transition:opacity .2s}
+.backdrop.show{opacity:1; pointer-events:auto}
+@media (min-width:960px){
+  .sheet{left:auto; top:16px; right:16px; bottom:16px; width:440px; max-height:none; border:var(--line); border-radius:24px; box-shadow:6px 6px 0 var(--pink); transform:translateX(calc(100% + 30px))}
+}
+.sheet-hero{position:relative; height:220px; display:grid; place-items:center; background:linear-gradient(180deg, var(--pink-soft), var(--tint)); border-bottom:var(--line)}
+.sheet-hero img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.sheet-close{position:absolute; top:12px; right:12px; z-index:2; width:38px; height:38px; border-radius:12px; border:2px solid var(--ink); background:#fff; font-weight:800; font-size:16px}
+.sheet-body{padding:18px 20px 20px; display:grid; gap:14px}
+.sheet-body h2{font-size:26px}
+.sheet-body .jp{font-size:15px}
+.box{border:2px solid var(--ink); border-radius:16px; padding:12px 14px; background:#fff}
+.box h3{display:flex; align-items:center; gap:8px; font-size:14px; letter-spacing:0; margin-bottom:6px}
+.box h3 i{width:11px; height:11px; border-radius:50%; background:var(--dot, var(--pink)); border:2px solid var(--ink)}
+.box h3 .pill{margin-left:auto; font-size:10.5px}
+.box p{margin:0; font-size:14px; line-height:1.6; color:var(--ink-2)}
+.tiles{display:grid; grid-template-columns:1fr 1fr; gap:8px}
+.tile{border:2px solid var(--ink); border-radius:14px; padding:10px 12px; background:#fff; box-shadow:2px 2px 0 var(--s, var(--yellow))}
+.tile small{display:block; font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3)}
+.tile b{font-size:13px; font-weight:600; line-height:1.35; display:block}
+.tip{border:2px dashed #e9b84d; background:var(--yellow-soft); border-radius:14px; padding:10px 12px; font-size:13.5px; line-height:1.5}
+.actions{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+.actions .wide{grid-column:1 / -1}
+.mini-planner{background:var(--ink); color:#fff; border-radius:18px; padding:14px 16px; display:flex; gap:12px; align-items:center; text-decoration:none}
+.mini-planner b{font-size:15px; display:block}
+.mini-planner span{font-size:12.5px; opacity:.85}
+
+.toast{position:fixed; z-index:90; left:50%; bottom:calc(var(--safe-b) + 24px); transform:translate(-50%, 20px); opacity:0; transition:all .25s; pointer-events:none;
+  background:var(--ink); color:#fff; padding:10px 16px; border-radius:99px; font-weight:600; font-size:14px}
+.toast.show{opacity:1; transform:translate(-50%, 0)}
