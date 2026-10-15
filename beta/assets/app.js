@@ -473,7 +473,7 @@
           ${p.guide ? `<a class="btn wide" href="/${esc(p.guide)}">📖 ${esc(t("Lire mon guide complet", "Read my full guide"))}</a>` : ""}
         </div>
         <a class="mini-planner" href="${esc(Hodo.plannerLink({ destination: state.countryId, place: p.id }))}" target="_blank" rel="noopener">
-          ${HodoIcons.icon("bunny", 46)}<span><b>${esc(t("Un itinéraire sur mesure ?", "Want a tailor-made itinerary?"))}</b>
+          ${HodoIcons.icon("bunnymap", 52)}<span><b>${esc(t("Un itinéraire sur mesure ?", "Want a tailor-made itinerary?"))}</b>
           <span>${esc(t("HodoPlanner construit ton voyage selon tes envies.", "HodoPlanner builds your trip around you."))}</span></span></a>
       </div>`;
   }
@@ -496,7 +496,7 @@
       }).join("")}</div>
       <h3 class="p-section">${esc(t("Bientôt", "Coming soon"))} <span class="jp">近日公開</span></h3>
       <div class="rail">${soon.map((c, i) => `<button type="button" class="card mini" style="--sh:${SHADOWS[i % SHADOWS.length]}" data-soon="${esc(c.id)}">
-        ${c.cover ? `<img src="/${esc(c.cover)}" alt="" loading="lazy">` : `<span class="noimg">${HodoIcons.icon("bunny", 44)}</span>`}
+        ${c.cover ? `<img src="/${esc(c.cover)}" alt="" loading="lazy">` : `<span class="noimg">${HodoIcons.icon("bunnypaws", 48)}</span>`}
         <span class="mini-body"><b>${esc(tr(c.name))}</b><small>${esc(tr(c.region))}</small></span></button>`).join("")}</div>
       <h3 class="p-section">${esc(t("Guides pratiques", "Practical guides"))}</h3>
       <div class="guides">
@@ -508,14 +508,14 @@
       <section class="card about" style="--sh:var(--lav)"><img src="/asia/japan/cover.jpg" alt="Erika" />
         <div><span class="label" style="--lb:var(--lav)">${esc(t("Qui suis-je", "About me"))}</span>
         <p>${esc(t("Moi c'est Erika ! Je partage ici uniquement les lieux où je suis vraiment allée, avec mon avis honnête.", "Hi, I'm Erika! I only share places I've actually been to, with my honest opinion."))} <i>${esc(t("(texte à écrire)", "(text to write)"))}</i></p></div></section>
-      <section class="card planner" style="--sh:var(--pink)"><span class="mascot">${HodoIcons.icon("bunny", 54)}</span>
+      <section class="card planner" style="--sh:var(--pink)"><span class="mascot">${HodoIcons.icon("bunnymap", 72)}</span>
         <div><span class="label" style="--lb:var(--yellow);color:var(--ink)">HodoPlanner</span></div>
         <h3>${esc(t("Un voyage pensé rien que pour toi ?", "A trip designed just for you?"))}</h3>
         <p>${esc(t("Je construis ton itinéraire selon tes envies, ton rythme et ton budget.", "I build your itinerary around your interests, pace and budget."))}</p>
         <a class="btn" href="${esc(Hodo.plannerLink())}" target="_blank" rel="noopener">${esc(t("Créer mon itinéraire", "Plan my trip"))}</a></section>
       <p class="foot">HodoGuides by Erika</p>`;
     $("#panelBody").querySelectorAll(".mini img").forEach((img) => img.addEventListener("error", () => {
-      const ph = document.createElement("span"); ph.className = "noimg"; ph.innerHTML = HodoIcons.icon("bunny", 44); img.replaceWith(ph);
+      const ph = document.createElement("span"); ph.className = "noimg"; ph.innerHTML = HodoIcons.icon("bunnypaws", 48); img.replaceWith(ph);
     }, { once: true }));
   }
 
