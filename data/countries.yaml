@@ -3,10 +3,12 @@
 #  - places : fichier des lieux (data/<fichier>.yaml) → le pays devient cliquable
 #  - cover  : photo ronde (bulle) affichée quand on zoome
 #  - sans « places » : le pays affiche « guide en préparation »
+#  - iso    : code du pays (2 lettres) pour le colorier sur le globe
 # ============================================================
 
 countries:
   - id: japan
+    iso: JP
     name: { fr: Japon, en: Japan }
     region: { fr: Asie, en: Asia }
     lat: 36.0
@@ -17,6 +19,7 @@ countries:
     zoom: 5.2
 
   - id: south-korea
+    iso: KR
     name: { fr: Corée du Sud, en: South Korea }
     region: { fr: Asie, en: Asia }
     lat: 36.3
@@ -24,6 +27,7 @@ countries:
     cover: asia/south-korea/cover.jpg
 
   - id: vietnam
+    iso: VN
     name: { fr: Viêt Nam, en: Vietnam }
     region: { fr: Asie, en: Asia }
     lat: 16.0
@@ -31,6 +35,7 @@ countries:
     cover: asia/vietnam/cover.jpg   # photo manquante : à ajouter
 
   - id: indonesia
+    iso: ID
     name: { fr: Indonésie, en: Indonesia }
     region: { fr: Asie, en: Asia }
     lat: -0.8
@@ -38,6 +43,7 @@ countries:
     cover: asia/indonesia/cover.jpg
 
   - id: singapore
+    iso: SG
     name: { fr: Singapour, en: Singapore }
     region: { fr: Asie, en: Asia }
     lat: 1.3521
@@ -45,6 +51,7 @@ countries:
     cover: asia/singapore/cover.jpg   # photo manquante : à ajouter
 
   - id: jordan
+    iso: JO
     name: { fr: Jordanie, en: Jordan }
     region: { fr: Asie, en: Asia }
     lat: 31.2
@@ -52,6 +59,7 @@ countries:
     cover: asia/jordan/cover.jpg
 
   - id: hong-kong
+    iso: HK
     name: { fr: Hong Kong, en: Hong Kong }
     region: { fr: Asie, en: Asia }
     lat: 22.3193
@@ -59,6 +67,7 @@ countries:
     cover: asia/hong-kong/cover.jpg   # photo manquante : à ajouter
 
   - id: china
+    iso: CN
     name: { fr: Chine, en: China }
     region: { fr: Asie, en: Asia }
     lat: 35.8617
@@ -67,6 +76,7 @@ countries:
     places: china.yaml
 
   - id: belgium
+    iso: BE
     name: { fr: Belgique, en: Belgium }
     region: { fr: Europe, en: Europe }
     lat: 50.5
@@ -74,6 +84,7 @@ countries:
     cover: europe/belgium/cover.jpg   # photo manquante : à ajouter
 
   - id: luxembourg
+    iso: LU
     name: { fr: Luxembourg, en: Luxembourg }
     region: { fr: Europe, en: Europe }
     lat: 49.75
@@ -81,6 +92,7 @@ countries:
     cover: europe/luxembourg/cover.jpg   # photo manquante : à ajouter
 
   - id: france
+    iso: FR
     name: { fr: France, en: France }
     region: { fr: Europe, en: Europe }
     lat: 46.23
@@ -88,6 +100,7 @@ countries:
     cover: europe/france/cover.jpg   # photo manquante : à ajouter
 
   - id: italy
+    iso: IT
     name: { fr: Italie, en: Italy }
     region: { fr: Europe, en: Europe }
     lat: 42.8
@@ -95,6 +108,7 @@ countries:
     cover: europe/italy/cover.jpg
 
   - id: iceland
+    iso: IS
     name: { fr: Islande, en: Iceland }
     region: { fr: Europe, en: Europe }
     lat: 64.9
@@ -102,6 +116,7 @@ countries:
     cover: europe/iceland/cover.jpg
 
   - id: romania
+    iso: RO
     name: { fr: Roumanie, en: Romania }
     region: { fr: Europe, en: Europe }
     lat: 46.0
@@ -109,6 +124,7 @@ countries:
     cover: europe/romania/cover.jpg
 
   - id: poland
+    iso: PL
     name: { fr: Pologne, en: Poland }
     region: { fr: Europe, en: Europe }
     lat: 52.1
@@ -116,6 +132,7 @@ countries:
     cover: europe/poland/cover.jpg
 
   - id: cyprus
+    iso: CY
     name: { fr: Chypre, en: Cyprus }
     region: { fr: Europe, en: Europe }
     lat: 35.1
@@ -123,6 +140,7 @@ countries:
     cover: europe/cyprus/cover.jpg
 
   - id: turkiye
+    iso: TR
     name: { fr: Turquie, en: Turkey }
     region: { fr: Europe, en: Europe }
     lat: 39.0
@@ -130,6 +148,7 @@ countries:
     cover: europe/turkiye/cover.jpg   # photo manquante : à ajouter
 
   - id: germany
+    iso: DE
     name: { fr: Allemagne, en: Germany }
     region: { fr: Europe, en: Europe }
     lat: 51.0
@@ -137,6 +156,7 @@ countries:
     cover: europe/germany/cover.jpg
 
   - id: hungary
+    iso: HU
     name: { fr: Hongrie, en: Hungary }
     region: { fr: Europe, en: Europe }
     lat: 47.2
@@ -144,6 +164,7 @@ countries:
     cover: europe/hungary/cover.jpg
 
   - id: norway
+    iso: NO
     name: { fr: Norvège, en: Norway }
     region: { fr: Europe, en: Europe }
     lat: 64.5
@@ -151,6 +172,7 @@ countries:
     cover: europe/norway/cover.jpg   # photo manquante : à ajouter
 
   - id: egypt
+    iso: EG
     name: { fr: Égypte, en: Egypt }
     region: { fr: Afrique, en: Africa }
     lat: 26.8
@@ -158,6 +180,7 @@ countries:
     cover: africa/egypt/cover.jpg
 
   - id: morocco
+    iso: MA
     name: { fr: Maroc, en: Morocco }
     region: { fr: Afrique, en: Africa }
     lat: 31.8
@@ -165,6 +188,7 @@ countries:
     cover: africa/morocco/cover.jpg
 
   - id: lesotho
+    iso: LS
     name: { fr: Lesotho, en: Lesotho }
     region: { fr: Afrique, en: Africa }
     lat: -29.5
@@ -172,6 +196,7 @@ countries:
     cover: africa/lesotho/cover.jpg
 
   - id: namibia
+    iso: NA
     name: { fr: Namibie, en: Namibia }
     region: { fr: Afrique, en: Africa }
     lat: -22.56
@@ -179,6 +204,7 @@ countries:
     cover: africa/namibia/cover.jpg
 
   - id: south-africa
+    iso: ZA
     name: { fr: Afrique du Sud, en: South Africa }
     region: { fr: Afrique, en: Africa }
     lat: -29.0
@@ -186,6 +212,7 @@ countries:
     cover: africa/south-africa/cover.jpg
 
   - id: botswana
+    iso: BW
     name: { fr: Botswana, en: Botswana }
     region: { fr: Afrique, en: Africa }
     lat: -22.0
@@ -193,150 +220,175 @@ countries:
     cover: africa/botswana/cover.jpg   # photo manquante : à ajouter
 
   - id: ireland
+    iso: IE
     name: { fr: Irlande, en: Ireland }
     region: { fr: Europe, en: Europe }
     lat: 53.4
     lng: -8.0
 
   - id: northern-ireland
+    iso: GB
     name: { fr: Irlande du Nord, en: Northern Ireland }
     region: { fr: Europe, en: Europe }
     lat: 54.6
     lng: -6.5
 
   - id: isle-of-man
+    iso: IM
     name: { fr: Île de Man, en: Isle of Man }
     region: { fr: Europe, en: Europe }
     lat: 54.2
     lng: -4.5
 
   - id: united-kingdom
+    iso: GB
     name: { fr: Royaume-Uni, en: United Kingdom }
     region: { fr: Europe, en: Europe }
     lat: 54.0
     lng: -1.5
 
   - id: denmark
+    iso: DK
     name: { fr: Danemark, en: Denmark }
     region: { fr: Europe, en: Europe }
     lat: 56.0
     lng: 10.0
 
   - id: sweden
+    iso: SE
     name: { fr: Suède, en: Sweden }
     region: { fr: Europe, en: Europe }
     lat: 62.0
     lng: 15.0
 
   - id: russia
+    iso: RU
     name: { fr: Russie, en: Russia }
     region: { fr: Europe, en: Europe }
     lat: 61.0
     lng: 100.0
 
   - id: portugal
+    iso: PT
     name: { fr: Portugal, en: Portugal }
     region: { fr: Europe, en: Europe }
     lat: 39.5
     lng: -8.0
 
   - id: spain
+    iso: ES
     name: { fr: Espagne, en: Spain }
     region: { fr: Europe, en: Europe }
     lat: 40.0
     lng: -3.7
 
   - id: gibraltar
+    iso: GI
     name: { fr: Gibraltar, en: Gibraltar }
     region: { fr: Europe, en: Europe }
     lat: 36.1
     lng: -5.3
 
   - id: vatican
+    iso: VA
     name: { fr: Vatican, en: Vatican }
     region: { fr: Europe, en: Europe }
     lat: 41.9
     lng: 12.45
 
   - id: switzerland
+    iso: CH
     name: { fr: Suisse, en: Switzerland }
     region: { fr: Europe, en: Europe }
     lat: 46.8
     lng: 8.2
 
   - id: austria
+    iso: AT
     name: { fr: Autriche, en: Austria }
     region: { fr: Europe, en: Europe }
     lat: 47.5
     lng: 13.3
 
   - id: netherlands
+    iso: NL
     name: { fr: Pays-Bas, en: Netherlands }
     region: { fr: Europe, en: Europe }
     lat: 52.1
     lng: 5.3
 
   - id: czechia
+    iso: CZ
     name: { fr: Tchéquie, en: Czechia }
     region: { fr: Europe, en: Europe }
     lat: 49.8
     lng: 15.5
 
   - id: slovakia
+    iso: SK
     name: { fr: Slovaquie, en: Slovakia }
     region: { fr: Europe, en: Europe }
     lat: 48.7
     lng: 19.7
 
   - id: bulgaria
+    iso: BG
     name: { fr: Bulgarie, en: Bulgaria }
     region: { fr: Europe, en: Europe }
     lat: 42.7
     lng: 25.5
 
   - id: greece
+    iso: GR
     name: { fr: Grèce, en: Greece }
     region: { fr: Europe, en: Europe }
     lat: 38.0
     lng: 23.7
 
   - id: zambia
+    iso: ZM
     name: { fr: Zambie, en: Zambia }
     region: { fr: Afrique, en: Africa }
     lat: -13.1
     lng: 27.8
 
   - id: zimbabwe
+    iso: ZW
     name: { fr: Zimbabwe, en: Zimbabwe }
     region: { fr: Afrique, en: Africa }
     lat: -19.0
     lng: 29.9
 
   - id: ukraine
+    iso: UA
     name: { fr: Ukraine, en: Ukraine }
     region: { fr: Europe, en: Europe }
     lat: 49.0
     lng: 31.0
 
   - id: belarus
+    iso: BY
     name: { fr: Biélorussie, en: Belarus }
     region: { fr: Europe, en: Europe }
     lat: 53.0
     lng: 28.0
 
   - id: malta
+    iso: MT
     name: { fr: Malte, en: Malta }
     region: { fr: Europe, en: Europe }
     lat: 35.9
     lng: 14.4
 
   - id: albania
+    iso: AL
     name: { fr: Albanie, en: Albania }
     region: { fr: Europe, en: Europe }
     lat: 41.0
     lng: 20.0
 
   - id: san-marino
+    iso: SM
     name: { fr: Saint-Marin, en: San Marino }
     region: { fr: Europe, en: Europe }
     lat: 43.9

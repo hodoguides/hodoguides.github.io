@@ -86,9 +86,7 @@
 
   function initMap() {
     map = Hodo.createMap({ container: "map", projection: "globe", ...worldView() });
-    map.on("style.load", () => map.setFog({
-      color: "#fdf8f2", "high-color": "#e3f0fc", "space-color": "#fdf8f2", "horizon-blend": 0.06, "star-intensity": 0,
-    }));
+    map.on("style.load", () => { map.setFog(Hodo.theme.fog); paintVisitedCountries(); });
     const level = () => { document.body.dataset.level = map.getZoom() < REGION_ZOOM ? "world" : "region"; };
     map.on("zoom", level);
     // The intro fades as soon as the visitor starts exploring
@@ -104,6 +102,24 @@
       map.on("render", syncPlaceMarkers);
       route({ animate: false });
     });
+  }
+
+  /** Colour the countries Erika has visited, a bit stronger for the ones with places on the map. */
+  function paintVisitedCountries() {
+    if (map.getSource("hodo-countries")) return;
+    const codes = (list) => [...new Set(list.filter((c) => c.iso).map((c) => c.iso))];
+    const visited = codes(state.countries), ready = codes(state.countries.filter(isReady));
+    if (!visited.length) return;
+    // Mapbox's country shapes; the worldview filter keeps one shape per disputed area
+    map.addSource("hodo-countries", { type: "vector", url: "mapbox://mapbox.country-boundaries-v1" });
+    const before = map.getStyle().layers.find((l) => l.type === "symbol" || l.id === "hodo-coast")?.id;
+    const shown = ["all", ["any", ["==", "all", ["get", "worldview"]], ["in", "US", ["get", "worldview"]]], ["match", ["get", "iso_3166_1"], visited, true, false]];
+    map.addLayer({ id: "hodo-visited", type: "fill", source: "hodo-countries", "source-layer": "country_boundaries", filter: shown,
+      paint: { "fill-color": ["match", ["get", "iso_3166_1"], ready.length ? ready : ["--"], Hodo.theme.ready, Hodo.theme.visited],
+        // strong on the globe, fading out once zoomed into a country so the place markers stay readable
+        "fill-opacity": ["interpolate", ["linear"], ["zoom"], 2.5, 0.85, 5, 0.3, 8, 0] } }, before);
+    map.addLayer({ id: "hodo-visited-line", type: "line", source: "hodo-countries", "source-layer": "country_boundaries", filter: shown,
+      paint: { "line-color": Hodo.theme.border, "line-width": 0.8 } }, before);
   }
 
   // ----- countries -----

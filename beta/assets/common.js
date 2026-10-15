@@ -6,9 +6,29 @@
   const MAPBOX_TOKEN = "pk.eyJ1IjoiZXJpa2FyYW1lbGwiLCJhIjoiY21jbmlteXJuMDBjaDJrc2swbnA0a29wZSJ9.F8aX2alF-PpnqInkyqba8g";
   // Mapbox's light style, recoloured below to look like the travel journal map.
   const MAPBOX_STYLE = "mapbox://styles/mapbox/light-v11";
-  const MAP_COLORS = { water: "#dcebf9", land: "#fffdf9", coast: "#8fb8e6" };
+  // Globe looks to choose from (try them with ?globe=ciel, ?globe=nuit or ?globe=carnet).
+  // visited = countries Erika has been to; ready = countries with places on the map.
+  const MAP_THEMES = {
+    ciel: { water: "#a9d3f2", land: "#fff8ee", coast: "#6f9fd6", visited: "#fcd9e1", ready: "#f6a9b9", border: "#e7a3b3",
+      fog: { color: "#fdf3f6", "high-color": "#cfe4fb", "space-color": "#e7ddf6", "horizon-blend": 0.08, "star-intensity": 0 } },
+    nuit: { water: "#8ec5ec", land: "#fff8ec", coast: "#5b8fcf", visited: "#c7ecd6", ready: "#8fd6b1", border: "#79c29d",
+      fog: { color: "#f3eefb", "high-color": "#7d8fd6", "space-color": "#25244a", "horizon-blend": 0.05, "star-intensity": 0.45 } },
+    carnet: { water: "#bfe6df", land: "#f7ead0", coast: "#3b3a5e", visited: "#ffd98a", ready: "#f6a9b9", border: "#d9a94f",
+      fog: { color: "#fdf8f2", "high-color": "#f6e3c3", "space-color": "#fbf1e2", "horizon-blend": 0.07, "star-intensity": 0 } },
+  };
+  function pickTheme() {
+    const q = new URLSearchParams(location.search).get("globe");
+    try {
+      if (q && MAP_THEMES[q]) localStorage.setItem("hodo-globe", q);
+      const saved = localStorage.getItem("hodo-globe");
+      if (!q && saved && MAP_THEMES[saved]) return saved;
+    } catch (_) {}
+    return MAP_THEMES[q] ? q : "ciel";
+  }
+  const THEME_ID = pickTheme();
+  const MAP_COLORS = MAP_THEMES[THEME_ID];
 
-  /** Recolour the light style: cream land, pale blue sea, blue coastline. */
+  /** Recolour the light style with the chosen globe look: land, sea and coastline. */
   function journalColors(map) {
     const set = (layer, prop, value) => { if (map.getLayer(layer)) map.setPaintProperty(layer, prop, value); };
     set("water", "fill-color", MAP_COLORS.water);
@@ -36,6 +56,8 @@
   const Hodo = {
     lang: pickLang(),
     PLANNER_URL,
+    theme: MAP_COLORS,
+    themeId: THEME_ID,
     listeners: [],
 
     /** Bilingual value: a plain string, or { fr, en }. Falls back to the other language. */
