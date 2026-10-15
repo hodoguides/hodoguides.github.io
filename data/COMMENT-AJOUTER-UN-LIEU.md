@@ -118,6 +118,17 @@ Les lieux très connus ont leur propre dessin :
 | `warrior` | guerriers de terre cuite | `forbidden` | Cité interdite |
 | `karst` | pics de Guilin et Yangshuo | `pillars` | piliers de Zhangjiajie |
 | `potala` | palais du Potala | `pearl` | tour de la Perle d'Orient |
+| `tianmen` | mont Tianmen et son arche | `toshogu` | Nikkō Tōshō-gū |
+| `shuri` | château de Shuri | `shisa` | shisa d'Okinawa |
+| `dog` | Hachikō | `ginkakuji` | Pavillon d'argent |
+| `byodoin` | Byōdō-in | `manekineko` | chat porte-bonheur (Gōtokuji, chats) |
+| `jizo` | statue Jizō (Kōya-san) | `nachi` | cascade et pagode de Nachi |
+| `volcano` | volcan (mont Aso) | `fox` | renard (Zaō) |
+| `huangshan` | monts Huang | `jiuzhaigou` | lacs turquoise de Jiuzhaigou |
+| `fenghuang` | maisons sur pilotis (Fenghuang) | `cantontower` | tour de Canton |
+| `icecastle` | château de glace (Harbin) | | |
+
+Et pour manger : `sushi`, `pancake`, `hotpot` (fondue chinoise) et `dumpling` (raviolis, le dessin par défaut des restaurants en Chine).
 
 ## Les régions (`region:`)
 

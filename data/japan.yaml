@@ -671,7 +671,7 @@ places:
   google_maps: https://www.google.com/maps/place/Zao+Onsen+Dairotenburo/data=!4m2!3m1!1s0x5f8a4b1a994ce6e9:0xe4b3a466ae792ce1
 - id: zao-fox-village
   name: Zaō Fox Village
-  icon: house
+  icon: fox
   city: Yamagata
   region: tohoku
   category: activity
@@ -741,7 +741,7 @@ places:
   google_maps: https://www.google.com/maps/place/Ice+Aquarium,+Kesennuma/data=!4m2!3m1!1s0x5f88948b80ba76c7:0x3a6f3f730a5071e5
 - id: miyori-shrine-cat-shrine
   name: Miyori Shrine (Cat Shrine)
-  icon: torii
+  icon: manekineko
   city: près de Sendai
   region: tohoku
   category: see
@@ -1233,7 +1233,7 @@ places:
   google_maps: https://www.google.com/maps/place/Nikkozan+Rin%E2%80%99n%C5%8Dji+Temple/data=!4m2!3m1!1s0x601fa6d6c380d959:0x15deb1a0f2ac3fa8
 - id: nikko-tosho-gu
   name: Nikkō Tōshō-gū
-  icon: torii
+  icon: toshogu
   city: Nikko
   region: kanto
   category: see
@@ -1425,7 +1425,7 @@ places:
   google_maps: https://www.google.com/maps/place/Cinnamoroll+Cafe/data=!4m2!3m1!1s0x60188cdb44df1955:0xa8cd25ca2786d19a
 - id: hachiko-memorial-statue
   name: Hachikō Memorial Statue
-  icon: camera
+  icon: dog
   city: Tokyo
   region: kanto
   category: see
@@ -1495,7 +1495,7 @@ places:
   google_maps: https://www.google.com/maps/place/teamLab+Borderless:+MORI+Building+DIGITAL+ART+MUSEUM/data=!4m2!3m1!1s0x601889fad49a9443:0x5831aba3288d2651
 - id: a-happy-pancake-shibuya
   name: A Happy Pancake Shibuya
-  icon: ramen
+  icon: pancake
   city: Tokyo
   region: kanto
   category: food
@@ -1535,7 +1535,7 @@ places:
   google_maps: https://www.google.com/maps/place/BOOKOFF+SUPER+BAZAAR+Omiya+Stellar+Town+Store/data=!4m2!3m1!1s0x6018c6bb0d2200f5:0x492f841faf51f3fc
 - id: benizuru-pancake
   name: Benizuru Pancake
-  icon: ramen
+  icon: pancake
   city: Tokyo
   region: kanto
   category: food
@@ -1595,7 +1595,7 @@ places:
   google_maps: https://www.google.com/maps/place/Ghibli+Donguri+Republic+Tokyo+Station/data=!4m2!3m1!1s0x60188bfb20aa2463:0xccecb86f1a6ceda1
 - id: gotokuji-temple
   name: Gōtokuji Temple
-  icon: temple
+  icon: manekineko
   city: Tokyo
   region: kanto
   category: see
@@ -1615,7 +1615,7 @@ places:
   google_maps: https://www.google.com/maps/place/HAUTE+COUTURE%E3%83%BBCAFE/data=!4m2!3m1!1s0x60188b637d0ea6df:0x70f6d571024d8ad6
 - id: hamazushi-kyodo
   name: Hamazushi Kyodo
-  icon: ramen
+  icon: sushi
   city: Tokyo
   region: kanto
   category: food
@@ -2207,7 +2207,7 @@ places:
   google_maps: https://www.google.com/maps/place/Chichibu+Festival+Museum/data=!4m2!3m1!1s0x601ec97eea345701:0x3f5a3e37554d3b25
 - id: kongobu-ji-okuno-in
   name: Kongobu-ji Okuno-in
-  icon: temple
+  icon: jizo
   city: près de Kawaguchiko
   region: kanto
   category: see
@@ -2487,7 +2487,7 @@ places:
   google_maps: https://www.google.com/maps/place/K%C5%8Dsenji+Temple/data=!4m2!3m1!1s0x601de654ecb62901:0xd0b2047673d424df
 - id: neko-machi-eki-sha-cat-station-cafe-bar
   name: Neko Machi Eki Sha Cat Station cafe & bar
-  icon: cup
+  icon: manekineko
   city: Nagano
   region: chubu
   category: cafe
@@ -3240,7 +3240,7 @@ places:
   google_maps: https://www.google.com/maps/place/Kongobu-ji/data=!4m2!3m1!1s0x60072772879f585d:0x2a93aeed57548dc5
 - id: okunoin-cemetery
   name: Okunoin Cemetery
-  icon: gem
+  icon: jizo
   city: Koyasan
   region: kansai
   category: hidden
@@ -3260,7 +3260,7 @@ places:
   google_maps: https://www.google.com/maps/place/Shi'ide+Itsukushima+Shrine/data=!4m2!3m1!1s0x6007285ec2c0f8ff:0x22c0771434137f61
 - id: tamashiiyama-jizo-temple
   name: Tamashiiyama Jizo Temple
-  icon: temple
+  icon: jizo
   city: Koyasan
   region: kansai
   category: see
@@ -3320,7 +3320,7 @@ places:
   google_maps: https://www.google.com/maps/place/Arashiyama+Rilakkuma+Tea+House/data=!4m2!3m1!1s0x6001a9ff76c6dddd:0xaa7c954ca543aca8
 - id: byodo-in-omotesando
   name: Byodo-in Omotesando
-  icon: temple
+  icon: byodoin
   city: Kyoto
   region: kansai
   category: see
@@ -3520,7 +3520,7 @@ places:
   google_maps: https://www.google.com/maps/place/Bishamond%C5%8D+Temple/data=!4m2!3m1!1s0x60010eae25b65023:0x897a2d844031d584
 - id: byodo-in
   name: Byōdō-in
-  icon: temple
+  icon: byodoin
   city: Kyoto
   region: kansai
   category: see
@@ -3590,7 +3590,7 @@ places:
   google_maps: https://www.google.com/maps/place/Fushimi-Momoyama+Castle/data=!4m2!3m1!1s0x60010fb991f14e25:0x9f5973c4345ebf1b
 - id: ginkaku-ji
   name: Ginkaku-ji
-  icon: temple
+  icon: ginkakuji
   city: Kyoto
   region: kansai
   category: see
@@ -4332,7 +4332,7 @@ places:
   google_maps: https://www.google.com/maps/place/Tsuyuno+Tenjinsya+(Ohatsu+Tenjin)/data=!4m2!3m1!1s0x6000e6ec63ebf97d:0xbc7a3186d97b154
 - id: toichipancake-kitahorie
   name: toichipancake kitahorie
-  icon: ramen
+  icon: pancake
   city: Osaka
   region: kansai
   category: food
@@ -4382,7 +4382,7 @@ places:
   google_maps: https://www.google.com/maps/place/Shipporyuji+Temple+Hond%C5%8D/data=!4m2!3m1!1s0x6000cc860c5aeb11:0x5c50819a0e18265b
 - id: chute-d-eau-de-nachi
   name: Chute d'eau de Nachi
-  icon: waterfall
+  icon: nachi
   city: près de Koyasan
   region: kansai
   category: photo
@@ -4422,7 +4422,7 @@ places:
   google_maps: https://www.google.com/maps/place/Kumano+Kodo+-+Nakahechi+Daimon-saka+Pilgrim+Route/data=!4m2!3m1!1s0x60063f42a698d1af:0xcf97c9e78f2d3518
 - id: kumano-nachi-taisha
   name: Kumano Nachi-taisha
-  icon: torii
+  icon: nachi
   city: près de Koyasan
   region: kansai
   category: see
@@ -4432,7 +4432,7 @@ places:
   google_maps: https://www.google.com/maps/place/Kumano+Nachi-taisha/data=!4m2!3m1!1s0x600615770beeded5:0x2cdbc65763e652b1
 - id: seiganto-ji
   name: Seiganto-ji
-  icon: temple
+  icon: nachi
   city: près de Koyasan
   region: kansai
   category: see
@@ -4442,7 +4442,7 @@ places:
   google_maps: https://www.google.com/maps/place/Seiganto-ji/data=!4m2!3m1!1s0x60063ff1ffb29fe5:0xe9067c770ea80104
 - id: seiganto-ji-temple-sanjuno-to-3-storied-pagoda
   name: Seiganto-ji Temple Sanjuno-to 3-Storied Pagoda
-  icon: pagoda
+  icon: nachi
   city: près de Koyasan
   region: kansai
   category: see
@@ -4624,7 +4624,7 @@ places:
   google_maps: https://www.google.com/maps/place/Nyoirinji+Frog+Temple/data=!4m2!3m1!1s0x35419f3b4710e3d7:0xc3706161d2b9f04b
 - id: mount-aso
   name: Mount Aso
-  icon: mountain
+  icon: volcano
   city: Kumamoto
   region: kyushu
   category: photo
@@ -4686,7 +4686,7 @@ places:
   google_maps: https://www.google.com/maps/place/Kabira+Bay/data=!4m2!3m1!1s0x345fddee11d073ab:0x9af89d9f1b1f5cf1
 - id: yoneko-yaki-kobo-shisa-farm
   name: Yoneko Yaki Kobo Shisa Farm
-  icon: flower
+  icon: shisa
   city: Ishigaki
   region: okinawa
   category: activity
@@ -4797,7 +4797,7 @@ places:
   google_maps: https://www.google.com/maps/place/Naminoue+Beach/data=!4m2!3m1!1s0x34e569900ff36f09:0x583dec31994d039e
 - id: shuri-castle
   name: Shuri Castle
-  icon: castle
+  icon: shuri
   city: Naha
   region: okinawa
   category: see
@@ -4807,7 +4807,7 @@ places:
   google_maps: https://www.google.com/maps/place/Shuri+Castle/data=!4m2!3m1!1s0x34e56bfe6cf4db67:0xc0899fbab29e4f8b
 - id: tsuboya-ufu-shisa
   name: Tsuboya Ufu Shisa
-  icon: camera
+  icon: shisa
   city: Naha
   region: okinawa
   category: photo
@@ -4947,7 +4947,7 @@ places:
   google_maps: https://www.google.com/maps/place/Ryuya+Honten/data=!4m2!3m1!1s0x34e56991e996c881:0x3bd26033d8fb191
 - id: saion-ufu-shisa
   name: Saion Ufu Shisa
-  icon: camera
+  icon: shisa
   city: Naha
   region: okinawa
   category: photo
@@ -4997,7 +4997,7 @@ places:
   google_maps: https://www.google.com/maps/place/Southeast+Botanical+Gardens/data=!4m2!3m1!1s0x34e511d8db9268d7:0x97aa9da99ec7390b
 - id: sushiro
   name: Sushiro
-  icon: ramen
+  icon: sushi
   city: Naha
   region: okinawa
   category: food
