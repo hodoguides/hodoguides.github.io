@@ -331,11 +331,14 @@ const ICONS = {
     <path d="M2 49 Q32 42 62 49 V60 H2 Z" fill="${C.sky}" ${S}/>
     <rect x="23" y="50" width="18" height="4" rx="1" fill="${C.tan}" ${S}/><path d="M38 50 L44 40" fill="none" ${S}/>`,
   pillars: () => `
-    <rect x="7" y="22" width="11" height="38" rx="3" fill="${C.grey}" ${S}/>
-    <rect x="26" y="11" width="12" height="49" rx="3" fill="${C.grey}" ${S}/>
-    <rect x="46" y="27" width="11" height="33" rx="3" fill="${C.grey}" ${S}/>
-    <ellipse cx="12.5" cy="21" rx="7" ry="4" fill="${C.green}" ${S}/><ellipse cx="32" cy="10" rx="8" ry="4.5" fill="${C.green}" ${S}/><ellipse cx="51.5" cy="26" rx="7" ry="4" fill="${C.green}" ${S}/>
-    <ellipse cx="32" cy="52" rx="30" ry="6" fill="#fff" ${S}/>`,
+    <rect x="5" y="27" width="13" height="33" rx="6" fill="#ddd2c4" ${S}/>
+    <rect x="45" y="31" width="13" height="29" rx="6" fill="#ddd2c4" ${S}/>
+    <rect x="24" y="13" width="16" height="47" rx="7" fill="#e6dccf" ${S}/>
+    <path d="M10 36 V46 M14 40 V50 M29 24 V38 M35 30 V48 M50 40 V50" fill="none" stroke="#b9ad9d" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M3 28 Q5 20 11 22 Q15 17 20 23 Q22 29 17 29 H6 Z" fill="${C.green}" ${S}/>
+    <path d="M22 14 Q23 5 30 7 Q35 2 40 8 Q45 10 42 15 H24 Z" fill="${C.green}" ${S}/>
+    <path d="M43 32 Q45 24 51 26 Q55 22 59 27 Q61 33 56 33 H46 Z" fill="${C.mint}" ${S}/>
+    <path d="M2 54 Q12 47 22 52 Q32 46 42 52 Q52 47 62 54 V61 H2 Z" fill="#fff" ${S}/>`,
   potala: () => `
     <path d="M2 61 Q32 44 62 61 Z" fill="${C.green}" ${S}/>
     <rect x="6" y="32" width="52" height="22" fill="#fff" ${S}/>
@@ -348,6 +351,163 @@ const ICONS = {
     <circle cx="32" cy="38" r="10" fill="${C.pink}" ${S}/>
     <circle cx="32" cy="17" r="6.5" fill="${C.pink}" ${S}/>
     <path d="M32 10 V2" fill="none" ${S}/>`,
+  tianmen: () => `
+    <path d="M3 59 L13 22 Q19 7 32 7 Q45 7 51 22 L61 59 Z" fill="${C.green}" ${S}/>
+    <path d="M13 22 Q19 7 32 7 Q45 7 51 22 Q44 18 38 20 Q32 16 26 20 Q20 18 13 22 Z" fill="#c9d3c4" ${S}/>
+    <path d="M23 44 Q23 22 32 22 Q41 22 41 44 Z" fill="${C.sky}" ${S}/>
+    <path d="M27 59 L29 44 H35 L37 59 Z" fill="#fff" ${S}/>
+    <path d="M28 55 h8 M28.5 51 h7 M29 47.5 h6" fill="none" stroke="${INK}" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M1 50 Q6 44 12 48 Q16 44 21 49 V53 H1 Z M43 51 Q48 45 54 49 Q58 45 63 50 V54 H43 Z" fill="#fff" ${S}/>`,
+  toshogu: () => `
+    <rect x="12" y="34" width="40" height="22" fill="#fff" ${S}/>
+    <path d="M26 56 V45 a6 6 0 0 1 12 0 V56 Z" fill="${C.dark}" ${S}/>
+    <rect x="12" y="29" width="40" height="5" fill="#f2c94c" ${S}/>
+    <rect x="20" y="19" width="24" height="7" fill="#f2c94c" ${S}/>
+    <path d="M14 21 Q32 9 50 21 Q41 18 32 18 Q23 18 14 21 Z" fill="#5a4b6e" ${S}/>
+    <path d="M4 31 Q32 18 60 31 Q46 26 32 26 Q18 26 4 31 Z" fill="#5a4b6e" ${S}/>
+    <circle cx="18" cy="40" r="2.2" fill="${C.red}"/><circle cx="46" cy="40" r="2.2" fill="${C.blue}"/><circle cx="18" cy="48" r="2.2" fill="${C.mint}"/><circle cx="46" cy="48" r="2.2" fill="${C.pink}"/>`,
+  shuri: () => `
+    <path d="M2 59 V48 H62 V59 Z" fill="#efe6d6" ${S}/>
+    <path d="M8 53 h6 M20 53 h8 M34 53 h8 M48 53 h7" fill="none" stroke="#c9bda8" stroke-width="1.6" stroke-linecap="round"/>
+    <rect x="10" y="30" width="44" height="18" fill="${C.red}" ${S}/>
+    <path d="M18 35 V48 M46 35 V48" fill="none" stroke="#f2c94c" stroke-width="2.2"/>
+    <rect x="28" y="37" width="8" height="11" fill="#f2c94c" ${S}/>
+    <path d="M4 32 L12 22 H52 L60 32 Z" fill="#c94352" ${S}/>
+    <path d="M24 22 L32 13 L40 22 Z" fill="#f2c94c" ${S}/>`,
+  shisa: () => `
+    ${[0, 40, 80, 120, 160, 200, 240, 280, 320].map((a) => { const r = a * Math.PI / 180; return `<circle cx="${(32 + 18 * Math.cos(r)).toFixed(1)}" cy="${(33 + 18 * Math.sin(r)).toFixed(1)}" r="7" fill="#c97c45" ${S}/>`; }).join("")}
+    <circle cx="32" cy="33" r="16" fill="#eaa86f" ${S}/>
+    <circle cx="25" cy="29" r="4" fill="#fff" ${S}/><circle cx="39" cy="29" r="4" fill="#fff" ${S}/>
+    <circle cx="25.5" cy="29.5" r="1.8" fill="${INK}"/><circle cx="38.5" cy="29.5" r="1.8" fill="${INK}"/>
+    <ellipse cx="32" cy="35" rx="3" ry="2.2" fill="${INK}"/>
+    <path d="M23 40 Q32 49 41 40 Z" fill="#c94352" ${S}/><path d="M27 41.5 v2 M31 42 v2.4 M35 42 v2.4" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>`,
+  dog: () => `
+    <path d="M47 50 q9 -2 7 -11 q-3 -3 -6 1" fill="none" ${S}/>
+    <path d="M18 59 Q16 39 30 35 H36 Q50 39 48 59 Z" fill="${C.tan}" ${S}/>
+    <path d="M18 18 L21 6 L29 14 Z M46 18 L43 6 L35 14 Z" fill="${C.tan}" ${S}/>
+    <ellipse cx="32" cy="24" rx="14" ry="12" fill="${C.tan}" ${S}/>
+    <ellipse cx="32" cy="29" rx="8" ry="6" fill="${C.cream}" ${S}/>
+    <ellipse cx="32" cy="26.5" rx="2.4" ry="1.8" fill="${INK}"/>
+    <ellipse cx="26" cy="21" rx="1.5" ry="1.9" fill="${INK}"/><ellipse cx="38" cy="21" rx="1.5" ry="1.9" fill="${INK}"/>
+    <path d="M24 59 V50 M40 59 V50" fill="none" stroke="${INK}" stroke-width="1.4" stroke-linecap="round"/>`,
+  ginkakuji: () => `
+    <path d="M4 58 H60" fill="none" ${S}/>
+    <path d="M5 58 L11 46 H21 L27 58 Z" fill="#f1ece2" ${S}/>
+    <path d="M9 52 H23 M12 48 H20" fill="none" stroke="#c9bda8" stroke-width="1.4" stroke-linecap="round"/>
+    <rect x="31" y="41" width="25" height="15" fill="#b98a5e" ${S}/>
+    <rect x="36" y="28" width="15" height="9" fill="#b98a5e" ${S}/>
+    <path d="M27 43 L43.5 35 L60 43 Z" fill="#5a4b6e" ${S}/>
+    <path d="M31 30 L43.5 22 L56 30 Z" fill="#5a4b6e" ${S}/>
+    <path d="M43.5 22 V16" fill="none" ${S}/><circle cx="43.5" cy="15" r="2" fill="#d9dce6" ${S}/>
+    <path d="M37 46 V52 M43.5 46 V52 M50 46 V52" fill="none" stroke="#7a5233" stroke-width="1.4"/>`,
+  byodoin: () => `
+    <ellipse cx="32" cy="54" rx="29" ry="6.5" fill="${C.sky}" ${S}/>
+    <rect x="6" y="36" width="13" height="10" fill="${C.red}" ${S}/><rect x="45" y="36" width="13" height="10" fill="${C.red}" ${S}/>
+    <path d="M3 38 L12.5 31 L22 38 Z M42 38 L51.5 31 L61 38 Z" fill="#7a88b8" ${S}/>
+    <rect x="22" y="30" width="20" height="18" fill="${C.red}" ${S}/>
+    <rect x="28" y="36" width="8" height="12" fill="#f2c94c" ${S}/>
+    <path d="M15 32 Q32 18 49 32 Q40 28 32 28 Q24 28 15 32 Z" fill="#7a88b8" ${S}/>
+    <circle cx="16" cy="30" r="2" fill="#f2c94c" ${S}/><circle cx="48" cy="30" r="2" fill="#f2c94c" ${S}/>`,
+  manekineko: () => `
+    <path d="M14 59 Q12 35 32 33 Q52 35 50 59 Z" fill="#fff" ${S}/>
+    <path d="M14 21 L17 6 L28 14 Z M50 21 L47 6 L36 14 Z" fill="#fff" ${S}/>
+    <path d="M17.5 15 L18.5 10 L22 13 Z M46.5 15 L45.5 10 L42 13 Z" fill="${C.pink}"/>
+    <ellipse cx="32" cy="24" rx="18" ry="14" fill="#fff" ${S}/>
+    <ellipse cx="22" cy="17" rx="5" ry="3.5" fill="#f2a65a"/>
+    <ellipse cx="54" cy="25" rx="5" ry="7" fill="#fff" ${S}/>
+    <path d="M23 25 q2.5 -2.6 5 0 M36 25 q2.5 -2.6 5 0" fill="none" stroke="${INK}" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M30 29 q2 1.6 4 0" fill="none" stroke="${INK}" stroke-width="1.3" stroke-linecap="round"/>
+    <path d="M18 37 Q32 43 46 37" fill="none" stroke="${C.red}" stroke-width="3.2" stroke-linecap="round"/>
+    <circle cx="32" cy="42" r="3.4" fill="${C.yellow}" ${S}/>
+    <ellipse cx="32" cy="52" rx="7" ry="4.5" fill="${C.yellow}" ${S}/>`,
+  jizo: () => `
+    <rect x="12" y="55" width="40" height="5" rx="1.5" fill="#b9bfd3" ${S}/>
+    <path d="M18 56 Q16 32 32 30 Q48 32 46 56 Z" fill="#d3d7e1" ${S}/>
+    <circle cx="32" cy="22" r="10" fill="#d3d7e1" ${S}/>
+    <path d="M21 20 Q22 9 32 9 Q42 9 43 20 Q32 15 21 20 Z" fill="${C.red}" ${S}/>
+    <path d="M21 33 Q32 47 43 33 Q32 37 21 33 Z" fill="${C.red}" ${S}/>
+    <path d="M27 24 q2 1.4 4 0 M33 24 q2 1.4 4 0" fill="none" stroke="${INK}" stroke-width="1.4" stroke-linecap="round"/>
+    <ellipse cx="32" cy="48" rx="5" ry="3" fill="#c3c8d4" ${S}/>
+    <circle cx="20" cy="50" r="2" fill="${C.green}"/><circle cx="44" cy="46" r="1.6" fill="${C.green}"/>`,
+  nachi: () => `
+    <path d="M30 59 V12 Q34 5 38 6 V59 Z" fill="${C.green}" ${S}/>
+    <path d="M50 6 Q56 6 62 12 V59 H50 Z" fill="${C.green}" ${S}/>
+    <rect x="38" y="6" width="12" height="48" fill="${C.sky}" ${S}/>
+    <path d="M42 10 V48 M46 12 V50" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M32 59 Q38 51 44 56 Q50 51 56 59 Z" fill="#fff" ${S}/>
+    <path d="M17 23 V15" fill="none" ${S}/>
+    <rect x="13.5" y="27" width="7" height="5" fill="${C.red}" ${S}/><path d="M9 28 L17 23 L25 28 Z" fill="#5a4b6e" ${S}/>
+    <rect x="12" y="36" width="10" height="6" fill="${C.red}" ${S}/><path d="M7 37 L17 32 L27 37 Z" fill="#5a4b6e" ${S}/>
+    <rect x="10" y="46" width="14" height="10" fill="${C.red}" ${S}/><path d="M5 47 L17 41 L29 47 Z" fill="#5a4b6e" ${S}/>`,
+  volcano: () => `
+    <path d="M27 21 Q20 20 22 13 Q24 7 30 9 Q34 3 41 8 Q47 8 45 15 Q43 21 36 20 Z" fill="#fff" ${S}/>
+    <path d="M2 57 L20 25 H44 L62 57 Z" fill="#b48a6a" ${S}/>
+    <ellipse cx="32" cy="25" rx="12" ry="3.4" fill="#7a5233" ${S}/>
+    <path d="M2 57 L10 43 Q20 47 32 45 Q44 47 54 43 L62 57 Z" fill="${C.green}" ${S}/>`,
+  fox: () => `
+    <path d="M11 25 L13 5 L28 16 Z M53 25 L51 5 L36 16 Z" fill="#f0a35e" ${S}/>
+    <path d="M14.5 18 L15.5 10 L22 15 Z M49.5 18 L48.5 10 L42 15 Z" fill="${C.dark}"/>
+    <path d="M9 27 Q11 14 32 14 Q53 14 55 27 Q51 41 32 54 Q13 41 9 27 Z" fill="#f0a35e" ${S}/>
+    <path d="M11 29 Q22 30 32 45 Q42 30 53 29 Q49 41 32 54 Q15 41 11 29 Z" fill="#fff" ${S}/>
+    <ellipse cx="32" cy="49.5" rx="2.6" ry="2" fill="${INK}"/>
+    <ellipse cx="24" cy="28" rx="1.6" ry="2.2" fill="${INK}"/><ellipse cx="40" cy="28" rx="1.6" ry="2.2" fill="${INK}"/>`,
+  huangshan: () => `
+    <path d="M4 58 L14 22 L22 34 L30 11 L40 30 L48 18 L60 58 Z" fill="#cfd3dd" ${S}/>
+    <path d="M47 33 Q41 25 33 22" fill="none" stroke="#9a6b45" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="31" cy="20" rx="9" ry="3.4" fill="${C.green}" ${S}/>
+    <ellipse cx="39" cy="15" rx="7" ry="3" fill="${C.green}" ${S}/>
+    <path d="M2 51 Q12 45 22 50 Q32 44 42 50 Q52 45 62 51 V60 H2 Z" fill="#fff" ${S}/>`,
+  jiuzhaigou: () => `
+    <path d="M2 38 L16 16 L28 30 L41 11 L62 38 Z" fill="${C.green}" ${S}/>
+    <path d="M2 40 Q32 30 62 40 V57 Q32 63 2 57 Z" fill="#6fd0cf" ${S}/>
+    <path d="M14 47 q4 -3 8 0 t8 0 M36 51 q4 -3 8 0 t8 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="9" cy="36" r="5" fill="#f2a65a" ${S}/><circle cx="54" cy="34" r="5" fill="${C.yellow}" ${S}/><circle cx="46" cy="37" r="4" fill="#ec8a5e" ${S}/>`,
+  fenghuang: () => `
+    <rect x="2" y="48" width="60" height="12" rx="3" fill="${C.sky}" ${S}/>
+    <path d="M10 38 V50 M18 38 V50 M30 34 V50 M38 34 V50 M48 38 V50 M56 38 V50" fill="none" stroke="#9a6b45" stroke-width="2.4" stroke-linecap="round"/>
+    <rect x="6" y="27" width="16" height="11" fill="${C.tan}" ${S}/><path d="M3 29 L14 20 L25 29 Z" fill="#5a4b6e" ${S}/>
+    <rect x="44" y="27" width="16" height="11" fill="${C.tan}" ${S}/><path d="M41 29 L52 20 L63 29 Z" fill="#5a4b6e" ${S}/>
+    <rect x="26" y="21" width="16" height="13" fill="${C.tan}" ${S}/><path d="M23 23 L34 12 L45 23 Z" fill="#5a4b6e" ${S}/>
+    <circle cx="34" cy="28" r="3" fill="${C.red}" ${S}/>
+    <path d="M10 55 q4 -3 8 0 M40 55 q4 -3 8 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>`,
+  cantontower: () => `
+    <path d="M22 60 Q35 32 26 6 H38 Q29 32 42 60 Z" fill="${C.lav}" ${S}/>
+    <path d="M27 16 H37 M28 28 H36 M28 40 H36 M26 50 H38" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M32 6 V1" fill="none" ${S}/>`,
+  icecastle: () => `
+    <rect x="9" y="31" width="46" height="27" fill="#d7ecfa" ${S}/>
+    <rect x="13" y="19" width="10" height="12" fill="#bcdcf5" ${S}/><rect x="41" y="19" width="10" height="12" fill="#bcdcf5" ${S}/>
+    <rect x="27" y="12" width="10" height="19" fill="#bcdcf5" ${S}/>
+    <path d="M13 19 L18 10 L23 19 Z M41 19 L46 10 L51 19 Z M27 12 L32 3 L37 12 Z" fill="#a9cdf2" ${S}/>
+    <path d="M27 58 V48 a5 5 0 0 1 10 0 V58 Z" fill="#a9cdf2" ${S}/>
+    <path d="M12 40 l2 2 M50 38 l2 2 M18 50 l2 2" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>`,
+  // ----- more food (they get the bunny's face) -----
+  sushi: (f) => `
+    <rect x="10" y="32" width="44" height="21" rx="9" fill="#fff" ${S}/>
+    <path d="M8 32 Q10 20 32 20 Q54 20 56 32 Q54 38 32 36 Q10 38 8 32 Z" fill="#f6a07a" ${S}/>
+    <path d="M20 23 Q24 29 20 34 M32 21 Q36 28 32 35 M44 23 Q48 29 44 34" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    ${f ? face(32, 44, .8) : ""}`,
+  pancake: (f) => `
+    <ellipse cx="32" cy="52" rx="26" ry="7" fill="#fff" ${S}/>
+    <path d="M10 46 Q10 40 32 40 Q54 40 54 46 Q54 52 32 52 Q10 52 10 46 Z" fill="#e9b97a" ${S}/>
+    <path d="M10 37 Q10 31 32 31 Q54 31 54 37 Q54 43 32 43 Q10 43 10 37 Z" fill="#e9b97a" ${S}/>
+    <path d="M12 28 Q14 22 32 22 Q50 22 52 28 Q50 34 44 32 Q40 37 34 33 Q26 36 22 32 Q14 34 12 28 Z" fill="#c98a3e" ${S}/>
+    <rect x="27" y="17" width="10" height="7" rx="1.5" fill="${C.yellow}" ${S}/>
+    ${f ? face(32, 47, .75) : ""}`,
+  hotpot: (f) => `
+    <path d="M22 18 q-3 -4 0 -8 M32 17 q-3 -4 0 -8 M42 18 q-3 -4 0 -8" fill="none" stroke="${C.grey}" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M4 34 H10 M54 34 H60" fill="none" ${S}/>
+    <path d="M8 31 H56 Q54 55 32 55 Q10 55 8 31 Z" fill="#b9bfd3" ${S}/>
+    <ellipse cx="32" cy="31" rx="24" ry="6" fill="#ffe9d6" ${S}/>
+    <path d="M8.5 31 Q9 25 32 25 Q26 31 32 37 Q9 37 8.5 31 Z" fill="${C.red}"/>
+    <circle cx="18" cy="30" r="1.6" fill="#fff"/><circle cx="44" cy="31" r="1.8" fill="${C.green}"/>
+    ${f ? face(32, 45, .8) : ""}`,
+  dumpling: (f) => `
+    <path d="M4 50 H60 L56 60 H8 Z" fill="${C.tan}" ${S}/>
+    <path d="M10 54 H54" fill="none" stroke="#c99a6e" stroke-width="1.6"/>
+    <path d="M9 46 Q9 26 32 21 Q55 26 55 46 Q55 53 32 53 Q9 53 9 46 Z" fill="${C.cream}" ${S}/>
+    <path d="M32 21 Q29 15 32 10 Q35 15 32 21 M25 23 Q22 18 25 13 M39 23 Q42 18 39 13" fill="none" stroke="${INK}" stroke-width="1.6" stroke-linecap="round"/>
+    ${f ? face(32, 39, .8) : ""}`,
   // Erika's mascot (drawn on a 200 grid, scaled to 64; outline thickened to match the other drawings)
   bunny: () => `<g transform="scale(.32)"><g fill="#3b3a5e" stroke="#3b3a5e" stroke-width="13" stroke-linejoin="round"><ellipse cx="67" cy="68" rx="15" ry="33" transform="rotate(-17 67 68)"/><ellipse cx="133" cy="68" rx="15" ry="33" transform="rotate(17 133 68)"/><path d="M100 86 C136 86 159 109 159 137 C159 157 137 165 100 165 C63 165 41 157 41 137 C41 109 64 86 100 86 Z"/></g><g fill="#fffdf9"><ellipse cx="67" cy="68" rx="15" ry="33" transform="rotate(-17 67 68)"/><ellipse cx="133" cy="68" rx="15" ry="33" transform="rotate(17 133 68)"/><path d="M100 86 C136 86 159 109 159 137 C159 157 137 165 100 165 C63 165 41 157 41 137 C41 109 64 86 100 86 Z"/></g><ellipse cx="66" cy="69" rx="6.5" ry="21" transform="rotate(-17 66 69)" fill="#f6a9b9"/><ellipse cx="134" cy="69" rx="6.5" ry="21" transform="rotate(17 134 69)" fill="#f6a9b9"/><g transform="translate(99 92) rotate(24)"><path d="M0 0 C13 -6 14 -22 0 -32 C-14 -22 -13 -6 0 0 Z" fill="#9fd8b0" stroke="#3b3a5e" stroke-width="5.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M0 -3 C2 -11 2 -18 -1 -24" fill="none" stroke="#3b3a5e" stroke-width="2.6" stroke-linecap="round"/></g><ellipse cx="80" cy="126" rx="4.6" ry="5.8" fill="#3b3a5e"/><ellipse cx="120" cy="126" rx="4.6" ry="5.8" fill="#3b3a5e"/>   <path d="M90 132 q5 6.5 10 0 q5 6.5 10 0" fill="none" stroke="#3b3a5e" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>   <ellipse cx="67" cy="135" rx="9" ry="6" fill="#f8b8bf"/><ellipse cx="133" cy="135" rx="9" ry="6" fill="#f8b8bf"/></g>`,
   bunnymap: () => `<g transform="scale(.32)"><ellipse cx="100" cy="190" rx="44" ry="5" fill="#cfe3f8" opacity=".7"/>     <path d="M122 132 C150 126 166 138 166 158 C166 176 156 184 140 184 L124 184 Z" fill="#f6a9b9" stroke="#3b3a5e" stroke-width="5.4" stroke-linejoin="round" stroke-linecap="round"/>     <path d="M150 150 C158 152 160 164 156 172" fill="none" stroke="#e58aa0" stroke-width="3" stroke-linecap="round"/>     <rect x="128" y="114" width="36" height="20" rx="10" fill="#cfe3f8" stroke="#3b3a5e" stroke-width="5.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M156 120 a4.5 4.5 0 1 1 -4.5 5.5" fill="none" stroke="#7fa9dc" stroke-width="2.6" stroke-linecap="round"/>     <path d="M62 150 C60 176 74 186 100 186 C126 186 140 176 138 150 Z" fill="#fffdf9" stroke="#3b3a5e" stroke-width="5.4" stroke-linejoin="round" stroke-linecap="round"/>     <ellipse cx="84" cy="184" rx="12" ry="7" fill="#fffdf9" stroke="#3b3a5e" stroke-width="5.4" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="116" cy="184" rx="12" ry="7" fill="#fffdf9" stroke="#3b3a5e" stroke-width="5.4" stroke-linejoin="round" stroke-linecap="round"/>     <g fill="#3b3a5e" stroke="#3b3a5e" stroke-width="13" stroke-linejoin="round"><ellipse cx="67" cy="48" rx="15" ry="33" transform="rotate(-17 67 48)"/><ellipse cx="133" cy="48" rx="15" ry="33" transform="rotate(17 133 48)"/><path d="M100 66 C136 66 159 89 159 117 C159 137 137 145 100 145 C63 145 41 137 41 117 C41 89 64 66 100 66 Z"/></g><g fill="#fffdf9"><ellipse cx="67" cy="48" rx="15" ry="33" transform="rotate(-17 67 48)"/><ellipse cx="133" cy="48" rx="15" ry="33" transform="rotate(17 133 48)"/><path d="M100 66 C136 66 159 89 159 117 C159 137 137 145 100 145 C63 145 41 137 41 117 C41 89 64 66 100 66 Z"/></g><ellipse cx="66" cy="49" rx="6.5" ry="21" transform="rotate(-17 66 49)" fill="#f6a9b9"/><ellipse cx="134" cy="49" rx="6.5" ry="21" transform="rotate(17 134 49)" fill="#f6a9b9"/><g transform="translate(99 72) rotate(24)"><path d="M0 0 C13 -6 14 -22 0 -32 C-14 -22 -13 -6 0 0 Z" fill="#9fd8b0" stroke="#3b3a5e" stroke-width="5.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M0 -3 C2 -11 2 -18 -1 -24" fill="none" stroke="#3b3a5e" stroke-width="2.6" stroke-linecap="round"/></g><ellipse cx="80" cy="106" rx="4.6" ry="5.8" fill="#3b3a5e"/><ellipse cx="120" cy="106" rx="4.6" ry="5.8" fill="#3b3a5e"/>   <path d="M90 112 q5 6.5 10 0 q5 6.5 10 0" fill="none" stroke="#3b3a5e" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>   <ellipse cx="67" cy="115" rx="9" ry="6" fill="#f8b8bf"/><ellipse cx="133" cy="115" rx="9" ry="6" fill="#f8b8bf"/>     <path d="M122 138 C130 146 132 160 128 174" fill="none" stroke="#3b3a5e" stroke-width="12.6" stroke-linecap="round"/><path d="M122 138 C130 146 132 160 128 174" fill="none" stroke="#f6a9b9" stroke-width="5.04" stroke-linecap="round"/>     <g transform="rotate(-6 100 156)"><path d="M58 136 L100 130 L142 136 L140 176 L100 170 L60 176 Z" fill="#cfe3f8" stroke="#3b3a5e" stroke-width="5.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M86 132 L86 172 M114 132 L114 172" stroke="#3b3a5e" stroke-width="2.4"/>       <path d="M68 160 q8 -12 18 -6 t22 -6" fill="none" stroke="#7fa9dc" stroke-width="2.6" stroke-dasharray="3 5" stroke-linecap="round"/>       <path d="M118 166 l8 -12 8 12 Z" fill="#7fa9dc"/><path d="M125 140 c-5 0 -8 3 -8 7 0 5 8 11 8 11 s8 -6 8 -11 c0 -4 -3 -7 -8 -7z" fill="#ec5866"/><circle cx="125" cy="147" r="2.6" fill="#fff"/></g>     <ellipse cx="60" cy="158" rx="12" ry="13" fill="#fffdf9" stroke="#3b3a5e" stroke-width="5.4" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="140" cy="154" rx="12" ry="13" fill="#fffdf9" stroke="#3b3a5e" stroke-width="5.4" stroke-linejoin="round" stroke-linecap="round"/></g>`,
@@ -356,7 +516,7 @@ const ICONS = {
 
 // Style rule: only food, drinks and the mascot get a smiling face; places and
 // practical icons stay plain (animals keep their eyes).
-const WITH_FACE = new Set(["dango", "cup", "takoyaki", "ramen", "bunny", "bunnymap", "bunnypaws"]);
+const WITH_FACE = new Set(["dango", "cup", "takoyaki", "ramen", "sushi", "pancake", "hotpot", "dumpling", "bunny", "bunnymap", "bunnypaws"]);
 
 // Default drawing for each place category, used when a place has no "icon".
 const CATEGORY_ICON = { food: "ramen", cafe: "cup", see: "torii", photo: "camera", activity: "ticket", sleep: "pagoda", hidden: "gem" };

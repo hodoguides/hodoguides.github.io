@@ -23,6 +23,7 @@ country:
   zoom: 3.4
   icons:
     see: pagoda
+    food: dumpling
   regions:
   - id: beijing
     name:
@@ -91,7 +92,7 @@ country:
 places:
 - id: harbin-ice-snow-world
   name: Harbin Ice & Snow World
-  icon: wheel
+  icon: icecastle
   city: Harbin
   region: beijing
   category: activity
@@ -256,7 +257,7 @@ places:
   google_maps: https://www.google.com/maps/place/Zhongshu+Ge/data=!4m2!3m1!1s0x35f053ff8fce1c7f:0x6cb9b2f8d310c3d8
 - id: quanjude-roast-duck-restaurant
   name: Quanjude Roast Duck Restaurant
-  icon: ramen
+  icon: dumpling
   city: Pékin
   region: beijing
   category: food
@@ -268,7 +269,7 @@ places:
   name:
     fr: Rue Wangfujing
     en: Wangfujing Street
-  icon: ramen
+  icon: dumpling
   city: Pékin
   region: beijing
   category: food
@@ -425,7 +426,7 @@ places:
   google_maps: https://www.google.com/maps/place/%E5%8C%97%E4%BA%AC%E9%BC%93%E6%A5%BC%E5%92%8C%E9%92%9F%E6%A5%BC/data=!4m2!3m1!1s0x35f0532b9c44da59:0x51da92cdc92d39ff
 - id: haidilao-hot-pot
   name: Haidilao Hot Pot
-  icon: ramen
+  icon: hotpot
   city: Tianjin
   region: beijing
   category: food
@@ -767,7 +768,7 @@ places:
   name:
     fr: Monts Huang (Huangshan)
     en: Huangshan (Yellow Mountain)
-  icon: mountain
+  icon: huangshan
   city: Huangshan
   region: shanghai
   category: photo
@@ -819,7 +820,7 @@ places:
   google_maps: https://www.google.com/maps/place/Shanghai+Second-Hand+Goods+Transaction+Market+Limited+Company/data=!4m2!3m1!1s0x35b271103eb128fd:0xae41313dcf9a145f
 - id: weixiangzhai
   name: Weixiangzhai
-  icon: ramen
+  icon: dumpling
   city: Shanghai
   region: shanghai
   category: food
@@ -997,7 +998,7 @@ places:
     fr: Rue Jinli
     en: Jinli Street
   name_ja: 锦里
-  icon: ramen
+  icon: dumpling
   city: Chengdu
   region: sichuan
   category: food
@@ -1017,7 +1018,7 @@ places:
   google_maps: https://www.google.com/maps/place/Wenshu+Yuan+Monastery/data=!4m2!3m1!1s0x36efdacb458035bd:0x511bb9fc18644f3e
 - id: xuankehui
   name: Xuankehui
-  icon: ramen
+  icon: dumpling
   city: Chengdu
   region: sichuan
   category: food
@@ -1102,7 +1103,7 @@ places:
 - id: jiuzhaigou-valley
   name: Jiuzhaigou Valley
   name_ja: 九寨沟
-  icon: lantern
+  icon: jiuzhaigou
   city: Jiuzhaigou
   region: sichuan
   category: photo
@@ -1135,7 +1136,7 @@ places:
   google_maps: https://www.google.com/maps/search/32.649021,103.603963
 - id: munigou
   name: Munigou
-  icon: camera
+  icon: jiuzhaigou
   city: Songpan
   region: sichuan
   category: photo
@@ -1195,7 +1196,7 @@ places:
   google_maps: https://www.google.com/maps/place/Suobuya+Stone+Forest+Scenic+Area/data=!4m2!3m1!1s0x368f8a0107775993:0x5899c52cb165fc16
 - id: phoenix-ancient-city
   name: Phoenix Ancient City
-  icon: pagoda
+  icon: fenghuang
   city: Fenghuang
   region: hunan
   category: see
@@ -1257,7 +1258,7 @@ places:
   google_maps: https://www.google.com/maps/place/Baofeng+Lake/data=!4m2!3m1!1s0x369b08eeb625650d:0xdcb610a26be0b7d3
 - id: tianmen-fairy-mountain-north-gate
   name: Tianmen Fairy Mountain （North Gate）
-  icon: mountain
+  icon: tianmen
   city: Zhangjiajie
   region: hunan
   category: photo
@@ -1277,7 +1278,7 @@ places:
   google_maps: https://www.google.com/maps/place/Wulingyuan+Scenic+Area/data=!4m2!3m1!1s0x369b065c15342353:0x8f90e37fced29705
 - id: xiangyin-tianmen-yihao
   name: Xiangyin Tianmen Yihao
-  icon: camera
+  icon: tianmen
   city: Zhangjiajie
   region: hunan
   category: photo
@@ -1310,7 +1311,7 @@ places:
     fr: Village ancien de Furong
     en: Furong Ancient Town
   name_ja: 芙蓉古镇
-  icon: house
+  icon: fenghuang
   city: près de Xiangxi
   region: hunan
   category: see
@@ -1320,7 +1321,7 @@ places:
   google_maps: https://www.google.com/maps/place/%E8%8A%99%E8%93%89%E5%8F%A4%E9%95%87/data=!4m2!3m1!1s0x369a18a8f4c0bc85:0x9999b10c8e25c22a
 - id: canton-tower
   name: Canton Tower
-  icon: tower
+  icon: cantontower
   city: Canton
   region: guilin
   category: photo
@@ -1390,7 +1391,7 @@ places:
   google_maps: https://www.google.com/maps/place/Yangshuo+Tianlai+Butterfly+Spring/data=!4m2!3m1!1s0x36a5a5181ae80a73:0x4d0ef4b72de05979
 - id: liusan-jiegewei
   name: Liusan Jiegewei
-  icon: ramen
+  icon: dumpling
   city: Yangshuo
   region: guilin
   category: food
@@ -1550,7 +1551,7 @@ places:
   google_maps: https://www.google.com/maps/place/Shuhe+Ancient+Town/data=!4m2!3m1!1s0x3720c973d75e12cd:0x67113b207008f815
 - id: the-square-market
   name: The Square Market
-  icon: ramen
+  icon: dumpling
   city: Lijiang
   region: yunnan
   category: food
