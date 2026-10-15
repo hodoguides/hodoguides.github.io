@@ -6,8 +6,8 @@
   const MAPBOX_TOKEN = "pk.eyJ1IjoiZXJpa2FyYW1lbGwiLCJhIjoiY21jbmlteXJuMDBjaDJrc2swbnA0a29wZSJ9.F8aX2alF-PpnqInkyqba8g";
   // Mapbox's light style, recoloured below to look like the travel journal map.
   const MAPBOX_STYLE = "mapbox://styles/mapbox/light-v11";
-  // Globe looks: by default "ciel" in light mode and "nuit" when the phone is in dark mode.
-  // A look can be forced with ?globe=ciel, ?globe=nuit or ?globe=carnet (?globe=auto goes back to the default).
+  // Globe looks: "nuit" (starry night) for everyone by default.
+  // Another look can be tried with ?globe=ciel or ?globe=carnet (?globe=auto goes back to the default).
   // visited = countries Erika has been to; ready = countries with places on the map.
   const MAP_THEMES = {
     ciel: { water: "#a9d3f2", land: "#fff8ee", coast: "#6f9fd6", visited: "#fde6ec", ready: "#f4a0b3", border: "#eab2c0",
@@ -26,7 +26,7 @@
       if (!q && saved && MAP_THEMES[saved]) return saved;
     } catch (_) {}
     if (MAP_THEMES[q]) return q;
-    return matchMedia("(prefers-color-scheme: dark)").matches ? "nuit" : "ciel";
+    return "nuit";
   }
   const THEME_ID = pickTheme();
   const MAP_COLORS = MAP_THEMES[THEME_ID];
