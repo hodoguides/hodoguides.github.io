@@ -128,5 +128,5 @@ La liste des régions est en haut du fichier du pays (`regions:`), avec leur nom
 - Chine : `beijing`, `xian`, `shanghai`, `sichuan`, `hunan` (Zhangjiajie), `guilin`, `yunnan`, `west` (Ouest et Tibet)
 
 Sans `icon:`, le lieu prend le dessin de sa catégorie (Manger → ramen, À voir → torii…).
-Seuls les plats, les boissons et le lapin ont un petit visage : c'est voulu.
+Seuls les plats, les boissons et le lapin ont un petit visage (celui du lapin : yeux ovales, bouche « ω », joues roses) : c'est voulu.
 Besoin d'un nouveau dessin ? Demande-le, je l'ajoute à la collection.
