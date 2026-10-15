@@ -1,263 +1,5367 @@
 # ============================================================
 #  HodoGuides · Japon / Japan
-#  Un bloc « - id: » = un lieu sur la carte.
-#  Mode d'emploi complet : data/COMMENT-AJOUTER-UN-LIEU.md
-#
-#  ⚠️ PROTOTYPE : les textes « review » et « experience » ci-dessous
-#  sont des EXEMPLES. Remplace-les par ton vrai avis avant de publier.
+#  Généré depuis ta liste Google Maps « Japon », ton tri et tes voyages Polarsteps.
+#  Un bloc « - id: » = un lieu. Mode d'emploi : data/COMMENT-AJOUTER-UN-LIEU.md
+#  region : hokkaido | tohoku | kanto | chubu | kansai | west | kyushu | okinawa
+#  visited: true = j'y suis allée (d'après ton tri ou Polarsteps) · false = sur ma liste
 # ============================================================
 
 country:
   id: japan
-  name: { fr: Japon, en: Japan }
+  name:
+    fr: Japon
+    en: Japan
   name_ja: 日本
-  photo: asia/japan/okinawa/cover.jpg   # photo de la carte « Japon » sur l'accueil
-  region: { fr: Asie, en: Asia }
+  photo: asia/japan/okinawa/cover.jpg
+  region:
+    fr: Asie
+    en: Asia
   intro:
-    fr: "Mes adresses testées et repérées, de Kyoto aux îles d'Okinawa."
-    en: "The places I've tried and spotted, from Kyoto to the Okinawa islands."
-  center: { lat: 35.0, lng: 135.9 }   # vue de départ de la carte
-  zoom: 6.3
-
+    fr: 'Tous les lieux de ma liste, région par région : ceux où je suis allée et ceux qui m''attendent.'
+    en: 'Every place on my list, region by region: the ones I''ve been to and the ones still waiting for me.'
+  center:
+    lat: 35.6
+    lng: 136.5
+  zoom: 4.6
+  regions:
+  - id: hokkaido
+    name:
+      fr: Hokkaidō
+      en: Hokkaido
+    short:
+      fr: Hokkaidō
+      en: Hokkaido
+    icon: flower
+    at:
+      lat: 43.4
+      lng: 142.8
+  - id: tohoku
+    name:
+      fr: Tōhoku (nord de Honshū)
+      en: Tōhoku (northern Honshū)
+    short:
+      fr: Tōhoku
+      en: Tōhoku
+    icon: onsen
+    at:
+      lat: 39.5
+      lng: 140.8
+  - id: kanto
+    name:
+      fr: Tokyo, Kantō et mont Fuji
+      en: Tokyo, Kantō & Mount Fuji
+    short:
+      fr: Tokyo et Fuji
+      en: Tokyo & Fuji
+    icon: chureito
+    at:
+      lat: 35.0
+      lng: 141.4
+  - id: chubu
+    name:
+      fr: Alpes japonaises, Nagoya et Kanazawa
+      en: Japanese Alps, Nagoya & Kanazawa
+    short:
+      fr: Alpes japonaises
+      en: Japanese Alps
+    icon: house
+    at:
+      lat: 37.8
+      lng: 136.4
+  - id: kansai
+    name:
+      fr: Kansai (Kyoto, Osaka, Nara)
+      en: Kansai (Kyoto, Osaka, Nara)
+    short:
+      fr: Kansai
+      en: Kansai
+    icon: senbon
+    at:
+      lat: 33.4
+      lng: 136.3
+  - id: west
+    name:
+      fr: Chūgoku et Shikoku
+      en: Chūgoku & Shikoku
+    short:
+      fr: Chūgoku et Shikoku
+      en: Chūgoku & Shikoku
+    icon: itsukushima
+    at:
+      lat: 35.4
+      lng: 132.4
+  - id: kyushu
+    name:
+      fr: Kyūshū
+      en: Kyūshū
+    short:
+      fr: Kyūshū
+      en: Kyūshū
+    icon: onsen
+    at:
+      lat: 32.0
+      lng: 130.2
+  - id: okinawa
+    name:
+      fr: Okinawa et îles du Sud
+      en: Okinawa & southern islands
+    short:
+      fr: Okinawa
+      en: Okinawa
+    icon: beach
+    at:
+      lat: 26.4
+      lng: 127.8
 places:
-
-  # ---------------- KYOTO ----------------
-
-  - id: fushimi-inari
-    name: Fushimi Inari Taisha
-    name_ja: 伏見稲荷大社
-    icon: torii            # dessin sur la carte (voir la liste dans le mode d'emploi)
-    city: Kyoto
-    category: see          # food | cafe | see | photo | activity | sleep | hidden
-    visited: true          # true = j'y suis allée · false = sur ma liste
-    verdict: love          # love = coup de cœur · recommend = recommandé · optional = si tu as le temps
-    lat: 34.9671
-    lng: 135.7727
-    review:
-      fr: "Les milliers de torii, c'est encore plus beau en vrai. Arrive tôt le matin et monte au-delà de la moitié : la foule disparaît."
-      en: "Thousands of torii gates, even more stunning in person. Arrive early and keep climbing past the halfway point: the crowds vanish."
-    experience:            # partie qui pourra devenir « premium » plus tard
-      fr: "Je suis arrivée vers 7h et j'avais presque les allées pour moi. La plupart des gens font demi-tour au carrefour de Yotsutsuji, mais la montée jusqu'au sommet vaut vraiment le coup pour l'ambiance, entre forêt et petits sanctuaires."
-      en: "I got there around 7am and had the paths almost to myself. Most people turn back at the Yotsutsuji crossing, but the hike to the summit is really worth it for the atmosphere, between forest and tiny shrines."
-    info:
-      when:     { fr: "Avant 8h ou en fin de journée", en: "Before 8am or late afternoon" }
-      price:    { fr: "Gratuit · ouvert 24h/24", en: "Free · open 24/7" }
-      duration: { fr: "2 à 3h jusqu'au sommet", en: "2–3h to the summit" }
-      access:   { fr: "Gare JR Inari, juste devant", en: "JR Inari Station, right in front" }
-    tips:
-      - fr: "Prends de l'eau : la montée est plus longue qu'on ne le pense."
-        en: "Bring water: the climb is longer than you'd think."
-
-  - id: arashiyama-bamboo
-    name: { fr: Forêt de bambous d'Arashiyama, en: Arashiyama Bamboo Grove }
-    name_ja: 竹林の小径
-    icon: bamboo            # dessin sur la carte (voir la liste dans le mode d'emploi)
-    city: Kyoto
-    category: photo
-    visited: true
-    verdict: recommend
-    lat: 35.0170
-    lng: 135.6713
-    review:
-      fr: "Magique tôt le matin, beaucoup moins en milieu de journée. Combine avec le temple Tenryū-ji juste à côté."
-      en: "Magical early in the morning, much less so at midday. Combine it with Tenryū-ji temple right next door."
-    experience:
-      fr: "Le sentier est plus court qu'on l'imagine. Pour de belles photos sans monde, il faut vraiment y être au lever du soleil."
-      en: "The path is shorter than you'd imagine. For good photos without crowds you really need to be there at sunrise."
-    info:
-      when:     { fr: "Lever du soleil", en: "Sunrise" }
-      price:    { fr: "Gratuit", en: "Free" }
-      duration: { fr: "30 min à 1h", en: "30 min – 1h" }
-      access:   { fr: "Gare JR Saga-Arashiyama, 10 min à pied", en: "JR Saga-Arashiyama Station, 10 min walk" }
-
-  - id: nishiki-market
-    name: { fr: Marché Nishiki, en: Nishiki Market }
-    name_ja: 錦市場
-    icon: dango            # dessin sur la carte (voir la liste dans le mode d'emploi)
-    city: Kyoto
-    category: food
-    visited: true
-    verdict: recommend
-    lat: 35.0050
-    lng: 135.7649
-    review:
-      fr: "Parfait pour grignoter des spécialités de Kyoto. Vas-y avec un petit budget « dégustation » et goûte un peu de tout."
-      en: "Perfect for snacking on Kyoto specialties. Go with a small tasting budget and try a bit of everything."
-    experience:
-      fr: "Mon conseil : ne mange pas en marchant, c'est mal vu ici. On mange devant le stand où on a acheté."
-      en: "My advice: don't eat while walking, it's frowned upon here. You eat in front of the stall where you bought it."
-    info:
-      when:     { fr: "Fin de matinée, avant le rush du midi", en: "Late morning, before the lunch rush" }
-      duration: { fr: "1 à 2h", en: "1–2h" }
-      access:   { fr: "Stations Shijō ou Karasuma", en: "Shijō or Karasuma stations" }
-
-  - id: arabica-higashiyama
-    name: "% Arabica Higashiyama"
-    name_ja: アラビカ 東山
-    icon: cup            # dessin sur la carte (voir la liste dans le mode d'emploi)
-    city: Kyoto
-    category: cafe
-    visited: false
-    lat: 34.9983
-    lng: 135.7795
-    review:
-      fr: "Sur ma liste : tout le monde en parle, j'ai hâte de voir si ça vaut la file d'attente."
-      en: "On my list: everyone talks about it, I can't wait to see if it's worth the queue."
-    info:
-      access: { fr: "Près de la pagode Yasaka", en: "Near Yasaka Pagoda" }
-
-  # ---------------- NARA ----------------
-
-  - id: nara-park
-    name: { fr: Parc de Nara, en: Nara Park }
-    name_ja: 奈良公園
-    icon: deer            # dessin sur la carte (voir la liste dans le mode d'emploi)
-    city: Nara
-    category: activity
-    visited: true
-    verdict: love
-    lat: 34.6851
-    lng: 135.8430
-    review:
-      fr: "Les daims en liberté qui saluent quand tu les salues : un moment hors du temps. Facile en excursion à la journée depuis Kyoto ou Osaka."
-      en: "Free-roaming deer that bow when you bow to them: a timeless moment. An easy day trip from Kyoto or Osaka."
-    experience:
-      fr: "Achète les biscuits pour daims (shika senbei) mais cache-les bien : ils sont très insistants ! Ne rate pas le Tōdai-ji et son grand Bouddha."
-      en: "Buy the deer crackers (shika senbei) but hide them well: the deer are very insistent! Don't miss Tōdai-ji and its Great Buddha."
-    info:
-      price:    { fr: "Parc gratuit · biscuits ~200 ¥", en: "Park free · crackers ~¥200" }
-      duration: { fr: "Une demi-journée", en: "Half a day" }
-      access:   { fr: "Gare Kintetsu-Nara, 5 min à pied", en: "Kintetsu-Nara Station, 5 min walk" }
-
-  # ---------------- OSAKA ----------------
-
-  - id: dotonbori
-    name: Dōtonbori
-    name_ja: 道頓堀
-    icon: takoyaki            # dessin sur la carte (voir la liste dans le mode d'emploi)
-    city: Osaka
-    category: food
-    visited: true
-    verdict: recommend
-    lat: 34.6687
-    lng: 135.5013
-    review:
-      fr: "Le quartier des néons et de la street food. Takoyaki et okonomiyaki obligatoires !"
-      en: "The neon and street-food district. Takoyaki and okonomiyaki are a must!"
-    info:
-      when:   { fr: "Le soir, pour les néons", en: "Evening, for the neon lights" }
-      access: { fr: "Station Namba", en: "Namba Station" }
-
-  - id: universal-studios-japan
-    name: Universal Studios Japan
-    name_ja: ユニバーサル・スタジオ・ジャパン
-    icon: wheel            # dessin sur la carte (voir la liste dans le mode d'emploi)
-    city: Osaka
-    category: activity
-    visited: true
-    verdict: recommend
-    lat: 34.6654
-    lng: 135.4323
-    guide: asia/japan/osaka/universal-studios.html
-    review:
-      fr: "Super Nintendo World vaut à lui seul la journée. Prépare-toi bien : billets et Express Pass se réservent à l'avance."
-      en: "Super Nintendo World alone is worth the day. Plan ahead: tickets and Express Pass should be booked in advance."
-    info:
-      duration: { fr: "Une journée complète", en: "A full day" }
-      booking:  { fr: "Billets en ligne à l'avance", en: "Book tickets online in advance" }
-      access:   { fr: "Gare JR Universal City", en: "JR Universal City Station" }
-
-  # ---------------- NAGOYA / AICHI ----------------
-
-  - id: ghibli-park
-    name: { fr: Parc Ghibli, en: Ghibli Park }
-    name_ja: ジブリパーク
-    icon: acorn            # dessin sur la carte (voir la liste dans le mode d'emploi)
-    city: Nagakute (Aichi)
-    category: activity
-    visited: true
-    verdict: love
-    lat: 35.1753
-    lng: 137.0904
-    guide: asia/japan/nagoya/ghibli-park/
-    review:
-      fr: "Un rêve pour les fans de Ghibli. Le Grand Entrepôt est incontournable. Les billets partent très vite : j'explique tout dans mon guide."
-      en: "A dream for Ghibli fans. The Grand Warehouse is unmissable. Tickets sell out fast: I explain everything in my guide."
-    info:
-      booking: { fr: "Réservation obligatoire, longtemps à l'avance", en: "Booking required, well in advance" }
-      access:  { fr: "Ligne Linimo, station Ai-Chikyūhaku-Kinen-Kōen", en: "Linimo Line, Ai-Chikyūhaku-Kinen-Kōen Station" }
-
-  # ---------------- KYOTO NORD (mer du Japon) ----------------
-
-  - id: ine-funaya
-    name: { fr: Maisons-bateaux d'Ine (Funaya), en: Ine Boathouses (Funaya) }
-    name_ja: 伊根の舟屋
-    icon: funaya            # dessin sur la carte (voir la liste dans le mode d'emploi)
-    city: Ine
-    category: hidden
-    visited: true
-    verdict: love
-    lat: 35.6760
-    lng: 135.2890
-    review:
-      fr: "Un village de pêcheurs avec ses maisons posées sur l'eau, loin des foules. Un de mes plus beaux souvenirs du Japon."
-      en: "A fishing village with houses sitting right on the water, far from the crowds. One of my best memories of Japan."
-    experience:
-      fr: "Fais la petite croisière dans la baie pour voir les funaya depuis l'eau. Dormir sur place permet de profiter du calme une fois les excursionnistes partis."
-      en: "Take the little boat cruise around the bay to see the funaya from the water. Staying overnight lets you enjoy the calm once day-trippers have left."
-    info:
-      duration: { fr: "Une journée, idéalement une nuit", en: "A day, ideally one night" }
-      access:   { fr: "Bus depuis Amanohashidate (~1h)", en: "Bus from Amanohashidate (~1h)" }
-
-  # ---------------- KŌYASAN ----------------
-
-  - id: okunoin
-    name: { fr: Cimetière d'Okunoin, en: Okunoin Cemetery }
-    name_ja: 奥之院
-    icon: lantern            # dessin sur la carte (voir la liste dans le mode d'emploi)
-    city: Kōyasan
-    category: hidden
-    visited: true
-    verdict: love
-    lat: 34.2186
-    lng: 135.6005
-    review:
-      fr: "Une forêt de cèdres géants et des milliers de tombes moussues. Atmosphère incroyable, surtout à la tombée de la nuit."
-      en: "A forest of giant cedars and thousands of mossy graves. An incredible atmosphere, especially at dusk."
-    info:
-      price:    { fr: "Gratuit", en: "Free" }
-      duration: { fr: "2h", en: "2h" }
-      access:   { fr: "Bus depuis la gare de Kōyasan", en: "Bus from Kōyasan Station" }
-    tips:
-      - fr: "Des visites guidées de nuit avec des moines sont proposées."
-        en: "Night tours guided by monks are available."
-
-  - id: koyasan-shukubo
-    name: { fr: Nuit au temple (shukubō), en: Temple stay (shukubō) }
-    name_ja: 宿坊
-    icon: pagoda            # dessin sur la carte (voir la liste dans le mode d'emploi)
-    city: Kōyasan
-    category: sleep
-    visited: false
-    lat: 34.2130
-    lng: 135.5856
-    review:
-      fr: "Sur ma liste : dormir dans un temple, dîner végétarien des moines (shōjin ryōri) et prière du matin."
-      en: "On my list: sleeping in a temple, the monks' vegetarian dinner (shōjin ryōri) and morning prayer."
-    info:
-      booking: { fr: "À réserver à l'avance", en: "Book in advance" }
-
-  # ---------------- OKINAWA ----------------
-
-  - id: kabira-bay
-    name: { fr: Baie de Kabira, en: Kabira Bay }
-    name_ja: 川平湾
-    icon: boat            # dessin sur la carte (voir la liste dans le mode d'emploi)
-    city: Ishigaki
-    category: photo
-    visited: false
-    lat: 24.4560
-    lng: 124.1440
-    review:
-      fr: "Sur ma liste : une eau turquoise parmi les plus belles du Japon. La baignade y est interdite, mais on peut faire un tour en bateau à fond de verre."
-      en: "On my list: some of the most beautiful turquoise water in Japan. Swimming is not allowed, but you can take a glass-bottom boat tour."
+- id: shiretoko-national-park
+  name: Shiretoko National Park
+  icon: garden
+  city: Abashiri
+  region: hokkaido
+  category: activity
+  visited: false
+  lat: 43.9115
+  lng: 144.6706
+  google_maps: https://www.google.com/maps/place/Shiretoko+National+Park/data=!4m2!3m1!1s0x5f6d222614904257:0xcd388bfd3b0955d2
+- id: aoi-ike
+  name: Aoi-ike
+  icon: camera
+  city: Biei
+  region: hokkaido
+  category: photo
+  visited: false
+  lat: 43.4999
+  lng: 142.61
+  google_maps: https://www.google.com/maps/place/Aoi-ike/data=!4m2!3m1!1s0x5f0ccc62de222a6f:0x4cd181f9f4b779e
+- id: christmas-tree
+  name: Christmas tree
+  icon: camera
+  city: Biei
+  region: hokkaido
+  category: photo
+  visited: false
+  lat: 43.5106
+  lng: 142.437
+  google_maps: https://www.google.com/maps/place/Christmas+tree/data=!4m2!3m1!1s0x5f0cc9d213e6dcef:0xec7c8e5d32c29837
+- id: hinode-park
+  name: Hinode Park
+  icon: garden
+  city: Biei
+  region: hokkaido
+  category: activity
+  visited: false
+  lat: 43.4633
+  lng: 142.4827
+  google_maps: https://www.google.com/maps/place/Hinode+Park/data=!4m2!3m1!1s0x5f0cb58eb56c5507:0x9276b5e282fa941b
+- id: shirahige-waterfall
+  name: Shirahige Waterfall
+  icon: waterfall
+  city: Biei
+  region: hokkaido
+  category: photo
+  visited: false
+  lat: 43.4747
+  lng: 142.6392
+  google_maps: https://www.google.com/maps/place/Shirahige+Waterfall/data=!4m2!3m1!1s0x5f0cccaee046755f:0x506953e8f2f6626
+- id: shirogane-onsen
+  name: Shirogane Onsen
+  icon: onsen
+  city: Biei
+  region: hokkaido
+  category: activity
+  visited: false
+  lat: 43.4736
+  lng: 142.6381
+  google_maps: https://www.google.com/maps/place/Shirogane+Onsen/data=!4m2!3m1!1s0x5f0ccca93305068d:0xb4300fcebcac46e
+- id: ice-village
+  name: Ice Village
+  icon: house
+  city: Furano
+  region: hokkaido
+  category: activity
+  visited: false
+  lat: 43.0619
+  lng: 142.6259
+  google_maps: https://www.google.com/maps/place/Ice+Village/data=!4m2!3m1!1s0x5f7361440ce6f725:0x84c900c9c342f59e
+- id: ningle-terrace
+  name: Ningle Terrace
+  icon: camera
+  city: Furano
+  region: hokkaido
+  category: see
+  visited: false
+  lat: 43.3182
+  lng: 142.3676
+  google_maps: https://www.google.com/maps/place/Ningle+Terrace/data=!4m2!3m1!1s0x5f73525ef98cb63d:0xa7b50c2b23f3e82c
+- id: goryokaku-fort
+  name: Goryōkaku Fort
+  icon: camera
+  city: Hakodate
+  region: hokkaido
+  category: see
+  visited: false
+  lat: 41.7969
+  lng: 140.757
+  google_maps: https://www.google.com/maps/place/Gory%C5%8Dkaku+Fort/data=!4m2!3m1!1s0x5f9ef46bcb8d5525:0xa9e4bd2d96c4d502
+- id: mount-hakodate
+  name: Mount Hakodate
+  icon: mountain
+  city: Hakodate
+  region: hokkaido
+  category: photo
+  visited: false
+  lat: 41.7592
+  lng: 140.7034
+  google_maps: https://www.google.com/maps/place/Mount+Hakodate/data=!4m2!3m1!1s0x5f9ef2558c0649a9:0x3aa277addb8f3ebe
+- id: amuse-sports
+  name: Amuse Sports
+  icon: ticket
+  city: Niseko
+  region: hokkaido
+  category: activity
+  visited: false
+  lat: 42.7508
+  lng: 140.9037
+  google_maps: https://www.google.com/maps/place/Amuse+Sports/data=!4m2!3m1!1s0x5f754d0ef12bad2f:0x19ccd897ab71a95a
+- id: kumo-restaurant
+  name: Kumo Restaurant
+  icon: ramen
+  city: Niseko
+  region: hokkaido
+  category: food
+  visited: false
+  lat: 42.8311
+  lng: 140.7477
+  google_maps: https://www.google.com/maps/place/Kumo+Restaurant/data=!4m2!3m1!1s0x5f0ab1c40c0a2fb9:0xd0f0e02565ce7401
+- id: lake-shikotsu
+  name: Lake Shikotsu
+  icon: lake
+  city: Noboribetsu
+  region: hokkaido
+  category: photo
+  visited: false
+  lat: 42.7282
+  lng: 141.3114
+  google_maps: https://www.google.com/maps/place/Lake+Shikotsu/data=!4m2!3m1!1s0x5f753913215f72bb:0x7bd8ec9776a202d0
+- id: noboribetsu-onsen
+  name: Noboribetsu Onsen
+  icon: onsen
+  city: Noboribetsu
+  region: hokkaido
+  category: activity
+  visited: false
+  lat: 42.4925
+  lng: 141.1431
+  google_maps: https://www.google.com/maps/place/Noboribetsu+Onsen/data=!4m2!3m1!1s0x5f7566c69162fc67:0x45ed3607ddc6a811
+- id: hill-of-the-buddha
+  name: Hill of the Buddha
+  icon: daibutsu
+  city: Sapporo
+  region: hokkaido
+  category: photo
+  visited: false
+  lat: 42.9189
+  lng: 141.4106
+  google_maps: https://www.google.com/maps/place/Hill+of+the+Buddha/data=!4m2!3m1!1s0x5f752bc585f74857:0xd20790c5adb80a65
+- id: hitsujishi-genghis-khan-restaurant-susukino
+  name: Hitsujishi Genghis Khan Restaurant Susukino
+  icon: ramen
+  city: Sapporo
+  region: hokkaido
+  category: food
+  visited: false
+  lat: 43.0635
+  lng: 141.3474
+  google_maps: https://www.google.com/maps/place/Hitsujishi+Genghis+Khan+Restaurant+Susukino/data=!4m2!3m1!1s0x5f0b299ef29f13e7:0x64ab5442cb46314c
+- id: hokkaido-aka-renga-red-brick-building
+  name: Hokkaido Aka Renga (Red Brick Building)
+  icon: camera
+  city: Sapporo
+  region: hokkaido
+  category: see
+  visited: false
+  lat: 43.0643
+  lng: 141.3468
+  google_maps: https://www.google.com/maps/place/Hokkaido+Aka+Renga+(Red+Brick+Building)/data=!4m2!3m1!1s0x5f0b299efe971403:0xceea1031d7c2e2a5
+- id: letao-daimaru-sapporo-store
+  name: LeTAO Daimaru Sapporo store
+  icon: ramen
+  city: Sapporo
+  region: hokkaido
+  category: food
+  visited: false
+  lat: 43.0676
+  lng: 141.35
+  google_maps: https://www.google.com/maps/place/LeTAO+Daimaru+Sapporo+store/data=!4m2!3m1!1s0x5f0b29753a2b764b:0x62112aadeb0ce611
+- id: mt-moiwa-summit-observation-deck
+  name: Mt. Moiwa Summit Observation Deck
+  icon: mountain
+  city: Sapporo
+  region: hokkaido
+  category: photo
+  visited: false
+  lat: 43.0244
+  lng: 141.3226
+  google_maps: https://www.google.com/maps/place/Mt.+Moiwa+Summit+Observation+Deck/data=!4m2!3m1!1s0x5f0ad5f045cf1557:0x9acf6b4642c55011
+- id: sapporo-beer-museum
+  name: Sapporo Beer Museum
+  icon: museum
+  city: Sapporo
+  region: hokkaido
+  category: activity
+  visited: false
+  lat: 43.0547
+  lng: 141.354
+  google_maps: https://www.google.com/maps/place/Sapporo+Beer+Museum/data=!4m2!3m1!1s0x5f0b29842f2cf6d1:0x1360c6faefc5e7cb
+- id: shiroi-koibito-park
+  name: Shiroi Koibito Park
+  icon: garden
+  city: Sapporo
+  region: hokkaido
+  category: activity
+  visited: false
+  lat: 43.0879
+  lng: 141.2699
+  google_maps: https://www.google.com/maps/place/Shiroi+Koibito+Park/data=!4m2!3m1!1s0x5f0b281264c7cb53:0xc21e3cb8d40a0191
+- id: toriton-ebetsu
+  name: Toriton Ebetsu
+  icon: ramen
+  city: Sapporo
+  region: hokkaido
+  category: food
+  visited: false
+  lat: 43.1038
+  lng: 141.5394
+  google_maps: https://www.google.com/maps/place/Toriton+Ebetsu/data=!4m2!3m1!1s0x5f0b320d645a1b15:0x210ff20112d0475f
+- id: sapporo-hitsujikoji
+  name: 札幌ジンギスカン SAPPORO HITSUJIKOJI
+  icon: ramen
+  city: Sapporo
+  region: hokkaido
+  category: food
+  visited: false
+  lat: 43.0682
+  lng: 141.3365
+  google_maps: https://www.google.com/maps/place/%E6%9C%AD%E5%B9%8C%E3%82%B8%E3%83%B3%E3%82%AE%E3%82%B9%E3%82%AB%E3%83%B3+SAPPORO+HITSUJIKOJI/data=!4m2!3m1!1s0x5f0b29a154d329ab:0x55a6b18e1a7d90de
+- id: lake-toya
+  name: Lake Toya
+  icon: lake
+  city: Toyako
+  region: hokkaido
+  category: photo
+  visited: false
+  lat: 42.5663
+  lng: 140.8183
+  google_maps: https://www.google.com/maps/place/Lake+Toya/data=!4m2!3m1!1s0x5f9fe2bc531bc60f:0x19cf47a386aa52ff
+- id: shibazakura-takinoue-park
+  name: Shibazakura Takinoue Park
+  icon: garden
+  city: près de Asahikawa
+  region: hokkaido
+  category: photo
+  visited: false
+  lat: 44.2108
+  lng: 143.0896
+  google_maps: https://www.google.com/maps/place/Shibazakura+Takinoue+Park/data=!4m2!3m1!1s0x5f0d7c3bafd9d43f:0x1c63a0ff19aa86ac
+- id: jersey-brown
+  name: Jersey Brown
+  icon: ramen
+  city: près de Sapporo
+  region: hokkaido
+  category: food
+  visited: false
+  lat: 42.7845
+  lng: 141.6784
+  google_maps: https://www.google.com/maps/place/Jersey+Brown/data=!4m2!3m1!1s0x5f75204062326271:0xebdc1252d18becbe
+- id: a-factory
+  name: A-FACTORY
+  icon: ramen
+  city: Aomori
+  region: tohoku
+  category: food
+  visited: false
+  lat: 40.8302
+  lng: 140.7351
+  google_maps: https://www.google.com/maps/place/A-FACTORY/data=!4m2!3m1!1s0x5f9b9f1ff5b7c041:0x13a806e757713fea
+- id: aomori-gyosai-center-aomori-nokkedon
+  name: Aomori Gyosai Center (Aomori Nokkedon)
+  icon: ramen
+  city: Aomori
+  region: tohoku
+  category: food
+  visited: false
+  lat: 40.8259
+  lng: 140.7359
+  google_maps: https://www.google.com/maps/place/Aomori+Gyosai+Center+(Aomori+Nokkedon)/data=!4m2!3m1!1s0x5f9b9f1ea85cb2dd:0xe4bf5340e899e0ae
+- id: hakkoda-ski-area
+  name: Hakkoda Ski Area
+  icon: ticket
+  city: Aomori
+  region: tohoku
+  category: activity
+  visited: false
+  lat: 40.6795
+  lng: 140.8306
+  google_maps: https://www.google.com/maps/place/Hakkoda+Ski+Area/data=!4m2!3m1!1s0x5f9b0da65d0479db:0xcec462517153bb57
+- id: jogakura-bridge
+  name: Jōgakura Bridge
+  icon: bridge
+  city: Aomori
+  region: tohoku
+  category: photo
+  visited: false
+  lat: 40.6837
+  lng: 140.8186
+  google_maps: https://www.google.com/maps/place/J%C5%8Dgakura+Bridge/data=!4m2!3m1!1s0x5f9b0dac5dd9bd55:0xc98894de2cff6b3d
+- id: nebuta-museum-wa-rasse
+  name: Nebuta Museum WA RASSE
+  icon: museum
+  city: Aomori
+  region: tohoku
+  category: activity
+  visited: false
+  lat: 40.8294
+  lng: 140.7373
+  google_maps: https://www.google.com/maps/place/Nebuta+Museum+WA+RASSE/data=!4m2!3m1!1s0x5f9b9f1fcffea281:0xc635e46fa17b3c42
+- id: takayama-inari-shrine
+  name: Takayama Inari Shrine
+  icon: torii
+  city: Aomori
+  region: tohoku
+  category: see
+  visited: false
+  lat: 40.938
+  lng: 140.3122
+  google_maps: https://www.google.com/maps/place/Takayama+Inari+Shrine/data=!4m2!3m1!1s0x5f9bc73835de5b75:0x2a221e38fa412175
+- id: hirosaki-castle
+  name: Hirosaki Castle
+  icon: castle
+  city: Hirosaki
+  region: tohoku
+  category: see
+  visited: false
+  lat: 40.6075
+  lng: 140.4642
+  google_maps: https://www.google.com/maps/place/Hirosaki+Castle/data=!4m2!3m1!1s0x5f9b01c41b4a4d5b:0x49498bb2c56dcef0
+- id: tsuru-no-maihashi-bridge
+  name: Tsuru no Maihashi Bridge
+  icon: bridge
+  city: Hirosaki
+  region: tohoku
+  category: photo
+  visited: false
+  lat: 40.7449
+  lng: 140.4399
+  google_maps: https://www.google.com/maps/place/Tsuru+no+Maihashi+Bridge/data=!4m2!3m1!1s0x5f9baf26ab60178b:0xf5ea32320a9f3fbe
+- id: tsurunoyu-onsen
+  name: Tsurunoyu Onsen
+  icon: onsen
+  city: Morioka
+  region: tohoku
+  category: activity
+  visited: false
+  lat: 39.8051
+  lng: 140.7797
+  google_maps: https://www.google.com/maps/place/Tsurunoyu+Onsen/data=!4m2!3m1!1s0x5f8566c2a8c82f33:0xaa58388b7b8126c0
+- id: pokemon-center-tohoku
+  name: Pokémon Center Tohoku
+  icon: pokeball
+  city: Sendai
+  region: tohoku
+  category: activity
+  visited: true
+  verdict: recommend
+  review: 'Idéal si tu aimes Pokémon : peu de monde, les pins sont souvent disponibles et il y a du merch exclusif.'
+  lat: 38.2625
+  lng: 140.8811
+  google_maps: https://www.google.com/maps/place/Pok%C3%A9mon+Center+Tohoku/data=!4m2!3m1!1s0x5f8a28222e0459d1:0x2d8000dc14b9c7f7
+- id: ippudo
+  name: Ippudo
+  icon: ramen
+  city: Sendai
+  region: tohoku
+  category: food
+  visited: false
+  lat: 38.2592
+  lng: 140.8682
+  google_maps: https://www.google.com/maps/place/Ippudo/data=!4m2!3m1!1s0x5f8a283eb8dc3f21:0x1fb04ab4de99f984
+- id: jogi-nyorai-saihoji-temple
+  name: Jogi Nyorai Saihoji Temple
+  icon: temple
+  city: Sendai
+  region: tohoku
+  category: see
+  visited: false
+  lat: 38.3651
+  lng: 140.6678
+  google_maps: https://www.google.com/maps/place/Jogi+Nyorai+Saihoji+Temple/data=!4m2!3m1!1s0x5f8bd5c5ec14b823:0x5e2876f6b53ae4f
+- id: jozenji-dori-ave
+  name: Jozenji-dori Ave
+  icon: lantern
+  city: Sendai
+  region: tohoku
+  category: see
+  visited: false
+  lat: 38.2662
+  lng: 140.8714
+  google_maps: https://www.google.com/maps/place/Jozenji-dori+Ave/data=!4m2!3m1!1s0x5f8a282f82338253:0x3b64a60d07bb8d2
+- id: matsushima-bay
+  name: Matsushima Bay
+  icon: beach
+  city: Sendai
+  region: tohoku
+  category: photo
+  visited: false
+  lat: 38.3517
+  lng: 141.0903
+  google_maps: https://www.google.com/maps/place/Matsushima+Bay/data=!4m2!3m1!1s0x5f899af7f0385279:0xd19e0a3c76c48fc6
+- id: tamonzan
+  name: Tamonzan
+  icon: camera
+  city: Sendai
+  region: tohoku
+  category: photo
+  visited: false
+  lat: 38.3181
+  lng: 141.0665
+  google_maps: https://www.google.com/maps/place/Tamonzan/data=!4m2!3m1!1s0x5f898556f2ba70d9:0x9598dcc881dc7973
+- id: zuiho-den
+  name: Zuihō-den
+  icon: camera
+  city: Sendai
+  region: tohoku
+  category: see
+  visited: false
+  lat: 38.2507
+  lng: 140.8664
+  google_maps: https://www.google.com/maps/place/Zuih%C5%8D-den/data=!4m2!3m1!1s0x5f8a286950bc2ff3:0x2cda41b3bb5bc839
+- id: viewpoint-p313
+  name:
+    fr: Point de vue près de Sendai
+    en: Viewpoint near Sendai
+  icon: camera
+  city: Sendai
+  region: tohoku
+  category: photo
+  visited: false
+  lat: 38.2229
+  lng: 140.7261
+  google_maps: https://www.google.com/maps/search/38.222942,140.726103
+- id: choshi-falls
+  name: Choshi Falls
+  icon: waterfall
+  city: Towada
+  region: tohoku
+  category: photo
+  visited: false
+  lat: 40.4885
+  lng: 140.9505
+  google_maps: https://www.google.com/maps/place/Choshi+Falls/data=!4m2!3m1!1s0x5f9b3cc613ec7ee3:0x30f2420669d9992
+- id: hakkatoge-observatory
+  name: Hakkatoge observatory
+  icon: camera
+  city: Towada
+  region: tohoku
+  category: photo
+  visited: false
+  lat: 40.4085
+  lng: 140.8642
+  google_maps: https://www.google.com/maps/place/Hakkatoge+observatory/data=!4m2!3m1!1s0x5f9b26e854e94495:0xd24ccae99d1cadc5
+- id: ohanabe-mountain-viewpoint
+  name: Ohanabe Mountain Viewpoint
+  icon: mountain
+  city: Towada
+  region: tohoku
+  category: photo
+  visited: false
+  lat: 40.5106
+  lng: 140.8808
+  google_maps: https://www.google.com/maps/place/Ohanabe+Mountain+Viewpoint/data=!4m2!3m1!1s0x5f9b22a92c0c0421:0x5923f1117960dab6
+- id: oirase-keiryu-gorge
+  name: Oirase keiryū Gorge
+  icon: camera
+  city: Towada
+  region: tohoku
+  category: photo
+  visited: false
+  lat: 40.5172
+  lng: 140.942
+  google_maps: https://www.google.com/maps/place/Oirase+keiry%C5%AB+Gorge/data=!4m2!3m1!1s0x5f9b3d0dafc37479:0xabeb8a2430fcbc1a
+- id: towada-shrine
+  name: Towada Shrine
+  icon: torii
+  city: Towada
+  region: tohoku
+  category: see
+  visited: false
+  lat: 40.4332
+  lng: 140.8924
+  google_maps: https://www.google.com/maps/place/Towada+Shrine/data=!4m2!3m1!1s0x5f9b240560f430e1:0x95c80c2d06803414
+- id: yasumiya-harbor-sightseeing-boats-dock
+  name: Yasumiya harbor (sightseeing boats dock)
+  icon: ticket
+  city: Towada
+  region: tohoku
+  category: activity
+  visited: false
+  lat: 40.4453
+  lng: 141.0004
+  google_maps: https://www.google.com/maps/place/Yasumiya+harbor+(sightseeing+boats+dock)/data=!4m2!3m1!1s0x5f9b252aae30d54d:0x8d7d8cd72282bb36
+- id: ginzan-onsen
+  name: Ginzan Onsen
+  icon: onsen
+  city: Yamagata
+  region: tohoku
+  category: activity
+  visited: true
+  lat: 38.5706
+  lng: 140.5305
+  google_maps: https://www.google.com/maps/place/Ginzan+Onsen/data=!4m2!3m1!1s0x5f895ddad75823ed:0xd98658795ed01721
+- id: yama-dera
+  name: Yama-dera
+  icon: temple
+  city: Yamagata
+  region: tohoku
+  category: see
+  visited: true
+  lat: 38.3119
+  lng: 140.4348
+  google_maps: https://www.google.com/maps/place/Yama-dera/data=!4m2!3m1!1s0x5f8bceef83764579:0x8e7b44c325b8afc0
+- id: yamadera
+  name: Yamadera
+  icon: temple
+  city: Yamagata
+  region: tohoku
+  category: see
+  visited: true
+  lat: 38.3115
+  lng: 140.4676
+  google_maps: https://www.google.com/maps/place/Yamadera/data=!4m2!3m1!1s0x5f8bce641e8b2f1b:0x5b7af6fbee095cf7
+- id: viewpoint-p420
+  name:
+    fr: Point de vue près de Yamagata
+    en: Viewpoint near Yamagata
+  icon: camera
+  city: Yamagata
+  region: tohoku
+  category: photo
+  visited: true
+  lat: 38.2167
+  lng: 140.3233
+  google_maps: https://www.google.com/maps/search/38.216716,140.323238
+- id: okama
+  name: Okama
+  icon: camera
+  city: Yamagata
+  region: tohoku
+  category: photo
+  visited: false
+  lat: 38.1365
+  lng: 140.4495
+  google_maps: https://www.google.com/maps/place/Okama/data=!4m2!3m1!1s0x5f8a4965ac3b0e07:0x1fadc3987e2d5a01
+- id: zao-onsen-dairotenburo
+  name: Zao Onsen Dairotenburo
+  icon: onsen
+  city: Yamagata
+  region: tohoku
+  category: activity
+  visited: false
+  lat: 38.1702
+  lng: 140.3979
+  google_maps: https://www.google.com/maps/place/Zao+Onsen+Dairotenburo/data=!4m2!3m1!1s0x5f8a4b1a994ce6e9:0xe4b3a466ae792ce1
+- id: zao-fox-village
+  name: Zaō Fox Village
+  icon: house
+  city: Yamagata
+  region: tohoku
+  category: activity
+  visited: false
+  lat: 38.0409
+  lng: 140.5304
+  google_maps: https://www.google.com/maps/place/Za%C5%8D+Fox+Village/data=!4m2!3m1!1s0x5f8a4412d9ebd89d:0x59d031488bda23d9
+- id: kamakura-museum-kamakura-kan-hall
+  name: Kamakura Museum (Kamakura-kan Hall)
+  icon: museum
+  city: près de Akita
+  region: tohoku
+  category: activity
+  visited: false
+  lat: 39.3136
+  lng: 140.5663
+  google_maps: https://www.google.com/maps/place/Kamakura+Museum+(Kamakura-kan+Hall)/data=!4m2!3m1!1s0x5f8f0ffc983212a9:0xe1788f2c3049a63e
+- id: geibikei
+  name: Geibikei
+  icon: ticket
+  city: près de Morioka
+  region: tohoku
+  category: activity
+  visited: true
+  lat: 38.9875
+  lng: 141.2613
+  google_maps: https://www.google.com/maps/place/Geibikei/data=!4m2!3m1!1s0x5f88c8a6b4aa3b57:0x790d1797bd4daae4
+- id: chusonji-temple-hondo-main-hall
+  name: Chūsonji Temple (Hondō Main Hall)
+  icon: temple
+  city: près de Morioka
+  region: tohoku
+  category: see
+  visited: false
+  lat: 39.0017
+  lng: 141.1026
+  google_maps: https://www.google.com/maps/place/Ch%C5%ABsonji+Temple+(Hond%C5%8D+Main+Hall)/data=!4m2!3m1!1s0x5f88cde73dc30bb5:0xeaf1470e739e8281
+- id: chansey-park
+  name: Chansey Park
+  icon: garden
+  city: près de Sendai
+  region: tohoku
+  category: activity
+  visited: false
+  lat: 37.5008
+  lng: 140.9687
+  google_maps: https://www.google.com/maps/place/Chansey+Park/data=!4m2!3m1!1s0x6020ebb364a39c85:0x9d23867f9d6a695e
+- id: gembikei-gorge
+  name: Gembikei Gorge
+  icon: camera
+  city: près de Sendai
+  region: tohoku
+  category: photo
+  visited: false
+  lat: 38.9431
+  lng: 141.0507
+  google_maps: https://www.google.com/maps/place/Gembikei+Gorge/data=!4m2!3m1!1s0x5f88d1241b5f4359:0x20f3897e76ee0834
+- id: ice-aquarium-kesennuma
+  name: Ice Aquarium, Kesennuma
+  icon: ticket
+  city: près de Sendai
+  region: tohoku
+  category: activity
+  visited: false
+  lat: 38.9003
+  lng: 141.5792
+  google_maps: https://www.google.com/maps/place/Ice+Aquarium,+Kesennuma/data=!4m2!3m1!1s0x5f88948b80ba76c7:0x3a6f3f730a5071e5
+- id: miyori-shrine-cat-shrine
+  name: Miyori Shrine (Cat Shrine)
+  icon: torii
+  city: près de Sendai
+  region: tohoku
+  category: see
+  visited: false
+  lat: 38.2689
+  lng: 141.4556
+  google_maps: https://www.google.com/maps/place/Miyori+Shrine+(Cat+Shrine)/data=!4m2!3m1!1s0x5f89c1c33d303425:0x7dff889821338a6
+- id: sanriku-fukko-national-park
+  name: Sanriku Fukko National Park
+  icon: garden
+  city: près de Sendai
+  region: tohoku
+  category: activity
+  visited: false
+  lat: 38.8677
+  lng: 141.6734
+  google_maps: https://www.google.com/maps/place/Sanriku+Fukko+National+Park/data=!4m2!3m1!1s0x5f8892408cb11117:0x1c01a5079442ea8d
+- id: seian-sobadokoro
+  name: Seian Sobadokoro
+  icon: ramen
+  city: près de Sendai
+  region: tohoku
+  category: food
+  visited: false
+  lat: 38.909
+  lng: 141.1651
+  google_maps: https://www.google.com/maps/place/Seian+Sobadokoro/data=!4m2!3m1!1s0x5f88dafd839dcffb:0x157c6f6f14809152
+- id: bandai-azuma-lake-line-scenic-drive-road
+  name: Bandai-Azuma Lake Line ( scenic drive road)
+  icon: train
+  city: près de Yamagata
+  region: tohoku
+  category: photo
+  visited: true
+  lat: 37.6515
+  lng: 140.1678
+  google_maps: https://www.google.com/maps/place/Bandai-Azuma+Lake+Line+(+scenic+drive+road)/data=!4m2!3m1!1s0x5f8aa3239702b051:0xc69040a8680c1b99
+- id: goshikinuma-ponds
+  name: Goshikinuma Ponds
+  icon: lake
+  city: près de Yamagata
+  region: tohoku
+  category: photo
+  visited: true
+  lat: 37.6521
+  lng: 140.0784
+  google_maps: https://www.google.com/maps/place/Goshikinuma+Ponds/data=!4m2!3m1!1s0x5f8abb6b848b1885:0x727e77161018673
+- id: hagurosan-gojunoto-five-story-pagoda
+  name: Hagurosan Gojunoto (Five Story Pagoda)
+  icon: pagoda
+  city: près de Yamagata
+  region: tohoku
+  category: see
+  visited: true
+  lat: 38.7031
+  lng: 139.981
+  google_maps: https://www.google.com/maps/place/Hagurosan+Gojunoto+(Five+Story+Pagoda)/data=!4m2!3m1!1s0x5f8c041a93da6a5b:0x37f781bd1f9983e0
+- id: mercure-urabandai-resort-spa
+  name: Mercure Urabandai Resort & Spa
+  icon: pagoda
+  city: près de Yamagata
+  region: tohoku
+  category: sleep
+  visited: true
+  lat: 37.6559
+  lng: 140.0949
+  google_maps: https://www.google.com/maps/place/Mercure+Urabandai+Resort+%26+Spa/data=!4m2!3m1!1s0x5f8abb60c11ca9f7:0x3ed3b7a8c84c8e13
+- id: trois-monts-dewa
+  name: Trois monts Dewa
+  icon: mountain
+  city: près de Yamagata
+  region: tohoku
+  category: see
+  visited: true
+  lat: 38.7031
+  lng: 139.981
+  google_maps: https://www.google.com/maps/place/Trois+monts+Dewa/data=!4m2!3m1!1s0x5f8c041a93da6a5b:0xa3e2f49eec1680cb
+- id: viewpoint-p515
+  name:
+    fr: Point de vue près de Yamagata
+    en: Viewpoint near Yamagata
+  icon: camera
+  city: près de Yamagata
+  region: tohoku
+  category: photo
+  visited: true
+  lat: 38.7356
+  lng: 139.8082
+  google_maps: https://www.google.com/maps/search/38.735634,139.808181
+- id: bandai-asahi-national-park
+  name: Bandai Asahi National Park
+  icon: garden
+  city: près de Yamagata
+  region: tohoku
+  category: activity
+  visited: false
+  lat: 37.8901
+  lng: 139.7122
+  google_maps: https://www.google.com/maps/place/Bandai+Asahi+National+Park/data=!4m2!3m1!1s0x5f8adf2555555555:0x67a78a108850fc08
+- id: bandai-azuma-skyline
+  name: Bandai-Azuma Skyline
+  icon: camera
+  city: près de Yamagata
+  region: tohoku
+  category: photo
+  visited: false
+  lat: 37.6683
+  lng: 140.2558
+  google_maps: https://www.google.com/maps/place/Bandai-Azuma+Skyline/data=!4m2!3m1!1s0x5f8a985e27018bed:0xf46f24cd1d712b28
+- id: kanonji-temple
+  name: Kanonji Temple
+  icon: temple
+  city: près de Yamagata
+  region: tohoku
+  category: see
+  visited: false
+  lat: 37.7358
+  lng: 140.4166
+  google_maps: https://www.google.com/maps/place/Kanonji+Temple/data=!4m2!3m1!1s0x5f8a85224397bf09:0x978535c553650a65
+- id: mont-haguro
+  name: Mont Haguro
+  icon: mountain
+  city: près de Yamagata
+  region: tohoku
+  category: see
+  visited: false
+  lat: 38.7003
+  lng: 140.0003
+  google_maps: https://www.google.com/maps/place/Mont+Haguro/data=!4m2!3m1!1s0x5f8c06aa4a95f6eb:0x6e52d73c7a165f78
+- id: parc-hanamiyama
+  name: Parc Hanamiyama
+  icon: garden
+  city: près de Yamagata
+  region: tohoku
+  category: photo
+  visited: false
+  lat: 37.7378
+  lng: 140.4975
+  google_maps: https://www.google.com/maps/place/Parc+Hanamiyama/data=!4m2!3m1!1s0x5f8a841105535735:0x914a839d1ca63417
+- id: sanctuaire-du-mont-yudono
+  name: sanctuaire du mont Yudono
+  icon: torii
+  city: près de Yamagata
+  region: tohoku
+  category: see
+  visited: false
+  lat: 38.5417
+  lng: 139.9856
+  google_maps: https://www.google.com/maps/place/sanctuaire+du+mont+Yudono/data=!4m2!3m1!1s0x5f8bf3fc3d9f5cdf:0x608355de19bce2e5
+- id: p514
+  name: 茶屋沼
+  icon: gem
+  city: près de Yamagata
+  region: tohoku
+  category: hidden
+  visited: false
+  lat: 37.7547
+  lng: 140.4749
+  google_maps: https://www.google.com/maps/place/%E8%8C%B6%E5%B1%8B%E6%B2%BC/data=!4m2!3m1!1s0x5f8a85d29b21282f:0x43528f8d198ce880
+- id: hakone-jinja
+  name: Hakone-jinja
+  icon: torii
+  city: Hakone
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.2048
+  lng: 139.0254
+  google_maps: https://www.google.com/maps/place/Hakone-jinja/data=!4m2!3m1!1s0x6019988bcd2ac2b5:0xaae4a36847c7e09a
+- id: kuzuryu-shrine-hongu
+  name: Kuzuryū Shrine Hongū
+  icon: torii
+  city: Hakone
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.2018
+  lng: 139.0309
+  google_maps: https://www.google.com/maps/place/Kuzury%C5%AB+Shrine+Hong%C5%AB/data=!4m2!3m1!1s0x60199863322fffff:0x5fd1232d3c621abc
+- id: man-yo-park
+  name: Man-yō Park
+  icon: garden
+  city: Hakone
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.145
+  lng: 139.0716
+  google_maps: https://www.google.com/maps/place/Man-y%C5%8D+Park/data=!4m2!3m1!1s0x6019bda89d807c97:0x229437be35df2d59
+- id: the-hakone-open-air-museum
+  name: The Hakone Open-Air Museum
+  icon: museum
+  city: Hakone
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.2444
+  lng: 139.0504
+  google_maps: https://www.google.com/maps/place/The+Hakone+Open-Air+Museum/data=!4m2!3m1!1s0x6019a204a396f331:0x588e39a7e90a6c5f
+- id: torii-de-la-paix
+  name: Torii de la paix
+  icon: torii
+  city: Hakone
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.2028
+  lng: 139.0257
+  google_maps: https://www.google.com/maps/place/Torii+de+la+paix/data=!4m2!3m1!1s0x6019988a06f105ab:0x6f4b50288715dc3a
+- id: hasedera
+  name: Hasedera
+  icon: temple
+  city: Kamakura
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.3124
+  lng: 139.533
+  google_maps: https://www.google.com/maps/place/Hasedera/data=!4m2!3m1!1s0x601845f4077127d5:0x57eb6150baf7add1
+- id: sasuke-inari-shrine
+  name: Sasuke Inari Shrine
+  icon: torii
+  city: Kamakura
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.3244
+  lng: 139.5389
+  google_maps: https://www.google.com/maps/place/Sasuke+Inari+Shrine/data=!4m2!3m1!1s0x60184591ef6bab51:0x37643097ccc271f5
+- id: tsurugaoka-hachimangu
+  name: Tsurugaoka Hachimangu
+  icon: camera
+  city: Kamakura
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.3261
+  lng: 139.5564
+  google_maps: https://www.google.com/maps/place/Tsurugaoka+Hachimangu/data=!4m2!3m1!1s0x601845b87890aa89:0xa867ad10105036b5
+- id: honcho-street
+  name: Honcho Street
+  icon: lantern
+  city: Kawaguchiko
+  region: kanto
+  category: see
+  visited: true
+  lat: 35.493
+  lng: 138.8391
+  google_maps: https://www.google.com/maps/place/Honcho+Street/data=!4m2!3m1!1s0x601967006d8033b5:0xb34d924c10f10628
+- id: momiji-tunnel
+  name: Momiji Tunnel
+  icon: camera
+  city: Kawaguchiko
+  region: kanto
+  category: photo
+  visited: true
+  lat: 35.5446
+  lng: 138.742
+  google_maps: https://www.google.com/maps/place/Momiji+Tunnel/data=!4m2!3m1!1s0x60195f3e538be357:0xe8c93318c2f45b9a
+- id: pagode-de-chureito
+  name: Pagode de Chureito
+  icon: chureito
+  city: Kawaguchiko
+  region: kanto
+  category: photo
+  visited: true
+  lat: 35.5012
+  lng: 138.8014
+  google_maps: https://www.google.com/maps/place/Pagode+de+Chureito/data=!4m2!3m1!1s0x6019674cfd52a073:0xda57e34920aee799
+- id: parking-and-view-point-on-mt-fuji
+  name: 富士山倒影Parking and view point on Mt. Fuji
+  icon: mountain
+  city: Kawaguchiko
+  region: kanto
+  category: photo
+  visited: true
+  lat: 35.5129
+  lng: 138.7673
+  google_maps: https://www.google.com/maps/place/%E5%AF%8C%E5%A3%AB%E5%B1%B1%E5%80%92%E5%BD%B1Parking+and+view+point+on+Mt.+Fuji/data=!4m2!3m1!1s0x60195e3724f5a755:0x54af3b69fa222773
+- id: fuji-shiba-sakura-festival-observation-deck
+  name: Fuji Shiba-sakura Festival Observation Deck
+  icon: flower
+  city: Kawaguchiko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.443
+  lng: 138.6045
+  google_maps: https://www.google.com/maps/place/Fuji+Shiba-sakura+Festival+Observation+Deck/data=!4m2!3m1!1s0x601be7713a702285:0x203934951fb6909
+- id: fujiomurosengen-shrine
+  name: Fujiomurosengen Shrine
+  icon: torii
+  city: Kawaguchiko
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.5106
+  lng: 138.746
+  google_maps: https://www.google.com/maps/place/Fujiomurosengen+Shrine/data=!4m2!3m1!1s0x60195fb91afa3e67:0xa20f018382d76252
+- id: fujiyoshida-chureito
+  name: Fujiyoshida Chureito
+  icon: chureito
+  city: Kawaguchiko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.4818
+  lng: 138.812
+  google_maps: https://www.google.com/maps/place/Fujiyoshida+Chureito/data=!4m2!3m1!1s0x60196727a0882c33:0x4fdcb79314ec0bd3
+- id: hirano-beach
+  name: Hirano beach
+  icon: beach
+  city: Kawaguchiko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.4212
+  lng: 138.8943
+  google_maps: https://www.google.com/maps/place/Hirano+beach/data=!4m2!3m1!1s0x60196fec8ed01c37:0xaea15f41d50a234a
+- id: lac-kawaguchi
+  name: Lac Kawaguchi
+  icon: lake
+  city: Kawaguchiko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.5172
+  lng: 138.7586
+  google_maps: https://www.google.com/maps/place/Lac+Kawaguchi/data=!4m2!3m1!1s0x60195fb4a5043f4f:0x29cbb24b1e337d47
+- id: lac-shoji
+  name: Lac Shōji
+  icon: lake
+  city: Kawaguchiko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.4888
+  lng: 138.6106
+  google_maps: https://www.google.com/maps/place/Lac+Sh%C5%8Dji/data=!4m2!3m1!1s0x601be692c4eba14b:0x4ee1563ab5690b50
+- id: mont-fuji
+  name: Mont Fuji
+  icon: mountain
+  city: Kawaguchiko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.3606
+  lng: 138.7278
+  google_maps: https://www.google.com/maps/place/Mont+Fuji/data=!4m2!3m1!1s0x6019629a42fdc899:0xa6a1fcc916f3a4df
+- id: motosuko-observation-park
+  name: Motosuko Observation Park
+  icon: garden
+  city: Kawaguchiko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.4464
+  lng: 138.5931
+  google_maps: https://www.google.com/maps/place/Motosuko+Observation+Park/data=!4m2!3m1!1s0x601be7a2323ecfb5:0x2a2ae598ec017f6d
+- id: mount-fuji-distant-worship-site-tenku-no-torii-t
+  name: Mount Fuji Distant Worship Site (Tenku no Torii) Torii View
+  icon: torii
+  city: Kawaguchiko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.5513
+  lng: 138.7343
+  google_maps: https://www.google.com/maps/place/Mount+Fuji+Distant+Worship+Site+(Tenku+no+Torii)+Torii+View/data=!4m2!3m1!1s0x60195f492d41ab6b:0xad7123bb16512cec
+- id: nagasaki-park
+  name: Nagasaki Park
+  icon: garden
+  city: Kawaguchiko
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.5344
+  lng: 138.7321
+  google_maps: https://www.google.com/maps/place/Nagasaki+Park/data=!4m2!3m1!1s0x60195f692ee10103:0x9a321460899ae0a8
+- id: nakanokura-pass-view-point
+  name: Nakanokura Pass View Point
+  icon: camera
+  city: Kawaguchiko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.4757
+  lng: 138.5729
+  google_maps: https://www.google.com/maps/place/Nakanokura+Pass+View+Point/data=!4m2!3m1!1s0x601be616961faeed:0xb18cac1dafebd323
+- id: obuchi-sasaba
+  name: Obuchi Sasaba
+  icon: camera
+  city: Kawaguchiko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.2208
+  lng: 138.6976
+  google_maps: https://www.google.com/maps/place/Obuchi+Sasaba/data=!4m2!3m1!1s0x601bd5a25f0cd969:0xa5fbeaa053091843
+- id: oshino-hakkai
+  name: Oshino Hakkai
+  icon: camera
+  city: Kawaguchiko
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.4604
+  lng: 138.8323
+  google_maps: https://www.google.com/maps/place/Oshino+Hakkai/data=!4m2!3m1!1s0x601966859f99842b:0x163aa46bb0af9f71
+- id: shiraito-falls
+  name: Shiraito Falls
+  icon: waterfall
+  city: Kawaguchiko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.3129
+  lng: 138.5874
+  google_maps: https://www.google.com/maps/place/Shiraito+Falls/data=!4m2!3m1!1s0x601bdae2e99682b9:0xf5427791c3135ca7
+- id: telepherique-du-mont-kachi-kachi
+  name: Téléphérique du mont Kachi Kachi
+  icon: cablecar
+  city: Kawaguchiko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.504
+  lng: 138.772
+  google_maps: https://www.google.com/maps/place/T%C3%A9l%C3%A9ph%C3%A9rique+du+mont+Kachi+Kachi/data=!4m2!3m1!1s0x60195e268ba95555:0x4fa724d1d92f7142
+- id: p067
+  name: 南アルプス展望台
+  icon: camera
+  city: Kawaguchiko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.4585
+  lng: 138.6337
+  google_maps: https://www.google.com/maps/place/%E5%8D%97%E3%82%A2%E3%83%AB%E3%83%97%E3%82%B9%E5%B1%95%E6%9C%9B%E5%8F%B0/data=!4m2!3m1!1s0x601be7497c55ffa7:0xe70d27ccc02361fe
+- id: p051
+  name: 本町二丁目商店街
+  icon: lantern
+  city: Kawaguchiko
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.4926
+  lng: 138.8374
+  google_maps: https://www.google.com/maps/place/%E6%9C%AC%E7%94%BA%E4%BA%8C%E4%B8%81%E7%9B%AE%E5%95%86%E5%BA%97%E8%A1%97/data=!4m2!3m1!1s0x601967004c5219d1:0x5e58c75ce320b621
+- id: p069
+  name: 白鳥浜
+  icon: camera
+  city: Kawaguchiko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.4326
+  lng: 138.8505
+  google_maps: https://www.google.com/maps/place/%E7%99%BD%E9%B3%A5%E6%B5%9C/data=!4m2!3m1!1s0x601965bab299d82f:0xbded790e046525f
+- id: fukiware-falls
+  name: Fukiware Falls
+  icon: waterfall
+  city: Nikko
+  region: kanto
+  category: photo
+  visited: true
+  lat: 36.7015
+  lng: 139.2067
+  google_maps: https://www.google.com/maps/place/Fukiware+Falls/data=!4m2!3m1!1s0x601e4ff939ab91ab:0x761f6a602a4e8718
+- id: kegon-waterfalls
+  name: Kegon Waterfalls
+  icon: waterfall
+  city: Nikko
+  region: kanto
+  category: photo
+  visited: true
+  lat: 36.7383
+  lng: 139.5035
+  google_maps: https://www.google.com/maps/place/Kegon+Waterfalls/data=!4m2!3m1!1s0x601fa8c8c0b0bec1:0x279c9f58ca43568d
+- id: nikkozan-rinnoji-temple
+  name: Nikkozan Rin’nōji Temple
+  icon: temple
+  city: Nikko
+  region: kanto
+  category: see
+  visited: true
+  lat: 36.7542
+  lng: 139.6027
+  google_maps: https://www.google.com/maps/place/Nikkozan+Rin%E2%80%99n%C5%8Dji+Temple/data=!4m2!3m1!1s0x601fa6d6c380d959:0x15deb1a0f2ac3fa8
+- id: nikko-tosho-gu
+  name: Nikkō Tōshō-gū
+  icon: torii
+  city: Nikko
+  region: kanto
+  category: see
+  visited: true
+  lat: 36.758
+  lng: 139.5988
+  google_maps: https://www.google.com/maps/place/Nikk%C5%8D+T%C5%8Dsh%C5%8D-g%C5%AB/data=!4m2!3m1!1s0x601fa6c553212035:0xab505b717af00e94
+- id: pension-pokapoka
+  name: Pension Pokapoka
+  icon: pagoda
+  city: Nikko
+  region: kanto
+  category: sleep
+  visited: true
+  lat: 36.7551
+  lng: 139.3274
+  google_maps: https://www.google.com/maps/place/Pension+Pokapoka/data=!4m2!3m1!1s0x601e4d79d5a615f7:0xdff7ad61d4897d7e
+- id: shinkyo
+  name: Shinkyō
+  icon: bridge
+  city: Nikko
+  region: kanto
+  category: see
+  visited: true
+  lat: 36.7533
+  lng: 139.604
+  google_maps: https://www.google.com/maps/place/Shinky%C5%8D/data=!4m2!3m1!1s0x601fa6d687424223:0x392a9fec11582fe7
+- id: takita
+  name: Takita
+  icon: camera
+  city: Nikko
+  region: kanto
+  category: photo
+  visited: true
+  lat: 36.7252
+  lng: 139.6875
+  google_maps: https://www.google.com/maps/place/Takita/data=!4m2!3m1!1s0x601f0acc6ba61507:0x7ccb28fa8a174964
+- id: viewpoint-p247
+  name:
+    fr: Point de vue près de Nikko
+    en: Viewpoint near Nikko
+  icon: camera
+  city: Nikko
+  region: kanto
+  category: photo
+  visited: true
+  lat: 36.7288
+  lng: 139.6864
+  google_maps: https://www.google.com/maps/search/36.728838,139.686424
+- id: abime-de-kanmangafuchi
+  name: Abîme de Kanmangafuchi
+  icon: camera
+  city: Nikko
+  region: kanto
+  category: see
+  visited: false
+  lat: 36.7168
+  lng: 139.6
+  google_maps: https://www.google.com/maps/place/Ab%C3%AEme+de+Kanmangafuchi/data=!4m2!3m1!1s0x601fa7574334f215:0x861356332fc03131
+- id: edo-wonderland-nikko-edomura
+  name: Edo Wonderland Nikko Edomura
+  icon: ticket
+  city: Nikko
+  region: kanto
+  category: activity
+  visited: false
+  lat: 36.7907
+  lng: 139.6975
+  google_maps: https://www.google.com/maps/place/Edo+Wonderland+Nikko+Edomura/data=!4m2!3m1!1s0x601f9f78c2896c65:0x183456bba94095a0
+- id: futarasan-jinja
+  name: Futarasan-jinja
+  icon: torii
+  city: Nikko
+  region: kanto
+  category: see
+  visited: false
+  lat: 36.7584
+  lng: 139.5964
+  google_maps: https://www.google.com/maps/place/Futarasan-jinja/data=!4m2!3m1!1s0x601fa6c4e4114317:0xb5a44f2497188db6
+- id: kegon-waterfall-paid-observation-deck
+  name: Kegon Waterfall Paid Observation Deck
+  icon: waterfall
+  city: Nikko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 36.7379
+  lng: 139.504
+  google_maps: https://www.google.com/maps/place/Kegon+Waterfall+Paid+Observation+Deck/data=!4m2!3m1!1s0x601fa8c899d6cb71:0xeab3917fe0300227
+- id: lac-chuzenji
+  name: Lac Chūzenji
+  icon: lake
+  city: Nikko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 36.7532
+  lng: 139.4365
+  google_maps: https://www.google.com/maps/place/Lac+Ch%C5%ABzenji/data=!4m2!3m1!1s0x601fac2d62caed55:0x189a07613b017870
+- id: oigami-onsen
+  name: Oigami Onsen
+  icon: onsen
+  city: Nikko
+  region: kanto
+  category: activity
+  visited: false
+  lat: 36.6712
+  lng: 139.2097
+  google_maps: https://www.google.com/maps/place/Oigami+Onsen/data=!4m2!3m1!1s0x601e507090d2ff4b:0xe7f3aeeae49faf6b
+- id: rinnoji-taiyu-in-mausoleum-of-iemitsu
+  name: Rin’nōji Taiyū-in (Mausoleum of Iemitsu)
+  icon: temple
+  city: Nikko
+  region: kanto
+  category: see
+  visited: false
+  lat: 36.7577
+  lng: 139.5942
+  google_maps: https://www.google.com/maps/place/Rin%E2%80%99n%C5%8Dji+Taiy%C5%AB-in+(Mausoleum+of+Iemitsu)/data=!4m2!3m1!1s0x601fa6c362b94a25:0x4189ac97c2ca670d
+- id: ryuokyo-canyon
+  name: Ryuokyo Canyon
+  icon: camera
+  city: Nikko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 36.8596
+  lng: 139.7174
+  google_maps: https://www.google.com/maps/place/Ryuokyo+Canyon/data=!4m2!3m1!1s0x601f98ee1262377b:0x2c1ede4e70f80400
+- id: takino-o-shrine
+  name: Takino'o Shrine
+  icon: torii
+  city: Nikko
+  region: kanto
+  category: see
+  visited: false
+  lat: 36.7331
+  lng: 139.5985
+  google_maps: https://www.google.com/maps/place/Takino'o+Shrine/data=!4m2!3m1!1s0x601fa739cdad84a7:0xc7e6df4c269f1cb3
+- id: taro-sugi-japanese-cedar-tree
+  name: Taro Sugi Japanese Cedar Tree
+  icon: camera
+  city: Nikko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 36.7373
+  lng: 139.6015
+  google_maps: https://www.google.com/maps/place/Taro+Sugi+Japanese+Cedar+Tree/data=!4m2!3m1!1s0x601fa730dc0cd307:0xa68067641a15a5a0
+- id: p246
+  name: 居酒屋陶
+  icon: ramen
+  city: Nikko
+  region: kanto
+  category: food
+  visited: false
+  lat: 36.7259
+  lng: 139.6901
+  google_maps: https://www.google.com/maps/place/%E5%B1%85%E9%85%92%E5%B1%8B%E9%99%B6/data=!4m2!3m1!1s0x601f0accc13dc02f:0x7aa4ad70eba896ee
+- id: nagasaki-observatory
+  name: Nagasaki Observatory
+  icon: camera
+  city: Ogasawara
+  region: kanto
+  category: photo
+  visited: false
+  lat: 27.0991
+  lng: 142.2138
+  google_maps: https://www.google.com/maps/place/Nagasaki+Observatory/data=!4m2!3m1!1s0x60f0cfbfea024655:0x9abdaad7e00fb356
+- id: fujisan-yume-no-ohashi-bridge
+  name: Fujisan Yume No Ōhashi Bridge
+  icon: bridge
+  city: Shizuoka
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.1335
+  lng: 138.6781
+  google_maps: https://www.google.com/maps/place/Fujisan+Yume+No+%C5%8Chashi+Bridge/data=!4m2!3m1!1s0x601a2b0011e7937d:0x23d4ac86d1458a2e
+- id: cinnamoroll-cafe
+  name: Cinnamoroll Cafe
+  icon: cup
+  city: Tokyo
+  region: kanto
+  category: cafe
+  visited: true
+  lat: 35.69
+  lng: 139.7058
+  google_maps: https://www.google.com/maps/place/Cinnamoroll+Cafe/data=!4m2!3m1!1s0x60188cdb44df1955:0xa8cd25ca2786d19a
+- id: hachiko-memorial-statue
+  name: Hachikō Memorial Statue
+  icon: camera
+  city: Tokyo
+  region: kanto
+  category: see
+  visited: true
+  lat: 35.6591
+  lng: 139.7006
+  google_maps: https://www.google.com/maps/place/Hachik%C5%8D+Memorial+Statue/data=!4m2!3m1!1s0x60188b57efbd57c7:0x217e9d9fe306fba
+- id: kirby-cafe
+  name: Kirby Café
+  icon: star
+  city: Tokyo
+  region: kanto
+  category: cafe
+  visited: true
+  lat: 35.7106
+  lng: 139.8121
+  google_maps: https://www.google.com/maps/place/Kirby+Caf%C3%A9/data=!4m2!3m1!1s0x60188ed644483b7d:0xc4f9088800a80935
+- id: mominoki-house-ueno-shop
+  name: Mominoki House Ueno Shop
+  icon: shop
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: true
+  lat: 35.7087
+  lng: 139.7737
+  google_maps: https://www.google.com/maps/place/Mominoki+House+Ueno+Shop/data=!4m2!3m1!1s0x60188e9fc3b0a1ff:0x8f50109175f3d65c
+- id: musee-ghibli
+  name: Musée Ghibli
+  icon: acorn
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: true
+  lat: 35.6963
+  lng: 139.5705
+  google_maps: https://www.google.com/maps/place/Mus%C3%A9e+Ghibli/data=!4m2!3m1!1s0x6018ee34e5038c2d:0x4de155903f849205
+- id: pokemon-center-mega-tokyo-pikachu-sweets
+  name: Pokémon Center Mega Tokyo & Pikachu Sweets
+  icon: pokeball
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: true
+  lat: 35.7294
+  lng: 139.7188
+  google_maps: https://www.google.com/maps/place/Pok%C3%A9mon+Center+Mega+Tokyo+%26+Pikachu+Sweets/data=!4m2!3m1!1s0x60188d6f044d6725:0x5c5c669ed9f5c455
+- id: sanrio-characters-garden-cafe
+  name: Sanrio Characters Garden Café
+  icon: shop
+  city: Tokyo
+  region: kanto
+  category: cafe
+  visited: true
+  lat: 35.7452
+  lng: 139.8206
+  google_maps: https://www.google.com/maps/place/Sanrio+Characters+Garden+Caf%C3%A9/data=!4m2!3m1!1s0x60188fa9c4efe9f3:0x836c57fad38225a9
+- id: teamlab-borderless-mori-building-digital-art-mus
+  name: 'teamLab Borderless: MORI Building DIGITAL ART MUSEUM'
+  icon: teamlab
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: true
+  lat: 35.6264
+  lng: 139.783
+  google_maps: https://www.google.com/maps/place/teamLab+Borderless:+MORI+Building+DIGITAL+ART+MUSEUM/data=!4m2!3m1!1s0x601889fad49a9443:0x5831aba3288d2651
+- id: a-happy-pancake-shibuya
+  name: A Happy Pancake Shibuya
+  icon: ramen
+  city: Tokyo
+  region: kanto
+  category: food
+  visited: false
+  lat: 35.6573
+  lng: 139.6965
+  google_maps: https://www.google.com/maps/place/A+Happy+Pancake+Shibuya/data=!4m2!3m1!1s0x60188b5608e40001:0x2d923f3ac24fb8af
+- id: ana-aircraft-hangar
+  name: ANA Aircraft Hangar
+  icon: ticket
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.5366
+  lng: 139.7925
+  google_maps: https://www.google.com/maps/place/ANA+Aircraft+Hangar/data=!4m2!3m1!1s0x6018641346eb558f:0xfc2324997c40613f
+- id: akagaki
+  name: Akagaki
+  icon: ramen
+  city: Tokyo
+  region: kanto
+  category: food
+  visited: false
+  lat: 35.6804
+  lng: 139.6869
+  google_maps: https://www.google.com/maps/place/Akagaki/data=!4m2!3m1!1s0x6018f3323c3f706b:0xdde69bd26232792b
+- id: bookoff-super-bazaar-omiya-stellar-town-store
+  name: BOOKOFF SUPER BAZAAR Omiya Stellar Town Store
+  icon: shop
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.9336
+  lng: 139.6218
+  google_maps: https://www.google.com/maps/place/BOOKOFF+SUPER+BAZAAR+Omiya+Stellar+Town+Store/data=!4m2!3m1!1s0x6018c6bb0d2200f5:0x492f841faf51f3fc
+- id: benizuru-pancake
+  name: Benizuru Pancake
+  icon: ramen
+  city: Tokyo
+  region: kanto
+  category: food
+  visited: false
+  lat: 35.712
+  lng: 139.7919
+  google_maps: https://www.google.com/maps/place/Benizuru+Pancake/data=!4m2!3m1!1s0x60188ebf0cf89e69:0x568d9c65e1e9da71
+- id: bonjour-tokyo-bar
+  name: Bonjour Tokyo Bar
+  icon: ramen
+  city: Tokyo
+  region: kanto
+  category: food
+  visited: false
+  lat: 35.7335
+  lng: 139.7355
+  google_maps: https://www.google.com/maps/place/Bonjour+Tokyo+Bar/data=!4m2!3m1!1s0x60188d9c212ad7cf:0xf76e92dc7ba144d9
+- id: chermside-sandwich2
+  name: CHERMSIDE SANDWICH原宿2号店
+  icon: ramen
+  city: Tokyo
+  region: kanto
+  category: food
+  visited: false
+  lat: 35.7374
+  lng: 139.7618
+  google_maps: https://www.google.com/maps/place/CHERMSIDE+SANDWICH%E5%8E%9F%E5%AE%BF2%E5%8F%B7%E5%BA%97/data=!4m2!3m1!1s0x60188dc2dbcd6153:0x3510968ef7c99011
+- id: chiikawa-land-tokyo-station
+  name: Chiikawa Land TOKYO Station
+  icon: shop
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.6582
+  lng: 139.7101
+  google_maps: https://www.google.com/maps/place/Chiikawa+Land+TOKYO+Station/data=!4m2!3m1!1s0x60188b5dc30e7fb9:0x189bfb361bc033ab
+- id: fujifilm-square
+  name: FUJIFILM SQUARE
+  icon: mountain
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.6656
+  lng: 139.7305
+  google_maps: https://www.google.com/maps/place/FUJIFILM+SQUARE/data=!4m2!3m1!1s0x60188b78ec492cf3:0xab3085cf5419c846
+- id: ghibli-donguri-republic-tokyo-station
+  name: Ghibli Donguri Republic Tokyo Station
+  icon: acorn
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.6773
+  lng: 139.7652
+  google_maps: https://www.google.com/maps/place/Ghibli+Donguri+Republic+Tokyo+Station/data=!4m2!3m1!1s0x60188bfb20aa2463:0xccecb86f1a6ceda1
+- id: gotokuji-temple
+  name: Gōtokuji Temple
+  icon: temple
+  city: Tokyo
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.656
+  lng: 139.6482
+  google_maps: https://www.google.com/maps/place/G%C5%8Dtokuji+Temple/data=!4m2!3m1!1s0x6018f39f99015555:0x6b0e9ad51be4cac
+- id: haute-couturecafe
+  name: HAUTE COUTURE・CAFE
+  icon: cup
+  city: Tokyo
+  region: kanto
+  category: cafe
+  visited: false
+  lat: 35.6629
+  lng: 139.7197
+  google_maps: https://www.google.com/maps/place/HAUTE+COUTURE%E3%83%BBCAFE/data=!4m2!3m1!1s0x60188b637d0ea6df:0x70f6d571024d8ad6
+- id: hamazushi-kyodo
+  name: Hamazushi Kyodo
+  icon: ramen
+  city: Tokyo
+  region: kanto
+  category: food
+  visited: false
+  lat: 35.6477
+  lng: 139.635
+  google_maps: https://www.google.com/maps/place/Hamazushi+Kyodo/data=!4m2!3m1!1s0x6018f3941d68d0f5:0x6e7dc92700fad088
+- id: hijiri-bridge
+  name: Hijiri Bridge
+  icon: bridge
+  city: Tokyo
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.7106
+  lng: 139.7312
+  google_maps: https://www.google.com/maps/place/Hijiri+Bridge/data=!4m2!3m1!1s0x60188d006454728b:0x410aec3ed227265f
+- id: ippudo-roppongi
+  name: Ippudo - Roppongi
+  icon: ramen
+  city: Tokyo
+  region: kanto
+  category: food
+  visited: false
+  lat: 35.6638
+  lng: 139.7322
+  google_maps: https://www.google.com/maps/place/Ippudo+-+Roppongi/data=!4m2!3m1!1s0x60188b82a8814ae9:0xfb48d965b9cf2b73
+- id: izumo-ikebukuro-unagi
+  name: Izumo Ikebukuro UNAGI
+  icon: ramen
+  city: Tokyo
+  region: kanto
+  category: food
+  visited: false
+  lat: 35.7136
+  lng: 139.7287
+  google_maps: https://www.google.com/maps/place/Izumo+Ikebukuro+UNAGI/data=!4m2!3m1!1s0x60188d06e8f6de9d:0xde7a04a7fd57a130
+- id: jardin-de-chinzan-so
+  name: Jardin de Chinzan-so
+  icon: garden
+  city: Tokyo
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.712
+  lng: 139.726
+  google_maps: https://www.google.com/maps/place/Jardin+de+Chinzan-so/data=!4m2!3m1!1s0x60188d04113c1c37:0x8073375b569bc14f
+- id: jikasei-mensho
+  name: Jikasei MENSHO
+  icon: ramen
+  city: Tokyo
+  region: kanto
+  category: food
+  visited: false
+  lat: 35.7146
+  lng: 139.7135
+  google_maps: https://www.google.com/maps/place/Jikasei+MENSHO/data=!4m2!3m1!1s0x60188d1665913a2d:0x1c5a02959036d3fb
+- id: kanda-myojin
+  name: Kanda-myōjin
+  icon: camera
+  city: Tokyo
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.702
+  lng: 139.768
+  google_maps: https://www.google.com/maps/place/Kanda-my%C5%8Djin/data=!4m2!3m1!1s0x60188c1ecc161bed:0xf397e4b6bf417c8b
+- id: kappabashi-hondori-shopping-street
+  name: Kappabashi Hondōri Shopping Street
+  icon: lantern
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.7141
+  lng: 139.7912
+  google_maps: https://www.google.com/maps/place/Kappabashi+Hond%C5%8Dri+Shopping+Street/data=!4m2!3m1!1s0x60188ebfd14153f5:0xaf34af5f45007a8e
+- id: kawagoe-hikawa-shrine
+  name: Kawagoe Hikawa Shrine
+  icon: torii
+  city: Tokyo
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.9276
+  lng: 139.4885
+  google_maps: https://www.google.com/maps/place/Kawagoe+Hikawa+Shrine/data=!4m2!3m1!1s0x6018da89ead23633:0x7fce7ee6a490f05c
+- id: kichijoji-petit-mura
+  name: Kichijōji Petit Mura
+  icon: ticket
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.7047
+  lng: 139.5746
+  google_maps: https://www.google.com/maps/place/Kichij%C5%8Dji+Petit+Mura/data=!4m2!3m1!1s0x6018ee494564f00b:0x10f918221a23dade
+- id: kishimojindo
+  name: Kishimojindo
+  icon: camera
+  city: Tokyo
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.7221
+  lng: 139.7133
+  google_maps: https://www.google.com/maps/place/Kishimojindo/data=!4m2!3m1!1s0x60188d6af7ca6eb5:0xf3404318bde71204
+- id: kumachan-onsen
+  name: Kumachan Onsen
+  icon: onsen
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.6444
+  lng: 139.7186
+  google_maps: https://www.google.com/maps/place/Kumachan+Onsen/data=!4m2!3m1!1s0x60188b13d07909dd:0xc8e98a7e98a4f5ac
+- id: kokyo
+  name: Kōkyo
+  icon: bridge
+  city: Tokyo
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.6883
+  lng: 139.7544
+  google_maps: https://www.google.com/maps/place/K%C5%8Dkyo/data=!4m2!3m1!1s0x60188c0d02d8064d:0xd11a5f0b379e6db7
+- id: meiji-jingu
+  name: Meiji-jingū
+  icon: camera
+  city: Tokyo
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.6762
+  lng: 139.7005
+  google_maps: https://www.google.com/maps/place/Meiji-jing%C5%AB/data=!4m2!3m1!1s0x60188cb79a4c26e5:0x8fca893849103f73
+- id: menya-nobunagaramen-restaurant
+  name: Menya NOBUNAGA【Ramen Restaurant】
+  icon: ramen
+  city: Tokyo
+  region: kanto
+  category: food
+  visited: false
+  lat: 35.6257
+  lng: 139.6951
+  google_maps: https://www.google.com/maps/place/Menya+NOBUNAGA%E3%80%90Ramen+Restaurant%E3%80%91/data=!4m2!3m1!1s0x60188b2c0c620f69:0xeb7000b4142a8f8f
+- id: mitsumine-shrine
+  name: Mitsumine Shrine
+  icon: torii
+  city: Tokyo
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.9472
+  lng: 139.6978
+  google_maps: https://www.google.com/maps/place/Mitsumine+Shrine/data=!4m2!3m1!1s0x6018bf51618d6769:0x804acaf45938c774
+- id: mulan-akiba-anime-store
+  name: Mulan Akiba - anime store
+  icon: shop
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.6993
+  lng: 139.7711
+  google_maps: https://www.google.com/maps/place/Mulan+Akiba+-+anime+store/data=!4m2!3m1!1s0x60188c1d08f1b007:0x85ae0041177e526a
+- id: nezu-jinja
+  name: Nezu-jinja
+  icon: torii
+  city: Tokyo
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.7202
+  lng: 139.7608
+  google_maps: https://www.google.com/maps/place/Nezu-jinja/data=!4m2!3m1!1s0x60188c32ce217ef9:0xc0a807378062b0d
+- id: nintendo-tokyo
+  name: Nintendo Tokyo
+  icon: gamepad
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.7181
+  lng: 139.7409
+  google_maps: https://www.google.com/maps/place/Nintendo+Tokyo/data=!4m2!3m1!1s0x60188dae14b52bed:0xca9863932bd4be02
+- id: nittele-tower
+  name: Nittele Tower
+  icon: tower
+  city: Tokyo
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.6644
+  lng: 139.7599
+  google_maps: https://www.google.com/maps/place/Nittele+Tower/data=!4m2!3m1!1s0x60188bc26398a6f5:0xcb9e218dde358658
+- id: onyado-nono-asakusa
+  name: Onyado Nono Asakusa
+  icon: pagoda
+  city: Tokyo
+  region: kanto
+  category: sleep
+  visited: false
+  lat: 35.7584
+  lng: 139.8471
+  google_maps: https://www.google.com/maps/place/Onyado+Nono+Asakusa/data=!4m2!3m1!1s0x60188f83a08ee31f:0x303b15ff8d16927e
+- id: oyoppi-coffee
+  name: Oyoppi Coffee
+  icon: cup
+  city: Tokyo
+  region: kanto
+  category: cafe
+  visited: false
+  lat: 35.7239
+  lng: 139.7092
+  google_maps: https://www.google.com/maps/place/Oyoppi+Coffee/data=!4m2!3m1!1s0x60188d4235a6b821:0xa561b1326aa94f05
+- id: pensta-ecute-ueno-cafe-area
+  name: Pensta ecute Ueno Cafe Area
+  icon: cup
+  city: Tokyo
+  region: kanto
+  category: cafe
+  visited: false
+  lat: 35.7309
+  lng: 139.838
+  google_maps: https://www.google.com/maps/place/Pensta+ecute+Ueno+Cafe+Area/data=!4m2!3m1!1s0x60188f41a00e3c3b:0x3741880bcd02835e
+- id: pokemon-center-skytree-town-solamachi-east-yard-
+  name: Pokémon Center Skytree Town Solamachi East Yard 4th floor
+  icon: pokeball
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.7101
+  lng: 139.8119
+  google_maps: https://www.google.com/maps/place/Pok%C3%A9mon+Center+Skytree+Town+Solamachi+East+Yard+4th+floor/data=!4m2!3m1!1s0x60188ed642bdabb7:0x7c29484dac68bc1d
+- id: pompompurin-cafe
+  name: Pompompurin Cafe
+  icon: cup
+  city: Tokyo
+  region: kanto
+  category: cafe
+  visited: false
+  lat: 35.7249
+  lng: 139.7583
+  google_maps: https://www.google.com/maps/place/Pompompurin+Cafe/data=!4m2!3m1!1s0x60188dcebbaacca5:0xdadd2287b356f0e1
+- id: sanctuaire-asakusa
+  name: Sanctuaire Asakusa
+  icon: torii
+  city: Tokyo
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.7147
+  lng: 139.7967
+  google_maps: https://www.google.com/maps/place/Sanctuaire+Asakusa/data=!4m2!3m1!1s0x60188ec1a4463df1:0x6c0d289a8292810d
+- id: sanrio-gift-gate-asakusa
+  name: Sanrio Gift Gate Asakusa
+  icon: shop
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.7446
+  lng: 139.8414
+  google_maps: https://www.google.com/maps/place/Sanrio+Gift+Gate+Asakusa/data=!4m2!3m1!1s0x60188f71c8c137d3:0x7d19e1f830cb2e1c
+- id: shibuya-loft
+  name: Shibuya Loft
+  icon: shop
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.6611
+  lng: 139.6996
+  google_maps: https://www.google.com/maps/place/Shibuya+Loft/data=!4m2!3m1!1s0x60188ca85add52bf:0xc942f69271e3b8b4
+- id: shibuya-scramble-crossing
+  name: Shibuya Scramble Crossing
+  icon: crossing
+  city: Tokyo
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.6457
+  lng: 139.7538
+  google_maps: https://www.google.com/maps/place/Shibuya+Scramble+Crossing/data=!4m2!3m1!1s0x60188bcaeb0cd12b:0x20e563a2e0aec969
+- id: shinjuku-golden-gai
+  name: Shinjuku Golden Gai
+  icon: lantern
+  city: Tokyo
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.694
+  lng: 139.7047
+  google_maps: https://www.google.com/maps/place/Shinjuku+Golden+Gai/data=!4m2!3m1!1s0x60188cd96586b9af:0x71a5c0e1150c1a8f
+- id: shiro-higes-cream-puff-factory
+  name: Shiro-Hige’s Cream Puff Factory
+  icon: cup
+  city: Tokyo
+  region: kanto
+  category: cafe
+  visited: false
+  lat: 35.659
+  lng: 139.6628
+  google_maps: https://www.google.com/maps/place/Shiro-Hige%E2%80%99s+Cream+Puff+Factory/data=!4m2!3m1!1s0x6018f36dcdd50f65:0x8465c5b484a16f18
+- id: shirohiges-cream-puff-factory-kichijoji
+  name: Shirohige’s Cream Puff Factory - Kichijoji
+  icon: cup
+  city: Tokyo
+  region: kanto
+  category: cafe
+  visited: false
+  lat: 35.7138
+  lng: 139.5371
+  google_maps: https://www.google.com/maps/place/Shirohige%E2%80%99s+Cream+Puff+Factory+-+Kichijoji/data=!4m2!3m1!1s0x6018ef6546f38b69:0x80bb8bdf086556f7
+- id: shofuku-den
+  name: Shofuku-den
+  icon: camera
+  city: Tokyo
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.6484
+  lng: 139.6471
+  google_maps: https://www.google.com/maps/place/Shofuku-den/data=!4m2!3m1!1s0x6018f39cc2cf33d3:0x37f548d85ea3e755
+- id: snoopy-museum-tokyo
+  name: Snoopy Museum Tokyo
+  icon: shop
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.6597
+  lng: 139.734
+  google_maps: https://www.google.com/maps/place/Snoopy+Museum+Tokyo/data=!4m2!3m1!1s0x60188b9dd0d97ed3:0x7c0f44073a3c60ce
+- id: statue-of-suica-penguin
+  name: Statue of Suica Penguin
+  icon: camera
+  city: Tokyo
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.6879
+  lng: 139.7011
+  google_maps: https://www.google.com/maps/place/Statue+of+Suica+Penguin/data=!4m2!3m1!1s0x60188cd0060db283:0x84cef84c1ae74371
+- id: straw-hat-cafe-ghibli-museum-cafe
+  name: Straw Hat Cafe (Ghibli Museum Cafe)
+  icon: acorn
+  city: Tokyo
+  region: kanto
+  category: cafe
+  visited: false
+  lat: 35.6963
+  lng: 139.5705
+  google_maps: https://www.google.com/maps/place/Straw+Hat+Cafe+(Ghibli+Museum+Cafe)/data=!4m2!3m1!1s0x6018ee34e5038c2d:0x409d8ffa1d645ffb
+- id: suica-penguin-park
+  name: Suica Penguin Park
+  icon: garden
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.6881
+  lng: 139.701
+  google_maps: https://www.google.com/maps/place/Suica+Penguin+Park/data=!4m2!3m1!1s0x60188cd00f35fb67:0xf7ea00dacc8a314
+- id: sunshine-city
+  name: Sunshine city
+  icon: ticket
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.7299
+  lng: 139.7183
+  google_maps: https://www.google.com/maps/place/Sunshine+city/data=!4m2!3m1!1s0x60188d6f134fd653:0x51eb1d42c77222c2
+- id: surugaya-kashiwaaobadaiten
+  name: Surugaya Kashiwaaobadaiten
+  icon: ticket
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.7792
+  lng: 139.9381
+  google_maps: https://www.google.com/maps/place/Surugaya+Kashiwaaobadaiten/data=!4m2!3m1!1s0x60188389b8ea0e9d:0xfcb728bbc1557a46
+- id: surugaya-tsudanuma-beat-store
+  name: Surugaya Tsudanuma Beat Store
+  icon: shop
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.686
+  lng: 140.0963
+  google_maps: https://www.google.com/maps/place/Surugaya+Tsudanuma+Beat+Store/data=!4m2!3m1!1s0x6022814bda848d6f:0xb53d3b1973cad815
+- id: sweet-check
+  name: Sweet Check
+  icon: ramen
+  city: Tokyo
+  region: kanto
+  category: food
+  visited: false
+  lat: 35.6353
+  lng: 139.7309
+  google_maps: https://www.google.com/maps/place/Sweet+Check/data=!4m2!3m1!1s0x60188b001ee3404f:0x79d3f6d78f544eb2
+- id: takagi-shrine
+  name: Takagi Shrine
+  icon: torii
+  city: Tokyo
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.7148
+  lng: 139.8152
+  google_maps: https://www.google.com/maps/place/Takagi+Shrine/data=!4m2!3m1!1s0x60188f28750a0deb:0xc549af68dc938c28
+- id: the-gundam-base-tokyo
+  name: The Gundam Base Tokyo
+  icon: bridge
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.6251
+  lng: 139.7754
+  google_maps: https://www.google.com/maps/place/The+Gundam+Base+Tokyo/data=!4m2!3m1!1s0x601889f9d3522d23:0xf850caf38214ddd9
+- id: tokyo-daibutsu
+  name: Tokyo Daibutsu
+  icon: daibutsu
+  city: Tokyo
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.782
+  lng: 139.6446
+  google_maps: https://www.google.com/maps/place/Tokyo+Daibutsu/data=!4m2!3m1!1s0x6018ec78d08f3dd1:0x712d4e6ed72409f4
+- id: tokyo-metropolitan-government-building-north-obs
+  name: Tokyo Metropolitan Government Building North Observation Deck
+  icon: camera
+  city: Tokyo
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.6895
+  lng: 139.6917
+  google_maps: https://www.google.com/maps/place/Tokyo+Metropolitan+Government+Building+North+Observation+Deck/data=!4m2!3m1!1s0x60188cd4c86bcb9d:0xe5b1c573920cfe2e
+- id: tokyo-metropolitan-government-building-south-obs
+  name: Tokyo Metropolitan Government Building South Observatory
+  icon: camera
+  city: Tokyo
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.7526
+  lng: 139.7615
+  google_maps: https://www.google.com/maps/place/Tokyo+Metropolitan+Government+Building+South+Observatory/data=!4m2!3m1!1s0x60188df0b64849fd:0x88b1056bc74c533f
+- id: uguisu-to-kokuu
+  name: Uguisu to Kokuu
+  icon: cup
+  city: Tokyo
+  region: kanto
+  category: cafe
+  visited: false
+  lat: 35.7212
+  lng: 139.7129
+  google_maps: https://www.google.com/maps/place/Uguisu+to+Kokuu/data=!4m2!3m1!1s0x60188d6aecc50001:0x3e1370d64a00a9db
+- id: wagokoro
+  name: Wagokoro
+  icon: ramen
+  city: Tokyo
+  region: kanto
+  category: food
+  visited: false
+  lat: 35.8875
+  lng: 139.4524
+  google_maps: https://www.google.com/maps/place/Wagokoro/data=!4m2!3m1!1s0x6018dbd36f0a4a55:0x18564ddf2b0bd86f
+- id: animate-ikebukuro-main-store
+  name: animate Ikebukuro main store
+  icon: shop
+  city: Tokyo
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.7301
+  lng: 139.7176
+  google_maps: https://www.google.com/maps/place/animate+Ikebukuro+main+store/data=!4m2!3m1!1s0x60188d6f4361458b:0x503df2e68ddac61a
+- id: cafe-capyba
+  name: cafe capyba
+  icon: cup
+  city: Tokyo
+  region: kanto
+  category: cafe
+  visited: false
+  lat: 35.7853
+  lng: 139.8467
+  google_maps: https://www.google.com/maps/place/cafe+capyba/data=!4m2!3m1!1s0x60188ffb05ce722b:0x15433a48ee4af1fe
+- id: viewpoint-p383
+  name:
+    fr: Point de vue près de Tokyo
+    en: Viewpoint near Tokyo
+  icon: camera
+  city: Tokyo
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.7384
+  lng: 139.8782
+  google_maps: https://www.google.com/maps/search/35.73838,139.878194
+- id: p382
+  name: ルマ・いなりや
+  icon: ramen
+  city: Tokyo
+  region: kanto
+  category: food
+  visited: false
+  lat: 35.7268
+  lng: 139.8013
+  google_maps: https://www.google.com/maps/place/%E3%83%AB%E3%83%9E%E3%83%BB%E3%81%84%E3%81%AA%E3%82%8A%E3%82%84/data=!4m2!3m1!1s0x60188eefcc1a560b:0x4b13c6b91e9f2519
+- id: bookoff-plus-yokohama-isezakimall-store
+  name: BOOKOFF PLUS Yokohama Isezakimall Store
+  icon: shop
+  city: Yokohama
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.4442
+  lng: 139.6322
+  google_maps: https://www.google.com/maps/place/BOOKOFF+PLUS+Yokohama+Isezakimall+Store/data=!4m2!3m1!1s0x60185cf486980f3b:0x5d46b433c16f385
+- id: machida-squirrel-garden
+  name: Machida Squirrel Garden
+  icon: garden
+  city: Yokohama
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.5781
+  lng: 139.4497
+  google_maps: https://www.google.com/maps/place/Machida+Squirrel+Garden/data=!4m2!3m1!1s0x6018fb8b183d370d:0xfb901826db30cd3
+- id: suruga-ya-marui-city-yokohama-store
+  name: SURUGA-YA Marui city Yokohama Store
+  icon: shop
+  city: Yokohama
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.4797
+  lng: 139.6782
+  google_maps: https://www.google.com/maps/place/SURUGA-YA+Marui+city+Yokohama+Store/data=!4m2!3m1!1s0x60185d91745916e9:0x7e43d9fa39ca68af
+- id: sanrio-puroland
+  name: Sanrio Puroland
+  icon: shop
+  city: Yokohama
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.6246
+  lng: 139.4292
+  google_maps: https://www.google.com/maps/place/Sanrio+Puroland/data=!4m2!3m1!1s0x6018e34b221ad081:0xf0aaab4654086855
+- id: p428
+  name: 開運風水花文字屋
+  icon: camera
+  city: Yokohama
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.4539
+  lng: 139.6504
+  google_maps: https://www.google.com/maps/place/%E9%96%8B%E9%81%8B%E9%A2%A8%E6%B0%B4%E8%8A%B1%E6%96%87%E5%AD%97%E5%B1%8B/data=!4m2!3m1!1s0x60185d00283453c7:0xa15e4e23ba9a4e73
+- id: motomachi-hama-no-yu-onsen
+  name: Motomachi Hama-no-yu Onsen
+  icon: onsen
+  city: près de Hakone
+  region: kanto
+  category: activity
+  visited: false
+  lat: 34.7547
+  lng: 139.3526
+  google_maps: https://www.google.com/maps/place/Motomachi+Hama-no-yu+Onsen/data=!4m2!3m1!1s0x6017788e32a3bfe7:0x9d0ee1b2d4c7db9
+- id: chichibu-festival-museum
+  name: Chichibu Festival Museum
+  icon: museum
+  city: près de Kawaguchiko
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.9973
+  lng: 139.0853
+  google_maps: https://www.google.com/maps/place/Chichibu+Festival+Museum/data=!4m2!3m1!1s0x601ec97eea345701:0x3f5a3e37554d3b25
+- id: kongobu-ji-okuno-in
+  name: Kongobu-ji Okuno-in
+  icon: temple
+  city: près de Kawaguchiko
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.7796
+  lng: 139.1417
+  google_maps: https://www.google.com/maps/place/Kongobu-ji+Okuno-in/data=!4m2!3m1!1s0x60193a3fee08dd65:0x3fe6da54f7be015e
+- id: musashi-mitake-shrine
+  name: Musashi Mitake Shrine
+  icon: torii
+  city: près de Kawaguchiko
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.7829
+  lng: 139.1499
+  google_maps: https://www.google.com/maps/place/Musashi+Mitake+Shrine/data=!4m2!3m1!1s0x60193a4261d3f243:0xd3e32817d29f7ede
+- id: sagamiko-mori-mori
+  name: Sagamiko MORI MORI
+  icon: ticket
+  city: près de Kawaguchiko
+  region: kanto
+  category: activity
+  visited: false
+  lat: 35.6028
+  lng: 139.2009
+  google_maps: https://www.google.com/maps/place/Sagamiko+MORI+MORI/data=!4m2!3m1!1s0x601910aaddd473c9:0x24fd193c95589f5d
+- id: amabikisan-rakuhoji-amabiki-kannon
+  name: Amabikisan Rakuhōji (Amabiki Kannon)
+  icon: temple
+  city: près de Nikko
+  region: kanto
+  category: see
+  visited: false
+  lat: 36.3309
+  lng: 140.1208
+  google_maps: https://www.google.com/maps/place/Amabikisan+Rakuh%C5%8Dji+(Amabiki+Kannon)/data=!4m2!3m1!1s0x60220212b98dee3b:0x4c91b7bdfba9db7
+- id: parc-hitachi
+  name: Parc Hitachi
+  icon: garden
+  city: près de Nikko
+  region: kanto
+  category: photo
+  visited: false
+  lat: 36.4794
+  lng: 140.3762
+  google_maps: https://www.google.com/maps/place/Parc+Hitachi/data=!4m2!3m1!1s0x60218b1d845e4441:0x767e1dea03e6f0e1
+- id: takaragawa-onsen-osenkaku
+  name: Takaragawa Onsen Osenkaku
+  icon: onsen
+  city: près de Nikko
+  region: kanto
+  category: activity
+  visited: false
+  lat: 36.8478
+  lng: 139.0478
+  google_maps: https://www.google.com/maps/place/Takaragawa+Onsen+Osenkaku/data=!4m2!3m1!1s0x601e3dfdbe3914d5:0xe7aa52d74d33b2c4
+- id: tanigawadake-joch-by-hoshino-resorts
+  name: Tanigawadake Joch by Hoshino Resorts
+  icon: pagoda
+  city: près de Nikko
+  region: kanto
+  category: sleep
+  visited: false
+  lat: 36.8368
+  lng: 138.9628
+  google_maps: https://www.google.com/maps/place/Tanigawadake+Joch+by+Hoshino+Resorts/data=!4m2!3m1!1s0x601e16cd0bf42c25:0x7c3ab1c47cbc1897
+- id: hiyodori-zaka
+  name: Hiyodori-Zaka
+  icon: lantern
+  city: près de Tokyo
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.7168
+  lng: 140.2222
+  google_maps: https://www.google.com/maps/place/Hiyodori-Zaka/data=!4m2!3m1!1s0x60228f2a4a0497fd:0x47556bfc9c3c5b30
+- id: kashima-jingu-shrine
+  name: Kashima Jingu Shrine
+  icon: torii
+  city: près de Tokyo
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.9691
+  lng: 140.631
+  google_maps: https://www.google.com/maps/place/Kashima+Jingu+Shrine/data=!4m2!3m1!1s0x602255996c6b2ecf:0x85605a5cdf5f7178
+- id: mitarashi-pond
+  name: Mitarashi Pond
+  icon: lake
+  city: près de Tokyo
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.9873
+  lng: 140.6596
+  google_maps: https://www.google.com/maps/place/Mitarashi+Pond/data=!4m2!3m1!1s0x6022553e3dd2786f:0x72e31b588c55a324
+- id: sakura
+  name: Sakura
+  icon: flower
+  city: près de Tokyo
+  region: kanto
+  category: photo
+  visited: false
+  lat: 35.6956
+  lng: 140.2136
+  google_maps: https://www.google.com/maps/place/Sakura/data=!4m2!3m1!1s0x60228f177a622135:0x594dfbed85ea5209
+- id: ushiku-daibutsu-le-grand-bouddha-d-ushiku
+  name: Ushiku Daibutsu (Le Grand Bouddha d'Ushiku)
+  icon: daibutsu
+  city: près de Tokyo
+  region: kanto
+  category: see
+  visited: false
+  lat: 35.9811
+  lng: 140.2215
+  google_maps: https://www.google.com/maps/place/Ushiku+Daibutsu+(Le+Grand+Bouddha+d'Ushiku)/data=!4m2!3m1!1s0x60226e543640efe3:0xc2375d4a48bd8b4b
+- id: acorn-republic-donguri-kyowakoku-ghibli-store
+  name: Acorn Republic - Donguri Kyowakoku (Ghibli Store)
+  icon: acorn
+  city: près de Yamagata
+  region: kanto
+  category: activity
+  visited: false
+  lat: 37.9173
+  lng: 139.0564
+  google_maps: https://www.google.com/maps/place/Acorn+Republic+-+Donguri+Kyowakoku+(Ghibli+Store)/data=!4m2!3m1!1s0x5ff4c98d92562a31:0x40f9b155ab081e50
+- id: chateau-de-kanazawa
+  name: Château de Kanazawa
+  icon: castle
+  city: Kanazawa
+  region: chubu
+  category: see
+  visited: true
+  lat: 36.564
+  lng: 136.6595
+  google_maps: https://www.google.com/maps/place/Ch%C3%A2teau+de+Kanazawa/data=!4m2!3m1!1s0x5ff833823df14795:0xa827189e97e61e4a
+- id: higashi-chaya-district
+  name: Higashi Chaya District
+  icon: lantern
+  city: Kanazawa
+  region: chubu
+  category: see
+  visited: true
+  lat: 36.5726
+  lng: 136.6665
+  google_maps: https://www.google.com/maps/place/Higashi+Chaya+District/data=!4m2!3m1!1s0x5ff83374a1baf0b1:0xbb8c7a215e6a0d74
+- id: myouryuji-ninja-temple
+  name: Myouryuji (Ninja Temple)
+  icon: temple
+  city: Kanazawa
+  region: chubu
+  category: see
+  visited: true
+  lat: 36.5554
+  lng: 136.649
+  google_maps: https://www.google.com/maps/place/Myouryuji+(Ninja+Temple)/data=!4m2!3m1!1s0x5ff8347b5ceb82b9:0x1e04e87b774b8d19
+- id: nishi-chayagai
+  name: Nishi-Chayagai
+  icon: lantern
+  city: Kanazawa
+  region: chubu
+  category: see
+  visited: true
+  lat: 36.5568
+  lng: 136.6473
+  google_maps: https://www.google.com/maps/place/Nishi-Chayagai/data=!4m2!3m1!1s0x5ff8347cef56960f:0x707f75259869e965
+- id: 2nd-street-nonoichi-honmachi
+  name: 2nd Street Nonoichi Honmachi
+  icon: lantern
+  city: Kanazawa
+  region: chubu
+  category: activity
+  visited: false
+  lat: 36.533
+  lng: 136.6061
+  google_maps: https://www.google.com/maps/place/2nd+Street+Nonoichi+Honmachi/data=!4m2!3m1!1s0x5ff835a34048e44b:0x5dd4094fb28df77
+- id: motorcar-museum-of-japan
+  name: Motorcar Museum of Japan
+  icon: museum
+  city: Kanazawa
+  region: chubu
+  category: activity
+  visited: false
+  lat: 36.3343
+  lng: 136.4304
+  google_maps: https://www.google.com/maps/place/Motorcar+Museum+of+Japan/data=!4m2!3m1!1s0x5ff8584a19bebd93:0x7c486a7bf19eda3a
+- id: ninja-weapon-museum
+  name: Ninja Weapon Museum
+  icon: museum
+  city: Kanazawa
+  region: chubu
+  category: activity
+  visited: false
+  lat: 36.559
+  lng: 136.5728
+  google_maps: https://www.google.com/maps/place/Ninja+Weapon+Museum/data=!4m2!3m1!1s0x5ff8352c4272b4fd:0x1994779b4497b330
+- id: chichibu-tama-kai-national-park
+  name: Chichibu-Tama-Kai National Park
+  icon: garden
+  city: Kawaguchiko
+  region: chubu
+  category: activity
+  visited: false
+  lat: 35.8531
+  lng: 138.862
+  google_maps: https://www.google.com/maps/place/Chichibu-Tama-Kai+National+Park/data=!4m2!3m1!1s0x601ead6cf3fca6ff:0xf128abe5667754aa
+- id: five-steps-and-seven-pools-falls
+  name: Five Steps and Seven Pools Falls
+  icon: waterfall
+  city: Kawaguchiko
+  region: chubu
+  category: photo
+  visited: false
+  lat: 35.863
+  lng: 138.7547
+  google_maps: https://www.google.com/maps/place/Five+Steps+and+Seven+Pools+Falls/data=!4m2!3m1!1s0x601ea9838c155067:0x7c5fe81b13eabd77
+- id: anraku-ji
+  name: Anraku-ji
+  icon: temple
+  city: Matsumoto
+  region: chubu
+  category: see
+  visited: false
+  lat: 36.3522
+  lng: 138.1531
+  google_maps: https://www.google.com/maps/place/Anraku-ji/data=!4m2!3m1!1s0x601da164cce49181:0x1fd90456d61d476f
+- id: bessho-onsen
+  name: Bessho Onsen
+  icon: onsen
+  city: Matsumoto
+  region: chubu
+  category: activity
+  visited: false
+  lat: 36.353
+  lng: 138.1618
+  google_maps: https://www.google.com/maps/place/Bessho+Onsen/data=!4m2!3m1!1s0x601da3d8e5b67ee7:0x5298cbb320144cdd
+- id: omiwa-jinja
+  name: Omiwa Jinja
+  icon: torii
+  city: Matsumoto
+  region: chubu
+  category: see
+  visited: false
+  lat: 35.9861
+  lng: 137.9907
+  google_maps: https://www.google.com/maps/place/Omiwa+Jinja/data=!4m2!3m1!1s0x601cfc17fc692b61:0xbb3334d79bfc028a
+- id: former-oshi-station
+  name: Former Ōshi Station
+  icon: train
+  city: Nagano
+  region: chubu
+  category: see
+  visited: true
+  lat: 36.586
+  lng: 138.624
+  google_maps: https://www.google.com/maps/place/Former+%C5%8Cshi+Station/data=!4m2!3m1!1s0x601dddee7e52caed:0x4f67b6acfc562539
+- id: kusatsu-onsen-netsunoyu
+  name: Kusatsu Onsen Netsunoyu
+  icon: onsen
+  city: Nagano
+  region: chubu
+  category: activity
+  visited: true
+  lat: 36.6228
+  lng: 138.5963
+  google_maps: https://www.google.com/maps/place/Kusatsu+Onsen+Netsunoyu/data=!4m2!3m1!1s0x601de6551dfaa637:0xd2861bc16b57d111
+- id: kosenji-temple
+  name: Kōsenji Temple
+  icon: temple
+  city: Nagano
+  region: chubu
+  category: see
+  visited: true
+  lat: 36.6223
+  lng: 138.5951
+  google_maps: https://www.google.com/maps/place/K%C5%8Dsenji+Temple/data=!4m2!3m1!1s0x601de654ecb62901:0xd0b2047673d424df
+- id: neko-machi-eki-sha-cat-station-cafe-bar
+  name: Neko Machi Eki Sha Cat Station cafe & bar
+  icon: cup
+  city: Nagano
+  region: chubu
+  category: cafe
+  visited: true
+  lat: 36.6183
+  lng: 138.2551
+  google_maps: https://www.google.com/maps/place/Neko+Machi+Eki+Sha+Cat+Station+cafe+%26+bar/data=!4m2!3m1!1s0x601d8f9e6f0acba9:0xafddb61d73d85ee1
+- id: sainokawara-st
+  name: Sainokawara St
+  icon: camera
+  city: Nagano
+  region: chubu
+  category: see
+  visited: true
+  lat: 36.623
+  lng: 138.5965
+  google_maps: https://www.google.com/maps/place/Sainokawara+St/data=!4m2!3m1!1s0x601de6551ceeff33:0xd07c518595053a79
+- id: torihiko
+  name: Torihiko
+  icon: ramen
+  city: Nagano
+  region: chubu
+  category: food
+  visited: true
+  lat: 36.6222
+  lng: 138.5977
+  google_maps: https://www.google.com/maps/place/Torihiko/data=!4m2!3m1!1s0x601de655497d3319:0x842635b4a6c6bed0
+- id: ueda-castle-ruins
+  name: Ueda Castle Ruins
+  icon: castle
+  city: Nagano
+  region: chubu
+  category: see
+  visited: true
+  lat: 36.4032
+  lng: 138.2442
+  google_maps: https://www.google.com/maps/place/Ueda+Castle+Ruins/data=!4m2!3m1!1s0x601dbd2bdf3473eb:0x10205cdbc0abe7d8
+- id: yanagimachi-historic-street
+  name: Yanagimachi Historic Street
+  icon: lantern
+  city: Nagano
+  region: chubu
+  category: see
+  visited: true
+  lat: 36.4076
+  lng: 138.2533
+  google_maps: https://www.google.com/maps/place/Yanagimachi+Historic+Street/data=!4m2!3m1!1s0x601dbd26beb377ad:0x60f861db34aaab0
+- id: zenko-ji
+  name: Zenkō-ji
+  icon: temple
+  city: Nagano
+  region: chubu
+  category: see
+  visited: true
+  lat: 36.6616
+  lng: 138.1877
+  google_maps: https://www.google.com/maps/place/Zenk%C5%8D-ji/data=!4m2!3m1!1s0x601d86e28d762787:0xf4fa99fb61340f2e
+- id: viewpoint-p168
+  name:
+    fr: Point de vue près de Nagano
+    en: Viewpoint near Nagano
+  icon: camera
+  city: Nagano
+  region: chubu
+  category: photo
+  visited: true
+  lat: 36.6179
+  lng: 138.601
+  google_maps: https://www.google.com/maps/search/36.617906,138.601014
+- id: heiando-wakatsukiten
+  name: Heiando Wakatsukiten
+  icon: ramen
+  city: Nagano
+  region: chubu
+  category: food
+  visited: false
+  lat: 36.6753
+  lng: 138.2177
+  google_maps: https://www.google.com/maps/place/Heiando+Wakatsukiten/data=!4m2!3m1!1s0x601d864acd75b9fd:0xacb9cbeed44be066
+- id: highest-point-of-japans-national-routes
+  name: Highest Point of Japan’s National Routes
+  icon: camera
+  city: Nagano
+  region: chubu
+  category: photo
+  visited: false
+  lat: 36.6908
+  lng: 138.5412
+  google_maps: https://www.google.com/maps/place/Highest+Point+of+Japan%E2%80%99s+National+Routes/data=!4m2!3m1!1s0x601defebb3338ce9:0x62b687f3b97e3a87
+- id: jigokudani-yaen-koen
+  name: Jigokudani Yaen-Koen
+  icon: monkey
+  city: Nagano
+  region: chubu
+  category: activity
+  visited: false
+  lat: 36.7326
+  lng: 138.4622
+  google_maps: https://www.google.com/maps/place/Jigokudani+Yaen-Koen/data=!4m2!3m1!1s0x601df3ec4ca220cf:0xf64d8b73ef8dd61f
+- id: matsushiro-castle-ruins
+  name: Matsushiro Castle Ruins
+  icon: castle
+  city: Nagano
+  region: chubu
+  category: see
+  visited: false
+  lat: 36.5655
+  lng: 138.1964
+  google_maps: https://www.google.com/maps/place/Matsushiro+Castle+Ruins/data=!4m2!3m1!1s0x601d84d6e33c441b:0x6b82fd8e8aeba971
+- id: obasute-rice-terraces
+  name: Obasute Rice Terraces
+  icon: terraces
+  city: Nagano
+  region: chubu
+  category: photo
+  visited: false
+  lat: 36.4597
+  lng: 138.1071
+  google_maps: https://www.google.com/maps/place/Obasute+Rice+Terraces/data=!4m2!3m1!1s0x601d9dc4faadfced:0x6e4fd53ce7b42243
+- id: yugama-observation-deck
+  name: Yugama Observation Deck
+  icon: camera
+  city: Nagano
+  region: chubu
+  category: photo
+  visited: false
+  lat: 36.631
+  lng: 138.5192
+  google_maps: https://www.google.com/maps/place/Yugama+Observation+Deck/data=!4m2!3m1!1s0x601def29d04dac55:0x171f61e0ce47afdd
+- id: viewpoint-p169
+  name:
+    fr: Point de vue près de Nagano
+    en: Viewpoint near Nagano
+  icon: camera
+  city: Nagano
+  region: chubu
+  category: photo
+  visited: false
+  lat: 36.6451
+  lng: 138.1881
+  google_maps: https://www.google.com/maps/search/36.645119,138.188042
+- id: n-a-n-a-k-u-s-a
+  name: 蕎麦茶寮 n a n a k u s a
+  icon: ramen
+  city: Nagano
+  region: chubu
+  category: food
+  visited: false
+  lat: 36.5676
+  lng: 138.5967
+  google_maps: https://www.google.com/maps/place/%E8%95%8E%E9%BA%A6%E8%8C%B6%E5%AF%AE+n+a+n+a+k+u+s+a/data=!4m2!3m1!1s0x601ddd0ad33b8c2f:0x37087bbc099520f2
+- id: ghibli-park
+  name: Ghibli Park
+  icon: acorn
+  city: Nagoya
+  region: chubu
+  category: activity
+  visited: true
+  lat: 35.1727
+  lng: 137.1243
+  google_maps: https://www.google.com/maps/place/Ghibli+Park/data=!4m2!3m1!1s0x600367450203d0b3:0x36164b7a69c5128b
+- id: kiyosu-castle
+  name: Kiyosu Castle
+  icon: castle
+  city: Nagoya
+  region: chubu
+  category: see
+  visited: true
+  lat: 35.2166
+  lng: 136.8436
+  google_maps: https://www.google.com/maps/place/Kiyosu+Castle/data=!4m2!3m1!1s0x6003759f94fdbe47:0x98129958fb4d1754
+- id: nagoya-great-buddha-temple
+  name: Nagoya Great Buddha Temple
+  icon: daibutsu
+  city: Nagoya
+  region: chubu
+  category: see
+  visited: true
+  lat: 35.1615
+  lng: 136.9651
+  google_maps: https://www.google.com/maps/place/Nagoya+Great+Buddha+Temple/data=!4m2!3m1!1s0x60037aa0d8eeaaab:0x7da60af40a22b3d3
+- id: oasis-21
+  name: Oasis 21
+  icon: camera
+  city: Nagoya
+  region: chubu
+  category: photo
+  visited: true
+  lat: 35.1717
+  lng: 136.9077
+  google_maps: https://www.google.com/maps/place/Oasis+21/data=!4m2!3m1!1s0x600370d429e2994f:0x54bee562b7bb83d6
+- id: chateau-de-nagoya
+  name: Château de Nagoya
+  icon: castle
+  city: Nagoya
+  region: chubu
+  category: see
+  visited: false
+  lat: 35.1855
+  lng: 136.8991
+  google_maps: https://www.google.com/maps/place/Ch%C3%A2teau+de+Nagoya/data=!4m2!3m1!1s0x600376cbc7b0efb1:0xb9d3e9789275a677
+- id: higashiyama-sky-tower
+  name: Higashiyama Sky Tower
+  icon: tower
+  city: Nagoya
+  region: chubu
+  category: photo
+  visited: false
+  lat: 35.1567
+  lng: 136.9788
+  google_maps: https://www.google.com/maps/place/Higashiyama+Sky+Tower/data=!4m2!3m1!1s0x60037ab3657a15cb:0xcd81097b1fd5a58b
+- id: ote-bridge
+  name: Ote Bridge
+  icon: bridge
+  city: Nagoya
+  region: chubu
+  category: photo
+  visited: false
+  lat: 35.2237
+  lng: 136.8603
+  google_maps: https://www.google.com/maps/place/Ote+Bridge/data=!4m2!3m1!1s0x600375aa38e74f6d:0x9110d9bb5910d8e6
+- id: pokemon-center-nagoya
+  name: Pokémon Center Nagoya
+  icon: pokeball
+  city: Nagoya
+  region: chubu
+  category: activity
+  visited: false
+  lat: 35.1653
+  lng: 136.9079
+  google_maps: https://www.google.com/maps/place/Pok%C3%A9mon+Center+Nagoya/data=!4m2!3m1!1s0x600370ce01bcdc31:0xc2b67c85d9a0344d
+- id: scmaglev-and-railway-park
+  name: SCMaglev and Railway Park
+  icon: train
+  city: Nagoya
+  region: chubu
+  category: activity
+  visited: false
+  lat: 35.0492
+  lng: 136.8509
+  google_maps: https://www.google.com/maps/place/SCMaglev+and+Railway+Park/data=!4m2!3m1!1s0x600378cf145b6ef5:0x4ce8b46a9c94b392
+- id: shoho-ji
+  name: Shōhō-ji
+  icon: temple
+  city: Nagoya
+  region: chubu
+  category: see
+  visited: false
+  lat: 35.4328
+  lng: 136.7718
+  google_maps: https://www.google.com/maps/place/Sh%C5%8Dh%C5%8D-ji/data=!4m2!3m1!1s0x6003a9615719044b:0x654d10fc6b0a98d8
+- id: ainokura-gassho-zukuri-village
+  name: Ainokura Gassho-zukuri Village
+  icon: house
+  city: Shirakawa-go
+  region: chubu
+  category: see
+  visited: true
+  lat: 36.4256
+  lng: 136.9357
+  google_maps: https://www.google.com/maps/place/Ainokura+Gassho-zukuri+Village/data=!4m2!3m1!1s0x5ff8160e4e64e5b1:0x551a2b91cc7a027a
+- id: villages-historiques-de-shirakawa-go-et-gokayama
+  name: Villages historiques de Shirakawa-gō et Gokayama
+  icon: house
+  city: Shirakawa-go
+  region: chubu
+  category: see
+  visited: true
+  lat: 36.2565
+  lng: 136.9027
+  google_maps: https://www.google.com/maps/place/Villages+historiques+de+Shirakawa-g%C5%8D+et+Gokayama/data=!4m2!3m1!1s0x5ff871b0b6bf25e7:0xccc551bb9d5805f8
+- id: world-heritage-suganuma-gassho-zukuri-village
+  name: World Heritage Suganuma Gassho-zukuri Village
+  icon: house
+  city: Shirakawa-go
+  region: chubu
+  category: see
+  visited: true
+  lat: 36.4048
+  lng: 136.8863
+  google_maps: https://www.google.com/maps/place/World+Heritage+Suganuma+Gassho-zukuri+Village/data=!4m2!3m1!1s0x5ff81577c1f552a9:0x811f2b62feca4dd0
+- id: shinhotaka-ropeway
+  name: Shinhotaka Ropeway
+  icon: cablecar
+  city: Takayama
+  region: chubu
+  category: activity
+  visited: true
+  lat: 36.2732
+  lng: 137.5836
+  google_maps: https://www.google.com/maps/place/Shinhotaka+Ropeway/data=!4m2!3m1!1s0x601d4fbef31e402d:0xd947f0f7e55e1d91
+- id: village-folklorique-de-hida-no-sato
+  name: Village folklorique de Hida no Sato
+  icon: house
+  city: Takayama
+  region: chubu
+  category: see
+  visited: true
+  lat: 36.1318
+  lng: 137.2367
+  google_maps: https://www.google.com/maps/place/Village+folklorique+de+Hida+no+Sato/data=!4m2!3m1!1s0x6002bb39afd86499:0xd6a4b260c226fc44
+- id: viewpoint-p328
+  name:
+    fr: Point de vue près de Takayama
+    en: Viewpoint near Takayama
+  icon: camera
+  city: Takayama
+  region: chubu
+  category: photo
+  visited: true
+  lat: 36.1472
+  lng: 137.2559
+  google_maps: https://www.google.com/maps/search/36.147157,137.255929
+- id: viewpoint-p329
+  name:
+    fr: Point de vue près de Takayama
+    en: Viewpoint near Takayama
+  icon: camera
+  city: Takayama
+  region: chubu
+  category: photo
+  visited: true
+  lat: 36.2315
+  lng: 137.5325
+  google_maps: https://www.google.com/maps/search/36.231517,137.532519
+- id: gero-onsen-funsenchi
+  name: Gero Onsen Funsenchi
+  icon: onsen
+  city: Takayama
+  region: chubu
+  category: activity
+  visited: false
+  lat: 35.8074
+  lng: 137.2392
+  google_maps: https://www.google.com/maps/place/Gero+Onsen+Funsenchi/data=!4m2!3m1!1s0x6002dbb937ebb16f:0xddf878695f63ef6f
+- id: gero-onsen-gassho-mura
+  name: Gero Onsen Gassho-mura
+  icon: onsen
+  city: Takayama
+  region: chubu
+  category: activity
+  visited: false
+  lat: 35.8087
+  lng: 137.2505
+  google_maps: https://www.google.com/maps/place/Gero+Onsen+Gassho-mura/data=!4m2!3m1!1s0x6002dbca7bee52b1:0x15ceb1c533f5a12a
+- id: hirayu-waterfall
+  name: Hirayu Waterfall
+  icon: waterfall
+  city: Takayama
+  region: chubu
+  category: photo
+  visited: false
+  lat: 36.1819
+  lng: 137.5562
+  google_maps: https://www.google.com/maps/place/Hirayu+Waterfall/data=!4m2!3m1!1s0x601d490f9dec6c95:0xc96437ea33c9e06d
+- id: mont-norikura
+  name: Mont Norikura
+  icon: mountain
+  city: Takayama
+  region: chubu
+  category: photo
+  visited: false
+  lat: 36.1097
+  lng: 137.5489
+  google_maps: https://www.google.com/maps/place/Mont+Norikura/data=!4m2!3m1!1s0x601d3642cdd17563:0x84523816ece85342
+- id: utsue-48-waterfalls-trail-end-park
+  name: Utsue 48 Waterfalls Trail-end Park
+  icon: waterfall
+  city: Takayama
+  region: chubu
+  category: photo
+  visited: false
+  lat: 36.1859
+  lng: 137.1516
+  google_maps: https://www.google.com/maps/place/Utsue+48+Waterfalls+Trail-end+Park/data=!4m2!3m1!1s0x6002a1ede8f081cd:0xe25b9a7f56c161de
+- id: bonds-brew-beer-craft
+  name: ビアレストラン｜Bonds Brew beer craft
+  icon: ramen
+  city: Takayama
+  region: chubu
+  category: food
+  visited: false
+  lat: 36.1145
+  lng: 137.253
+  google_maps: https://www.google.com/maps/place/%E3%83%93%E3%82%A2%E3%83%AC%E3%82%B9%E3%83%88%E3%83%A9%E3%83%B3%EF%BD%9CBonds+Brew+beer+craft/data=!4m2!3m1!1s0x6002bb001b7ff1ab:0xf3e1509479037de7
+- id: chateau-de-komoro
+  name: Château de Komoro
+  icon: castle
+  city: près de Matsumoto
+  region: chubu
+  category: see
+  visited: true
+  lat: 36.3276
+  lng: 138.4184
+  google_maps: https://www.google.com/maps/place/Ch%C3%A2teau+de+Komoro/data=!4m2!3m1!1s0x601dc9ca7a5d3d05:0xaba37374b6c03895
+- id: viewpoint-p461
+  name:
+    fr: Point de vue près de Matsumoto
+    en: Viewpoint near Matsumoto
+  icon: camera
+  city: près de Matsumoto
+  region: chubu
+  category: photo
+  visited: true
+  lat: 36.2775
+  lng: 138.4669
+  google_maps: https://www.google.com/maps/search/36.277464,138.466951
+- id: sairaku-replus-saku-main-shop
+  name: Sairaku Replus Saku Main shop
+  icon: shop
+  city: près de Matsumoto
+  region: chubu
+  category: activity
+  visited: false
+  lat: 36.2555
+  lng: 138.4807
+  google_maps: https://www.google.com/maps/place/Sairaku+Replus+Saku+Main+shop/data=!4m2!3m1!1s0x601dcca852d82b27:0xca7b3f1fc1074a8c
+- id: takato-joshi-park
+  name: Takato Joshi Park
+  icon: garden
+  city: près de Matsumoto
+  region: chubu
+  category: photo
+  visited: false
+  lat: 35.833
+  lng: 138.062
+  google_maps: https://www.google.com/maps/place/Takato+Joshi+Park/data=!4m2!3m1!1s0x601cf595c1138bcd:0x1b138f9258b0cc6b
+- id: lake-shima
+  name: Lake Shima
+  icon: lake
+  city: près de Nagano
+  region: chubu
+  category: photo
+  visited: true
+  lat: 36.6213
+  lng: 138.7958
+  google_maps: https://www.google.com/maps/place/Lake+Shima/data=!4m2!3m1!1s0x601e7476ea1fbcb9:0x5441df8063975043
+- id: shima-onsen
+  name: Shima Onsen
+  icon: onsen
+  city: près de Nagano
+  region: chubu
+  category: activity
+  visited: true
+  lat: 36.6832
+  lng: 138.7769
+  google_maps: https://www.google.com/maps/place/Shima+Onsen/data=!4m2!3m1!1s0x601e0b148826471b:0xeecf8451d74717f8
+- id: studio-ghibli-gift-shop
+  name: Studio Ghibli Gift Shop
+  icon: acorn
+  city: près de Nagano
+  region: chubu
+  category: activity
+  visited: true
+  lat: 36.3591
+  lng: 138.6359
+  google_maps: https://www.google.com/maps/place/Studio+Ghibli+Gift+Shop/data=!4m2!3m1!1s0x601dd3862830356b:0xacff66559c907f80
+- id: historic-mikasa-hotel-c-1906
+  name: Historic Mikasa Hotel - c.1906
+  icon: camera
+  city: près de Nagano
+  region: chubu
+  category: see
+  visited: false
+  lat: 36.3732
+  lng: 138.6262
+  google_maps: https://www.google.com/maps/place/Historic+Mikasa+Hotel+-+c.1906/data=!4m2!3m1!1s0x601dd3e58054059f:0x333144975b8bd869
+- id: karuizawa-st-paul-s-catholic-church
+  name: Karuizawa St. Paul's Catholic Church
+  icon: camera
+  city: près de Nagano
+  region: chubu
+  category: see
+  visited: false
+  lat: 36.3597
+  lng: 138.6341
+  google_maps: https://www.google.com/maps/place/Karuizawa+St.+Paul's+Catholic+Church/data=!4m2!3m1!1s0x601dd388cbece41f:0x257250fb3056cc84
+- id: keiun-bridge
+  name: Keiun Bridge
+  icon: bridge
+  city: près de Nagano
+  region: chubu
+  category: photo
+  visited: false
+  lat: 36.6641
+  lng: 138.7658
+  google_maps: https://www.google.com/maps/place/Keiun+Bridge/data=!4m2!3m1!1s0x601e0b2f17143ba9:0x51927cbd60e0e8ff
+- id: kumoba-pond
+  name: Kumoba Pond
+  icon: lake
+  city: près de Nagano
+  region: chubu
+  category: photo
+  visited: false
+  lat: 36.3521
+  lng: 138.6269
+  google_maps: https://www.google.com/maps/place/Kumoba+Pond/data=!4m2!3m1!1s0x601dd39b0da1b2ed:0x8af93ffd7d16f241
+- id: ryugaeshi-falls
+  name: Ryugaeshi Falls
+  icon: waterfall
+  city: près de Nagano
+  region: chubu
+  category: photo
+  visited: false
+  lat: 36.3894
+  lng: 138.6133
+  google_maps: https://www.google.com/maps/place/Ryugaeshi+Falls/data=!4m2!3m1!1s0x601dd16eb0fa36a9:0xa175db93b6e86cc2
+- id: snoopy-village
+  name: SNOOPY Village 軽井沢店
+  icon: shop
+  city: près de Nagano
+  region: chubu
+  category: activity
+  visited: false
+  lat: 36.3508
+  lng: 138.6255
+  google_maps: https://www.google.com/maps/place/SNOOPY+Village+%E8%BB%BD%E4%BA%95%E6%B2%A2%E5%BA%97/data=!4m2!3m1!1s0x601dd39b8e3bb07b:0xfdea99205bd71d8
+- id: shiraito-waterfall
+  name: Shiraito Waterfall
+  icon: waterfall
+  city: près de Nagano
+  region: chubu
+  category: photo
+  visited: false
+  lat: 36.5519
+  lng: 138.7106
+  google_maps: https://www.google.com/maps/place/Shiraito+Waterfall/data=!4m2!3m1!1s0x601dd8a5693d8b15:0xbddaade888287ab2
+- id: kannon-teahouse
+  name: Kannon Teahouse
+  icon: cup
+  city: près de Nagoya
+  region: chubu
+  category: cafe
+  visited: true
+  lat: 35.3491
+  lng: 137.4198
+  google_maps: https://www.google.com/maps/place/Kannon+Teahouse/data=!4m2!3m1!1s0x60035291fd217421:0x4a4fb8d0e192d9a6
+- id: viewpoint-p479
+  name:
+    fr: Point de vue près de Nagoya
+    en: Viewpoint near Nagoya
+  icon: camera
+  city: près de Nagoya
+  region: chubu
+  category: photo
+  visited: true
+  lat: 35.3176
+  lng: 137.4184
+  google_maps: https://www.google.com/maps/search/35.31761,137.418397
+- id: p478
+  name: 肉カフェ 頂 (飛騨牛)
+  icon: cup
+  city: près de Nagoya
+  region: chubu
+  category: cafe
+  visited: true
+  lat: 35.4484
+  lng: 137.409
+  google_maps: https://www.google.com/maps/place/%E8%82%89%E3%82%AB%E3%83%95%E3%82%A7+%E9%A0%82+(%E9%A3%9B%E9%A8%A8%E7%89%9B)/data=!4m2!3m1!1s0x60034ba013965d7d:0x1ee5c800e2f2beea
+- id: ena-gorge
+  name: Ena Gorge
+  icon: camera
+  city: près de Nagoya
+  region: chubu
+  category: photo
+  visited: false
+  lat: 35.4808
+  lng: 137.4068
+  google_maps: https://www.google.com/maps/place/Ena+Gorge/data=!4m2!3m1!1s0x60034a5e455495a7:0x4d6e0f965fd3e2de
+- id: monet-s-pond
+  name: Monet's Pond
+  icon: lake
+  city: près de Nagoya
+  region: chubu
+  category: photo
+  visited: false
+  lat: 35.652
+  lng: 136.8212
+  google_maps: https://www.google.com/maps/place/Monet's+Pond/data=!4m2!3m1!1s0x600257de964601f1:0x7d422ba64279c78
+- id: naegi-castle-ruins
+  name: Naegi Castle Ruins
+  icon: castle
+  city: près de Nagoya
+  region: chubu
+  category: see
+  visited: false
+  lat: 35.5134
+  lng: 137.4853
+  google_maps: https://www.google.com/maps/place/Naegi+Castle+Ruins/data=!4m2!3m1!1s0x601cb50bb7701bb9:0x7705c833110c44c9
+- id: suzuka-forest-garden
+  name: Suzuka forest garden
+  icon: garden
+  city: près de Nagoya
+  region: chubu
+  category: photo
+  visited: false
+  lat: 34.9607
+  lng: 136.4574
+  google_maps: https://www.google.com/maps/place/Suzuka+forest+garden/data=!4m2!3m1!1s0x6003edc0b7babfd5:0xa1ec1dfaf7e6497f
+- id: ikaho-onsen-stone-steps
+  name: Ikaho Onsen Stone Steps
+  icon: onsen
+  city: près de Nikko
+  region: chubu
+  category: activity
+  visited: false
+  lat: 36.4939
+  lng: 138.9169
+  google_maps: https://www.google.com/maps/place/Ikaho+Onsen+Stone+Steps/data=!4m2!3m1!1s0x601e63776c3cd053:0x4755583041b97716
+- id: roadside-station-takuminosato
+  name: Roadside Station Takuminosato
+  icon: ramen
+  city: près de Nikko
+  region: chubu
+  category: food
+  visited: false
+  lat: 36.6961
+  lng: 138.9083
+  google_maps: https://www.google.com/maps/place/Roadside+Station+Takuminosato/data=!4m2!3m1!1s0x601e6d17087cf867:0x9364b0f1d0eb7e1
+- id: gujo-hachiman-castle
+  name: Gujo Hachiman Castle
+  icon: castle
+  city: près de Takayama
+  region: chubu
+  category: see
+  visited: false
+  lat: 35.753
+  lng: 136.9615
+  google_maps: https://www.google.com/maps/place/Gujo+Hachiman+Castle/data=!4m2!3m1!1s0x6002f015565f9291:0x2642da1224497ad2
+- id: chionji-temple
+  name: Chionji Temple
+  icon: temple
+  city: Amanohashidate
+  region: kansai
+  category: see
+  visited: true
+  verdict: recommend
+  lat: 35.5586
+  lng: 135.1847
+  google_maps: https://www.google.com/maps/place/Chionji+Temple/data=!4m2!3m1!1s0x5fff912e747cc3db:0xb40cf6185dfb1380
+- id: amanohashidate-kasamatsu-park
+  name: Amanohashidate Kasamatsu Park
+  icon: garden
+  city: Amanohashidate
+  region: kansai
+  category: photo
+  visited: false
+  lat: 35.5868
+  lng: 135.1955
+  google_maps: https://www.google.com/maps/place/Amanohashidate+Kasamatsu+Park/data=!4m2!3m1!1s0x5fff976816574959:0xdf109ba09b5a19b2
+- id: ankokuji-temple
+  name: Ankokuji Temple
+  icon: temple
+  city: Amanohashidate
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.3409
+  lng: 135.3071
+  google_maps: https://www.google.com/maps/place/Ankokuji+Temple/data=!4m2!3m1!1s0x600021f9bafd981f:0xcc6019ea7404cf9c
+- id: manpuku-ji
+  name: Manpuku-ji
+  icon: temple
+  city: Himeji
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.917
+  lng: 134.8868
+  google_maps: https://www.google.com/maps/place/Manpuku-ji/data=!4m2!3m1!1s0x3555304ca29cf4d9:0xb0502fbaf3ecefb9
+- id: urashima-shrine
+  name: Urashima Shrine
+  icon: torii
+  city: Ine
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.7288
+  lng: 135.2578
+  google_maps: https://www.google.com/maps/place/Urashima+Shrine/data=!4m2!3m1!1s0x5fff0a3d751a7673:0x69cd8bb14af81fc4
+- id: genbudo-park
+  name: Genbudo Park
+  icon: garden
+  city: Kinosaki
+  region: kansai
+  category: photo
+  visited: true
+  lat: 35.5883
+  lng: 134.8048
+  google_maps: https://www.google.com/maps/place/Genbudo+Park/data=!4m2!3m1!1s0x5fffc62329a52f17:0x36cf957f11c7b27a
+- id: ichinoyu-onsen
+  name: Ichinoyu Onsen
+  icon: onsen
+  city: Kinosaki
+  region: kansai
+  category: activity
+  visited: false
+  lat: 35.6262
+  lng: 134.8095
+  google_maps: https://www.google.com/maps/place/Ichinoyu+Onsen/data=!4m2!3m1!1s0x5fffc8307b8b3f1b:0x4e52098779821189
+- id: kankoku-shrine
+  name: Kankoku Shrine
+  icon: torii
+  city: Kinosaki
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.6087
+  lng: 134.8333
+  google_maps: https://www.google.com/maps/place/Kankoku+Shrine/data=!4m2!3m1!1s0x5fffc7e0656b991b:0x8b5eebe450e31a4c
+- id: tajima-giant-buddha
+  name: Tajima Giant Buddha
+  icon: daibutsu
+  city: Kinosaki
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.5023
+  lng: 134.5701
+  google_maps: https://www.google.com/maps/place/Tajima+Giant+Buddha/data=!4m2!3m1!1s0x5fffd77534e0e62b:0xbcde18e0699979ac
+- id: p075
+  name: 南柳通り
+  icon: camera
+  city: Kinosaki
+  region: kansai
+  category: photo
+  visited: false
+  lat: 35.6465
+  lng: 134.7664
+  google_maps: https://www.google.com/maps/place/%E5%8D%97%E6%9F%B3%E9%80%9A%E3%82%8A/data=!4m2!3m1!1s0x5fffc9f7223de8fb:0x7639b3b8be715feb
+- id: kiyotakainarijinja
+  name: Kiyotakainarijinja
+  icon: torii
+  city: Koyasan
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.2115
+  lng: 135.5921
+  google_maps: https://www.google.com/maps/place/Kiyotakainarijinja/data=!4m2!3m1!1s0x600727663c6b1355:0xf82c417437df3bab
+- id: kongobu-ji
+  name: Kongobu-ji
+  icon: temple
+  city: Koyasan
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.2141
+  lng: 135.5841
+  google_maps: https://www.google.com/maps/place/Kongobu-ji/data=!4m2!3m1!1s0x60072772879f585d:0x2a93aeed57548dc5
+- id: okunoin-cemetery
+  name: Okunoin Cemetery
+  icon: gem
+  city: Koyasan
+  region: kansai
+  category: hidden
+  visited: true
+  lat: 34.2178
+  lng: 135.6027
+  google_maps: https://www.google.com/maps/place/Okunoin+Cemetery/data=!4m2!3m1!1s0x6006d89dd666ecf7:0xd6f75878ad827821
+- id: shi-ide-itsukushima-shrine
+  name: Shi'ide Itsukushima Shrine
+  icon: torii
+  city: Koyasan
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.2715
+  lng: 135.566
+  google_maps: https://www.google.com/maps/place/Shi'ide+Itsukushima+Shrine/data=!4m2!3m1!1s0x6007285ec2c0f8ff:0x22c0771434137f61
+- id: tamashiiyama-jizo-temple
+  name: Tamashiiyama Jizo Temple
+  icon: temple
+  city: Koyasan
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.2715
+  lng: 135.566
+  google_maps: https://www.google.com/maps/place/Tamashiiyama+Jizo+Temple/data=!4m2!3m1!1s0x6007285ec2c0f8ff:0x43e6dc33d6a94efd
+- id: aragi-island-rice-terraces
+  name: Aragi Island Rice Terraces
+  icon: terraces
+  city: Koyasan
+  region: kansai
+  category: photo
+  visited: false
+  lat: 34.0664
+  lng: 135.4386
+  google_maps: https://www.google.com/maps/place/Aragi+Island+Rice+Terraces/data=!4m2!3m1!1s0x60073d47859cdb29:0xa3195db95d1dd998
+- id: kami-senbon
+  name: Kami-senbon
+  icon: camera
+  city: Koyasan
+  region: kansai
+  category: photo
+  visited: false
+  lat: 34.3361
+  lng: 135.8987
+  google_maps: https://www.google.com/maps/place/Kami-senbon/data=!4m2!3m1!1s0x6006c751286b58b1:0x265403856b7284a5
+- id: yaho-point
+  name: Yaho Point
+  icon: camera
+  city: Koyasan
+  region: kansai
+  category: photo
+  visited: false
+  lat: 34.0387
+  lng: 135.4407
+  google_maps: https://www.google.com/maps/place/Yaho+Point/data=!4m2!3m1!1s0x600717f1d3565783:0x6252863113359eb7
+- id: arashiyama-monkey-park-iwatayama
+  name: Arashiyama Monkey Park Iwatayama
+  icon: monkey
+  city: Kyoto
+  region: kansai
+  category: activity
+  visited: true
+  lat: 35.009
+  lng: 135.6748
+  google_maps: https://www.google.com/maps/place/Arashiyama+Monkey+Park+Iwatayama/data=!4m2!3m1!1s0x600100ab6efb49bd:0x1b3493b0430734b2
+- id: arashiyama-rilakkuma-tea-house
+  name: Arashiyama Rilakkuma Tea House
+  icon: shop
+  city: Kyoto
+  region: kansai
+  category: cafe
+  visited: true
+  lat: 35.0163
+  lng: 135.6771
+  google_maps: https://www.google.com/maps/place/Arashiyama+Rilakkuma+Tea+House/data=!4m2!3m1!1s0x6001a9ff76c6dddd:0xaa7c954ca543aca8
+- id: byodo-in-omotesando
+  name: Byodo-in Omotesando
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.8799
+  lng: 135.8123
+  google_maps: https://www.google.com/maps/place/Byodo-in+Omotesando/data=!4m2!3m1!1s0x60011141df33d5cb:0x6c5b1239f4b3743f
+- id: fushimi-inari-taisha
+  name: Fushimi Inari-taisha
+  icon: senbon
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.9668
+  lng: 135.7721
+  google_maps: https://www.google.com/maps/place/Fushimi+Inari-taisha/data=!4m2!3m1!1s0x60010f153d2e6d21:0x7b1aca1c753ae2e9
+- id: kinkaku-ji
+  name: Kinkaku-ji
+  icon: kinkakuji
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: true
+  lat: 35.039
+  lng: 135.7294
+  google_maps: https://www.google.com/maps/place/Kinkaku-ji/data=!4m2!3m1!1s0x6001a820c0eb46bd:0xee4272b1c22645f
+- id: kiyomizu-dera
+  name: Kiyomizu-dera
+  icon: kiyomizu
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.9948
+  lng: 135.785
+  google_maps: https://www.google.com/maps/place/Kiyomizu-dera/data=!4m2!3m1!1s0x600108d385dcfb07:0x62af658650c434ba
+- id: kodai-ji
+  name: Kōdai-ji
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: true
+  lat: 35.0008
+  lng: 135.7811
+  google_maps: https://www.google.com/maps/place/K%C5%8Ddai-ji/data=!4m2!3m1!1s0x600108dacf7b4db9:0x24512a795f6cc880
+- id: miffy-s-oyatsu-do-by-miffy-s-kitchen-gion
+  name: Miffy's Oyatsu-do by Miffy's Kitchen Gion
+  icon: shop
+  city: Kyoto
+  region: kansai
+  category: food
+  visited: true
+  lat: 35.0236
+  lng: 135.7949
+  google_maps: https://www.google.com/maps/place/Miffy's+Oyatsu-do+by+Miffy's+Kitchen+Gion/data=!4m2!3m1!1s0x60010904aa23672b:0x114fd96c1a71b47c
+- id: ninenzaka
+  name: Ninenzaka
+  icon: camera
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.9981
+  lng: 135.7808
+  google_maps: https://www.google.com/maps/place/Ninenzaka/data=!4m2!3m1!1s0x600108d018ab0c97:0xe6ae59775061be35
+- id: ryozen-kannon-temple
+  name: Ryōzen Kannon Temple
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.9996
+  lng: 135.7818
+  google_maps: https://www.google.com/maps/place/Ry%C5%8Dzen+Kannon+Temple/data=!4m2!3m1!1s0x600108da9feb3937:0xb591bb3cdf91794
+- id: saiho-ji-koke-dera-temple
+  name: Saiho-ji (Koke-dera) Temple
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.9919
+  lng: 135.6833
+  google_maps: https://www.google.com/maps/place/Saiho-ji+(Koke-dera)+Temple/data=!4m2!3m1!1s0x60010731ac7b7533:0xaeecced5615bb0d5
+- id: to-no-shima-island
+  name: Tō-no-shima Island
+  icon: beach
+  city: Kyoto
+  region: kansai
+  category: photo
+  visited: true
+  lat: 34.8886
+  lng: 135.8101
+  google_maps: https://www.google.com/maps/place/T%C5%8D-no-shima+Island/data=!4m2!3m1!1s0x60011172bd446397:0x4325ea73f6e975d7
+- id: uji-bridge
+  name: Uji Bridge
+  icon: bridge
+  city: Kyoto
+  region: kansai
+  category: photo
+  visited: true
+  lat: 34.8929
+  lng: 135.8062
+  google_maps: https://www.google.com/maps/place/Uji+Bridge/data=!4m2!3m1!1s0x6001110a5313ae9d:0x36bff55a841d0d8c
+- id: ukimido-floating-hall
+  name: Ukimido (Floating Hall)
+  icon: camera
+  city: Kyoto
+  region: kansai
+  category: photo
+  visited: true
+  lat: 35.1098
+  lng: 135.9216
+  google_maps: https://www.google.com/maps/place/Ukimido+(Floating+Hall)/data=!4m2!3m1!1s0x600175404bc2e9d3:0x8d98ee97122ce359
+- id: yasaka-pagoda-photograph-spot
+  name: Yasaka Pagoda Photograph Spot
+  icon: pagoda
+  city: Kyoto
+  region: kansai
+  category: photo
+  visited: true
+  lat: 35.0289
+  lng: 135.7973
+  google_maps: https://www.google.com/maps/place/Yasaka+Pagoda+Photograph+Spot/data=!4m2!3m1!1s0x60010905d584997d:0x12b01714a7f3ad5c
+- id: p107
+  name: ミハスピトゥー
+  icon: ramen
+  city: Kyoto
+  region: kansai
+  category: food
+  visited: true
+  lat: 35.0018
+  lng: 135.7774
+  google_maps: https://www.google.com/maps/place/%E3%83%9F%E3%83%8F%E3%82%B9%E3%83%94%E3%83%88%E3%82%A5%E3%83%BC/data=!4m2!3m1!1s0x600108c476c81005:0xde5d7c14da8e448c
+- id: adashino-nenbutsuji
+  name: Adashino Nenbutsuji
+  icon: camera
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.0268
+  lng: 135.6645
+  google_maps: https://www.google.com/maps/place/Adashino+Nenbutsuji/data=!4m2!3m1!1s0x6001aa3d757dea39:0x38e558a8bebffd1c
+- id: arashiyama-bamboo-forest
+  name: Arashiyama Bamboo Forest
+  icon: bamboo
+  city: Kyoto
+  region: kansai
+  category: photo
+  visited: false
+  lat: 35.0628
+  lng: 135.6609
+  google_maps: https://www.google.com/maps/place/Arashiyama+Bamboo+Forest/data=!4m2!3m1!1s0x6001abebbf5c8bad:0xfb9ffc7bbdd67cdd
+- id: arashiyama-miffy-sakura-kitchen
+  name: Arashiyama Miffy Sakura Kitchen
+  icon: flower
+  city: Kyoto
+  region: kansai
+  category: food
+  visited: false
+  lat: 35.0234
+  lng: 135.8223
+  google_maps: https://www.google.com/maps/place/Arashiyama+Miffy+Sakura+Kitchen/data=!4m2!3m1!1s0x6001095c147359f1:0x230fd057e68aacb0
+- id: asagiri-bridge
+  name: Asagiri Bridge
+  icon: bridge
+  city: Kyoto
+  region: kansai
+  category: photo
+  visited: false
+  lat: 34.879
+  lng: 135.8159
+  google_maps: https://www.google.com/maps/place/Asagiri+Bridge/data=!4m2!3m1!1s0x60011143a921da8d:0xc42327ef27bc6a9a
+- id: asahiyama-kannon-observation-deck
+  name: Asahiyama Kannon Observation Deck
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: photo
+  visited: false
+  lat: 34.867
+  lng: 135.7909
+  google_maps: https://www.google.com/maps/place/Asahiyama+Kannon+Observation+Deck/data=!4m2!3m1!1s0x6001112095dc8667:0x7c05cd68a3581902
+- id: bishamondo-temple
+  name: Bishamondō Temple
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.0016
+  lng: 135.8189
+  google_maps: https://www.google.com/maps/place/Bishamond%C5%8D+Temple/data=!4m2!3m1!1s0x60010eae25b65023:0x897a2d844031d584
+- id: byodo-in
+  name: Byōdō-in
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.8893
+  lng: 135.8077
+  google_maps: https://www.google.com/maps/place/By%C5%8Dd%C5%8D-in/data=!4m2!3m1!1s0x6001110ce0da2bab:0x608414938ffa07a4
+- id: chiikawa-land-kyoto-shijo-kawaramach
+  name: Chiikawa Land Kyoto Shijo Kawaramach
+  icon: shop
+  city: Kyoto
+  region: kansai
+  category: activity
+  visited: false
+  lat: 35.0345
+  lng: 135.8248
+  google_maps: https://www.google.com/maps/place/Chiikawa+Land+Kyoto+Shijo+Kawaramach/data=!4m2!3m1!1s0x60010963a4265897:0x6e9627171e33c9fb
+- id: chomeiji
+  name: Chomeiji
+  icon: camera
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.1627
+  lng: 136.0639
+  google_maps: https://www.google.com/maps/place/Chomeiji/data=!4m2!3m1!1s0x6001782f99a59f03:0x8ae82d571f23cfee
+- id: eikan-do-zenrin-ji
+  name: Eikan-dō Zenrin-ji
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.015
+  lng: 135.7948
+  google_maps: https://www.google.com/maps/place/Eikan-d%C5%8D+Zenrin-ji/data=!4m2!3m1!1s0x60010918b2b38d17:0x1c9705a093b0ad54
+- id: fukujuen-uji-uji-tea-factory
+  name: Fukujuen Uji (Uji Tea Factory)
+  icon: ticket
+  city: Kyoto
+  region: kansai
+  category: activity
+  visited: false
+  lat: 34.8903
+  lng: 135.8106
+  google_maps: https://www.google.com/maps/place/Fukujuen+Uji+(Uji+Tea+Factory)/data=!4m2!3m1!1s0x60011172e24801c3:0xb04dcbf4cdfcf24f
+- id: fushimi-jikkoku-bune-boats
+  name: Fushimi Jikkoku-bune Boats
+  icon: ticket
+  city: Kyoto
+  region: kansai
+  category: activity
+  visited: false
+  lat: 34.9306
+  lng: 135.7624
+  google_maps: https://www.google.com/maps/place/Fushimi+Jikkoku-bune+Boats/data=!4m2!3m1!1s0x60010f9289914f9b:0xd99f65378f961214
+- id: fushimi-momoyama-castle
+  name: Fushimi-Momoyama Castle
+  icon: castle
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.9399
+  lng: 135.779
+  google_maps: https://www.google.com/maps/place/Fushimi-Momoyama+Castle/data=!4m2!3m1!1s0x60010fb991f14e25:0x9f5973c4345ebf1b
+- id: ginkaku-ji
+  name: Ginkaku-ji
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.0269
+  lng: 135.7982
+  google_maps: https://www.google.com/maps/place/Ginkaku-ji/data=!4m2!3m1!1s0x600109050b426fe1:0x258aca1ce888abc9
+- id: gioji-temple
+  name: Giōji Temple
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.0231
+  lng: 135.6666
+  google_maps: https://www.google.com/maps/place/Gi%C5%8Dji+Temple/data=!4m2!3m1!1s0x6001aa175bdc44b3:0xbe5c2851719aa546
+- id: heian-jingu
+  name: Heian-jingū
+  icon: camera
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.0165
+  lng: 135.7825
+  google_maps: https://www.google.com/maps/place/Heian-jing%C5%AB/data=!4m2!3m1!1s0x600108e5187cc88d:0x75bed992d897454f
+- id: higashi-hongan-ji
+  name: Higashi Hongan-ji
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.991
+  lng: 135.7585
+  google_maps: https://www.google.com/maps/place/Higashi+Hongan-ji/data=!4m2!3m1!1s0x600108a5b2ff6191:0x2def9c35f2f6c95a
+- id: ishibe-koji-road
+  name: Ishibe kōji road
+  icon: camera
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.0559
+  lng: 135.8055
+  google_maps: https://www.google.com/maps/place/Ishibe+k%C5%8Dji+road/data=!4m2!3m1!1s0x600109c09550b86b:0x1185db4fc5dc8634
+- id: itsukushima-shrine
+  name: Itsukushima Shrine
+  icon: itsukushima
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.2645
+  lng: 136.0831
+  google_maps: https://www.google.com/maps/place/Itsukushima+Shrine/data=!4m2!3m1!1s0x60018364f2766bd3:0x649cd845e7a11a57
+- id: jardins-imperiaux-de-kyoto-kyoto-gyoen
+  name: Jardins impériaux de Kyoto (Kyōto-Gyoen)
+  icon: garden
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.022
+  lng: 135.7601
+  google_maps: https://www.google.com/maps/place/Jardins+imp%C3%A9riaux+de+Kyoto+(Ky%C5%8Dto-Gyoen)/data=!4m2!3m1!1s0x6001087b148e5f1d:0x1f8b7a1904610955
+- id: kimono-rental-momo
+  name: KIMONO RENTAL MOMO 清水店
+  icon: ticket
+  city: Kyoto
+  region: kansai
+  category: activity
+  visited: false
+  lat: 35.0297
+  lng: 135.7903
+  google_maps: https://www.google.com/maps/place/KIMONO+RENTAL+MOMO+%E6%B8%85%E6%B0%B4%E5%BA%97/data=!4m2!3m1!1s0x6001090004a6c75f:0x95dfda473f18d929
+- id: katsura-imperial-villa
+  name: Katsura Imperial Villa
+  icon: camera
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.984
+  lng: 135.7096
+  google_maps: https://www.google.com/maps/place/Katsura+Imperial+Villa/data=!4m2!3m1!1s0x600106f7536f7cf3:0x49e561a96b457078
+- id: katsura-river
+  name: Katsura River
+  icon: camera
+  city: Kyoto
+  region: kansai
+  category: photo
+  visited: false
+  lat: 35.0127
+  lng: 135.6738
+  google_maps: https://www.google.com/maps/place/Katsura+River/data=!4m2!3m1!1s0x6001aa008658e673:0x3d670f7ccc91e7c6
+- id: kayabuki-no-sato
+  name: Kayabuki No Sato
+  icon: camera
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.311
+  lng: 135.6219
+  google_maps: https://www.google.com/maps/place/Kayabuki+No+Sato/data=!4m2!3m1!1s0x6001cb1f20eea08f:0xe46bcb61f7d18341
+- id: kifune-jinja
+  name: Kifune-jinja
+  icon: torii
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.1216
+  lng: 135.7629
+  google_maps: https://www.google.com/maps/place/Kifune-jinja/data=!4m2!3m1!1s0x6001a608f30a9109:0x1d021ae4b564548b
+- id: kimono-rental-rikawafuku-gion-store
+  name: Kimono Rental Rikawafuku Gion Store
+  icon: shop
+  city: Kyoto
+  region: kansai
+  category: activity
+  visited: false
+  lat: 35.0689
+  lng: 135.8261
+  google_maps: https://www.google.com/maps/place/Kimono+Rental+Rikawafuku+Gion+Store/data=!4m2!3m1!1s0x600109f679cba9eb:0xc25774c7a22b9665
+- id: konkai-komyo-ji-temple
+  name: Konkai Kōmyō-ji Temple
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.0197
+  lng: 135.788
+  google_maps: https://www.google.com/maps/place/Konkai+K%C5%8Dmy%C5%8D-ji+Temple/data=!4m2!3m1!1s0x600108e2da0aadc9:0x25ed5d922698e790
+- id: kyo-karucha-cafe
+  name: Kyo Karucha Cafe
+  icon: cup
+  city: Kyoto
+  region: kansai
+  category: cafe
+  visited: false
+  lat: 35.0111
+  lng: 135.798
+  google_maps: https://www.google.com/maps/place/Kyo+Karucha+Cafe/data=!4m2!3m1!1s0x60010924997d0c91:0xbaf779de7e9a5976
+- id: la-collina-omi-hachiman
+  name: La Collina Ōmi-Hachiman
+  icon: cup
+  city: Kyoto
+  region: kansai
+  category: cafe
+  visited: false
+  lat: 35.1441
+  lng: 136.09
+  google_maps: https://www.google.com/maps/place/La+Collina+%C5%8Cmi-Hachiman/data=!4m2!3m1!1s0x6001799c015a68f7:0xee6919e95d42bbd2
+- id: loutre-otter-cafe
+  name: Loutre otter cafe
+  icon: cup
+  city: Kyoto
+  region: kansai
+  category: cafe
+  visited: false
+  lat: 35.0788
+  lng: 135.8239
+  google_maps: https://www.google.com/maps/place/Loutre+otter+cafe/data=!4m2!3m1!1s0x600109fe88451d2b:0x6cb881f1f4379c69
+- id: marukyu-koyamaen-main-plant
+  name: Marukyu Koyamaen Main Plant
+  icon: cup
+  city: Kyoto
+  region: kansai
+  category: cafe
+  visited: false
+  lat: 34.8961
+  lng: 135.7854
+  google_maps: https://www.google.com/maps/place/Marukyu+Koyamaen+Main+Plant/data=!4m2!3m1!1s0x6001104dd82f10b5:0x7c91dcc21a7b2e57
+- id: mimurotoji-temple
+  name: Mimurotoji Temple
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.9005
+  lng: 135.8192
+  google_maps: https://www.google.com/maps/place/Mimurotoji+Temple/data=!4m2!3m1!1s0x600111780fcf3ac1:0xb11ed6e6546ed124
+- id: murin-an-garden
+  name: Murin-an Garden
+  icon: garden
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.0116
+  lng: 135.7868
+  google_maps: https://www.google.com/maps/place/Murin-an+Garden/data=!4m2!3m1!1s0x600108e093e69ddd:0xe951a45cb6a8f18e
+- id: nanzen-ji
+  name: Nanzen-ji
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.0114
+  lng: 135.7938
+  google_maps: https://www.google.com/maps/place/Nanzen-ji/data=!4m2!3m1!1s0x600109217397fbfd:0x38b339a4c7e7004d
+- id: nijo-jo
+  name: Nijō-jō
+  icon: castle
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.0142
+  lng: 135.7475
+  google_maps: https://www.google.com/maps/place/Nij%C5%8D-j%C5%8D/data=!4m2!3m1!1s0x600107d40a2b9b0b:0x106b8759906a2f2f
+- id: nintendo-kyoto
+  name: Nintendo KYOTO
+  icon: gamepad
+  city: Kyoto
+  region: kansai
+  category: activity
+  visited: false
+  lat: 35.0664
+  lng: 135.8126
+  google_maps: https://www.google.com/maps/place/Nintendo+KYOTO/data=!4m2!3m1!1s0x600109e8bd4fdcdd:0x91843880056bea8e
+- id: nintendo-museum
+  name: Nintendo Museum
+  icon: gamepad
+  city: Kyoto
+  region: kansai
+  category: activity
+  visited: false
+  lat: 34.913
+  lng: 135.8239
+  google_maps: https://www.google.com/maps/place/Nintendo+Museum/data=!4m2!3m1!1s0x60011188b83087d3:0x646fdf4a68b62b4d
+- id: nishiki-market
+  name: Nishiki Market
+  icon: ramen
+  city: Kyoto
+  region: kansai
+  category: food
+  visited: false
+  lat: 35.0049
+  lng: 135.7551
+  google_maps: https://www.google.com/maps/place/Nishiki+Market/data=!4m2!3m1!1s0x6001089ccd8ccb4f:0xb69ea31001ec6c9c
+- id: okazaki-shrine
+  name: Okazaki Shrine
+  icon: torii
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.0169
+  lng: 135.7891
+  google_maps: https://www.google.com/maps/place/Okazaki+Shrine/data=!4m2!3m1!1s0x600108e21740e2a9:0xc21db7b9de148653
+- id: onjo-ji-mii-dera-temple
+  name: Onjo-ji (Mii-dera) Temple
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.0147
+  lng: 135.8526
+  google_maps: https://www.google.com/maps/place/Onjo-ji+(Mii-dera)+Temple/data=!4m2!3m1!1s0x60010c71ef47f85b:0xd099a9b462df32dc
+- id: otagi-nenbutsu-ji-temple
+  name: Otagi Nenbutsu-ji Temple
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.0313
+  lng: 135.6611
+  google_maps: https://www.google.com/maps/place/Otagi+Nenbutsu-ji+Temple/data=!4m2!3m1!1s0x6001aa3999ac708b:0x57b7af11417a95d2
+- id: otanihonbyoentsu-bridge
+  name: Otanihonbyoentsu Bridge
+  icon: bridge
+  city: Kyoto
+  region: kansai
+  category: photo
+  visited: false
+  lat: 35.0286
+  lng: 135.8156
+  google_maps: https://www.google.com/maps/place/Otanihonbyoentsu+Bridge/data=!4m2!3m1!1s0x6001096ed2363e65:0xd10a3403b0473de6
+- id: pontocho-park
+  name: Pontocho Park
+  icon: garden
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.0063
+  lng: 135.7713
+  google_maps: https://www.google.com/maps/place/Pontocho+Park/data=!4m2!3m1!1s0x600108eb2db70209:0x1061b5eff19324dc
+- id: samurai-ninja-museum-kyoto-with-experience
+  name: SAMURAI NINJA MUSEUM KYOTO With Experience
+  icon: museum
+  city: Kyoto
+  region: kansai
+  category: activity
+  visited: false
+  lat: 35.0032
+  lng: 135.8083
+  google_maps: https://www.google.com/maps/place/SAMURAI+NINJA+MUSEUM+KYOTO+With+Experience/data=!4m2!3m1!1s0x600109354e510f97:0xe3b7993ed91b2e77
+- id: sannenzaka-path
+  name: Sannenzaka Path
+  icon: camera
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.0212
+  lng: 135.7556
+  google_maps: https://www.google.com/maps/place/Sannenzaka+Path/data=!4m2!3m1!1s0x60010879a219f8af:0xa3504d2600725c07
+- id: shirakawa-canal
+  name: Shirakawa Canal
+  icon: house
+  city: Kyoto
+  region: kansai
+  category: photo
+  visited: false
+  lat: 35.0664
+  lng: 135.8052
+  google_maps: https://www.google.com/maps/place/Shirakawa+Canal/data=!4m2!3m1!1s0x600109dc68b3c787:0x973caa294d46a998
+- id: snoopy-chocolate
+  name: Snoopy Chocolate
+  icon: shop
+  city: Kyoto
+  region: kansai
+  category: food
+  visited: false
+  lat: 35.073
+  lng: 135.6823
+  google_maps: https://www.google.com/maps/place/Snoopy+Chocolate/data=!4m2!3m1!1s0x6001a95c6b3c3a6d:0x21eefa224659eb70
+- id: tanuki-mura
+  name: TANUKI MURA
+  icon: gem
+  city: Kyoto
+  region: kansai
+  category: hidden
+  visited: false
+  lat: 34.9145
+  lng: 136.077
+  google_maps: https://www.google.com/maps/place/TANUKI+MURA/data=!4m2!3m1!1s0x6001678b6ce0650b:0xbe6d4184781b5254
+- id: tetsugaku-no-michi
+  name: Tetsugaku No Michi
+  icon: camera
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.0265
+  lng: 135.7953
+  google_maps: https://www.google.com/maps/place/Tetsugaku+No+Michi/data=!4m2!3m1!1s0x600109047190580b:0xb5b4bbf7a7ea5827
+- id: torikiku
+  name: Torikiku
+  icon: ramen
+  city: Kyoto
+  region: kansai
+  category: food
+  visited: false
+  lat: 34.8899
+  lng: 135.8065
+  google_maps: https://www.google.com/maps/place/Torikiku/data=!4m2!3m1!1s0x6001110c61974a41:0x4b403000fb8b999d
+- id: to-ji-temple
+  name: Tō-ji Temple
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.9817
+  lng: 135.7468
+  google_maps: https://www.google.com/maps/place/T%C5%8D-ji+Temple/data=!4m2!3m1!1s0x6001060485fbaa4d:0xd3ee2dd9b0177910
+- id: toji-in-temple
+  name: Tōji-in Temple
+  icon: temple
+  city: Kyoto
+  region: kansai
+  category: see
+  visited: false
+  lat: 35.0316
+  lng: 135.7235
+  google_maps: https://www.google.com/maps/place/T%C5%8Dji-in+Temple/data=!4m2!3m1!1s0x600107861e9301af:0x60b1d31bba60c932
+- id: p096
+  name: 堀切港おきしま通船乗船場（沖島港行き）
+  icon: ticket
+  city: Kyoto
+  region: kansai
+  category: activity
+  visited: false
+  lat: 35.1608
+  lng: 136.1267
+  google_maps: https://www.google.com/maps/place/%E5%A0%80%E5%88%87%E6%B8%AF%E3%81%8A%E3%81%8D%E3%81%97%E3%81%BE%E9%80%9A%E8%88%B9%E4%B9%97%E8%88%B9%E5%A0%B4%EF%BC%88%E6%B2%96%E5%B3%B6%E6%B8%AF%E8%A1%8C%E3%81%8D%EF%BC%89/data=!4m2!3m1!1s0x6001794eca841c53:0x516bde184902789a
+- id: p108
+  name: 本家佳長 京都祇園四条駅店
+  icon: ramen
+  city: Kyoto
+  region: kansai
+  category: food
+  visited: false
+  lat: 35.0201
+  lng: 135.8157
+  google_maps: https://www.google.com/maps/place/%E6%9C%AC%E5%AE%B6%E4%BD%B3%E9%95%B7+%E4%BA%AC%E9%83%BD%E7%A5%87%E5%9C%92%E5%9B%9B%E6%9D%A1%E9%A7%85%E5%BA%97/data=!4m2!3m1!1s0x6001094384d20529:0x4cf9e6be015c16c8
+- id: confection-artisanal-bread-sweets
+  name: CONFECTION Artisanal Bread&Sweets
+  icon: ramen
+  city: Nara
+  region: kansai
+  category: food
+  visited: true
+  verdict: recommend
+  lat: 34.7145
+  lng: 135.8319
+  google_maps: https://www.google.com/maps/place/CONFECTION+Artisanal+Bread%26Sweets/data=!4m2!3m1!1s0x6001395eba1b662d:0x488ffaee7ca4c6bb
+- id: kasuga-taisha
+  name: Kasuga Taisha
+  icon: torii
+  city: Nara
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.6815
+  lng: 135.8483
+  google_maps: https://www.google.com/maps/place/Kasuga+Taisha/data=!4m2!3m1!1s0x600139c06bb06ad5:0x4c97e78382e39596
+- id: nara-park
+  name: Nara Park
+  icon: deer
+  city: Nara
+  region: kansai
+  category: activity
+  visited: true
+  verdict: love
+  lat: 34.6854
+  lng: 135.8434
+  google_maps: https://www.google.com/maps/place/Nara+Park/data=!4m2!3m1!1s0x60013996bd8c6061:0xf96cacf357447456
+- id: naramachi-koshi-no-ie
+  name: Naramachi Koshi-no-ie
+  icon: camera
+  city: Nara
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.675
+  lng: 135.8307
+  google_maps: https://www.google.com/maps/place/Naramachi+Koshi-no-ie/data=!4m2!3m1!1s0x6001398b258c366b:0x6e8af9f71a586615
+- id: yakushi-ji
+  name: Yakushi-ji
+  icon: temple
+  city: Nara
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.6684
+  lng: 135.7843
+  google_maps: https://www.google.com/maps/place/Yakushi-ji/data=!4m2!3m1!1s0x60013afc39dd7a9f:0x870f22fa71820527
+- id: yoshiki-en
+  name: Yoshiki-en
+  icon: garden
+  city: Nara
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.6857
+  lng: 135.837
+  google_maps: https://www.google.com/maps/place/Yoshiki-en/data=!4m2!3m1!1s0x6001398fe4d15555:0x71989ea099142834
+- id: hozan-ji-temple-ikoma-shoten
+  name: Hozan-ji Temple (Ikoma Shoten)
+  icon: temple
+  city: Nara
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.6846
+  lng: 135.6865
+  google_maps: https://www.google.com/maps/place/Hozan-ji+Temple+(Ikoma+Shoten)/data=!4m2!3m1!1s0x600123c4a709cc89:0x271ae425f847bcde
+- id: ikoma-cable-car
+  name: Ikoma Cable Car
+  icon: cablecar
+  city: Nara
+  region: kansai
+  category: activity
+  visited: false
+  lat: 34.7166
+  lng: 135.7348
+  google_maps: https://www.google.com/maps/place/Ikoma+Cable+Car/data=!4m2!3m1!1s0x60012321962de9e7:0xa4f9da33a4db433c
+- id: ryukoji
+  name: Ryukoji
+  icon: camera
+  city: Nara
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.6783
+  lng: 135.678
+  google_maps: https://www.google.com/maps/place/Ryukoji/data=!4m2!3m1!1s0x600123dfa7b40c49:0xa464a641959d7c1e
+- id: semawakashisuwaogamiaramitama-shrine
+  name: Semawakashisuwaogamiaramitama Shrine
+  icon: torii
+  city: Nara
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.531
+  lng: 135.854
+  google_maps: https://www.google.com/maps/place/Semawakashisuwaogamiaramitama+Shrine/data=!4m2!3m1!1s0x600134cf006cf08b:0xf585e42442175a08
+- id: sunazuri-no-fuji-hanging-wisteria
+  name: Sunazuri-no-Fuji Hanging Wisteria
+  icon: flower
+  city: Nara
+  region: kansai
+  category: photo
+  visited: false
+  lat: 34.6765
+  lng: 135.851
+  google_maps: https://www.google.com/maps/place/Sunazuri-no-Fuji+Hanging+Wisteria/data=!4m2!3m1!1s0x600139c371ac3ee3:0x5cfa646cc6eb481d
+- id: tsubosaka-dera
+  name: Tsubosaka-dera
+  icon: temple
+  city: Nara
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.4444
+  lng: 135.7973
+  google_maps: https://www.google.com/maps/place/Tsubosaka-dera/data=!4m2!3m1!1s0x6006cc37d301aaab:0xc5a6eadf4757eccc
+- id: abura-soba-kirinji-amemura
+  name: Abura-soba Kirinji Amemura
+  icon: ramen
+  city: Osaka
+  region: kansai
+  category: food
+  visited: true
+  lat: 34.672
+  lng: 135.4984
+  google_maps: https://www.google.com/maps/place/Abura-soba+Kirinji+Amemura/data=!4m2!3m1!1s0x6000e7104bff0001:0x376f50bc789ed14f
+- id: dotonbori
+  name: Dotonbori
+  icon: ramen
+  city: Osaka
+  region: kansai
+  category: food
+  visited: true
+  lat: 34.6687
+  lng: 135.5013
+  google_maps: https://www.google.com/maps/place/Dotonbori/data=!4m2!3m1!1s0x6000e713818af9fd:0xb8bb1326b48ba590
+- id: kirby-cafe-osaka
+  name: Kirby Café Osaka
+  icon: star
+  city: Osaka
+  region: kansai
+  category: cafe
+  visited: true
+  lat: 34.6781
+  lng: 135.4882
+  google_maps: https://www.google.com/maps/place/Kirby+Caf%C3%A9+Osaka/data=!4m2!3m1!1s0x6000e7001da914af:0x8801c6e2f9ee9c0d
+- id: kuchu-teien-observatory
+  name: Kuchu Teien Observatory
+  icon: camera
+  city: Osaka
+  region: kansai
+  category: photo
+  visited: true
+  lat: 34.7055
+  lng: 135.4905
+  google_maps: https://www.google.com/maps/place/Kuchu+Teien+Observatory/data=!4m2!3m1!1s0x6000e6889aeab56d:0x47c0e47c5c90e387
+- id: namba-yasaka-jinja
+  name: Namba Yasaka Jinja
+  icon: torii
+  city: Osaka
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.6616
+  lng: 135.4967
+  google_maps: https://www.google.com/maps/place/Namba+Yasaka+Jinja/data=!4m2!3m1!1s0x6000e77279bd5541:0x80c374197554ea9f
+- id: osaka-castle
+  name: Osaka Castle
+  icon: castle
+  city: Osaka
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.6865
+  lng: 135.5262
+  google_maps: https://www.google.com/maps/place/Osaka+Castle/data=!4m2!3m1!1s0x6000e0cd5c283afd:0xf01d07d5ca11e41
+- id: pokemon-cafe-osaka-shinsaibashi
+  name: Pokémon Cafe Osaka Shinsaibashi
+  icon: pokeball
+  city: Osaka
+  region: kansai
+  category: cafe
+  visited: true
+  lat: 34.6731
+  lng: 135.5008
+  google_maps: https://www.google.com/maps/place/Pok%C3%A9mon+Cafe+Osaka+Shinsaibashi/data=!4m2!3m1!1s0x6000e710d94db9f7:0xa4e81bef85f911c7
+- id: pom-pom-purin-cafe-umeda
+  name: Pom Pom Purin Cafe Umeda
+  icon: cup
+  city: Osaka
+  region: kansai
+  category: cafe
+  visited: true
+  lat: 34.7051
+  lng: 135.4983
+  google_maps: https://www.google.com/maps/place/Pom+Pom+Purin+Cafe+Umeda/data=!4m2!3m1!1s0x6000e6918a6f1643:0x182d3648ae1b7ceb
+- id: shi-tenno-ji
+  name: Shi Tennō-ji
+  icon: temple
+  city: Osaka
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.6541
+  lng: 135.5164
+  google_maps: https://www.google.com/maps/place/Shi+Tenn%C5%8D-ji/data=!4m2!3m1!1s0x6000ddf83b3a5021:0xb6aa81c8bfad602d
+- id: tsutenkaku
+  name: Tsūtenkaku
+  icon: tower
+  city: Osaka
+  region: kansai
+  category: see
+  visited: true
+  lat: 34.6526
+  lng: 135.5063
+  google_maps: https://www.google.com/maps/place/Ts%C5%ABtenkaku/data=!4m2!3m1!1s0x6000e76077e042ff:0xe5cbcf56def44557
+- id: donguri-kyowakoku-ghibli-store
+  name: Donguri Kyowakoku (Ghibli Store)
+  icon: acorn
+  city: Osaka
+  region: kansai
+  category: activity
+  visited: false
+  lat: 34.646
+  lng: 135.4838
+  google_maps: https://www.google.com/maps/place/Donguri+Kyowakoku+(Ghibli+Store)/data=!4m2!3m1!1s0x6000e783eba63bb9:0x2b96dbfe077287db
+- id: donguri-kyowakoku-ghibli-store-namba
+  name: Donguri Kyowakoku (Ghibli Store) Namba
+  icon: acorn
+  city: Osaka
+  region: kansai
+  category: activity
+  visited: false
+  lat: 34.6667
+  lng: 135.5055
+  google_maps: https://www.google.com/maps/place/Donguri+Kyowakoku+(Ghibli+Store)+Namba/data=!4m2!3m1!1s0x6000e76a91f00001:0x90c3d2713556f420
+- id: ishikiri-daibutsu-great-buddha-statue-the-3rd-in
+  name: Ishikiri Daibutsu, Great Buddha statue, the 3rd in Japan
+  icon: daibutsu
+  city: Osaka
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.6824
+  lng: 135.6515
+  google_maps: https://www.google.com/maps/place/Ishikiri+Daibutsu,+Great+Buddha+statue,+the+3rd+in+Japan/data=!4m2!3m1!1s0x600121a767e310cd:0x680de9b0d81fb3a8
+- id: isshin-ji
+  name: Isshin-ji
+  icon: temple
+  city: Osaka
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.653
+  lng: 135.5109
+  google_maps: https://www.google.com/maps/place/Isshin-ji/data=!4m2!3m1!1s0x6000ddf5ff7d15e7:0xe8c95a1e86fc3aad
+- id: katsuo-ji
+  name: Katsuō-ji
+  icon: temple
+  city: Osaka
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.8658
+  lng: 135.4911
+  google_maps: https://www.google.com/maps/place/Katsu%C5%8D-ji/data=!4m2!3m1!1s0x6000f979e7347fb5:0xd5ec671c17a3d34
+- id: lucua-osaka
+  name: LUCUA Osaka
+  icon: ticket
+  city: Osaka
+  region: kansai
+  category: activity
+  visited: false
+  lat: 34.703
+  lng: 135.4953
+  google_maps: https://www.google.com/maps/place/LUCUA+Osaka/data=!4m2!3m1!1s0x6000e68dc5aa6efd:0x6312408264b55d49
+- id: nagai-botanical-garden
+  name: Nagai Botanical Garden
+  icon: garden
+  city: Osaka
+  region: kansai
+  category: activity
+  visited: false
+  lat: 34.6101
+  lng: 135.5215
+  google_maps: https://www.google.com/maps/place/Nagai+Botanical+Garden/data=!4m2!3m1!1s0x6000dc2695990a89:0x4efc58088c786856
+- id: parc-quasi-national-de-meiji-no-mori-mino
+  name: Parc quasi national de Meiji no Mori Minō
+  icon: garden
+  city: Osaka
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.8555
+  lng: 135.4727
+  google_maps: https://www.google.com/maps/place/Parc+quasi+national+de+Meiji+no+Mori+Min%C5%8D/data=!4m2!3m1!1s0x6000f98dcd18275b:0x11b23b2040fdbcea
+- id: salmon-kat-namba
+  name: Salmon Kat Namba
+  icon: ramen
+  city: Osaka
+  region: kansai
+  category: food
+  visited: false
+  lat: 34.6451
+  lng: 135.471
+  google_maps: https://www.google.com/maps/place/Salmon+Kat+Namba/data=!4m2!3m1!1s0x6000e792589c4519:0xfe765d8f44e1583b
+- id: sumiyoshi-taisha
+  name: Sumiyoshi-taisha
+  icon: torii
+  city: Osaka
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.66
+  lng: 135.4743
+  google_maps: https://www.google.com/maps/place/Sumiyoshi-taisha/data=!4m2!3m1!1s0x6000e7bbc67c0001:0xa7f51dfe4d001f82
+- id: tsuyuno-tenjinsya-ohatsu-tenjin
+  name: Tsuyuno Tenjinsya (Ohatsu Tenjin)
+  icon: camera
+  city: Osaka
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.6993
+  lng: 135.5008
+  google_maps: https://www.google.com/maps/place/Tsuyuno+Tenjinsya+(Ohatsu+Tenjin)/data=!4m2!3m1!1s0x6000e6ec63ebf97d:0xbc7a3186d97b154
+- id: toichipancake-kitahorie
+  name: toichipancake kitahorie
+  icon: ramen
+  city: Osaka
+  region: kansai
+  category: food
+  visited: false
+  lat: 34.685
+  lng: 135.5148
+  google_maps: https://www.google.com/maps/place/toichipancake+kitahorie/data=!4m2!3m1!1s0x6000e725eb6b4e91:0xe187a9199c7d932b
+- id: moriinari-shrine
+  name: Moriinari Shrine
+  icon: torii
+  city: Wakayama
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.4164
+  lng: 135.3801
+  google_maps: https://www.google.com/maps/place/Moriinari+Shrine/data=!4m2!3m1!1s0x6000cf2990c33c67:0x97b1f6319ee328d7
+- id: morinopan-bakery
+  name: Morinopan Bakery
+  icon: ramen
+  city: Wakayama
+  region: kansai
+  category: food
+  visited: false
+  lat: 34.1333
+  lng: 135.3386
+  google_maps: https://www.google.com/maps/place/Morinopan+Bakery/data=!4m2!3m1!1s0x600739cc907c60d3:0x902f4e05596b4ea
+- id: nakada-rice-terraces
+  name: Nakada Rice Terraces
+  icon: terraces
+  city: Wakayama
+  region: kansai
+  category: photo
+  visited: false
+  lat: 34.1231
+  lng: 135.3236
+  google_maps: https://www.google.com/maps/place/Nakada+Rice+Terraces/data=!4m2!3m1!1s0x60073838db160145:0xd639c6eb94405344
+- id: shipporyuji-temple-hondo
+  name: Shipporyuji Temple Hondō
+  icon: temple
+  city: Wakayama
+  region: kansai
+  category: see
+  visited: false
+  lat: 34.3408
+  lng: 135.3829
+  google_maps: https://www.google.com/maps/place/Shipporyuji+Temple+Hond%C5%8D/data=!4m2!3m1!1s0x6000cc860c5aeb11:0x5c50819a0e18265b
+- id: chute-d-eau-de-nachi
+  name: Chute d'eau de Nachi
+  icon: waterfall
+  city: près de Koyasan
+  region: kansai
+  category: photo
+  visited: false
+  lat: 33.6727
+  lng: 135.8892
+  google_maps: https://www.google.com/maps/place/Chute+d'eau+de+Nachi/data=!4m2!3m1!1s0x60063ff3e5499ef9:0xd77c438c6c730e36
+- id: hashigui-iwa
+  name: Hashigui-Iwa
+  icon: camera
+  city: près de Koyasan
+  region: kansai
+  category: photo
+  visited: false
+  lat: 33.4844
+  lng: 135.7966
+  google_maps: https://www.google.com/maps/place/Hashigui-Iwa/data=!4m2!3m1!1s0x600624d0f1e9b5bb:0x6aaf636e1fc3ec29
+- id: kizetsu-kyo-gorge
+  name: Kizetsu-Kyo Gorge
+  icon: camera
+  city: près de Koyasan
+  region: kansai
+  category: photo
+  visited: false
+  lat: 33.7814
+  lng: 135.4126
+  google_maps: https://www.google.com/maps/place/Kizetsu-Kyo+Gorge/data=!4m2!3m1!1s0x6007085351aa7bc1:0x6c1306fafbd8e70a
+- id: kumano-kodo-nakahechi-daimon-saka-pilgrim-route
+  name: Kumano Kodo - Nakahechi Daimon-saka Pilgrim Route
+  icon: ticket
+  city: près de Koyasan
+  region: kansai
+  category: activity
+  visited: false
+  lat: 33.649
+  lng: 135.8467
+  google_maps: https://www.google.com/maps/place/Kumano+Kodo+-+Nakahechi+Daimon-saka+Pilgrim+Route/data=!4m2!3m1!1s0x60063f42a698d1af:0xcf97c9e78f2d3518
+- id: kumano-nachi-taisha
+  name: Kumano Nachi-taisha
+  icon: torii
+  city: près de Koyasan
+  region: kansai
+  category: see
+  visited: false
+  lat: 33.6557
+  lng: 135.9149
+  google_maps: https://www.google.com/maps/place/Kumano+Nachi-taisha/data=!4m2!3m1!1s0x600615770beeded5:0x2cdbc65763e652b1
+- id: seiganto-ji
+  name: Seiganto-ji
+  icon: temple
+  city: près de Koyasan
+  region: kansai
+  category: see
+  visited: false
+  lat: 33.6692
+  lng: 135.8899
+  google_maps: https://www.google.com/maps/place/Seiganto-ji/data=!4m2!3m1!1s0x60063ff1ffb29fe5:0xe9067c770ea80104
+- id: seiganto-ji-temple-sanjuno-to-3-storied-pagoda
+  name: Seiganto-ji Temple Sanjuno-to 3-Storied Pagoda
+  icon: pagoda
+  city: près de Koyasan
+  region: kansai
+  category: see
+  visited: false
+  lat: 33.6628
+  lng: 135.888
+  google_maps: https://www.google.com/maps/place/Seiganto-ji+Temple+Sanjuno-to+3-Storied+Pagoda/data=!4m2!3m1!1s0x60063feb9714ec4b:0x8c6626a6abdaa417
+- id: viewpoint-p459
+  name:
+    fr: Point de vue près de Kyoto
+    en: Viewpoint near Kyoto
+  icon: camera
+  city: près de Kyoto
+  region: kansai
+  category: photo
+  visited: false
+  lat: 35.4217
+  lng: 136.1437
+  google_maps: https://www.google.com/maps/search/35.421742,136.143759
+- id: buaisou
+  name: BUAISOU
+  icon: ticket
+  city: près de Takamatsu
+  region: kansai
+  category: activity
+  visited: false
+  lat: 34.1018
+  lng: 134.4154
+  google_maps: https://www.google.com/maps/place/BUAISOU/data=!4m2!3m1!1s0x35530abed22a2c85:0x8d4cfa9dfb1e6c72
+- id: toyotama-hime-shrine
+  name: Toyotama-hime Shrine
+  icon: torii
+  city: Naoshima
+  region: west
+  category: see
+  visited: false
+  lat: 34.4266
+  lng: 134.0607
+  google_maps: https://www.google.com/maps/place/Toyotama-hime+Shrine/data=!4m2!3m1!1s0x3553f286515ee1b3:0x9479aebd4d1f9bda
+- id: kurashiki-bikan-historical-quarter
+  name: Kurashiki Bikan Historical Quarter
+  icon: camera
+  city: Okayama
+  region: west
+  category: see
+  visited: false
+  lat: 34.5963
+  lng: 133.7706
+  google_maps: https://www.google.com/maps/place/Kurashiki+Bikan+Historical+Quarter/data=!4m2!3m1!1s0x355156479638dad5:0x11ce694116eb0dbe
+- id: koraku-en
+  name: Kōraku-en
+  icon: garden
+  city: Okayama
+  region: west
+  category: see
+  visited: false
+  lat: 34.6672
+  lng: 133.9362
+  google_maps: https://www.google.com/maps/place/K%C5%8Draku-en/data=!4m2!3m1!1s0x355406248c7c0b87:0x749df4f1143ab469
+- id: snoopy-chocolat
+  name: SNOOPY Chocolat
+  icon: shop
+  city: Okayama
+  region: west
+  category: food
+  visited: false
+  lat: 34.576
+  lng: 133.7635
+  google_maps: https://www.google.com/maps/place/SNOOPY+Chocolat/data=!4m2!3m1!1s0x355157bb67ae6109:0xbf75ba22b8b482a
+- id: ritsurin-koen
+  name: Ritsurin-kōen
+  icon: garden
+  city: Takamatsu
+  region: west
+  category: see
+  visited: false
+  lat: 34.3297
+  lng: 134.0438
+  google_maps: https://www.google.com/maps/place/Ritsurin-k%C5%8Den/data=!4m2!3m1!1s0x3553ebba2012ce51:0xb8bf7d87424c4114
+- id: kuniga-coast
+  name: Kuniga Coast
+  icon: camera
+  city: près de Izumo
+  region: west
+  category: photo
+  visited: false
+  lat: 36.1093
+  lng: 132.9746
+  google_maps: https://www.google.com/maps/place/Kuniga+Coast/data=!4m2!3m1!1s0x3557dbce60978a3d:0x28c7f60b005ba4c7
+- id: oki-islands
+  name: Oki Islands
+  icon: beach
+  city: près de Izumo
+  region: west
+  category: photo
+  visited: false
+  lat: 36.236
+  lng: 133.2606
+  google_maps: https://www.google.com/maps/place/Oki+Islands/data=!4m2!3m1!1s0x5ffd70ddb4cf6189:0x15dd72e5558f0c6f
+- id: tomonoura-port
+  name: Tomonoura Port
+  icon: camera
+  city: près de Naoshima
+  region: west
+  category: see
+  visited: false
+  lat: 34.3668
+  lng: 133.3889
+  google_maps: https://www.google.com/maps/place/Tomonoura+Port/data=!4m2!3m1!1s0x35510eb7b959b2bf:0x4804f735ffe6d5aa
+- id: iya-valley
+  name: Iya Valley
+  icon: lantern
+  city: près de Takamatsu
+  region: west
+  category: photo
+  visited: false
+  lat: 33.9091
+  lng: 133.9243
+  google_maps: https://www.google.com/maps/place/Iya+Valley/data=!4m2!3m1!1s0x35522f8b4ea68635:0x7f40778707648f98
+- id: nagoro-scarecrow-village
+  name: Nagoro "Scarecrow" Village
+  icon: house
+  city: près de Takamatsu
+  region: west
+  category: activity
+  visited: false
+  lat: 33.878
+  lng: 133.9324
+  google_maps: https://www.google.com/maps/place/Nagoro+%22Scarecrow%22+Village/data=!4m2!3m1!1s0x3552253a47cb15ef:0x2e412ff087b8e2e9
+- id: beppu-onsen
+  name: Beppu Onsen
+  icon: onsen
+  city: Beppu
+  region: kyushu
+  category: activity
+  visited: false
+  lat: 33.2793
+  lng: 131.5002
+  google_maps: https://www.google.com/maps/place/Beppu+Onsen/data=!4m2!3m1!1s0x3546a6e80b805765:0xe913b0c8ddcda422
+- id: butsusharitou
+  name: Butsusharitou
+  icon: camera
+  city: Beppu
+  region: kyushu
+  category: see
+  visited: false
+  lat: 33.3025
+  lng: 131.4846
+  google_maps: https://www.google.com/maps/place/Butsusharitou/data=!4m2!3m1!1s0x3546a7065bcb96bb:0x4ca82604b7a565ec
+- id: chinda-falls-viewpoint
+  name: Chinda Falls Viewpoint
+  icon: waterfall
+  city: Beppu
+  region: kyushu
+  category: photo
+  visited: false
+  lat: 32.9847
+  lng: 131.5253
+  google_maps: https://www.google.com/maps/place/Chinda+Falls+Viewpoint/data=!4m2!3m1!1s0x3546c0d413c1b977:0x19bb13ea9639be5e
+- id: yufuin-floral-village
+  name: Yufuin Floral Village
+  icon: house
+  city: Beppu
+  region: kyushu
+  category: activity
+  visited: false
+  lat: 33.2676
+  lng: 131.3654
+  google_maps: https://www.google.com/maps/place/Yufuin+Floral+Village/data=!4m2!3m1!1s0x3546ae7e6e7eac59:0x256cce7aa8e6b278
+- id: nyoirinji-frog-temple
+  name: Nyoirinji Frog Temple
+  icon: temple
+  city: Fukuoka
+  region: kyushu
+  category: see
+  visited: false
+  lat: 33.4276
+  lng: 130.5675
+  google_maps: https://www.google.com/maps/place/Nyoirinji+Frog+Temple/data=!4m2!3m1!1s0x35419f3b4710e3d7:0xc3706161d2b9f04b
+- id: mount-aso
+  name: Mount Aso
+  icon: mountain
+  city: Kumamoto
+  region: kyushu
+  category: photo
+  visited: false
+  lat: 32.8889
+  lng: 131.0852
+  google_maps: https://www.google.com/maps/place/Mount+Aso/data=!4m2!3m1!1s0x3540d87b844258f9:0x374a44e66d271103
+- id: ukiha-inari-shrine
+  name: Ukiha Inari Shrine
+  icon: torii
+  city: près de Fukuoka
+  region: kyushu
+  category: see
+  visited: false
+  lat: 33.323
+  lng: 130.7918
+  google_maps: https://www.google.com/maps/place/Ukiha+Inari+Shrine/data=!4m2!3m1!1s0x354172a5d64a681f:0x218dbd88e3de8c68
+- id: attack-on-titan-oyama-dam-statue
+  name: Attack on Titan Oyama Dam Statue
+  icon: camera
+  city: près de Kumamoto
+  region: kyushu
+  category: photo
+  visited: false
+  lat: 33.1868
+  lng: 130.9536
+  google_maps: https://www.google.com/maps/place/Attack+on+Titan+Oyama+Dam+Statue/data=!4m2!3m1!1s0x354115f3ff7c8c29:0xbc758fb39b88b08c
+- id: takachiho-gorge
+  name: Takachiho Gorge
+  icon: camera
+  city: près de Kumamoto
+  region: kyushu
+  category: photo
+  visited: false
+  lat: 32.7022
+  lng: 131.3006
+  google_maps: https://www.google.com/maps/place/Takachiho+Gorge/data=!4m2!3m1!1s0x35472cddfea5092f:0x58795d299dc91f8b
+- id: the-great-camphor-tree-of-takeo-takeo-no-okusu
+  name: The Great Camphor Tree of Takeo (Takeo no Okusu)
+  icon: camera
+  city: près de Nagasaki
+  region: kyushu
+  category: photo
+  visited: false
+  lat: 33.2149
+  lng: 130.031
+  google_maps: https://www.google.com/maps/place/The+Great+Camphor+Tree+of+Takeo+(Takeo+no+Okusu)/data=!4m2!3m1!1s0x35402972c6b423f9:0x887386e39f561df2
+- id: kabira-bay
+  name: Kabira Bay
+  icon: beach
+  city: Ishigaki
+  region: okinawa
+  category: photo
+  visited: true
+  verdict: love
+  review: vraiment magnifique mais beaucoup de gens
+  lat: 24.4509
+  lng: 124.1412
+  google_maps: https://www.google.com/maps/place/Kabira+Bay/data=!4m2!3m1!1s0x345fddee11d073ab:0x9af89d9f1b1f5cf1
+- id: yoneko-yaki-kobo-shisa-farm
+  name: Yoneko Yaki Kobo Shisa Farm
+  icon: flower
+  city: Ishigaki
+  region: okinawa
+  category: activity
+  visited: true
+  verdict: love
+  lat: 24.4532
+  lng: 124.1875
+  google_maps: https://www.google.com/maps/place/Yoneko+Yaki+Kobo+Shisa+Farm/data=!4m2!3m1!1s0x345fe71a8e8cc94b:0x3632193536f82200
+- id: hoshizuna-beach
+  name: Hoshizuna Beach
+  icon: beach
+  city: Ishigaki
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 24.4365
+  lng: 123.7774
+  google_maps: https://www.google.com/maps/place/Hoshizuna+Beach/data=!4m2!3m1!1s0x34608019ae55726f:0x582bb22f1db8faa4
+- id: kaiji-beach
+  name: Kaiji Beach
+  icon: beach
+  city: Ishigaki
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 24.3208
+  lng: 124.077
+  google_maps: https://www.google.com/maps/place/Kaiji+Beach/data=!4m2!3m1!1s0x34607431be00dc3d:0xb3fa9211d13fae99
+- id: p035
+  name: ミッツ（三つ）マングローブ
+  icon: gem
+  city: Ishigaki
+  region: okinawa
+  category: hidden
+  visited: false
+  lat: 24.4017
+  lng: 124.1065
+  google_maps: https://www.google.com/maps/place/%E3%83%9F%E3%83%83%E3%83%84%EF%BC%88%E4%B8%89%E3%81%A4%EF%BC%89%E3%83%9E%E3%83%B3%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%96/data=!4m2!3m1!1s0x345fdf00485e495f:0x6526658fd25a2856
+- id: toriike-pond
+  name: Toriike Pond
+  icon: torii
+  city: Miyako
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 24.8241
+  lng: 125.1364
+  google_maps: https://www.google.com/maps/place/Toriike+Pond/data=!4m2!3m1!1s0x34f5abe5c18d175b:0x390a67018c8cbeb3
+- id: fukushuen-garden
+  name: Fukushūen Garden
+  icon: garden
+  city: Naha
+  region: okinawa
+  category: see
+  visited: true
+  lat: 26.218
+  lng: 127.6757
+  google_maps: https://www.google.com/maps/place/Fukush%C5%ABen+Garden/data=!4m2!3m1!1s0x34e5699b59249355:0x90e4d193604bde89
+- id: futenma-gu-futenma-shrine
+  name: Futenma-Gu (Futenma Shrine)
+  icon: torii
+  city: Naha
+  region: okinawa
+  category: see
+  visited: true
+  lat: 26.2929
+  lng: 127.7773
+  google_maps: https://www.google.com/maps/place/Futenma-Gu+(Futenma+Shrine)/data=!4m2!3m1!1s0x34e512c4aeb00001:0xb38151fa6536e697
+- id: heiwa-dori
+  name: Heiwa Dori
+  icon: ramen
+  city: Naha
+  region: okinawa
+  category: food
+  visited: true
+  lat: 26.2139
+  lng: 127.6897
+  google_maps: https://www.google.com/maps/place/Heiwa+Dori/data=!4m2!3m1!1s0x34e5697064e1b61d:0xa5b183727280497d
+- id: hokekyoji
+  name: Hokekyoji
+  icon: camera
+  city: Naha
+  region: okinawa
+  category: see
+  visited: true
+  lat: 26.222
+  lng: 127.6971
+  google_maps: https://www.google.com/maps/place/Hokekyoji/data=!4m2!3m1!1s0x34e56962027abcd9:0xdf4782489436d3b0
+- id: kokusai-dori
+  name: Kokusai-dori
+  icon: lantern
+  city: Naha
+  region: okinawa
+  category: see
+  visited: true
+  lat: 26.2153
+  lng: 127.6861
+  google_maps: https://www.google.com/maps/place/Kokusai-dori/data=!4m2!3m1!1s0x34e5697751412f31:0x8d6939f65e915e02
+- id: naminoue-beach
+  name: Naminoue Beach
+  icon: beach
+  city: Naha
+  region: okinawa
+  category: photo
+  visited: true
+  lat: 26.22
+  lng: 127.67
+  google_maps: https://www.google.com/maps/place/Naminoue+Beach/data=!4m2!3m1!1s0x34e569900ff36f09:0x583dec31994d039e
+- id: shuri-castle
+  name: Shuri Castle
+  icon: castle
+  city: Naha
+  region: okinawa
+  category: see
+  visited: true
+  lat: 26.217
+  lng: 127.7194
+  google_maps: https://www.google.com/maps/place/Shuri+Castle/data=!4m2!3m1!1s0x34e56bfe6cf4db67:0xc0899fbab29e4f8b
+- id: tsuboya-ufu-shisa
+  name: Tsuboya Ufu Shisa
+  icon: camera
+  city: Naha
+  region: okinawa
+  category: photo
+  visited: true
+  lat: 26.2133
+  lng: 127.6902
+  google_maps: https://www.google.com/maps/place/Tsuboya+Ufu+Shisa/data=!4m2!3m1!1s0x34e5697069f34a25:0x780cde3d350cc291
+- id: aharen-beach
+  name: Aharen Beach
+  icon: beach
+  city: Naha
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 26.17
+  lng: 127.35
+  google_maps: https://www.google.com/maps/place/Aharen+Beach/data=!4m2!3m1!1s0x34e55386255530cd:0xbe6f056644a27c62
+- id: aka-island
+  name: Aka Island
+  icon: beach
+  city: Naha
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 26.199
+  lng: 127.2806
+  google_maps: https://www.google.com/maps/place/Aka+Island/data=!4m2!3m1!1s0x34faacbca2df3b7b:0xd52a60961c09f432
+- id: american-village
+  name: American Village
+  icon: house
+  city: Naha
+  region: okinawa
+  category: activity
+  visited: false
+  lat: 26.3169
+  lng: 127.7576
+  google_maps: https://www.google.com/maps/place/American+Village/data=!4m2!3m1!1s0x34e5130508159acd:0x1bde7c8b1d9e8bcc
+- id: banshoin
+  name: Banshoin
+  icon: camera
+  city: Naha
+  region: okinawa
+  category: see
+  visited: false
+  lat: 26.2179
+  lng: 127.7219
+  google_maps: https://www.google.com/maps/place/Banshoin/data=!4m2!3m1!1s0x34e56bff0fdeb4b5:0xbc3e98a897234578
+- id: furuzamami-beach
+  name: Furuzamami Beach
+  icon: beach
+  city: Naha
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 26.2228
+  lng: 127.3081
+  google_maps: https://www.google.com/maps/place/Furuzamami+Beach/data=!4m2!3m1!1s0x34e552d9d6f7319d:0x869281a5ac11e84
+- id: hizushi-beach
+  name: Hizushi Beach
+  icon: beach
+  city: Naha
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 26.1898
+  lng: 127.2762
+  google_maps: https://www.google.com/maps/place/Hizushi+Beach/data=!4m2!3m1!1s0x34faaca01b499c3b:0xba63981317e55689
+- id: kafu-banta
+  name: Kafu Banta
+  icon: camera
+  city: Naha
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 26.3618
+  lng: 127.9902
+  google_maps: https://www.google.com/maps/place/Kafu+Banta/data=!4m2!3m1!1s0x34e5a7efebb292e3:0x9fc4c665a90c148b
+- id: kerama-islands-national-park
+  name: Kerama Islands National Park.
+  icon: beach
+  city: Naha
+  region: okinawa
+  category: activity
+  visited: false
+  lat: 26.1994
+  lng: 127.3124
+  google_maps: https://www.google.com/maps/place/Kerama+Islands+National+Park./data=!4m2!3m1!1s0x34e55338b9a1dc29:0x79e1fb9aa23f4a09
+- id: kinjo-stone-road
+  name: Kinjo Stone Road
+  icon: camera
+  city: Naha
+  region: okinawa
+  category: see
+  visited: false
+  lat: 26.2143
+  lng: 127.7141
+  google_maps: https://www.google.com/maps/place/Kinjo+Stone+Road/data=!4m2!3m1!1s0x34e5695771438eb3:0x5e8617c69ab546ef
+- id: naminoue-shrine
+  name: Naminoue Shrine
+  icon: torii
+  city: Naha
+  region: okinawa
+  category: see
+  visited: false
+  lat: 26.2207
+  lng: 127.6711
+  google_maps: https://www.google.com/maps/place/Naminoue+Shrine/data=!4m2!3m1!1s0x34e56985510a3f75:0x776a51e1e15524ac
+- id: naminoue-shrine-main-hall
+  name: Naminoue Shrine Main Hall
+  icon: torii
+  city: Naha
+  region: okinawa
+  category: see
+  visited: false
+  lat: 26.2289
+  lng: 127.6416
+  google_maps: https://www.google.com/maps/place/Naminoue+Shrine+Main+Hall/data=!4m2!3m1!1s0x34e569e32938789f:0xfd73e8f9fea49dec
+- id: okino-gu-shrine
+  name: Okino-gû Shrine
+  icon: torii
+  city: Naha
+  region: okinawa
+  category: see
+  visited: false
+  lat: 26.2028
+  lng: 127.6771
+  google_maps: https://www.google.com/maps/place/Okino-g%C3%BB+Shrine/data=!4m2!3m1!1s0x34e569a6b780ffcb:0x605951b19990b9a0
+- id: ryuya-honten
+  name: Ryuya Honten
+  icon: ramen
+  city: Naha
+  region: okinawa
+  category: food
+  visited: false
+  lat: 26.2208
+  lng: 127.6665
+  google_maps: https://www.google.com/maps/place/Ryuya+Honten/data=!4m2!3m1!1s0x34e56991e996c881:0x3bd26033d8fb191
+- id: saion-ufu-shisa
+  name: Saion Ufu Shisa
+  icon: camera
+  city: Naha
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 26.2176
+  lng: 127.6927
+  google_maps: https://www.google.com/maps/place/Saion+Ufu+Shisa/data=!4m2!3m1!1s0x34e56964b9aa8a8f:0xe3ee2e7c911716c8
+- id: sairaiin-daruma-temple
+  name: Sairaiin (Daruma Temple)
+  icon: temple
+  city: Naha
+  region: okinawa
+  category: see
+  visited: false
+  lat: 26.2177
+  lng: 127.7225
+  google_maps: https://www.google.com/maps/place/Sairaiin+(Daruma+Temple)/data=!4m2!3m1!1s0x34e56bff7290bbe7:0x193892a7ae016d6d
+- id: shikina-en
+  name: Shikina-en
+  icon: garden
+  city: Naha
+  region: okinawa
+  category: see
+  visited: false
+  lat: 26.205
+  lng: 127.7148
+  google_maps: https://www.google.com/maps/place/Shikina-en/data=!4m2!3m1!1s0x34e5694fa4990145:0x95a7e826dc50e56b
+- id: shuri-kannondo
+  name: Shuri Kannondo
+  icon: temple
+  city: Naha
+  region: okinawa
+  category: see
+  visited: false
+  lat: 26.2193
+  lng: 127.7087
+  google_maps: https://www.google.com/maps/place/Shuri+Kannondo/data=!4m2!3m1!1s0x34e56be20eee0c2b:0x95c0335b0625b9bc
+- id: southeast-botanical-gardens
+  name: Southeast Botanical Gardens
+  icon: garden
+  city: Naha
+  region: okinawa
+  category: activity
+  visited: false
+  lat: 26.3755
+  lng: 127.8065
+  google_maps: https://www.google.com/maps/place/Southeast+Botanical+Gardens/data=!4m2!3m1!1s0x34e511d8db9268d7:0x97aa9da99ec7390b
+- id: sushiro
+  name: Sushiro
+  icon: ramen
+  city: Naha
+  region: okinawa
+  category: food
+  visited: false
+  lat: 26.2023
+  lng: 127.6415
+  google_maps: https://www.google.com/maps/place/Sushiro/data=!4m2!3m1!1s0x34e569d45265ee81:0x67093168302d5e4b
+- id: takatsuki-yama-observation-deck
+  name: Takatsuki-Yama Observation Deck
+  icon: camera
+  city: Naha
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 26.2306
+  lng: 127.3093
+  google_maps: https://www.google.com/maps/place/Takatsuki-Yama+Observation+Deck/data=!4m2!3m1!1s0x34e552c53f4ed5cd:0xed172c71ad4beba5
+- id: tamaudun
+  name: Tamaudun
+  icon: camera
+  city: Naha
+  region: okinawa
+  category: see
+  visited: false
+  lat: 26.2186
+  lng: 127.714
+  google_maps: https://www.google.com/maps/place/Tamaudun/data=!4m2!3m1!1s0x34e56bfd38e3952d:0x3b3d1223d5e3f94e
+- id: tokashiku-beach
+  name: Tokashiku Beach
+  icon: beach
+  city: Naha
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 26.1729
+  lng: 127.382
+  google_maps: https://www.google.com/maps/place/Tokashiku+Beach/data=!4m2!3m1!1s0x34e553e1efe2d511:0xb5fef88b1451805
+- id: toyama-stone-pavement
+  name: Toyama Stone Pavement
+  icon: camera
+  city: Naha
+  region: okinawa
+  category: see
+  visited: false
+  lat: 26.2513
+  lng: 127.7314
+  google_maps: https://www.google.com/maps/place/Toyama+Stone+Pavement/data=!4m2!3m1!1s0x34e56c7d9b8f1053:0x557555432f584f66
+- id: tsuboya-yachimun-street
+  name: Tsuboya Yachimun Street
+  icon: lantern
+  city: Naha
+  region: okinawa
+  category: see
+  visited: false
+  lat: 26.2132
+  lng: 127.6911
+  google_maps: https://www.google.com/maps/place/Tsuboya+Yachimun+Street/data=!4m2!3m1!1s0x34e56970174faaab:0x8008422aafb38575
+- id: urasoe-castle-ruins
+  name: Urasoe Castle Ruins
+  icon: castle
+  city: Naha
+  region: okinawa
+  category: see
+  visited: false
+  lat: 26.2458
+  lng: 127.7218
+  google_maps: https://www.google.com/maps/place/Urasoe+Castle+Ruins/data=!4m2!3m1!1s0x34e56b87c585ccb9:0x43c66a7775bf1559
+- id: urasoe-yodore-mausoleum
+  name: Urasoe Yodore Mausoleum
+  icon: camera
+  city: Naha
+  region: okinawa
+  category: see
+  visited: false
+  lat: 26.2034
+  lng: 127.8047
+  google_maps: https://www.google.com/maps/place/Urasoe+Yodore+Mausoleum/data=!4m2!3m1!1s0x34e56df6be446009:0xb0a07595356510ff
+- id: wolfbrau
+  name: Wolfbrau
+  icon: ramen
+  city: Naha
+  region: okinawa
+  category: food
+  visited: false
+  lat: 26.255
+  lng: 127.6907
+  google_maps: https://www.google.com/maps/place/Wolfbrau/data=!4m2!3m1!1s0x34e56bafe6fba3fb:0xbc6b4486063668d
+- id: yachimun-no-sato
+  name: Yachimun no Sato
+  icon: ticket
+  city: Naha
+  region: okinawa
+  category: activity
+  visited: false
+  lat: 26.3961
+  lng: 127.7443
+  google_maps: https://www.google.com/maps/place/Yachimun+no+Sato/data=!4m2!3m1!1s0x34e5113d9c9fee93:0x75a11f61f4cb1ea
+- id: yoshinoya-himeyuri-dori
+  name: Yoshinoya Himeyuri-dori
+  icon: ramen
+  city: Naha
+  region: okinawa
+  category: food
+  visited: false
+  lat: 26.2138
+  lng: 127.6945
+  google_maps: https://www.google.com/maps/place/Yoshinoya+Himeyuri-dori/data=!4m2!3m1!1s0x34e5696577f6450f:0xfbf62634fd8e17d5
+- id: zakimi-castle-ruins
+  name: Zakimi Castle Ruins
+  icon: castle
+  city: Naha
+  region: okinawa
+  category: see
+  visited: false
+  lat: 26.4086
+  lng: 127.7417
+  google_maps: https://www.google.com/maps/place/Zakimi+Castle+Ruins/data=!4m2!3m1!1s0x34e51120929aa65f:0xa6e58af9110a7808
+- id: zamami-island
+  name: Zamami Island
+  icon: beach
+  city: Naha
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 26.2292
+  lng: 127.3033
+  google_maps: https://www.google.com/maps/place/Zamami+Island/data=!4m2!3m1!1s0x34e552d19c9c5ad9:0x3aec9a694690a053
+- id: bisezaki
+  name: Bisezaki
+  icon: camera
+  city: Okinawa (nord)
+  region: okinawa
+  category: photo
+  visited: true
+  lat: 26.7091
+  lng: 127.8801
+  google_maps: https://www.google.com/maps/place/Bisezaki/data=!4m2!3m1!1s0x34e4fa1635c255c7:0xcee659052558b445
+- id: cape-manzamo
+  name: Cape Manzamo
+  icon: beach
+  city: Okinawa (nord)
+  region: okinawa
+  category: photo
+  visited: true
+  lat: 26.5039
+  lng: 127.8508
+  google_maps: https://www.google.com/maps/place/Cape+Manzamo/data=!4m2!3m1!1s0x34e503788741a7f9:0xdfec3d6fcce75918
+- id: nakijin-castle-ruins
+  name: Nakijin Castle Ruins
+  icon: castle
+  city: Okinawa (nord)
+  region: okinawa
+  category: see
+  visited: true
+  lat: 26.6918
+  lng: 127.929
+  google_maps: https://www.google.com/maps/place/Nakijin+Castle+Ruins/data=!4m2!3m1!1s0x34e4f9b63b96f293:0x3120a9e5550eac17
+- id: okinawa-village
+  name: Okinawa Village
+  icon: house
+  city: Okinawa (nord)
+  region: okinawa
+  category: activity
+  visited: true
+  lat: 26.6929
+  lng: 127.8766
+  google_maps: https://www.google.com/maps/place/Okinawa+Village/data=!4m2!3m1!1s0x34e4fa341444ff37:0x155c5e710e8e46e6
+- id: bise-fukugi-tree-road
+  name: Bise-Fukugi Tree Road
+  icon: camera
+  city: Okinawa (nord)
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 26.7007
+  lng: 127.8796
+  google_maps: https://www.google.com/maps/place/Bise-Fukugi+Tree+Road/data=!4m2!3m1!1s0x34e4fa3bb2e83feb:0xa38ab5013a129a36
+- id: higashi-azalea-eco-park
+  name: Higashi Azalea Eco Park
+  icon: garden
+  city: Okinawa (nord)
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 26.6383
+  lng: 128.1593
+  google_maps: https://www.google.com/maps/place/Higashi+Azalea+Eco+Park/data=!4m2!3m1!1s0x34e44ff7995957af:0xe4d98460d81d6bf4
+- id: ikei-beach
+  name: Ikei Beach
+  icon: beach
+  city: Okinawa (nord)
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 26.3879
+  lng: 127.9916
+  google_maps: https://www.google.com/maps/place/Ikei+Beach/data=!4m2!3m1!1s0x34e5a81729c4f655:0xd839fbd1e3bd5e8c
+- id: kokuei-okinawakinenkoen-emerald-beach
+  name: Kokuei Okinawakinenkoen Emerald Beach
+  icon: beach
+  city: Okinawa (nord)
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 26.6992
+  lng: 127.8777
+  google_maps: https://www.google.com/maps/place/Kokuei+Okinawakinenkoen+Emerald+Beach/data=!4m2!3m1!1s0x34e4fa39f8708193:0xb22469a0a14bd391
+- id: ocean-expo-park
+  name: Ocean Expo Park
+  icon: garden
+  city: Okinawa (nord)
+  region: okinawa
+  category: activity
+  visited: false
+  lat: 26.6871
+  lng: 127.8755
+  google_maps: https://www.google.com/maps/place/Ocean+Expo+Park/data=!4m2!3m1!1s0x34e4fbcb06b9af8d:0x9959600907c8bfc4
+- id: p278
+  name: カエル島
+  icon: camera
+  city: Okinawa (nord)
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 26.6907
+  lng: 127.9895
+  google_maps: https://www.google.com/maps/place/%E3%82%AB%E3%82%A8%E3%83%AB%E5%B3%B6/data=!4m2!3m1!1s0x34e457f77b3c6e7b:0xb1fa5c6a9fc1da35
+- id: higashisaki-lighthouse
+  name: Higashisaki Lighthouse
+  icon: camera
+  city: Yonaguni
+  region: okinawa
+  category: photo
+  visited: true
+  lat: 24.4623
+  lng: 123.0429
+  google_maps: https://www.google.com/maps/place/Higashisaki+Lighthouse/data=!4m2!3m1!1s0x34675282fcc3b677:0x905096cd3b197485
+- id: monument-du-point-le-plus-a-l-ouest-du-japon
+  name: Monument du point le plus à l'Ouest du Japon
+  icon: beach
+  city: Yonaguni
+  region: okinawa
+  category: see
+  visited: true
+  lat: 24.45
+  lng: 122.9344
+  google_maps: https://www.google.com/maps/place/Monument+du+point+le+plus+%C3%A0+l'Ouest+du+Japon/data=!4m2!3m1!1s0x34674faf317d1b5f:0x75ca9098ff606b40
+- id: toyama-shrine
+  name: Toyama shrine
+  icon: torii
+  city: Yonaguni
+  region: okinawa
+  category: see
+  visited: true
+  lat: 24.4691
+  lng: 123.0009
+  google_maps: https://www.google.com/maps/place/Toyama+shrine/data=!4m2!3m1!1s0x34674df7edb0ec31:0x139c6373aded0e15
+- id: jacques-dolphin-glass-bottom-boat-tours
+  name: Jacques Dolphin Glass Bottom Boat Tours
+  icon: ticket
+  city: Yonaguni
+  region: okinawa
+  category: activity
+  visited: false
+  lat: 24.4244
+  lng: 122.926
+  google_maps: https://www.google.com/maps/place/Jacques+Dolphin+Glass+Bottom+Boat+Tours/data=!4m2!3m1!1s0x34674f3e1247e099:0x5f5b0ea4b2062dac
+- id: submarine-ruins-sightseeing-boarding-dock
+  name: Submarine Ruins Sightseeing Boarding Dock
+  icon: ticket
+  city: Yonaguni
+  region: okinawa
+  category: activity
+  visited: false
+  lat: 24.4309
+  lng: 122.9358
+  google_maps: https://www.google.com/maps/place/Submarine+Ruins+Sightseeing+Boarding+Dock/data=!4m2!3m1!1s0x34674f1ba9cb024d:0xf4848159720fc8ab
+- id: yonaguni-island-south-grazing-land-improvement-m
+  name: Yonaguni Island South Grazing Land Improvement Memorial Monument.
+  icon: beach
+  city: Yonaguni
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 24.4643
+  lng: 122.9097
+  google_maps: https://www.google.com/maps/place/Yonaguni+Island+South+Grazing+Land+Improvement+Memorial+Monument./data=!4m2!3m1!1s0x34674f8e26247271:0xc245026669e097a3
+- id: yonaguni-island-south-grazing-land
+  name: Yonaguni Island South Grazing Land.
+  icon: beach
+  city: Yonaguni
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 24.4434
+  lng: 122.9566
+  google_maps: https://www.google.com/maps/place/Yonaguni+Island+South+Grazing+Land./data=!4m2!3m1!1s0x34674e59936fb2eb:0x201aed04998aa951
+- id: p431
+  name: ウラヌウガン ( 浦野御嶽 )
+  icon: gem
+  city: Yonaguni
+  region: okinawa
+  category: hidden
+  visited: false
+  lat: 24.5199
+  lng: 123.0172
+  google_maps: https://www.google.com/maps/place/%E3%82%A6%E3%83%A9%E3%83%8C%E3%82%A6%E3%82%AC%E3%83%B3+(+%E6%B5%A6%E9%87%8E%E5%BE%A1%E5%B6%BD+)/data=!4m2!3m1!1s0x346753ba1f056b67:0xbd8d6669915d5063
+- id: p438
+  name: 与那国むんぶステイ祖納
+  icon: pagoda
+  city: Yonaguni
+  region: okinawa
+  category: sleep
+  visited: false
+  lat: 24.4397
+  lng: 122.998
+  google_maps: https://www.google.com/maps/place/%E4%B8%8E%E9%82%A3%E5%9B%BD%E3%82%80%E3%82%93%E3%81%B6%E3%82%B9%E3%83%86%E3%82%A4%E7%A5%96%E7%B4%8D/data=!4m2!3m1!1s0x34674dda9cb37f77:0xa6bd5b840b73581d
+- id: p437
+  name: 金刀比羅宮鳥居
+  icon: torii
+  city: Yonaguni
+  region: okinawa
+  category: see
+  visited: false
+  lat: 24.465
+  lng: 122.9142
+  google_maps: https://www.google.com/maps/place/%E9%87%91%E5%88%80%E6%AF%94%E7%BE%85%E5%AE%AE%E9%B3%A5%E5%B1%85/data=!4m2!3m1!1s0x34674f91607c2c8b:0x76576ef02ac99578
+- id: kami-no-hama-observation-deck
+  name: Kami-no-hama observation deck
+  icon: camera
+  city: près de Naha
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 26.2411
+  lng: 127.2575
+  google_maps: https://www.google.com/maps/place/Kami-no-hama+observation+deck/data=!4m2!3m1!1s0x34faad06dc0832c7:0x523c58953a6f231a
+- id: tatami-rock
+  name: Tatami Rock
+  icon: camera
+  city: près de Naha
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 26.3386
+  lng: 126.8281
+  google_maps: https://www.google.com/maps/place/Tatami+Rock/data=!4m2!3m1!1s0x34fa9b9e821fd575:0x7de7a32a2a452475
+- id: cape-hedo
+  name: Cape Hedo
+  icon: beach
+  city: près de Okinawa (nord)
+  region: okinawa
+  category: photo
+  visited: true
+  lat: 26.8724
+  lng: 128.2647
+  google_maps: https://www.google.com/maps/place/Cape+Hedo/data=!4m2!3m1!1s0x34e46c5b5b325bb1:0x739805bbd75cb15f
+- id: tamina-cape
+  name: Tamina Cape
+  icon: beach
+  city: près de Okinawa (nord)
+  region: okinawa
+  category: photo
+  visited: false
+  lat: 27.404
+  lng: 128.5377
+  google_maps: https://www.google.com/maps/place/Tamina+Cape/data=!4m2!3m1!1s0x34e3db8f7f82cccf:0xbd60da0ad689106

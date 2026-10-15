@@ -1,8 +1,9 @@
 /* HodoGuides bêta · map-first app
  * World view: a calm globe with the visited countries (proposal C).
- * Country view: the map zooms in, a bottom panel lists the places, filters
- * them and opens a quick place sheet (proposal A). One page, URL hash routes:
- *   #japan · #japan/fushimi-inari · #explore
+ * Country view: the map zooms in on region bubbles; a region shows its cities
+ * and places in the bottom panel, with filters and a quick place sheet
+ * (proposal A). One page, URL hash routes:
+ *   #japan · #japan/~kansai · #japan/~kansai/Kyoto · #japan/fushimi-inari-taisha · #explore
  */
 (() => {
   "use strict";
@@ -21,6 +22,7 @@
     love:      { fr: "♥ Coup de cœur",       en: "♥ Favourite" },
     recommend: { fr: "👍 Recommandé",        en: "👍 Recommended" },
     optional:  { fr: "👌 Si tu as le temps", en: "👌 If you have time" },
+    been:      { fr: "✓ J'y suis allée",     en: "✓ Been there" },
     wish:      { fr: "🔖 À tester",          en: "🔖 Not tried yet" },
   };
   const INFO = {
@@ -38,6 +40,8 @@
     countries: [],
     view: "world",        // world | country
     countryId: null,
+    region: null,         // region id inside the country, null = all regions
+    city: null,           // city inside the region, null = all cities
     filter: "all",
     activeId: null,
     mode: null,           // list | place | explore | search
@@ -50,7 +54,12 @@
   const country = () => state.countries.find((c) => c.id === state.countryId);
   const places = () => country()?._places || [];
   const isReady = (c) => !!c._places?.length;
-  const verdictOf = (p) => (p.visited ? (p.verdict || "recommend") : "wish");
+  const verdictOf = (p) => (p.visited ? (p.verdict || "been") : "wish");
+  const regions = () => country()?._meta?.regions || [];
+  const regionOf = (id) => regions().find((r) => r.id === id);
+  const inScope = (p) => (!state.region || p.region === state.region) && (!state.city || p.city === state.city);
+  const scoped = () => places().filter(inScope);
+  const cityLabel = (c) => String(c || "").replace(/^près de /, "");
   // A country can swap the default drawing of a category (China: a pagoda rather than a torii for "Sights")
   const catIcon = (cat) => country()?._meta?.icons?.[cat] || HodoIcons.CATEGORY_ICON[cat] || "torii";
   const iconOf = (p) => (HodoIcons.has(p.icon) ? p.icon : catIcon(p.category));
@@ -179,7 +188,7 @@
   function emptyFC() { return { type: "FeatureCollection", features: [] }; }
 
   function filtered() {
-    return places().filter((p) => {
+    return scoped().filter((p) => {
       if (state.filter === "all") return true;
       if (state.filter === "love") return verdictOf(p) === "love";
       if (state.filter === "wish") return verdictOf(p) === "wish";
@@ -191,9 +200,87 @@
     if (!map?.getSource("places")) return;
     for (const m of placeMarkers.values()) m.remove();
     placeMarkers.clear();
-    const list = state.view === "country" ? filtered() : [];
+    // With regions, the places only show once a region is open (the country shows region bubbles)
+    const list = state.view === "country" && (state.region || state.mode === "place" || !regions().length) ? filtered() : [];
+    showRegionMarkers();
     map.getSource("places").setData({ type: "FeatureCollection", features: list.map((p) => ({
       type: "Feature", properties: { id: p.id }, geometry: { type: "Point", coordinates: [p.lng, p.lat] } })) });
+  }
+
+  // ----- regions -----
+  const regionMarkers = [];
+  function showRegionMarkers() {
+    const on = state.view === "country" && !state.region && state.mode !== "place" && regions().length;
+    const cid = on ? state.countryId : null;
+    if (regionMarkers.cid === cid) return;
+    regionMarkers.forEach((m) => m.remove());
+    regionMarkers.length = 0;
+    regionMarkers.cid = cid;
+    if (!on) return;
+    for (const r of regions()) {
+      const ps = places().filter((p) => p.region === r.id);
+      if (!ps.length) continue;
+      const { lng, lat } = r.at || regionCentre(ps);
+      const el = document.createElement("button");
+      el.type = "button";
+      el.className = "rg";
+      el.setAttribute("aria-label", `${tr(r.name)} · ${ps.length}`);
+      el.innerHTML = `<span class="rg-in">${HodoIcons.icon(HodoIcons.has(r.icon) ? r.icon : regionIcon(ps), 40)}<span class="rg-count">${ps.length}</span></span><span class="rg-name">${esc(tr(r.short || r.name))}</span>`;
+      el.addEventListener("click", (e) => { e.stopPropagation(); go(`#${state.countryId}/~${r.id}`); });
+      regionMarkers.push(new mapboxgl.Marker({ element: el, anchor: "center" }).setLngLat([lng, lat]).addTo(map));
+    }
+  }
+  function regionCentre(ps) {
+    const c = core(ps);
+    return { lng: c.reduce((a, p) => a + p.lng, 0) / c.length, lat: c.reduce((a, p) => a + p.lat, 0) / c.length };
+  }
+  /** The drawing a region is best known for: the most common one among the places Erika visited there. */
+  function regionIcon(ps) {
+    const pool = ps.some((p) => p.visited) ? ps.filter((p) => p.visited) : ps;
+    const n = new Map();
+    for (const p of pool) { const i = iconOf(p); if (!["ramen", "cup", "ticket", "camera", "shop"].includes(i)) n.set(i, (n.get(i) || 0) + 1); }
+    return [...n.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] || iconOf(pool[0]);
+  }
+  /** Leave out far-flung places (a remote island) so the map frames where most places are. */
+  function core(ps) {
+    if (ps.length < 4) return ps;
+    const mid = (xs) => xs.slice().sort((a, b) => a - b)[Math.floor(xs.length / 2)];
+    const lat = mid(ps.map((p) => p.lat)), lng = mid(ps.map((p) => p.lng));
+    const d = ps.map((p) => Math.hypot(p.lat - lat, p.lng - lng));
+    const lim = Math.max(mid(d) * 4, 0.6);
+    return ps.filter((p, i) => d[i] <= lim);
+  }
+  /** Frame a set of places in the part of the map the panel leaves free (fitBounds is unreliable on the globe). */
+  function farOff(ps, maxDeg) {
+    const mid = (xs) => xs.slice().sort((a, b) => a - b)[Math.floor(xs.length / 2)];
+    const lat = mid(ps.map((p) => p.lat)), lng = mid(ps.map((p) => p.lng));
+    const keep = ps.filter((p) => Math.hypot(p.lat - lat, p.lng - lng) <= maxDeg);
+    return keep.length ? keep : ps;
+  }
+  function fitTo(ps, duration, { keepAll = false } = {}) {
+    if (!ps.length) return;
+    // keepAll: frame every point except the very far ones (a region 12° away, like Okinawa, stays reachable from the list)
+    const pts = keepAll ? farOff(ps, wide() ? 11.5 : 10) : core(ps);
+    const y = (lat) => Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360)) / (2 * Math.PI);   // Mercator, in world widths
+    const lngs = pts.map((p) => p.lng), ys = pts.map((p) => y(p.lat));
+    const pad = mapPadding(), w = innerWidth - pad.left - pad.right - 80, h = innerHeight - pad.top - pad.bottom - 150;
+    const spanX = Math.max(Math.max(...lngs) - Math.min(...lngs), 0.02) / 360, spanY = Math.max(Math.max(...ys) - Math.min(...ys), 0.0001);
+    const zoom = Math.min(12, Math.log2(Math.max(w, 120) / 512 / spanX), Math.log2(Math.max(h, 120) / 512 / spanY));
+    const midY = (Math.max(...ys) + Math.min(...ys)) / 2;
+    const lat = (Math.atan(Math.exp(midY * 2 * Math.PI)) - Math.PI / 4) * 360 / Math.PI;
+    flyCentered([(Math.max(...lngs) + Math.min(...lngs)) / 2, lat], zoom, duration, 70);
+  }
+
+  /** Fly so that a point sits in the middle of the area the panel leaves free.
+   * The globe ignores camera padding, so the map centre is shifted by hand instead. */
+  function flyCentered([lng, lat], zoom, duration, extraTop = 0) {
+    const pad = mapPadding(), W = innerWidth, H = innerHeight, scale = 512 * 2 ** zoom;
+    const cx = (pad.left + W - pad.right) / 2, cy = (pad.top + extraTop + H - pad.bottom) / 2;
+    const y = Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360)) / (2 * Math.PI) + (cy - H / 2) / scale;
+    map.flyTo({
+      center: [lng - (cx - W / 2) / scale * 360, (Math.atan(Math.exp(y * 2 * Math.PI)) - Math.PI / 4) * 360 / Math.PI],
+      zoom, padding: { top: 0, bottom: 0, left: 0, right: 0 }, duration,
+    });
   }
 
   function placeEl(p) {
@@ -214,7 +301,7 @@
     el.addEventListener("click", (e) => {
       e.stopPropagation();
       map.getSource("places").getClusterExpansionZoom(id, (err, zoom) => {
-        if (!err) map.easeTo({ center: coords, zoom: zoom + 0.4, padding: mapPadding() });
+        if (!err) flyCentered(coords, zoom + 0.4, 600);
       });
     });
     return el;
@@ -269,11 +356,11 @@
       b.addEventListener("click", () => { setPanel("peek"); });
       bar.appendChild(b);
     }
-    b.textContent = `☰ ${t("Liste", "List")} · ${places().length}`;
+    b.textContent = `☰ ${t("Liste", "List")} · ${state.region ? scoped().length : places().length}`;
   }
 
   function chips() {
-    const present = new Set(places().map((p) => p.category));
+    const present = new Set(scoped().map((p) => p.category));
     const out = [
       `<button type="button" class="chip text${state.filter === "all" ? " on" : ""}" data-f="all">${esc(t("Tout", "All"))}</button>`,
       `<button type="button" class="chip text${state.filter === "love" ? " on" : ""}" data-f="love">♥ ${esc(t("Coups de cœur", "Favourites"))}</button>`,
@@ -281,7 +368,7 @@
     for (const [id, c] of Object.entries(CATEGORIES)) {
       if (present.has(id)) out.push(`<button type="button" class="chip${state.filter === id ? " on" : ""}" data-f="${id}">${HodoIcons.icon(catIcon(id), 24)}${esc(label(c))}</button>`);
     }
-    if (places().some((p) => !p.visited)) out.push(`<button type="button" class="chip text${state.filter === "wish" ? " on" : ""}" data-f="wish">🔖 ${esc(t("À tester", "Not tried yet"))}</button>`);
+    if (scoped().some((p) => !p.visited)) out.push(`<button type="button" class="chip text${state.filter === "wish" ? " on" : ""}" data-f="wish">🔖 ${esc(t("À tester", "Not tried yet"))}</button>`);
     return `<div class="chips">${out.join("")}</div>`;
   }
 
@@ -291,7 +378,7 @@
     return `<button type="button" class="card place" style="--sh:${SHADOWS[i % SHADOWS.length]}" data-place="${esc(p.id)}">
       <span class="icon-tile">${thumb}</span>
       <span class="place-body">
-        <span class="place-meta">📍 ${esc(p.city || "")} · ${esc(label(CATEGORIES[p.category]))}</span>
+        <span class="place-meta">📍 ${esc(cityLabel(p.city))} · ${esc(label(CATEGORIES[p.category]))}</span>
         <b>${esc(tr(p.name))}</b>
         ${p.name_ja ? `<span class="jp">${esc(p.name_ja)}</span>` : ""}
         <span class="pill v-${v}">${esc(label(VERDICTS[v]))}</span>
@@ -299,20 +386,61 @@
       </span></button>`;
   }
 
+  /** Country root: one card per region. */
+  function renderRegions() {
+    const c = country(), m = c._meta || {}, all = places();
+    const been = all.filter((p) => p.visited).length;
+    $("#panelBody").innerHTML = `
+      <div class="p-head"><h2>${esc(tr(c.name))}</h2>${m.name_ja ? `<span class="jp">${esc(m.name_ja)}</span>` : ""}
+        <span class="pill strong">📍 ${esc(plural(all.length, "lieu", "lieux", "place", "places"))}</span></div>
+      ${m.intro ? `<p class="p-intro">${esc(tr(m.intro))}${been ? ` · ✓ ${esc(t(`${been} où je suis allée`, `${been} I've been to`))}` : ""}</p>` : ""}
+      <h3 class="p-section">${esc(t("Choisis une région", "Pick a region"))}</h3>
+      ${regions().map((r, i) => {
+        const ps = all.filter((p) => p.region === r.id);
+        if (!ps.length) return "";
+        const cities = topCities(ps).slice(0, 4).map(([n]) => cityLabel(n));
+        const v = ps.filter((p) => p.visited).length;
+        return `<button type="button" class="card region" style="--sh:${SHADOWS[i % SHADOWS.length]}" data-region="${esc(r.id)}">
+          <span class="icon-tile">${HodoIcons.icon(HodoIcons.has(r.icon) ? r.icon : regionIcon(ps), 46)}</span>
+          <span class="place-body"><b>${esc(tr(r.name))}</b>
+            <span class="place-meta">${esc(cities.join(" · "))}</span>
+            <span class="pills"><span class="pill strong">${esc(plural(ps.length, "lieu", "lieux", "place", "places"))}</span>${v ? `<span class="pill v-been">✓ ${v}</span>` : ""}</span>
+          </span></button>`;
+      }).join("")}`;
+  }
+  function topCities(ps) {
+    const n = new Map();
+    for (const p of ps) n.set(p.city, (n.get(p.city) || 0) + 1);
+    return [...n.entries()].sort((a, b) => b[1] - a[1] || String(a[0]).localeCompare(String(b[0])));
+  }
+  function cityChips() {
+    const ps = places().filter((p) => p.region === state.region);
+    const cities = topCities(ps);
+    if (cities.length < 2) return "";
+    const base = `#${state.countryId}/~${state.region}`;
+    return `<div class="chips cities">
+      <a class="chip text${state.city ? "" : " on"}" href="${esc(base)}">${esc(t("Toute la région", "Whole region"))} · ${ps.length}</a>
+      ${cities.map(([n, k]) => `<a class="chip text${state.city === n ? " on" : ""}" href="${esc(base + "/" + encodeURIComponent(n))}">${esc(cityLabel(n))} · ${k}</a>`).join("")}</div>`;
+  }
+
   function renderList() {
-    const c = country(), m = c._meta || {};
-    const all = places(), list = filtered();
+    if (regions().length && !state.region) return renderRegions();
+    const c = country(), m = c._meta || {}, r = regionOf(state.region);
+    const all = scoped(), list = filtered();
     const loves = all.filter((p) => verdictOf(p) === "love").length;
     const groups = [
       { dot: "var(--pink)", title: t("Coups de cœur", "Favourites"), items: list.filter((p) => verdictOf(p) === "love") },
       { dot: "var(--mint)", title: t("Recommandés", "Recommended"), items: list.filter((p) => ["recommend", "optional"].includes(verdictOf(p))) },
+      { dot: "var(--blue)", title: t("J'y suis allée", "Been there"), items: list.filter((p) => verdictOf(p) === "been") },
       { dot: "var(--ink-3)", title: t("Sur ma liste, à tester", "On my list, not tried yet"), items: list.filter((p) => verdictOf(p) === "wish") },
     ].filter((g) => g.items.length);
     let i = 0;
     $("#panelBody").innerHTML = `
-      <div class="p-head"><h2>${esc(tr(c.name))}</h2>${m.name_ja ? `<span class="jp">${esc(m.name_ja)}</span>` : ""}
+      ${r ? `<button type="button" class="p-back" data-go-country>← ${esc(t("Toutes les régions", "All regions"))} · ${esc(tr(c.name))}</button>` : ""}
+      <div class="p-head"><h2>${esc(r ? tr(r.name) : tr(c.name))}</h2>${!r && m.name_ja ? `<span class="jp">${esc(m.name_ja)}</span>` : ""}
         <span class="pill strong">📍 ${esc(plural(all.length, "lieu", "lieux", "place", "places"))}</span></div>
-      ${m.intro ? `<p class="p-intro">${esc(tr(m.intro))}${loves ? ` · ♥ ${esc(plural(loves, "coup de cœur", "coups de cœur", "favourite", "favourites"))}` : ""}</p>` : ""}
+      ${!r && m.intro ? `<p class="p-intro">${esc(tr(m.intro))}${loves ? ` · ♥ ${esc(plural(loves, "coup de cœur", "coups de cœur", "favourite", "favourites"))}` : ""}</p>` : ""}
+      ${r ? cityChips() : ""}
       ${chips()}
       ${groups.length ? groups.map((g) => `<div class="group-title" style="--dot:${g.dot}"><i></i>${esc(g.title)}</div>${g.items.map((p) => placeCard(p, i++)).join("")}`).join("")
         : `<div class="card empty">${esc(t("Aucun lieu ici pour l'instant.", "No place here yet."))}</div>`}`;
@@ -326,12 +454,12 @@
     const tips = (p.tips || []).map((x) => `<div class="tip">💡 <b>${esc(t("Astuce", "Tip"))}</b> : ${esc(tr(x))}</div>`).join("");
     const directions = p.google_maps || `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}`;
     $("#panelBody").innerHTML = `
-      <button type="button" class="p-back" data-back>← ${esc(t("Tous les lieux", "All places"))} · ${esc(tr(country().name))}</button>
+      <button type="button" class="p-back" data-back>← ${esc(regionOf(p.region) ? tr(regionOf(p.region).name) : `${t("Tous les lieux", "All places")} · ${tr(country().name)}`)}</button>
       <div class="sheet-hero">${HodoIcons.icon(iconOf(p), 110)}${photo}</div>
       <div class="sheet-body">
         <div>${p.name_ja ? `<div class="jp">${esc(p.name_ja)}</div>` : ""}<h2>${esc(tr(p.name))}</h2></div>
         <div class="pills">
-          <span class="pill strong">📍 ${esc(p.city || "")}</span>
+          <span class="pill strong">📍 ${esc(cityLabel(p.city))}</span>
           <span class="pill strong">${esc(label(CATEGORIES[p.category]))}</span>
           <span class="pill v-${v}">${esc(label(VERDICTS[v]))}</span>
         </div>
@@ -401,7 +529,7 @@
       <div class="p-head"><h2>${esc(t("Rechercher", "Search"))}</h2><button type="button" class="square" data-close style="margin-left:auto" aria-label="${esc(t("Fermer", "Close"))}">✕</button></div>
       <label class="search-box">🔍<input id="q" type="search" autocomplete="off" value="${esc(state.query)}" placeholder="${esc(t("Un pays, une ville, un lieu…", "A country, a city, a place…"))}"></label>
       ${ps.map(({ p, c }) => `<button type="button" class="card result" style="--sh:var(--blue)" data-goto="#${esc(c.id)}/${esc(p.id)}">
-          <span class="icon-tile">${HodoIcons.icon(iconOf(p), 38)}</span><span><b>${esc(tr(p.name))}</b><small>${esc(p.city || "")} · ${esc(tr(c.name))}</small></span></button>`).join("")}
+          <span class="icon-tile">${HodoIcons.icon(iconOf(p), 38)}</span><span><b>${esc(tr(p.name))}</b><small>${esc(cityLabel(p.city))} · ${esc(tr(c.name))}</small></span></button>`).join("")}
       ${cs.map((c) => `<button type="button" class="card result" style="--sh:${isReady(c) ? "var(--pink)" : "var(--lav)"}" ${isReady(c) ? `data-goto="#${esc(c.id)}"` : `data-soon="${esc(c.id)}"`}>
           <span class="icon-tile">${c.cover ? `<img src="/${esc(c.cover)}" alt="" onerror="this.remove()">` : HodoIcons.icon("bunny", 36)}</span>
           <span><b>${esc(tr(c.name))}</b><small>${esc(isReady(c) ? plural(c._places.length, "lieu", "lieux", "place", "places") : t("guide bientôt", "guide soon"))}</small></span></button>`).join("")}
@@ -433,14 +561,14 @@
     hideWorldCard();
     if (changed) {
       state.filter = "all";
-      refreshPlaces();
+      state.region = null; state.city = null;
     }
     return changed;
   }
 
   /** Read the URL hash and show the matching view. */
   function route({ animate = true } = {}) {
-    const [a, b] = decodeURIComponent(location.hash.slice(1)).split("/");
+    const [a, b, cityPart] = decodeURIComponent(location.hash.slice(1)).split("/");
     const c = state.countries.find((x) => x.id === a && isReady(x));
     const duration = animate ? 1600 : 0;
 
@@ -452,7 +580,7 @@
     if (!c) {
       // World
       const wasCountry = state.view === "country";
-      state.view = "world"; state.countryId = null; state.activeId = null; state.mode = null;
+      state.view = "world"; state.countryId = null; state.activeId = null; state.mode = null; state.region = null; state.city = null;
       document.body.dataset.view = "world";
       $(".intro").classList.remove("faded");
       refreshPlaces();
@@ -462,19 +590,31 @@
     }
 
     const changed = enterCountry(c, animate);
-    const p = b && c._places.find((x) => x.id === b);
+    const p = b && !b.startsWith("~") && c._places.find((x) => x.id === b);
+    const r = b && b.startsWith("~") && (c._meta?.regions || []).find((x) => x.id === b.slice(1));
     if (p) {
       state.mode = "place";
+      if (p.region && state.region !== p.region) { state.region = p.region; state.city = null; }
+      refreshPlaces();
       setActive(p.id);
       if ($("#panel").dataset.size === "closed") setPanel("peek");
       renderPanel();
-      map.flyTo({ center: [p.lng, p.lat], zoom: Math.max(map.getZoom(), 11), padding: mapPadding(), duration: animate ? 900 : 0 });
+      flyCentered([p.lng, p.lat], Math.max(map.getZoom(), 11), animate ? 900 : 0);
     } else {
+      const prev = `${state.region}/${state.city}`;
       state.mode = "list";
+      state.region = r ? r.id : null;
+      state.city = r && cityPart && c._places.some((x) => x.region === r.id && x.city === cityPart) ? cityPart : null;
+      if (prev !== `${state.region}/${state.city}`) state.filter = "all";
       setActive(null);
       if ($("#panel").dataset.size === "closed" || changed) setPanel("peek");
+      refreshPlaces();
       renderPanel();
-      if (changed) map.flyTo({ ...countryView(c), padding: mapPadding(), duration });
+      if (state.region) fitTo(scoped(), duration);
+      else if (changed || prev !== "null/null") {
+        if (regions().length) fitTo(regions().filter((x) => c._places.some((q) => q.region === x.id)).map((x) => x.at || regionCentre(c._places.filter((q) => q.region === x.id))), duration, { keepAll: true });
+        else { const v = countryView(c); flyCentered(v.center, v.zoom, duration); }
+      }
     }
   }
 
@@ -497,7 +637,13 @@
         showWorldCard(c);
         return;
       }
-      if (e.target.closest("[data-back]")) { go(`#${state.countryId}`); return; }
+      const rg = e.target.closest("[data-region]");
+      if (rg) { go(`#${state.countryId}/~${rg.dataset.region}`); return; }
+      if (e.target.closest("[data-go-country]")) { go(`#${state.countryId}`); return; }
+      if (e.target.closest("[data-back]")) {
+        const p = places().find((x) => x.id === state.activeId);
+        go(p?.region && regionOf(p.region) ? `#${state.countryId}/~${p.region}` : `#${state.countryId}`); return;
+      }
       if (e.target.closest("[data-close]")) { closeOverlay(); return; }
       if (e.target.closest("[data-share]") && state.activeId) {
         const p = places().find((x) => x.id === state.activeId);
@@ -528,7 +674,7 @@
 
     document.addEventListener("keydown", (e) => {
       if (e.key !== "Escape") return;
-      if (state.mode === "place") go(`#${state.countryId}`);
+      if (state.mode === "place") $("[data-back]")?.click();
       else closeOverlay();
     });
     window.addEventListener("hashchange", () => route());
@@ -562,6 +708,8 @@
     bind();
     Hodo.onLang(() => {
       labelCountryMarkers();
+      regionMarkers.cid = undefined;   // rebuild the region bubbles in the new language
+      if (map?.getSource("places")) refreshPlaces();
       hideWorldCard();
       renderListToggle();
       if (state.mode && $("#panel").dataset.size !== "closed") {

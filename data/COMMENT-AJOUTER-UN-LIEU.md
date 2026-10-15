@@ -94,7 +94,39 @@ Chaque lieu peut avoir son petit dessin sur la carte et dans la liste :
 | `takoyaki` | takoyaki | `boat` | bateau sur l'eau |
 | `ramen` | bol de ramen | `camera` | appareil photo |
 | `ticket` | billet | `gem` | pierre précieuse (pépite) |
+| `wall` | Grande Muraille | `panda` | panda |
+| `castle` | château japonais | `temple` | temple bouddhiste |
+| `onsen` | source chaude | `waterfall` | cascade |
+| `mountain` | montagne (Fuji) | `lake` | lac |
+| `beach` | plage, île | `garden` | jardin, parc |
+| `shop` | boutique | `museum` | musée |
+| `house` | maison au toit de chaume (Shirakawa-gō) | `bridge` | pont |
+| `tower` | tour | `cablecar` | téléphérique |
+| `train` | train, gare | `flower` | fleurs |
+
+Les lieux très connus ont leur propre dessin :
+
+| Code | Lieu | Code | Lieu |
+|---|---|---|---|
+| `kinkakuji` | Pavillon d'or | `senbon` | torii de Fushimi Inari |
+| `itsukushima` | torii flottant de Miyajima | `chureito` | pagode Chūreitō et Fuji |
+| `daibutsu` | Grand Bouddha | `kiyomizu` | Kiyomizu-dera |
+| `pokeball` | Pokémon Center / Café | `star` | Kirby Café |
+| `gamepad` | Nintendo | `monkey` | singes (Jigokudani, Arashiyama) |
+| `teamlab` | teamLab | `terraces` | rizières en terrasses |
+| `crossing` | carrefour de Shibuya | `heaven` | Temple du Ciel |
+| `warrior` | guerriers de terre cuite | `forbidden` | Cité interdite |
+| `karst` | pics de Guilin et Yangshuo | `pillars` | piliers de Zhangjiajie |
+| `potala` | palais du Potala | `pearl` | tour de la Perle d'Orient |
+
+## Les régions (`region:`)
+
+Dans un pays, les lieux sont rangés par grandes régions, puis par villes (`city:`).
+La liste des régions est en haut du fichier du pays (`regions:`), avec leur nom long et leur nom court (`short`, affiché sur la carte).
+
+- Japon : `hokkaido`, `tohoku`, `kanto` (Tokyo et Fuji), `chubu` (Alpes japonaises), `kansai`, `west` (Chūgoku et Shikoku), `kyushu`, `okinawa`
+- Chine : `beijing`, `xian`, `shanghai`, `sichuan`, `hunan` (Zhangjiajie), `guilin`, `yunnan`, `west` (Ouest et Tibet)
 
 Sans `icon:`, le lieu prend le dessin de sa catégorie (Manger → ramen, À voir → torii…).
 Seuls les plats, les boissons et le lapin ont un petit visage : c'est voulu.
-Besoin d'un nouveau dessin (Mont Fuji, onsen…) ? Demande-le, je l'ajoute à la collection.
+Besoin d'un nouveau dessin ? Demande-le, je l'ajoute à la collection.

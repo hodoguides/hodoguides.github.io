@@ -131,6 +131,222 @@ const ICONS = {
     <circle cx="23" cy="32" r="2.2" fill="#fff"/><circle cx="41" cy="32" r="2.2" fill="#fff"/>
     <ellipse cx="32" cy="42" rx="3.4" ry="2.4" fill="${INK}"/>
     ${f ? `<path d="M28 46 Q32 49 36 46" fill="none" stroke="${INK}" stroke-width="1.8" stroke-linecap="round"/>` : ""}`,
+  // ----- place themes (no face: places stay plain) -----
+  castle: () => `
+    <path d="M8 58 L14 45 H50 L56 58 Z" fill="${C.grey}" ${S}/>
+    <path d="M18 51 h6 M30 51 h6 M42 51 h4" fill="none" stroke="${INK}" stroke-width="1.6" stroke-linecap="round"/>
+    <rect x="18" y="34" width="28" height="11" fill="#fff" ${S}/>
+    <rect x="23" y="20" width="18" height="10" fill="#fff" ${S}/>
+    <path d="M14 23 L32 13 L50 23 Z" fill="#7a88b8" ${S}/><path d="M24 13 L32 7 L40 13 Z" fill="#7a88b8" ${S}/>
+    <path d="M10 37 L32 27 L54 37 Z" fill="#7a88b8" ${S}/>
+    <path d="M25 40 H29 M35 40 H39 M30 24 H34" fill="none" ${S}/>`,
+  onsen: () => `
+    <path d="M7 40 Q7 57 32 57 Q57 57 57 40 Z" fill="${C.teal}" ${S}/>
+    <ellipse cx="32" cy="40" rx="25" ry="6" fill="${C.sky}" ${S}/>
+    <path d="M20 32 q-4 -5 0 -10 q4 -5 0 -10 M32 32 q-4 -5 0 -10 q4 -5 0 -10 M44 32 q-4 -5 0 -10 q4 -5 0 -10" fill="none" stroke="${C.red}" stroke-width="3.2" stroke-linecap="round"/>`,
+  waterfall: () => `
+    <path d="M3 58 V18 Q10 10 21 14 V58 Z" fill="${C.green}" ${S}/>
+    <path d="M61 58 V22 Q54 14 43 18 V58 Z" fill="${C.green}" ${S}/>
+    <rect x="21" y="12" width="22" height="40" fill="${C.sky}" ${S}/>
+    <path d="M27 17 V43 M32 15 V47 M37 17 V43" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M10 57 Q18 47 26 53 Q32 46 38 53 Q46 47 54 57 Z" fill="#fff" ${S}/>`,
+  mountain: () => `
+    <circle cx="51" cy="13" r="6" fill="${C.pink}" ${S}/>
+    <path d="M2 56 L24 18 Q32 12 40 18 L62 56 Z" fill="${C.blue}" ${S}/>
+    <path d="M24 18 Q32 12 40 18 L46 28 L41 26 L37 30 L32 25 L27 30 L23 26 L18 28 Z" fill="#fff" ${S}/>`,
+  lake: () => `
+    <path d="M5 36 L20 16 L30 28 L41 13 L59 36 Z" fill="${C.green}" ${S}/>
+    <ellipse cx="32" cy="45" rx="28" ry="13" fill="${C.sky}" ${S}/>
+    <path d="M13 44 q4 -3 8 0 t8 0 M34 49 q4 -3 8 0 t8 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>`,
+  beach: () => `
+    <rect x="2" y="44" width="60" height="16" rx="4" fill="${C.teal}" ${S}/>
+    <path d="M8 47 Q32 31 56 47 Z" fill="#f3d9a0" ${S}/>
+    <path d="M12 55 q4 -3 8 0 t8 0 M38 55 q4 -3 8 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    <path d="M31 41 Q29 27 34 15" fill="none" stroke="#9a6b45" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M34 15 Q24 8 15 14 Q25 14 34 15 Z M34 15 Q44 6 53 12 Q43 14 34 15 Z M34 15 Q30 5 21 5 Q29 10 34 15 Z M34 15 Q42 19 46 27 Q39 19 34 15 Z" fill="${C.green}" ${S}/>`,
+  garden: () => `
+    <path d="M8 58 H56" fill="none" ${S}/>
+    <ellipse cx="15" cy="54" rx="7" ry="3.5" fill="${C.grey}" ${S}/>
+    <path d="M33 58 V36 Q31 29 23 27 M33 40 Q38 33 44 32" fill="none" stroke="#9a6b45" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="21" cy="24" rx="12" ry="6" fill="${C.green}" ${S}/>
+    <ellipse cx="38" cy="16" rx="13" ry="6.5" fill="${C.green}" ${S}/>
+    <ellipse cx="46" cy="30" rx="10" ry="5" fill="${C.green}" ${S}/>`,
+  temple: () => `
+    <rect x="22" y="22" width="20" height="9" fill="${C.tan}" ${S}/>
+    <path d="M14 24 Q32 10 50 24 Z" fill="#7a88b8" ${S}/>
+    <rect x="12" y="35" width="40" height="19" fill="${C.tan}" ${S}/>
+    <path d="M3 38 Q32 20 61 38 Q46 32 32 32 Q18 32 3 38 Z" fill="#7a88b8" ${S}/>
+    <path d="M19 39 V54 M45 39 V54" fill="none" ${S}/>
+    <rect x="27" y="41" width="10" height="13" fill="${C.red}" ${S}/>
+    <path d="M7 58 H57" fill="none" ${S}/>`,
+  shop: () => `
+    <path d="M24 22 V16 a8 8 0 0 1 16 0 V22" fill="none" ${S}/>
+    <path d="M11 22 H53 L49 58 H15 Z" fill="${C.pink}" ${S}/>
+    <path d="M32 29 l3.5 7.1 7.8 1.1 -5.7 5.5 1.4 7.8 -7 -3.7 -7 3.7 1.4 -7.8 -5.7 -5.5 7.8 -1.1 Z" fill="${C.yellow}" ${S}/>`,
+  museum: () => `
+    <path d="M6 22 L32 8 L58 22 Z" fill="${C.lav}" ${S}/>
+    <rect x="8" y="22" width="48" height="5" fill="#fff" ${S}/>
+    ${[12, 23, 35, 46].map((x) => `<rect x="${x}" y="27" width="6" height="22" fill="#fff" ${S}/>`).join("")}
+    <rect x="5" y="49" width="54" height="8" rx="1" fill="${C.grey}" ${S}/>`,
+  house: () => `
+    <rect x="12" y="45" width="40" height="13" fill="${C.cream}" ${S}/>
+    <rect x="28" y="48" width="8" height="10" fill="${C.dark}" ${S}/>
+    <path d="M32 5 L57 46 H7 Z" fill="${C.brown}" ${S}/>
+    <path d="M23 30 H41 M17 39 H47" fill="none" stroke="#8a5f3c" stroke-width="2" stroke-linecap="round"/>
+    <rect x="28" y="17" width="8" height="7" fill="${C.cream}" ${S}/>`,
+  bridge: () => `
+    <rect x="2" y="46" width="60" height="13" rx="3" fill="${C.sky}" ${S}/>
+    <path d="M12 52 q4 -3 8 0 M40 53 q4 -3 8 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    <path d="M12 40 V50 M52 40 V50" fill="none" ${S}/>
+    <path d="M4 36 Q32 18 60 36 V42 Q32 26 4 42 Z" fill="${C.red}" ${S}/>
+    <path d="M6 31 Q32 13 58 31" fill="none" ${S}/>
+    <path d="M14 26 V33 M24 21 V28 M32 19 V26 M40 21 V28 M50 26 V33" fill="none" ${S}/>`,
+  tower: () => `
+    <path d="M32 4 L27 24 L19 58 H45 L37 24 Z" fill="${C.red}" ${S}/>
+    <rect x="24" y="19" width="16" height="6" rx="1.5" fill="#fff" ${S}/>
+    <rect x="20" y="37" width="24" height="6" rx="1.5" fill="#fff" ${S}/>
+    <path d="M27 58 Q32 48 37 58 Z" fill="${C.cream}" ${S}/>`,
+  cablecar: () => `
+    <path d="M2 60 L16 45 L28 57 L42 43 L62 60 Z" fill="${C.green}" ${S}/>
+    <path d="M2 10 L62 22" fill="none" ${S}/>
+    <path d="M32 16 V26" fill="none" ${S}/>
+    <rect x="18" y="26" width="28" height="23" rx="6" fill="${C.yellow}" ${S}/>
+    <rect x="22" y="31" width="9" height="8" rx="2" fill="${C.sky}" ${S}/><rect x="33" y="31" width="9" height="8" rx="2" fill="${C.sky}" ${S}/>`,
+  train: () => `
+    <path d="M6 58 H58 M18 50 L14 58 M46 50 L50 58" fill="none" ${S}/>
+    <path d="M10 50 V26 Q10 11 32 11 Q54 11 54 26 V50 Z" fill="#fff" ${S}/>
+    <path d="M16 28 Q16 17 32 17 Q48 17 48 28 Z" fill="${C.sky}" ${S}/>
+    <rect x="11.5" y="35" width="41" height="5" fill="${C.blue}"/>
+    <circle cx="19" cy="45" r="2.8" fill="${C.yellow}" ${S}/><circle cx="45" cy="45" r="2.8" fill="${C.yellow}" ${S}/>`,
+  flower: () => `
+    ${[0, 72, 144, 216, 288].map((a) => { const r = (a - 90) * Math.PI / 180; return `<circle cx="${(32 + 12 * Math.cos(r)).toFixed(1)}" cy="${(30 + 12 * Math.sin(r)).toFixed(1)}" r="9.5" fill="${C.pink}" ${S}/>`; }).join("")}
+    <circle cx="32" cy="30" r="6" fill="${C.yellow}" ${S}/>
+    <path d="M32 46 V60 M32 54 Q24 50 20 53" fill="none" stroke="${C.green}" stroke-width="3" stroke-linecap="round"/>`,
+  // ----- famous places: each one drawn the way it looks -----
+  kinkakuji: () => `
+    <ellipse cx="32" cy="55" rx="29" ry="6.5" fill="${C.sky}" ${S}/>
+    <rect x="16" y="41" width="32" height="11" fill="${C.tan}" ${S}/>
+    <path d="M10 43 L32 35 L54 43 Z" fill="#7a5233" ${S}/>
+    <rect x="19" y="27" width="26" height="9" fill="#f2c94c" ${S}/>
+    <path d="M13 29 L32 21 L51 29 Z" fill="#7a5233" ${S}/>
+    <rect x="24" y="15" width="16" height="7" fill="#f2c94c" ${S}/>
+    <path d="M18 17 L32 9 L46 17 Z" fill="#7a5233" ${S}/>
+    <path d="M32 9 V5" fill="none" ${S}/><circle cx="32" cy="4" r="2" fill="#f2c94c" ${S}/>
+    <path d="M22 46 V52 M42 46 V52" fill="none" ${S}/>`,
+  senbon: () => `
+    <path d="M4 62 L27 40 H37 L60 62 Z" fill="${C.tan}" stroke="none"/>
+    <rect x="26" y="33" width="3" height="14" fill="${C.red}" ${S}/><rect x="35" y="33" width="3" height="14" fill="${C.red}" ${S}/>
+    <path d="M23 30 Q32 28 41 30 L40 33 Q32 32 24 33 Z" fill="${C.red}" ${S}/>
+    <rect x="19" y="26" width="4" height="27" fill="${C.red}" ${S}/><rect x="41" y="26" width="4" height="27" fill="${C.red}" ${S}/>
+    <path d="M15 22 Q32 19 49 22 L48 26 Q32 24 16 26 Z" fill="${C.red}" ${S}/><rect x="17" y="29" width="30" height="3" fill="${C.red}" ${S}/>
+    <rect x="10" y="18" width="6" height="43" fill="${C.red}" ${S}/><rect x="48" y="18" width="6" height="43" fill="${C.red}" ${S}/>
+    <path d="M4 12 Q32 7 60 12 L58 18 Q32 14 6 18 Z" fill="${C.red}" ${S}/><rect x="8" y="23" width="48" height="4" fill="${C.red}" ${S}/>`,
+  itsukushima: () => `
+    <rect x="2" y="42" width="60" height="18" rx="4" fill="${C.blue}" ${S}/>
+    <path d="M8 55 q4 -3 8 0 t8 0 M40 55 q4 -3 8 0 t8 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    <rect x="17" y="20" width="6" height="30" fill="${C.red}" ${S}/><rect x="41" y="20" width="6" height="30" fill="${C.red}" ${S}/>
+    <rect x="13" y="25" width="38" height="5" rx="1" fill="${C.red}" ${S}/>
+    <path d="M6 14 Q32 8 58 14 L56 20 Q32 15 8 20 Z" fill="${C.red}" ${S}/>`,
+  chureito: () => `
+    <path d="M24 54 L41 20 Q46 15 51 20 L64 42 V54 Z" fill="${C.blue}" ${S}/>
+    <path d="M41 20 Q46 15 51 20 L55 27 L51 25 L47 28 L43 25 L38 27 Z" fill="#fff" ${S}/>
+    <path d="M18 24 V15" fill="none" ${S}/>
+    <rect x="14" y="27" width="8" height="6" fill="${C.red}" ${S}/><path d="M8 29 L18 23 L28 29 Z" fill="#7a88b8" ${S}/>
+    <rect x="13" y="36" width="10" height="6" fill="${C.red}" ${S}/><path d="M6 38 L18 32 L30 38 Z" fill="#7a88b8" ${S}/>
+    <rect x="11" y="46" width="14" height="10" fill="${C.red}" ${S}/><path d="M4 48 L18 41 L32 48 Z" fill="#7a88b8" ${S}/>
+    <circle cx="36" cy="56" r="5" fill="${C.pink}" ${S}/><circle cx="44" cy="58" r="4" fill="${C.pink}" ${S}/><circle cx="4" cy="58" r="4" fill="${C.pink}" ${S}/>`,
+  daibutsu: () => `
+    <path d="M8 58 Q8 36 32 34 Q56 36 56 58 Z" fill="#8fb3a4" ${S}/>
+    <ellipse cx="19.5" cy="27" rx="3.5" ry="7" fill="#8fb3a4" ${S}/><ellipse cx="44.5" cy="27" rx="3.5" ry="7" fill="#8fb3a4" ${S}/>
+    <circle cx="32" cy="24" r="12" fill="#8fb3a4" ${S}/>
+    <path d="M20 21 Q21 10 32 10 Q43 10 44 21 Q38 17 32 17 Q26 17 20 21 Z" fill="#6f9486" ${S}/><circle cx="32" cy="9" r="3.5" fill="#6f9486" ${S}/>
+    <path d="M26 25 q2 1.6 4 0 M34 25 q2 1.6 4 0" fill="none" stroke="${INK}" stroke-width="1.6" stroke-linecap="round"/><circle cx="32" cy="20.5" r="1.2" fill="${INK}"/>
+    <ellipse cx="32" cy="50" rx="10" ry="5" fill="#a4c4b6" ${S}/>`,
+  kiyomizu: () => `
+    <path d="M2 61 Q20 41 40 47 Q52 51 62 44 V62 H2 Z" fill="${C.green}" ${S}/>
+    <path d="M12 35 V58 M20 35 V56 M28 35 V54 M36 35 V52 M10 42 H40 M10 50 H38" fill="none" stroke="#9a6b45" stroke-width="2.6" stroke-linecap="round"/>
+    <rect x="7" y="30" width="36" height="5" fill="${C.tan}" ${S}/>
+    <rect x="25" y="19" width="29" height="11" fill="${C.tan}" ${S}/>
+    <path d="M18 21 Q39 7 61 21 Q50 17 39.5 17 Q29 17 18 21 Z" fill="#7a88b8" ${S}/>
+    <circle cx="54" cy="39" r="5" fill="${C.red}" ${S}/><circle cx="47" cy="44" r="3.5" fill="#f08a4b" ${S}/>`,
+  pokeball: () => `
+    <circle cx="32" cy="32" r="25" fill="#fff" ${S}/>
+    <path d="M7 32 A25 25 0 0 1 57 32 Z" fill="${C.red}" ${S}/>
+    <circle cx="32" cy="32" r="8" fill="#fff" ${S}/><circle cx="32" cy="32" r="3.5" fill="#fff" stroke="${INK}" stroke-width="2"/>`,
+  star: () => `
+    <path d="M6 44 H18 M4 52 H16 M10 36 H20" fill="none" stroke="${C.pink}" stroke-width="3" stroke-linecap="round"/>
+    <path d="M38 8 l7.2 14.6 16.1 2.3 -11.6 11.4 2.7 16 -14.4 -7.6 -14.4 7.6 2.7 -16 -11.6 -11.4 16.1 -2.3 Z" fill="${C.yellow}" ${S}/>
+    <circle cx="38" cy="31" r="4" fill="${C.pink}" ${S}/>`,
+  gamepad: () => `
+    <rect x="5" y="20" width="54" height="27" rx="13.5" fill="${C.pink}" ${S}/>
+    <path d="M14 31 h4 v-4 h4 v4 h4 v4 h-4 v4 h-4 v-4 h-4 Z" fill="#fff" stroke="${INK}" stroke-width="1.8" stroke-linejoin="round"/>
+    <circle cx="43" cy="30" r="3.2" fill="${C.yellow}" ${S}/><circle cx="50" cy="36" r="3.2" fill="${C.blue}" ${S}/>`,
+  monkey: () => `
+    <path d="M6 46 Q6 58 32 58 Q58 58 58 46 Z" fill="${C.teal}" ${S}/>
+    <ellipse cx="32" cy="46" rx="26" ry="5" fill="${C.sky}" ${S}/>
+    <path d="M14 22 q-3 -4 0 -8 M50 22 q-3 -4 0 -8" fill="none" stroke="${C.grey}" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="17" cy="31" r="5" fill="${C.pink}" ${S}/><circle cx="47" cy="31" r="5" fill="${C.pink}" ${S}/>
+    <circle cx="32" cy="30" r="15" fill="#b8a48c" ${S}/>
+    <ellipse cx="32" cy="34" rx="10" ry="9" fill="#f4b7b0" ${S}/>
+    <circle cx="28" cy="31" r="1.8" fill="${INK}"/><circle cx="36" cy="31" r="1.8" fill="${INK}"/>
+    <path d="M30 37 h4" fill="none" stroke="${INK}" stroke-width="1.6" stroke-linecap="round"/>`,
+  teamlab: () => `
+    <rect x="5" y="5" width="54" height="54" rx="13" fill="#8f82c4" ${S}/>
+    ${[[18,18,C.pink],[33,14,C.yellow],[47,22,C.blue],[16,34,C.mint],[30,30,"#fff"],[44,38,C.pink],[22,47,C.lav],[36,48,C.yellow],[49,51,C.mint]].map(([x, y, c]) => `<circle cx="${x}" cy="${y}" r="5.5" fill="${c}" opacity=".35"/><circle cx="${x}" cy="${y}" r="2.6" fill="${c}"/>`).join("")}`,
+  terraces: () => `
+    <path d="M2 18 Q32 6 62 18 V26 Q32 14 2 26 Z" fill="${C.green}" ${S}/>
+    <path d="M2 30 Q32 18 62 30 V38 Q32 26 2 38 Z" fill="${C.mint}" ${S}/>
+    <path d="M2 42 Q32 30 62 42 V50 Q32 38 2 50 Z" fill="${C.green}" ${S}/>
+    <path d="M2 54 Q32 42 62 54 V60 H2 Z" fill="${C.mint}" ${S}/>
+    <path d="M14 25 Q22 22 30 21 M34 36 Q42 35 50 36 M12 49 Q20 46 28 45" fill="none" stroke="${C.sky}" stroke-width="2.4" stroke-linecap="round"/>`,
+  crossing: () => `
+    <rect x="4" y="4" width="56" height="56" rx="10" fill="#b9bfd3" ${S}/>
+    ${[12, 20, 28, 36, 44].map((y) => `<rect x="${y}" y="8" width="4" height="14" fill="#fff"/><rect x="${y}" y="42" width="4" height="14" fill="#fff"/><rect x="8" y="${y}" width="14" height="4" fill="#fff"/><rect x="42" y="${y}" width="14" height="4" fill="#fff"/>`).join("")}
+    <circle cx="32" cy="32" r="6" fill="${C.yellow}" ${S}/>`,
+  heaven: () => `
+    <path d="M5 58 H59 L55 52 H9 Z" fill="#fff" ${S}/><path d="M10 52 H54 L50 47 H14 Z" fill="#fff" ${S}/>
+    <rect x="18" y="38" width="28" height="9" fill="${C.red}" ${S}/><path d="M9 40 Q32 29 55 40 Z" fill="#4f6fb5" ${S}/>
+    <rect x="22" y="27" width="20" height="7" fill="${C.red}" ${S}/><path d="M14 29 Q32 20 50 29 Z" fill="#4f6fb5" ${S}/>
+    <rect x="26" y="17" width="12" height="6" fill="${C.red}" ${S}/><path d="M19 19 Q32 10 45 19 Z" fill="#4f6fb5" ${S}/>
+    <circle cx="32" cy="9" r="3" fill="#f2c94c" ${S}/>`,
+  warrior: () => `
+    <path d="M9 61 Q9 42 32 40 Q55 42 55 61 Z" fill="#b07a4f" ${S}/>
+    <path d="M16 48 H48 M14 55 H50" fill="none" stroke="#7a5233" stroke-width="1.8" stroke-dasharray="2 3"/>
+    <ellipse cx="32" cy="27" rx="12" ry="14" fill="#c98f5f" ${S}/>
+    <path d="M20 23 Q20 11 32 11 Q44 11 44 23 Q38 17 32 17 Q26 17 20 23 Z" fill="#9a6b45" ${S}/>
+    <ellipse cx="40" cy="10" rx="5.5" ry="4.5" fill="#9a6b45" ${S}/>
+    <path d="M26 27 h4 M34 27 h4 M28 34 q4 2 8 0" fill="none" stroke="${INK}" stroke-width="1.6" stroke-linecap="round"/>`,
+  forbidden: () => `
+    <rect x="2" y="40" width="60" height="18" fill="${C.red}" ${S}/>
+    <path d="M14 58 V51 a4 4 0 0 1 8 0 V58 Z M28 58 V49 a4 4 0 0 1 8 0 V58 Z M42 58 V51 a4 4 0 0 1 8 0 V58 Z" fill="${C.dark}" ${S}/>
+    <rect x="12" y="27" width="40" height="13" fill="${C.red}" ${S}/>
+    <path d="M4 31 L12 25 H52 L60 31 Z" fill="#f2c94c" ${S}/>
+    <rect x="19" y="18" width="26" height="7" fill="${C.red}" ${S}/>
+    <path d="M10 20 L18 13 H46 L54 20 Z" fill="#f2c94c" ${S}/>`,
+  karst: () => `
+    <path d="M20 50 Q22 28 30 26 Q38 28 40 50 Z" fill="${C.mint}" ${S}/>
+    <path d="M3 50 Q3 22 13 19 Q22 22 22 50 Z" fill="${C.green}" ${S}/>
+    <path d="M40 50 Q40 14 50 11 Q60 14 60 50 Z" fill="${C.green}" ${S}/>
+    <path d="M2 49 Q32 42 62 49 V60 H2 Z" fill="${C.sky}" ${S}/>
+    <rect x="23" y="50" width="18" height="4" rx="1" fill="${C.tan}" ${S}/><path d="M38 50 L44 40" fill="none" ${S}/>`,
+  pillars: () => `
+    <rect x="7" y="22" width="11" height="38" rx="3" fill="${C.grey}" ${S}/>
+    <rect x="26" y="11" width="12" height="49" rx="3" fill="${C.grey}" ${S}/>
+    <rect x="46" y="27" width="11" height="33" rx="3" fill="${C.grey}" ${S}/>
+    <ellipse cx="12.5" cy="21" rx="7" ry="4" fill="${C.green}" ${S}/><ellipse cx="32" cy="10" rx="8" ry="4.5" fill="${C.green}" ${S}/><ellipse cx="51.5" cy="26" rx="7" ry="4" fill="${C.green}" ${S}/>
+    <ellipse cx="32" cy="52" rx="30" ry="6" fill="#fff" ${S}/>`,
+  potala: () => `
+    <path d="M2 61 Q32 44 62 61 Z" fill="${C.green}" ${S}/>
+    <rect x="6" y="32" width="52" height="22" fill="#fff" ${S}/>
+    <rect x="22" y="19" width="20" height="35" fill="#b4474f" ${S}/>
+    <path d="M24 19 L28 13 H36 L40 19 Z" fill="#f2c94c" ${S}/>
+    <path d="M10 40 H18 M46 40 H54 M10 47 H18 M46 47 H54 M26 27 H38 M26 35 H38" fill="none" stroke="${INK}" stroke-width="2" stroke-linecap="round"/>`,
+  pearl: () => `
+    <path d="M18 61 L29 40 M46 61 L35 40 M32 61 V44" fill="none" ${S}/>
+    <rect x="29" y="12" width="6" height="22" fill="#fff" ${S}/>
+    <circle cx="32" cy="38" r="10" fill="${C.pink}" ${S}/>
+    <circle cx="32" cy="17" r="6.5" fill="${C.pink}" ${S}/>
+    <path d="M32 10 V2" fill="none" ${S}/>`,
   bunny: () => `
     <ellipse cx="24" cy="18" rx="5.5" ry="13" transform="rotate(-8 24 18)" fill="#fff" ${S}/><ellipse cx="24" cy="19" rx="2.2" ry="8" transform="rotate(-8 24 19)" fill="${C.pink}"/>
     <ellipse cx="40" cy="18" rx="5.5" ry="13" transform="rotate(8 40 18)" fill="#fff" ${S}/><ellipse cx="40" cy="19" rx="2.2" ry="8" transform="rotate(8 40 19)" fill="${C.pink}"/>
