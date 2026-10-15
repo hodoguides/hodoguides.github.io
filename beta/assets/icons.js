@@ -1,15 +1,16 @@
-/* HodoGuides · icônes kawaii (64x64, contour marine, couleurs pastel) */
+/* HodoGuides · icônes kawaii (64x64, style « autocollant » du lapin : contour marine autour de la forme, traits fins dedans, pastels) */
 (() => {
 const INK = "#3b3a5e";
 const C = { red:"#ec5866", pink:"#f6a9b9", blue:"#a9cdf2", sky:"#d9ecfb", mint:"#8fd6b1", green:"#5fbf8c", yellow:"#ffd98a",
   lav:"#c9b9f2", brown:"#c99a6e", tan:"#e9c9a0", cream:"#fff6e3", grey:"#b9bfd3", teal:"#7fd3d8", white:"#ffffff", dark:"#5a4b6e" };
 const S = `stroke="${INK}" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"`;
 
-/** Kawaii face centred on (x,y); s = scale. kind: "full" (eyes, smile, cheeks) or "eyes". */
+/** The bunny's face centred on (x,y): oval eyes, a little "ω" mouth and pink cheeks; s = scale.
+ * kind: "full" (eyes, mouth, cheeks) or "eyes" (animals other than the mascot). */
 function face(x, y, s = 1, kind = "full") {
-  const eyes = `<circle cx="${-5}" cy="0" r="1.9" fill="${INK}"/><circle cx="5" cy="0" r="1.9" fill="${INK}"/>`;
-  const rest = `<path d="M-2.2 2.6 Q0 4.6 2.2 2.6" fill="none" stroke="${INK}" stroke-width="1.6" stroke-linecap="round"/>
-    <ellipse cx="-8.6" cy="3.2" rx="2.4" ry="1.5" fill="${C.pink}" opacity=".9"/><ellipse cx="8.6" cy="3.2" rx="2.4" ry="1.5" fill="${C.pink}" opacity=".9"/>`;
+  const eyes = `<ellipse cx="-6" cy="0" rx="1.5" ry="1.9" fill="${INK}"/><ellipse cx="6" cy="0" rx="1.5" ry="1.9" fill="${INK}"/>`;
+  const rest = `<path d="M-3.2 2.1 q1.6 2.1 3.2 0 q1.6 2.1 3.2 0" fill="none" stroke="${INK}" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="-10" cy="3" rx="2.8" ry="1.9" fill="#f8b8bf"/><ellipse cx="10" cy="3" rx="2.8" ry="1.9" fill="#f8b8bf"/>`;
   return `<g transform="translate(${x} ${y}) scale(${s})">${eyes}${kind === "full" ? rest : ""}</g>`;
 }
 
@@ -360,9 +361,20 @@ const WITH_FACE = new Set(["dango", "cup", "takoyaki", "ramen", "bunny", "bunnym
 // Default drawing for each place category, used when a place has no "icon".
 const CATEGORY_ICON = { food: "ramen", cafe: "cup", see: "torii", photo: "camera", activity: "ticket", sleep: "pagoda", hidden: "gem" };
 
+/** Sticker look, as on Erika's bunny: a copy of the drawing in ink, slightly fatter, sits underneath
+ * and gives one soft outline around the whole shape; the drawing on top keeps thin inner lines. */
+function sticker(art) {
+  const under = art.replace(/fill="(?!none)[^"]*"/g, `fill="${INK}"`).replace(/stroke="[^"]*"/g, `stroke="${INK}"`)
+    .replace(/stroke-width="[^"]*"/g, 'stroke-width="4.2"').replace(/ opacity="[^"]*"/g, "").replace(/stroke-dasharray="[^"]*"/g, "");
+  const over = art.replace(/stroke-width="2.6"/g, 'stroke-width="1.7"');
+  return `<g stroke="${INK}" stroke-width="4.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">${under}</g>${over}`;
+}
+const MASCOTS = new Set(["bunny", "bunnymap", "bunnypaws"]);
+
 function icon(name, size = 56) {
-  const draw = ICONS[name] || ICONS.torii;
-  return `<svg viewBox="0 0 64 64" width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${draw(WITH_FACE.has(name))}</svg>`;
+  if (!(name in ICONS)) name = "torii";
+  const art = ICONS[name](WITH_FACE.has(name));
+  return `<svg viewBox="0 0 64 64" width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${MASCOTS.has(name) ? art : sticker(art)}</svg>`;
 }
 
 window.HodoIcons = { icon, has: (n) => n in ICONS, CATEGORY_ICON, names: Object.keys(ICONS) };
